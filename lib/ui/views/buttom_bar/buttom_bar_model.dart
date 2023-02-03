@@ -2,7 +2,6 @@
 
 import 'package:education/ui/views/buttom_bar/lessons_screen/lessons_screen_view.dart';
 import 'package:education/ui/views/buttom_bar/student_information/student_information_view.dart';
-
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
