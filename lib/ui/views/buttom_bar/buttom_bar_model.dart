@@ -5,7 +5,6 @@ import 'package:education/ui/views/buttom_bar/student_information/student_inform
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
-
 import '../buttom_bar/chat/chats/chats_view.dart';
 import 'dashboard/dashboard.dart';
 import 'profile/profile_view.dart';
