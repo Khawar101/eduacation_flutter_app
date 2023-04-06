@@ -33,7 +33,6 @@ Widget bottomTitleWidgets(double value, TitleMeta meta) {
       text = const Text('');
       break;
   }
-
   return SideTitleWidget(
     axisSide: meta.axisSide,
     space: 8,
