@@ -35,13 +35,12 @@
 //                         fontWeight: FontWeight.w400,
 //                         fontFamily: ""),
 //                   ),
-              
-                  
+
 //                 ],
 //               ),
 //             ),
 //             centerTitle: true,
-           
+
 //         ),
 //         SliverAppBar(
 //           expandedHeight: 300,
@@ -49,7 +48,7 @@
 //         pinned: true,
 //         primary: false,
 //         collapsedHeight: 150,
-       
+
 //           flexibleSpace:LayoutBuilder(
 //               builder: (BuildContext context, BoxConstraints constraints) {
 //                  if (constraints.maxHeight > 200) {
@@ -96,7 +95,7 @@
 //           // ),
 
 //           scrolledUnderElevation: 2.0,
-        
+
 //         ),
 
 //        SliverList(delegate: SliverChildBuilderDelegate(( context , index){
@@ -128,11 +127,9 @@
 //        childCount: 1
 //         ),),
 
-
-
 //       ]
 //     ),
-    
+
 //     );
 //   }
 
@@ -142,7 +139,7 @@
 //         Align(
 //           alignment: Alignment.topCenter,
 //           child: Container(
-            
+
 //             margin: const EdgeInsets.only(top: 0, bottom: 0),
 //             height: MediaQuery.of(context).size.width / 2.1,
 //             width: MediaQuery.of(context).size.width / 1.1,
@@ -259,4 +256,3 @@
 //   }
 
 // }
-

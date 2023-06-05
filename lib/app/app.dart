@@ -6,6 +6,8 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:education/ui/views/splash_screen/splash_screen_view.dart';
 import 'package:education/ui/views/login/login_view.dart';
+import 'package:education/ui/views/signup/signup_view.dart';
+import 'package:education/ui/views/forget/forget_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -14,6 +16,8 @@ import 'package:education/ui/views/login/login_view.dart';
     MaterialRoute(page: StartupView),
     MaterialRoute(page: SplashScreenView),
     MaterialRoute(page: LoginView),
+    MaterialRoute(page: SignupView),
+    MaterialRoute(page: ForgetView),
 // @stacked-route
   ],
   dependencies: [
