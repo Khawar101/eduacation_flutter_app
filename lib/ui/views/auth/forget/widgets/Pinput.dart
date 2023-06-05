@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -36,7 +34,9 @@ class _PinputExampleState extends State<PinputExample> {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color:const Color(0xff4873a6).withOpacity(0.7),),
+        border: Border.all(
+          color: const Color(0xff4873a6).withOpacity(0.7),
+        ),
       ),
     );
 

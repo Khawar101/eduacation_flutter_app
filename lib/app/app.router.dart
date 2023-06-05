@@ -5,22 +5,20 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:education/ui/views/auth/forget/forget_view.dart' as _i7;
-import 'package:education/ui/views/home/home_view.dart' as _i2;
-import 'package:education/ui/views/auth/forget/login/login_view.dart' as _i5;
-import 'package:education/ui/views/auth/signup/signup_view.dart' as _i6;
+import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
+import 'package:education/ui/views/auth/forget/login/login_view.dart' as _i4;
+import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
+import 'package:education/ui/views/auth/verify/verify_view.dart' as _i7;
+import 'package:education/ui/views/buttom_bar/buttom_bar_view.dart' as _i8;
 import 'package:education/ui/views/splash_screen/splash_screen_view.dart'
-    as _i4;
-import 'package:education/ui/views/startup/startup_view.dart' as _i3;
-import 'package:education/ui/views/auth/verify/verify_view.dart' as _i8;
+    as _i3;
+import 'package:education/ui/views/startup/startup_view.dart' as _i2;
 import 'package:flutter/material.dart' as _i9;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i10;
 
 class Routes {
-  static const homeView = '/home-view';
-
   static const startupView = '/startup-view';
 
   static const splashScreenView = '/splash-screen-view';
@@ -33,89 +31,99 @@ class Routes {
 
   static const verifyView = '/verify-view';
 
+  static const buttomBarView = '/buttom-bar-view';
+
   static const all = <String>{
-    homeView,
     startupView,
     splashScreenView,
     loginView,
     signupView,
     forgetView,
     verifyView,
+    buttomBarView,
   };
 }
 
 class StackedRouter extends _i1.RouterBase {
   final _routes = <_i1.RouteDef>[
     _i1.RouteDef(
-      Routes.homeView,
-      page: _i2.HomeView,
-    ),
-    _i1.RouteDef(
       Routes.startupView,
-      page: _i3.StartupView,
+      page: _i2.StartupView,
     ),
     _i1.RouteDef(
       Routes.splashScreenView,
-      page: _i4.SplashScreenView,
+      page: _i3.SplashScreenView,
     ),
     _i1.RouteDef(
       Routes.loginView,
-      page: _i5.LoginView,
+      page: _i4.LoginView,
     ),
     _i1.RouteDef(
       Routes.signupView,
-      page: _i6.SignupView,
+      page: _i5.SignupView,
     ),
     _i1.RouteDef(
       Routes.forgetView,
-      page: _i7.ForgetView,
+      page: _i6.ForgetView,
     ),
     _i1.RouteDef(
       Routes.verifyView,
-      page: _i8.VerifyView,
+      page: _i7.VerifyView,
+    ),
+    _i1.RouteDef(
+      Routes.buttomBarView,
+      page: _i8.ButtomBarView,
+    ),
+    _i1.RouteDef(
+      Routes.buttomBarView,
+      page: _i8.ButtomBarView,
+    ),
+    _i1.RouteDef(
+      Routes.buttomBarView,
+      page: _i8.ButtomBarView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
-    _i2.HomeView: (data) {
+    _i2.StartupView: (data) {
       return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.HomeView(),
+        builder: (context) => const _i2.StartupView(),
         settings: data,
       );
     },
-    _i3.StartupView: (data) {
+    _i3.SplashScreenView: (data) {
       return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.StartupView(),
+        builder: (context) => const _i3.SplashScreenView(),
         settings: data,
       );
     },
-    _i4.SplashScreenView: (data) {
+    _i4.LoginView: (data) {
       return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i4.SplashScreenView(),
+        builder: (context) => const _i4.LoginView(),
         settings: data,
       );
     },
-    _i5.LoginView: (data) {
+    _i5.SignupView: (data) {
       return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i5.LoginView(),
+        builder: (context) => const _i5.SignupView(),
         settings: data,
       );
     },
-    _i6.SignupView: (data) {
+    _i6.ForgetView: (data) {
       return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i6.SignupView(),
+        builder: (context) => const _i6.ForgetView(),
         settings: data,
       );
     },
-    _i7.ForgetView: (data) {
+    _i7.VerifyView: (data) {
       return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i7.ForgetView(),
+        builder: (context) => const _i7.VerifyView(),
         settings: data,
       );
     },
-    _i8.VerifyView: (data) {
+    _i8.ButtomBarView: (data) {
       return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i8.VerifyView(),
+        builder: (context) => const _i8.ButtomBarView(),
         settings: data,
       );
     },
@@ -128,20 +136,6 @@ class StackedRouter extends _i1.RouterBase {
 }
 
 extension NavigatorStateExtension on _i10.NavigationService {
-  Future<dynamic> navigateToHomeView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.homeView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -226,14 +220,14 @@ extension NavigatorStateExtension on _i10.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithHomeView([
+  Future<dynamic> navigateToButtomBarView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return replaceWith<dynamic>(Routes.homeView,
+    return navigateTo<dynamic>(Routes.buttomBarView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -323,4 +317,19 @@ extension NavigatorStateExtension on _i10.NavigationService {
         parameters: parameters,
         transition: transition);
   }
+
+  Future<dynamic> replaceWithButtomBarView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.buttomBarView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
 }

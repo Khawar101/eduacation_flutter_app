@@ -16,21 +16,21 @@ class OtpView extends StackedView<ForgetViewModel> {
     ForgetViewModel viewModel,
     Widget? child,
   ) {
-   return Scaffold(
+    return Scaffold(
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black54,
-              size: 18,
-            ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black54,
+            size: 18,
           ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -44,15 +44,16 @@ class OtpView extends StackedView<ForgetViewModel> {
                   width: 60,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border:
-                        Border.all(color:const Color(0xff4873a6).withOpacity(0.7), width: 1),
+                    border: Border.all(
+                        color: const Color(0xff4873a6).withOpacity(0.7),
+                        width: 1),
                   ),
                   child: Center(
                     child: Container(
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            color:const Color(0xff4873a6).withOpacity(0.7),
+                            color: const Color(0xff4873a6).withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                             child: Image.asset(
@@ -103,7 +104,7 @@ class OtpView extends StackedView<ForgetViewModel> {
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color:const Color(0xff4873a6).withOpacity(0.7),
+                    color: const Color(0xff4873a6).withOpacity(0.7),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Center(
@@ -129,7 +130,6 @@ class OtpView extends StackedView<ForgetViewModel> {
         ),
       ),
     );
-  
   }
 
   @override

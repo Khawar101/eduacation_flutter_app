@@ -18,7 +18,7 @@ class ForgetView extends StackedView<ForgetViewModel> {
   ) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-    //  backgroundColor: const Color(0xffe4f1f8),
+      //  backgroundColor: const Color(0xffe4f1f8),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -32,8 +32,9 @@ class ForgetView extends StackedView<ForgetViewModel> {
                   width: 60,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border:
-                        Border.all(color:const Color(0xff4873a6).withOpacity(0.7), width: 1),
+                    border: Border.all(
+                        color: const Color(0xff4873a6).withOpacity(0.7),
+                        width: 1),
                   ),
                   child: Center(
                     child: Container(
@@ -75,15 +76,14 @@ class ForgetView extends StackedView<ForgetViewModel> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const OtpView()),
+                    MaterialPageRoute(builder: (context) => const OtpView()),
                   );
                 },
                 child: Container(
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                   color:const Color(0xff4873a6).withOpacity(0.7),
+                    color: const Color(0xff4873a6).withOpacity(0.7),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Center(
@@ -104,7 +104,7 @@ class ForgetView extends StackedView<ForgetViewModel> {
                     TextSpan(
                       text: ' Verification code ',
                       style: TextStyle(
-                       color:  Color(0xff4873a6),
+                        color: Color(0xff4873a6),
                       ),
                     ),
                     TextSpan(text: 'to your\n phone number.'),
@@ -116,7 +116,6 @@ class ForgetView extends StackedView<ForgetViewModel> {
         ),
       ),
     );
- 
   }
 
   @override
