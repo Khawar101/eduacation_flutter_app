@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
+import '../dashboard/dashboard.dart';
+
 class ButtomBarViewModel extends BaseViewModel {
   List<Widget> views = [
-    Center(
-      child: Text("1"),
-    ), // const MyActivity(),
+   const DashboardView(),
     Center(
       child: Text("2"),
     ), // const HomeScreen1(),

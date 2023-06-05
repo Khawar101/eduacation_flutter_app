@@ -8,8 +8,8 @@ import 'package:education/ui/views/auth/forget/login/login_view.dart';
 import 'package:education/ui/views/auth/signup/signup_view.dart';
 import 'package:education/ui/views/auth/forget/forget_view.dart';
 import 'package:education/ui/views/auth/verify/verify_view.dart';
-import 'package:education/ui/views/home/buttom_bar/buttom_bar_view.dart';
-import 'package:education/ui/views/dashboard/dashboard_view.dart';
+import 'package:education/ui/views/home/buttom_bar/buttom_bar.dart';
+import 'package:education/ui/views/home/dashboard/dashboard.dart';
 // @stacked-import
 
 @StackedApp(

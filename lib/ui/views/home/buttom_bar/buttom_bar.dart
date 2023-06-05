@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:stacked/stacked.dart';
 
-import 'buttom_bar_viewmodel.dart';
+import 'buttom_bar_model.dart';
 
 class ButtomBarView extends StackedView<ButtomBarViewModel> {
   const ButtomBarView({Key? key}) : super(key: key);
