@@ -13,47 +13,61 @@ class ButtomBarView extends StackedView<ButtomBarViewModel> {
     ButtomBarViewModel viewModel,
     Widget? child,
   ) {
-      return Scaffold(
-      body:viewModel. views[viewModel.selectedItemPosition],
+    return Scaffold(
+      body: viewModel.views[viewModel.selectedItemPosition],
       bottomNavigationBar: SnakeNavigationBar.color(
-        shadowColor:  const Color(0xFF4873A6).withOpacity(0.7),
+        shadowColor: const Color(0xFF4873A6).withOpacity(0.7),
         height: 40,
         behaviour: viewModel.snakeBarStyle,
         snakeShape: viewModel.snakeShape,
-        shape:viewModel. bottomBarShape,
-        padding:viewModel. padding,
-       
+        shape: viewModel.bottomBarShape,
+        padding: viewModel.padding,
+
         ///configuration for SnakeNavigationBar.color
         snakeViewColor: viewModel.selectedColor,
-        selectedItemColor:
-           viewModel. snakeShape == SnakeShape.indicator ? viewModel.selectedColor : null,
-        unselectedItemColor:viewModel. unselectedColor,
+        selectedItemColor: viewModel.snakeShape == SnakeShape.indicator
+            ? viewModel.selectedColor
+            : null,
+        unselectedItemColor: viewModel.unselectedColor,
 
         ///configuration for SnakeNavigationBar.gradient
         // snakeViewGradient: selectedGradient,
         // selectedItemGradient: snakeShape == SnakeShape.indicator ? selectedGradient : null,
         // unselectedItemGradient: unselectedGradient,
 
-        showUnselectedLabels:viewModel. showUnselectedLabels,
-        showSelectedLabels:viewModel. showSelectedLabels,
+        showUnselectedLabels: viewModel.showUnselectedLabels,
+        showSelectedLabels: viewModel.showSelectedLabels,
 
-        currentIndex:viewModel.selectedItemPosition,
-        onTap: (index) => viewModel. ItemPosition(index),
-        items:  const[
-           
+        currentIndex: viewModel.selectedItemPosition,
+        onTap: (index) => viewModel.ItemPosition(index),
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined), label: 'Activity'),
-        BottomNavigationBarItem(icon: Icon(Icons.play_lesson_outlined,size: 20,), label: 'Lessons'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat_outlined,size: 20,), label: 'Chat'),
-            BottomNavigationBarItem(icon: Icon(Icons.groups_2_outlined,size: 30,), label: 'Student'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined), label: 'Person')
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.play_lesson_outlined,
+                size: 20,
+              ),
+              label: 'Lessons'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.chat_outlined,
+                size: 20,
+              ),
+              label: 'Chat'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.groups_2_outlined,
+                size: 30,
+              ),
+              label: 'Student'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_2_outlined), label: 'Person')
         ],
         selectedLabelStyle: const TextStyle(fontSize: 10),
         unselectedLabelStyle: const TextStyle(fontSize: 10),
       ),
-      
     );
- 
   }
 
   @override
