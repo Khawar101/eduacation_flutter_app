@@ -52,7 +52,7 @@ class VerifyView extends StackedView<VerifyViewModel> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.12,
+                  horizontal: MediaQuery.of(context).size.width * 0.04,
                 ),
                 child: Column(
                   children: [
@@ -144,7 +144,7 @@ class VerifyView extends StackedView<VerifyViewModel> {
               ),
               NumericKeyboard(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                onKeyboardTap: viewModel.onKeyboardTap("", context),
+                onKeyboardTap:(value)=> viewModel.onKeyboardTap(value,context),
                 textColor: Colors.black,
                 rightButtonFn: () {
                   for (var i = viewModel.codes.length - 1; i >= 0; i--) {

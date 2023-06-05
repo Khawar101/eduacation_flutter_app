@@ -9,6 +9,6 @@ class SignupViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   navigateVerify() {
-    // _navigationService.navigateToLoginView();
+    _navigationService.navigateToVerifyView();
   }
 }

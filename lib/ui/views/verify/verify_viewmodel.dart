@@ -6,15 +6,17 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
 
 class VerifyViewModel extends BaseViewModel {
-    List<String> codes = ['', '', '', '', '', ''];
-
-   onKeyboardTap(String value,context) {
-    for (var i = 0; i < codes.length; i++) {
-      if (codes[i].isEmpty) {
-          codes[i] = value;
-        if (i < codes.length - 1) {
+  final List<String> _codes = ['', '', '', '', '', ''];
+  List<String> get codes => _codes;
+  onKeyboardTap(String value, context) {
+    for (var i = 0; i < _codes.length; i++) {
+      if (_codes[i].isEmpty) {
+        _codes[i] = value;
+        notifyListeners();
+        if (i < _codes.length - 1) {
           // Move focus to the next text field
           FocusScope.of(context).nextFocus();
+          notifyListeners();
         } else {
           // Last text field, perform your logic here (e.g., submitting the code)
         }
@@ -23,16 +25,19 @@ class VerifyViewModel extends BaseViewModel {
     }
   }
 
-  void clearCodeField(int index,context) {
-    if (index > 0 && codes[index].isEmpty) {
+  void clearCodeField(int index, context) {
+    if (index > 0 && _codes[index].isEmpty) {
       // Clear the current field and move focus to the previous field
-        codes[index - 1] = '';
+      _codes[index - 1] = '';
+      notifyListeners();
       FocusScope.of(context).previousFocus();
     } else {
       // Clear the current field
-        codes[index] = '';
+      _codes[index] = '';
+      notifyListeners();
     }
   }
+
   final _navigationService = locator<NavigationService>();
 
   navigateLogin() {
