@@ -1,3 +1,4 @@
+import 'package:education/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -12,11 +13,11 @@ class LoginViewModel extends BaseViewModel {
   }
 
   navigateSignup() {
-    // _navigationService.navigateToLoginView();
+    _navigationService.navigateToSignupView();
   }
 
   navigateForget() {
-    // _navigationService.navigateToLoginView();
+    _navigationService.navigateToForgetView();
   }
   // final LocalAuthentication auth = LocalAuthentication();
   // _SupportState _supportState = _SupportState.unknown;
