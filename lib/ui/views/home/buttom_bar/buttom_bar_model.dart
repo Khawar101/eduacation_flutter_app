@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
-import '../chats/chats_view.dart';
+import '../chat/chats/chats_view.dart';
 import '../dashboard/dashboard.dart';
 
 class ButtomBarViewModel extends BaseViewModel {

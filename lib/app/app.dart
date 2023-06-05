@@ -10,8 +10,8 @@ import 'package:education/ui/views/auth/forget/forget_view.dart';
 import 'package:education/ui/views/auth/verify/verify_view.dart';
 import 'package:education/ui/views/home/buttom_bar/buttom_bar.dart';
 import 'package:education/ui/views/home/dashboard/dashboard.dart';
-import 'package:education/ui/views/home/chats/chats_view.dart';
-import 'package:education/ui/views/chat/inbox/inbox_view.dart';
+import 'package:education/ui/views/home/chat/chats/chats_view.dart';
+import 'package:education/ui/views/home/chat/inbox/inbox_view.dart';
 // @stacked-import
 
 @StackedApp(
