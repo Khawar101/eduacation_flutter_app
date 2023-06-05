@@ -6,7 +6,7 @@ import '../dashboard/dashboard.dart';
 
 class ButtomBarViewModel extends BaseViewModel {
   List<Widget> views = [
-   const DashboardView(),
+    const DashboardView(),
     Center(
       child: Text("2"),
     ), // const HomeScreen1(),

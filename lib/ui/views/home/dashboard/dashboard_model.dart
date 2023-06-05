@@ -5,7 +5,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class DashboardViewModel extends BaseViewModel {
-    final bool isShowingMainData =true;
+  final bool isShowingMainData = true;
 
   LineChartData get sampleData1 => LineChartData(
         lineTouchData: lineTouchData1,
