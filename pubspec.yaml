@@ -34,6 +34,32 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  google_fonts: ^4.0.3
+  step_progress_indicator: ^1.0.2
+  flutter_switch: ^0.3.2
+  flutter_snake_navigationbar: ^0.6.1
+  table_calendar: ^3.0.8
+  comment_box: ^0.0.18
+  syncfusion_flutter_sliders: ^20.4.54
+  chips_choice: ^3.0.0
+  flutter_feather_icons: ^2.0.0+1
+  calender_picker: ^1.0.7
+  flutter_credit_card: ^3.0.6
+  pin_code_fields: ^7.4.0
+  numeric_keyboard: ^1.1.0
+  lottie: ^2.3.0
+  flutter_svg: ^2.0.4
+  syncfusion_flutter_charts: ^20.4.54
+  readmore: ^2.2.0
+  video_player: ^2.6.0
+  flutter_rating_bar: ^4.0.1
+  local_auth: ^2.1.6
+  carousel_slider: ^4.2.1
+  pinput: ^2.2.31
+  flip: ^2.0.0
+  flip_card: ^0.7.0
+  calendar_date_picker2: ^0.5.2
+  fl_chart: ^0.62.0
   
   stacked: ^3.2.7
   stacked_services: ^1.0.0
