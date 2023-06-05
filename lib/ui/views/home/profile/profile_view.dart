@@ -15,26 +15,26 @@ class ProfileView extends StackedView<ProfileViewModel> {
     ProfileViewModel viewModel,
     Widget? child,
   ) {
-       return Scaffold(
-        // drawer: const DrawerHeaderPage(),
+    return Scaffold(
+      // drawer: const DrawerHeaderPage(),
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
           leading: Builder(
-    builder: (BuildContext context) {
-      return IconButton(
-        icon: const  Icon(
-               Icons.vertical_distribute_sharp,
-               color: Colors.black54,
-               size: 18,
-             ),
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
-        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-      );
-    },
-  ),
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(
+                  Icons.vertical_distribute_sharp,
+                  color: Colors.black54,
+                  size: 18,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
           title: Text(
             "Profile",
             textAlign: TextAlign.center,
@@ -44,12 +44,12 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 fontWeight: FontWeight.w600),
           ),
           centerTitle: true,
-          actions:  [
+          actions: [
             Padding(
               padding: const EdgeInsets.only(right: 15),
               child: GestureDetector(
                 onTap: () {
-                    // Navigator.push(context, MaterialPageRoute(builder: ((context) => const SettingScreen())));
+                  // Navigator.push(context, MaterialPageRoute(builder: ((context) => const SettingScreen())));
                 },
                 child: const Icon(
                   Icons.settings_outlined,
@@ -144,7 +144,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
                                 "Upgrade",
                                 style: GoogleFonts.ibmPlexSans(
                                     fontSize: 15,
-                                    color: const Color(0xFF4873A6).withOpacity(0.7),
+                                    color: const Color(0xFF4873A6)
+                                        .withOpacity(0.7),
                                     fontWeight: FontWeight.w400),
                               )),
                             ),
@@ -228,7 +229,6 @@ class ProfileView extends StackedView<ProfileViewModel> {
         ),
       ),
     );
- 
   }
 
   @override
