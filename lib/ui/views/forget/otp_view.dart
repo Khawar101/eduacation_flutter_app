@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pinput/pinput.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../widgets/app_utils.dart';
-import '../../../widgets/custom_text_form_field.dart';
+import 'change_password_view.dart';
 import 'forget_viewmodel.dart';
-import 'otp_view.dart';
 
-class ForgetView extends StackedView<ForgetViewModel> {
-  const ForgetView({Key? key}) : super(key: key);
+class OtpView extends StackedView<ForgetViewModel> {
+  const OtpView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -16,16 +16,28 @@ class ForgetView extends StackedView<ForgetViewModel> {
     ForgetViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
+   return Scaffold(
       // resizeToAvoidBottomInset: false,
-    //  backgroundColor: const Color(0xffe4f1f8),
+      appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black54,
+              size: 18,
+            ),
+          ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.14),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.04),
               Center(
                 child: Container(
                   height: 60,
@@ -40,7 +52,7 @@ class ForgetView extends StackedView<ForgetViewModel> {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            color: const Color(0xff4873a6).withOpacity(0.7),
+                            color:const Color(0xff4873a6).withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                             child: Image.asset(
@@ -49,66 +61,67 @@ class ForgetView extends StackedView<ForgetViewModel> {
                   ),
                 ),
               ),
-
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
               const BigText(
-                text: "Forgot Password",
+                text: "Enter a Code",
                 color: Colors.black,
               ),
-              const SizedBox(height: 8),
-              const BigSubText(
-                text: "A handful of model sentence structure",
-              ), //
-              const SizedBox(height: 25),
-              CustomTextFormField(
-                hintText: 'Phone Number',
-                textInputType: TextInputType.number,
-                prefix: const Icon(
-                  Icons.phone_forwarded,
-                  size: 20,
-                  color: Colors.black,
+              Padding(
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.height * 0.015),
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text:
+                        'We sent a verification code to \n your phonr number ',
+                    style: GoogleFonts.ibmPlexSans(
+                        color: Colors.black, fontSize: 12),
+                    children: const [
+                      TextSpan(
+                        text: '(+92)3012345678',
+                        style: TextStyle(
+                          color: Color(0xff4873a6),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 25),
-
+              const Pinput(),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.04),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const OtpView()),
+                        builder: (context) => const ChangePasswordView()),
                   );
                 },
                 child: Container(
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                   color:const Color(0xff4873a6).withOpacity(0.7),
+                    color:const Color(0xff4873a6).withOpacity(0.7),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Center(
                       child: ButtonText(
-                    text: 'Continue',
+                    text: 'Change Password',
                     color: Colors.white,
                   )),
                 ),
               ),
-              const SizedBox(height: 30),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: 'We Sent a',
+              SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+              GestureDetector(
+                onTap: () {},
+                child: Text(
+                  "Resend Code",
                   style: GoogleFonts.ibmPlexSans(
-                      color: Colors.black, fontSize: 12),
-                  children: const [
-                    TextSpan(
-                      text: ' Verification code ',
-                      style: TextStyle(
-                       color:  Color(0xff4873a6),
-                      ),
-                    ),
-                    TextSpan(text: 'to your\n phone number.'),
-                  ],
+                      color: const Color(0xff4873a6),
+                      fontSize: 13,
+                      decoration: TextDecoration.underline),
                 ),
               ),
             ],
@@ -116,7 +129,7 @@ class ForgetView extends StackedView<ForgetViewModel> {
         ),
       ),
     );
- 
+  
   }
 
   @override
