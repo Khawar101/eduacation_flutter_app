@@ -7,17 +7,17 @@ class LoginViewModel extends BaseViewModel {
   bool visibleCheck = true;
   final _navigationService = locator<NavigationService>();
 
-  // navigateLogin() {
-  //   _navigationService.navigateToLoginView();
-  // }
+  navigateButtomBar() {
+    // _navigationService.navigateToLoginView();
+  }
 
-  // navigateLogin() {
-  //   _navigationService.navigateToLoginView();
-  // }
+  navigateSignup() {
+    // _navigationService.navigateToLoginView();
+  }
 
-  // navigateLogin() {
-  //   _navigationService.navigateToLoginView();
-  // }
+  navigateForget() {
+    // _navigationService.navigateToLoginView();
+  }
   // final LocalAuthentication auth = LocalAuthentication();
   // _SupportState _supportState = _SupportState.unknown;
   // bool? _canCheckBiometrics;

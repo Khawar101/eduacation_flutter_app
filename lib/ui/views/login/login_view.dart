@@ -16,7 +16,7 @@ class LoginView extends StackedView<LoginViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-    //  backgroundColor: const Color(0xffe4f1f8),
+      //  backgroundColor: const Color(0xffe4f1f8),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -29,10 +29,11 @@ class LoginView extends StackedView<LoginViewModel> {
                   width: 60,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border:
-                        Border.all(color: const Color(0xff4873a6).withOpacity(0.7), width: 1),
+                    border: Border.all(
+                        color: const Color(0xff4873a6).withOpacity(0.7),
+                        width: 1),
                   ),
-                  child:  Icon(
+                  child: Icon(
                     Icons.lock,
                     color: const Color(0xff4873a6).withOpacity(0.7),
                     size: 34,
@@ -72,10 +73,10 @@ class LoginView extends StackedView<LoginViewModel> {
                       isObscureText: viewModel.visibleCheck,
                       prefix: GestureDetector(
                         onTap: () {
-                       viewModel.   visibleCheck = !viewModel.visibleCheck;
+                          viewModel.visibleCheck = !viewModel.visibleCheck;
                         },
                         child: Icon(
-                      viewModel.    visibleCheck == true
+                          viewModel.visibleCheck == true
                               ? Icons.visibility_off_outlined
                               : Icons.visibility_outlined,
                           color: Colors.black,
@@ -88,7 +89,9 @@ class LoginView extends StackedView<LoginViewModel> {
                     width: 70,
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: const Color(0xff4873a6).withOpacity(0.7),),
+                        border: Border.all(
+                          color: const Color(0xff4873a6).withOpacity(0.7),
+                        ),
                         borderRadius: BorderRadius.circular(10)),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -113,30 +116,24 @@ class LoginView extends StackedView<LoginViewModel> {
               const SizedBox(height: 12),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) =>
-                              const ForgotPasswordScreen())));
+                  viewModel.navigateForget();
                 },
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: Text(
                     'Forgot Password?',
                     style: GoogleFonts.ibmPlexSans(
-                        decoration: TextDecoration.underline,
-                        color: const Color(0xff4873a6).withOpacity(0.7),),
+                      decoration: TextDecoration.underline,
+                      color: const Color(0xff4873a6).withOpacity(0.7),
+                    ),
                   ),
                 ),
               ),
               const SizedBox(height: 15),
               GestureDetector(
                 onTap: () {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder:(BuildContext context)  => const HomeButtomBar()),    ModalRoute.withName('/'),);
-                      },
+                  viewModel.navigateButtomBar();
+                },
                 child: Container(
                   height: 50,
                   width: double.infinity,
@@ -196,14 +193,12 @@ class LoginView extends StackedView<LoginViewModel> {
                       text: 'Dont have an account? ', color: Colors.black),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) =>
-                                  const SignUpPhoneScreen())));
+                      viewModel.navigateSignup();
                     },
-                    child:  SmallText(
-                        text: 'Sign up', color: const Color(0xff4873a6).withOpacity(0.7),),
+                    child: SmallText(
+                      text: 'Sign up',
+                      color: const Color(0xff4873a6).withOpacity(0.7),
+                    ),
                   ),
                 ],
               ),
@@ -212,7 +207,6 @@ class LoginView extends StackedView<LoginViewModel> {
         ),
       ),
     );
- 
   }
 
   @override
