@@ -2,13 +2,15 @@ import 'package:education/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../../app/app.locator.dart';
+import '../../../../app/app.locator.dart';
 
-class SignupViewModel extends BaseViewModel {
+class ForgetViewModel extends BaseViewModel {
   bool visibleCheck = true;
+  bool visibleCheck2 = true;
+
   final _navigationService = locator<NavigationService>();
 
-  navigateVerify() {
-    _navigationService.navigateToVerifyView();
+  navigateLogin() {
+    _navigationService.navigateToLoginView();
   }
 }
