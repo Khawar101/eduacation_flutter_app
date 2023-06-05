@@ -11,8 +11,6 @@ import 'widgets/SplashContainer4.dart';
 import 'widgets/SplashContainer5.dart';
 
 class SplashScreenViewModel extends BaseViewModel {
-  final _navigationService = locator<NavigationService>();
-
   final List<Widget> items = [
     const SplashContainer1(),
     const SplashContainer2(),
@@ -20,6 +18,7 @@ class SplashScreenViewModel extends BaseViewModel {
     const SplashContainer4(),
     const SplashContainer5(),
   ];
+  final _navigationService = locator<NavigationService>();
 
   navigateLogin() {
     _navigationService.navigateToLoginView();
