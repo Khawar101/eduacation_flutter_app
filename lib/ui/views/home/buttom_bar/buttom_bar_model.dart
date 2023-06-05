@@ -4,6 +4,7 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
 import '../chat/chats/chats_view.dart';
 import '../dashboard/dashboard.dart';
+import '../profile/profile_view.dart';
 
 class ButtomBarViewModel extends BaseViewModel {
   List<Widget> views = [
@@ -15,9 +16,7 @@ class ButtomBarViewModel extends BaseViewModel {
     Center(
       child: Text("4"),
     ), // const StudentProfile(),
-    Center(
-      child: Text("5"),
-    ), // const ProfileScreen(),
+    ProfileView(),
   ];
 
   ShapeBorder? bottomBarShape = const RoundedRectangleBorder(

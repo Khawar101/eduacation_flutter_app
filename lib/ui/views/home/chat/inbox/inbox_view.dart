@@ -14,7 +14,7 @@ class InboxView extends StackedView<InboxViewModel> {
     InboxViewModel viewModel,
     Widget? child,
   ) {
-       return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -79,7 +79,6 @@ class InboxView extends StackedView<InboxViewModel> {
         ],
       ),
     );
-  
   }
 
   @override

@@ -9,17 +9,18 @@ import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
 import 'package:education/ui/views/auth/forget/login/login_view.dart' as _i4;
 import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
 import 'package:education/ui/views/auth/verify/verify_view.dart' as _i7;
-import 'package:education/ui/views/home/chat/chats/chats_view.dart' as _i10;
 import 'package:education/ui/views/home/buttom_bar/buttom_bar.dart' as _i8;
-import 'package:education/ui/views/home/dashboard/dashboard.dart' as _i9;
+import 'package:education/ui/views/home/chat/chats/chats_view.dart' as _i10;
 import 'package:education/ui/views/home/chat/inbox/inbox_view.dart' as _i11;
+import 'package:education/ui/views/home/dashboard/dashboard.dart' as _i9;
+import 'package:education/ui/views/home/profile/profile_view.dart' as _i12;
 import 'package:education/ui/views/splash_screen/splash_screen_view.dart'
     as _i3;
 import 'package:education/ui/views/startup/startup_view.dart' as _i2;
-import 'package:flutter/material.dart' as _i12;
+import 'package:flutter/material.dart' as _i13;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i13;
+import 'package:stacked_services/stacked_services.dart' as _i14;
 
 class Routes {
   static const startupView = '/startup-view';
@@ -42,6 +43,8 @@ class Routes {
 
   static const inboxView = '/inbox-view';
 
+  static const profileView = '/profile-view';
+
   static const all = <String>{
     startupView,
     splashScreenView,
@@ -53,6 +56,7 @@ class Routes {
     dashboardView,
     chatsView,
     inboxView,
+    profileView,
   };
 }
 
@@ -98,66 +102,76 @@ class StackedRouter extends _i1.RouterBase {
       Routes.inboxView,
       page: _i11.InboxView,
     ),
+    _i1.RouteDef(
+      Routes.profileView,
+      page: _i12.ProfileView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.StartupView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.StartupView(),
         settings: data,
       );
     },
     _i3.SplashScreenView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.SplashScreenView(),
         settings: data,
       );
     },
     _i4.LoginView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.LoginView(),
         settings: data,
       );
     },
     _i5.SignupView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SignupView(),
         settings: data,
       );
     },
     _i6.ForgetView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.ForgetView(),
         settings: data,
       );
     },
     _i7.VerifyView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.VerifyView(),
         settings: data,
       );
     },
     _i8.ButtomBarView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ButtomBarView(),
         settings: data,
       );
     },
     _i9.DashboardView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.DashboardView(),
         settings: data,
       );
     },
     _i10.ChatsView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.ChatsView(),
         settings: data,
       );
     },
     _i11.InboxView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.InboxView(),
+        settings: data,
+      );
+    },
+    _i12.ProfileView: (data) {
+      return _i13.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.ProfileView(),
         settings: data,
       );
     },
@@ -169,7 +183,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i13.NavigationService {
+extension NavigatorStateExtension on _i14.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -310,6 +324,20 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToProfileView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.profileView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -444,6 +472,20 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.inboxView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithProfileView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.profileView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
