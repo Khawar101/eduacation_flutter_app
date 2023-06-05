@@ -10,7 +10,6 @@ void main() {
   setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
-
   runApp(const MyApp());
 }
 
