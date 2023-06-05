@@ -177,7 +177,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigator.push(context, MaterialPageRoute(builder: ((context) => const EditInfo())));
+                                  viewModel.navigateEditProfile;
                                 },
                                 child: Image.asset(
                                   'assets/icons/pencil-book.png',

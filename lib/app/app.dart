@@ -13,7 +13,7 @@ import 'package:education/ui/views/home/dashboard/dashboard.dart';
 import 'package:education/ui/views/home/chat/chats/chats_view.dart';
 import 'package:education/ui/views/home/chat/inbox/inbox_view.dart';
 import 'package:education/ui/views/home/profile/profile_view.dart';
-import 'package:education/ui/views/edit_info/edit_info_view.dart';
+import 'package:education/ui/views/home/edit_info/edit_info_view.dart';
 // @stacked-import
 
 @StackedApp(
