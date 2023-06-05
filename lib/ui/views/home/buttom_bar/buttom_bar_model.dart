@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
+import '../chats/chats_view.dart';
 import '../dashboard/dashboard.dart';
 
 class ButtomBarViewModel extends BaseViewModel {
@@ -10,9 +11,7 @@ class ButtomBarViewModel extends BaseViewModel {
     Center(
       child: Text("2"),
     ), // const HomeScreen1(),
-    Center(
-      child: Text("3"),
-    ), // const ChatPageScreen(),
+    ChatsView(),
     Center(
       child: Text("4"),
     ), // const StudentProfile(),
