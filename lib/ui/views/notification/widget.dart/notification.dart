@@ -17,103 +17,86 @@ class NotificationWidget extends StackedView<NotificationViewModel> {
     return MediaQuery.removePadding(
       context: context,
       removeTop: true,
-      child: GestureDetector(
-        onTap: () {
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (_) => const ChatPageScreen()));
-        },
-        child: ListView.builder(
-          itemCount: 7,
-          itemBuilder: (BuildContext context, index) {
-            return Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * 0.02),
-              child: Container(
-                // height: MediaQuery.of(context).size.height,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+      child: ListView.builder(
+        itemCount: 8,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height * 0.02,
+              //     horizontal: MediaQuery.of(context).size.width*0.025
+            ),
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
                   color: const Color(0xff4873a6).withOpacity(0.7),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.05,
-                      vertical: MediaQuery.of(context).size.height * 0.02),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.05,
+                    vertical: MediaQuery.of(context).size.height * 0.02),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Image.asset(
+                          'assets/icons/chat-message64.png',
+                          color: const Color(0xff4873a6).withOpacity(0.7),
+                        ),
+                      ),
+                      // child: Image.asset(
+                      //     'assets/images/tree.jpg',
+                      //     fit: BoxFit.cover),
+                    ),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.035),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            "Congratulation on completing the  hygfyuhgfyuhfytv tdrt",
+                            overflow: TextOverflow.ellipsis,
+                            //  softWrap: true,
+                            maxLines: 1,
+                            style: GoogleFonts.ibmPlexSans(
+                                fontSize: 14,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.01),
                           Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset(
-                                        'assets/images/download.jpeg')),
+                              const Icon(
+                                Icons.access_time_filled,
+                                size: 14,
+                                color: Colors.white54,
                               ),
-                              const SizedBox(width: 7),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Daniel Lawson",
-                                    style: GoogleFonts.ibmPlexSans(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    "Online",
-                                    style: GoogleFonts.ibmPlexSans(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
+                              const SizedBox(width: 5),
+                              Text(
+                                "Just now",
+                                style: GoogleFonts.ibmPlexSans(
+                                    color: Colors.white54, fontSize: 12),
                               )
                             ],
-                          ),
-                          Text(
-                            "04:32 pm",
-                            style: GoogleFonts.ibmPlexSans(
-                              color: Colors.white,
-                            ),
-                          ),
+                          )
                         ],
                       ),
-                      const SizedBox(height: 8),
-                      const SmallText(
-                          text:
-                              "When dealing with technical commands that use a keyboard (for example, ",
-                          color: Colors.white),
-                      const SizedBox(height: 15),
-                      SizedBox(
-                        height: 160,
-                        width: double.infinity,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('assets/images/download (1).jpeg',
-                              fit: BoxFit.fitWidth),
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
