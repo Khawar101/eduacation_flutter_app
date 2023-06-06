@@ -2,9 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NoNetwork extends StatelessWidget {
-  const NoNetwork({super.key});
+class NoVideos extends StatefulWidget {
+  const NoVideos({super.key});
 
+  @override
+  State<NoVideos> createState() => _NoVideosState();
+}
+
+class _NoVideosState extends State<NoVideos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,23 +25,23 @@ class NoNetwork extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             Center(
                 child: Image.asset(
-              'assets/icons/network_icon.png',
-              width: 180,
-              height: 180,
+              'assets/images/no-videos.png',
+              width: 150,
+              height: 150,
             ),
           ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Center(
                 child: Text(
-              "No Network!",
+              "No videos!",
               style: GoogleFonts.ibmPlexSans(
                   fontSize: 22, fontWeight: FontWeight.w500),
             ),
-           ),
+          ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.009),
             Center(
                 child: Text(
-              "Please check your network\nand try again ",
+              "Here is no videos you want at the\nmoment",
               textAlign: TextAlign.center,
               style: GoogleFonts.ibmPlexSans(
                 fontSize: 14,
@@ -53,7 +58,7 @@ class NoNetwork extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30)),
                 child: Center(
                     child: Text(
-                  "Try again",
+                  "Search more",
                   style: GoogleFonts.ibmPlexSans(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -61,7 +66,7 @@ class NoNetwork extends StatelessWidget {
                 ),
                ),
               ),
-            ),
+            )
           ],
         ),
       ),
