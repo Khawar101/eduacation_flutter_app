@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 
 import '../../../../widgets/app_utils.dart';
 import '../../../../widgets/custom_text_form_field.dart';
+import '../../../drawer/drawer_view.dart';
 import 'chats_viewmodel.dart';
 
 class ChatsView extends StackedView<ChatsViewModel> {
@@ -16,7 +17,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      // drawer: const DrawerHeaderPage(),
+      drawer: const DrawerView(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,

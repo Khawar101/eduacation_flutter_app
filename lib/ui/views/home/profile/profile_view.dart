@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../../../widgets/app_utils.dart';
+import '../../drawer/drawer_view.dart';
 import 'profile_viewmodel.dart';
 
 class ProfileView extends StackedView<ProfileViewModel> {
@@ -16,7 +17,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      // drawer: const DrawerHeaderPage(),
+      drawer: const DrawerView(),
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,

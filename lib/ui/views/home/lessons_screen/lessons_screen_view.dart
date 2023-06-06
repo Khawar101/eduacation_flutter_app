@@ -1,3 +1,4 @@
+import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,7 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      // drawer: const DrawerHeaderPage(),
+      drawer: const DrawerView(),
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,

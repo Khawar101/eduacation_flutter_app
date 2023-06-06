@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../widgets/app_utils.dart';
+import '../../drawer/drawer_view.dart';
 import 'widgets/getTabwidget.dart';
 
 class StudentInformationView extends StatefulWidget {
@@ -36,7 +37,7 @@ class _StudentInformationViewState extends State<StudentInformationView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //  drawer: const DrawerHeaderPage(),
+      drawer: const DrawerView(),
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,

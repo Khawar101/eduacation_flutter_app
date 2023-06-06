@@ -1,3 +1,4 @@
+import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -17,7 +18,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        //  drawer: const DrawerHeaderPage(),
+        drawer: const DrawerView(),
         appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.white,

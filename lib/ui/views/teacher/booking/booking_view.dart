@@ -14,7 +14,7 @@ class BookingView extends StackedView<BookingViewModel> {
     BookingViewModel viewModel,
     Widget? child,
   ) {
-       return Scaffold(
+    return Scaffold(
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
@@ -56,7 +56,8 @@ class BookingView extends StackedView<BookingViewModel> {
                       left: 2.5,
                       child: CircleAvatar(
                         radius: 4.5,
-                        backgroundColor: const Color(0xff4873a6).withOpacity(0.7),
+                        backgroundColor:
+                            const Color(0xff4873a6).withOpacity(0.7),
                       ),
                     )
                   ],
@@ -97,7 +98,7 @@ class BookingView extends StackedView<BookingViewModel> {
                   dateTextStyle: const TextStyle(fontSize: 16),
                   onDateChange: (date) {
                     // New date selected
-                      //   _selectedValue = date;
+                    //   _selectedValue = date;
                   },
                 ),
               ),
@@ -147,7 +148,8 @@ class BookingView extends StackedView<BookingViewModel> {
                                   MediaQuery.of(context).size.width * 0.02,
                               //    vertical: MediaQuery.of(context).size.height * 0.009
                             ),
-                            child: Row(                            crossAxisAlignment: CrossAxisAlignment.center,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
@@ -156,10 +158,11 @@ class BookingView extends StackedView<BookingViewModel> {
                                       height: 90,
                                       width: 90,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10)
-                                      ),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
                                       child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           child: Image.asset(
                                             'assets/images/download (1).jpeg',
                                             fit: BoxFit.cover,
@@ -211,7 +214,6 @@ class BookingView extends StackedView<BookingViewModel> {
         ),
       ), //Calender part
     );
- 
   }
 
   @override
