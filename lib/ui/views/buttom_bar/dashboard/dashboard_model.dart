@@ -1,5 +1,5 @@
-import 'package:education/ui/views/home/dashboard/widgets/bottomTitle.dart';
-import 'package:education/ui/views/home/dashboard/widgets/leftTitle.dart';
+import 'package:education/ui/views/buttom_bar/dashboard/widgets/bottomTitle.dart';
+import 'package:education/ui/views/buttom_bar/dashboard/widgets/leftTitle.dart';
 import 'package:stacked/stacked.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';

@@ -12,22 +12,22 @@ import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
 import 'package:education/ui/views/auth/verify/verify_view.dart' as _i7;
 import 'package:education/ui/views/contact/contact_view.dart' as _i21;
 import 'package:education/ui/views/drawer/drawer_view.dart' as _i25;
-import 'package:education/ui/views/home/buttom_bar/buttom_bar.dart' as _i8;
-import 'package:education/ui/views/home/chat/chats/chats_view.dart' as _i10;
-import 'package:education/ui/views/home/chat/inbox/inbox_view.dart' as _i11;
-import 'package:education/ui/views/home/dashboard/dashboard.dart' as _i9;
-import 'package:education/ui/views/home/lessons_screen/course/course_view.dart'
+import 'package:education/ui/views/buttom_bar/buttom_bar.dart' as _i8;
+import 'package:education/ui/views/buttom_bar/chat/chats/chats_view.dart' as _i10;
+import 'package:education/ui/views/buttom_bar/chat/inbox/inbox_view.dart' as _i11;
+import 'package:education/ui/views/buttom_bar/dashboard/dashboard.dart' as _i9;
+import 'package:education/ui/views/buttom_bar/lessons_screen/course/course_view.dart'
     as _i16;
-import 'package:education/ui/views/home/lessons_screen/learners/learners_view.dart'
+import 'package:education/ui/views/buttom_bar/lessons_screen/learners/learners_view.dart'
     as _i17;
-import 'package:education/ui/views/home/lessons_screen/lessons_screen_view.dart'
+import 'package:education/ui/views/buttom_bar/lessons_screen/lessons_screen_view.dart'
     as _i14;
-import 'package:education/ui/views/home/lessons_screen/marketing/marketing_view.dart'
+import 'package:education/ui/views/buttom_bar/lessons_screen/marketing/marketing_view.dart'
     as _i15;
-import 'package:education/ui/views/home/profile/edit_info/edit_info_view.dart'
+import 'package:education/ui/views/buttom_bar/profile/edit_info/edit_info_view.dart'
     as _i13;
-import 'package:education/ui/views/home/profile/profile_view.dart' as _i12;
-import 'package:education/ui/views/home/student_information/student_information_view.dart'
+import 'package:education/ui/views/buttom_bar/profile/profile_view.dart' as _i12;
+import 'package:education/ui/views/buttom_bar/student_information/student_information_view.dart'
     as _i18;
 import 'package:education/ui/views/notification/notification_view.dart' as _i19;
 import 'package:education/ui/views/setting/setting_view.dart' as _i20;
