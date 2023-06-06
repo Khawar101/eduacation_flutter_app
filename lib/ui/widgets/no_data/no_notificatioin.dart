@@ -25,12 +25,12 @@ class _NoNotificationState extends State<NoNotification> {
             const Icon(Icons.arrow_back_ios_new),
             SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             Center(
-                child: SvgPicture.asset(
-              'assets/images/notification_icon.svg',
-              width: 150,
-              height: 150,
+              child: SvgPicture.asset(
+                'assets/images/notification_icon.svg',
+                width: 150,
+                height: 150,
+              ),
             ),
-          ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Center(
               child: Text(

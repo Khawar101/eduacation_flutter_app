@@ -24,30 +24,30 @@ class _NoVideosState extends State<NoVideos> {
             const Icon(Icons.arrow_back_ios_new),
             SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             Center(
-                child: Image.asset(
-              'assets/images/no-videos.png',
-              width: 150,
-              height: 150,
-            ),
-          ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            Center(
-                child: Text(
-              "No videos!",
-              style: GoogleFonts.ibmPlexSans(
-                  fontSize: 22, fontWeight: FontWeight.w500),
-            ),
-          ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.009),
-            Center(
-                child: Text(
-              "Here is no videos you want at the\nmoment",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.ibmPlexSans(
-                fontSize: 14,
+              child: Image.asset(
+                'assets/images/no-videos.png',
+                width: 150,
+                height: 150,
               ),
             ),
-          ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            Center(
+              child: Text(
+                "No videos!",
+                style: GoogleFonts.ibmPlexSans(
+                    fontSize: 22, fontWeight: FontWeight.w500),
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.009),
+            Center(
+              child: Text(
+                "Here is no videos you want at the\nmoment",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.ibmPlexSans(
+                  fontSize: 14,
+                ),
+              ),
+            ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.04),
             Center(
               child: Container(
@@ -57,14 +57,14 @@ class _NoVideosState extends State<NoVideos> {
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(30)),
                 child: Center(
-                    child: Text(
-                  "Search more",
-                  style: GoogleFonts.ibmPlexSans(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                  child: Text(
+                    "Search more",
+                    style: GoogleFonts.ibmPlexSans(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
                 ),
-               ),
               ),
             )
           ],
