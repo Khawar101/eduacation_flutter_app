@@ -1,3 +1,4 @@
+import 'package:education/ui/views/home/lessons_screen/lessons_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
@@ -9,9 +10,7 @@ import '../profile/profile_view.dart';
 class ButtomBarViewModel extends BaseViewModel {
   List<Widget> views = [
     const DashboardView(),
-    Center(
-      child: Text("2"),
-    ), // const HomeScreen1(),
+    const LessonsScreenView(), // const HomeScreen1(),
     ChatsView(),
     Center(
       child: Text("4"),
