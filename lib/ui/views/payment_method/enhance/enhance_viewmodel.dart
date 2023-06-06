@@ -4,10 +4,13 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../../app/app.locator.dart';
 
-class SdatetimeViewModel extends BaseViewModel {
+class EnhanceViewModel extends BaseViewModel {
+  bool isChecked = false;
+  bool isChecked1 = false;
+
   final _navigationService = locator<NavigationService>();
 
-  navigateenhance() {
-    _navigationService.navigateToEnhanceView();
+  navigateentercarddata() {
+    _navigationService.navigateToCarddataView();
   }
 }

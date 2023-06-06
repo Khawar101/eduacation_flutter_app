@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 import '../../../widgets/app_utils.dart';
+import '../../payment_method/enhance/enhance_view.dart';
 
 class SlectDateTime extends StatefulWidget {
   const SlectDateTime({super.key});
@@ -130,11 +131,11 @@ class _SlectDateTimeState extends State<SlectDateTime>
               ),
               GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //       builder: (context) => const EnhanceScreen()),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EnhanceView()),
+                  );
                 },
                 child: Container(
                   height: 50,
