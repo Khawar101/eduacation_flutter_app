@@ -18,7 +18,7 @@ import 'package:education/ui/views/home/lessons_screen/lessons_screen_view.dart'
 import 'package:education/ui/views/home/lessons_screen/marketing/marketing_view.dart';
 import 'package:education/ui/views/home/lessons_screen/course/course_view.dart';
 import 'package:education/ui/views/home/lessons_screen/learners/learners_view.dart';
-import 'package:education/ui/views/student_information/student_information_view.dart';
+import 'package:education/ui/views/home/student_information/student_information_view.dart';
 // @stacked-import
 
 @StackedApp(
