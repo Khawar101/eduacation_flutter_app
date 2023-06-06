@@ -14,7 +14,7 @@ class DetailView extends StackedView<DetailViewModel> {
     DetailViewModel viewModel,
     Widget? child,
   ) {
-       return Scaffold(
+    return Scaffold(
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
@@ -189,7 +189,6 @@ class DetailView extends StackedView<DetailViewModel> {
         ),
       ),
     );
- 
   }
 
   @override

@@ -9,8 +9,8 @@ import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
 import 'package:education/ui/views/auth/forget/login/login_view.dart' as _i4;
 import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
 import 'package:education/ui/views/auth/verify/verify_view.dart' as _i7;
+import 'package:education/ui/views/booking/booking_view.dart' as _i24;
 import 'package:education/ui/views/contact/contact_view.dart' as _i21;
-import 'package:education/ui/views/teacher/detail/detail_view.dart' as _i24;
 import 'package:education/ui/views/home/buttom_bar/buttom_bar.dart' as _i8;
 import 'package:education/ui/views/home/chat/chats/chats_view.dart' as _i10;
 import 'package:education/ui/views/home/chat/inbox/inbox_view.dart' as _i11;
@@ -33,8 +33,8 @@ import 'package:education/ui/views/setting/setting_view.dart' as _i20;
 import 'package:education/ui/views/splash_screen/splash_screen_view.dart'
     as _i3;
 import 'package:education/ui/views/startup/startup_view.dart' as _i2;
-import 'package:education/ui/views/teacher/popular/popular_view.dart' as _i23;
-import 'package:education/ui/views/teacher/teacher_view.dart' as _i22;
+import 'package:education/ui/views/teacher/detail/detail_view.dart' as _i23;
+import 'package:education/ui/views/teacher/popular_view.dart' as _i22;
 import 'package:flutter/material.dart' as _i25;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
@@ -81,11 +81,11 @@ class Routes {
 
   static const contactView = '/contact-view';
 
-  static const teacherView = '/teacher-view';
-
   static const popularView = '/popular-view';
 
   static const detailView = '/detail-view';
+
+  static const bookingView = '/booking-view';
 
   static const all = <String>{
     startupView,
@@ -108,9 +108,9 @@ class Routes {
     notificationView,
     settingView,
     contactView,
-    teacherView,
     popularView,
     detailView,
+    bookingView,
   };
 }
 
@@ -197,16 +197,24 @@ class StackedRouter extends _i1.RouterBase {
       page: _i21.ContactView,
     ),
     _i1.RouteDef(
-      Routes.teacherView,
-      page: _i22.TeacherView,
-    ),
-    _i1.RouteDef(
       Routes.popularView,
-      page: _i23.PopularView,
+      page: _i22.PopularView,
     ),
     _i1.RouteDef(
       Routes.detailView,
-      page: _i24.DetailView,
+      page: _i23.DetailView,
+    ),
+    _i1.RouteDef(
+      Routes.bookingView,
+      page: _i24.BookingView,
+    ),
+    _i1.RouteDef(
+      Routes.bookingView,
+      page: _i24.BookingView,
+    ),
+    _i1.RouteDef(
+      Routes.bookingView,
+      page: _i24.BookingView,
     ),
   ];
 
@@ -331,21 +339,21 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i22.TeacherView: (data) {
+    _i22.PopularView: (data) {
       return _i25.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i22.TeacherView(),
+        builder: (context) => const _i22.PopularView(),
         settings: data,
       );
     },
-    _i23.PopularView: (data) {
+    _i23.DetailView: (data) {
       return _i25.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i23.PopularView(),
+        builder: (context) => const _i23.DetailView(),
         settings: data,
       );
     },
-    _i24.DetailView: (data) {
+    _i24.BookingView: (data) {
       return _i25.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i24.DetailView(),
+        builder: (context) => const _i24.BookingView(),
         settings: data,
       );
     },
@@ -638,20 +646,6 @@ extension NavigatorStateExtension on _i26.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToTeacherView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.teacherView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
   Future<dynamic> navigateToPopularView([
     int? routerId,
     bool preventDuplicates = true,
@@ -674,6 +668,20 @@ extension NavigatorStateExtension on _i26.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.detailView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToBookingView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.bookingView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -960,20 +968,6 @@ extension NavigatorStateExtension on _i26.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithTeacherView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.teacherView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
   Future<dynamic> replaceWithPopularView([
     int? routerId,
     bool preventDuplicates = true,
@@ -996,6 +990,20 @@ extension NavigatorStateExtension on _i26.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.detailView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithBookingView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.bookingView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

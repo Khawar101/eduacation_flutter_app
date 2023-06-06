@@ -14,7 +14,7 @@ class PopularView extends StackedView<PopularViewModel> {
     PopularViewModel viewModel,
     Widget? child,
   ) {
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
@@ -153,7 +153,6 @@ class PopularView extends StackedView<PopularViewModel> {
         ),
       ), //Calender part
     );
- 
   }
 
   @override
