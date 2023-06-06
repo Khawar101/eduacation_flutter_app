@@ -1,7 +1,10 @@
 import 'package:education/ui/views/home/lessons_screen/lessons_screen_view.dart';
+import 'package:education/ui/views/home/student_information/student_information_view.dart';
+
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+
 
 import '../chat/chats/chats_view.dart';
 import '../dashboard/dashboard.dart';
@@ -11,11 +14,9 @@ class ButtomBarViewModel extends BaseViewModel {
   List<Widget> views = [
     const DashboardView(),
     const LessonsScreenView(), // const HomeScreen1(),
-    ChatsView(),
-    Center(
-      child: Text("4"),
-    ), // const StudentProfile(),
-    ProfileView(),
+    const ChatsView(),
+    const StudentInformationView(),// const StudentProfile(),
+    const ProfileView(),
   ];
 
   ShapeBorder? bottomBarShape = const RoundedRectangleBorder(
