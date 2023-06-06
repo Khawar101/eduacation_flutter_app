@@ -65,13 +65,7 @@ class PopularView extends StackedView<PopularViewModel> {
                   itemCount: 13,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: ((context) =>
-                        //             const TeacherBooking())));
-                      },
+                      onTap: viewModel.navigatebookingview,
                       child: Padding(
                         padding: EdgeInsets.only(
                             bottom: MediaQuery.of(context).size.height * 0.04),

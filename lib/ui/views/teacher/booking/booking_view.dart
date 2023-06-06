@@ -127,9 +127,7 @@ class BookingView extends StackedView<BookingViewModel> {
                 context: context,
                 removeTop: true,
                 child: GestureDetector(
-                  onTap: () {
-                    // Navigator.push(context, MaterialPageRoute(builder: (context)=>const TeacherDetail()));
-                  },
+                  onTap: viewModel.navigatedetail,
                   child: ListView.builder(
                     itemCount: 13,
                     itemBuilder: (BuildContext context, int index) {

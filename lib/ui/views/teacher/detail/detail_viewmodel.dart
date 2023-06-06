@@ -1,3 +1,12 @@
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-class DetailViewModel extends BaseViewModel {}
+import '../../../../app/app.locator.dart';
+
+class DetailViewModel extends BaseViewModel {
+  final _navigationService = locator<NavigationService>();
+
+  // navigateSlectDate() {
+  //   _navigationService.navigateToSlectDateTime();
+  // }
+}
