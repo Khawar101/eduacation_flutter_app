@@ -105,12 +105,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Contacts'),
                     minLeadingWidth: 0.009,
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: ((context) => const ContactPageScreen())));
-                    },
+                    onTap: viewModel.navigatecontact,
                   ),
                   ListTile(
                     leading: Icon(
@@ -119,12 +114,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Teachers'),
                     minLeadingWidth: 0.009,
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: ((context) => const PopularTeacher())));
-                    },
+                    onTap: viewModel.navigatePopularTeacher
                   ),
                   ListTile(
                     leading: Icon(
