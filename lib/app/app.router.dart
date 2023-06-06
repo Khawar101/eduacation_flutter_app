@@ -10,7 +10,6 @@ import 'package:education/ui/views/auth/forget/login/login_view.dart' as _i4;
 import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
 import 'package:education/ui/views/auth/verify/verify_view.dart' as _i7;
 import 'package:education/ui/views/contact/contact_view.dart' as _i21;
-import 'package:education/ui/views/draw/draw_view.dart' as _i26;
 import 'package:education/ui/views/drawer/drawer_view.dart' as _i25;
 import 'package:education/ui/views/home/buttom_bar/buttom_bar.dart' as _i8;
 import 'package:education/ui/views/home/chat/chats/chats_view.dart' as _i10;
@@ -220,10 +219,6 @@ class StackedRouter extends _i1.RouterBase {
       Routes.drawerView,
       page: _i25.DrawerView,
     ),
-    _i1.RouteDef(
-      Routes.drawView,
-      page: _i26.DrawView,
-    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
@@ -368,12 +363,6 @@ class StackedRouter extends _i1.RouterBase {
     _i25.DrawerView: (data) {
       return _i27.MaterialPageRoute<dynamic>(
         builder: (context) => const _i25.DrawerView(),
-        settings: data,
-      );
-    },
-    _i26.DrawView: (data) {
-      return _i27.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i26.DrawView(),
         settings: data,
       );
     },
@@ -1066,20 +1055,6 @@ extension NavigatorStateExtension on _i28.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.drawerView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
-  Future<dynamic> replaceWithDrawView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.drawView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

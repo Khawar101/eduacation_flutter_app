@@ -27,7 +27,6 @@ import 'package:education/ui/views/teacher/booking/booking_view.dart';
 
 import '../ui/views/teacher/popular_view.dart';
 import 'package:education/ui/views/drawer/drawer_view.dart';
-import 'package:education/ui/views/draw/draw_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -56,7 +55,6 @@ import 'package:education/ui/views/draw/draw_view.dart';
     MaterialRoute(page: DetailView),
     MaterialRoute(page: BookingView),
     MaterialRoute(page: DrawerView),
-    MaterialRoute(page: DrawView),
 // @stacked-route
   ],
   dependencies: [
