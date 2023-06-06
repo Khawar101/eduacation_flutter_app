@@ -8,18 +8,20 @@ import 'package:video_player/video_player.dart';
 import '../../../../../app/app.locator.dart';
 
 class CourseViewModel extends BaseViewModel {
-  
   // String dataSource =
   //     "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
   // late VideoPlayerController controller;
   // bool isPlaying = false;
+  // bool controllerLoad = false;
 
   // initState() {
+  //   log("kjghkjhgjk"); // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+
   //   controller = VideoPlayerController.network(dataSource)
-  //     ..initialize().then((_) {
-  //       log("kjghkjhgjk"); // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-  //     });
+  //     ..initialize().then((_) {});
   //   //    controller!.play();
+  //   controllerLoad = true;
+  //   notifyListeners();
   // }
 
   // videoController() {

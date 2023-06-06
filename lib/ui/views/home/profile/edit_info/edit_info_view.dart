@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-import '../../../widgets/app_utils.dart';
-import '../../../widgets/custom_text_form_field.dart';
+import '../../../../widgets/app_utils.dart';
+import '../../../../widgets/custom_text_form_field.dart';
 import 'edit_info_viewmodel.dart';
 
 class EditInfoView extends StackedView<EditInfoViewModel> {

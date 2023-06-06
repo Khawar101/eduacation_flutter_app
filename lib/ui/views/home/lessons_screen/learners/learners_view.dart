@@ -15,7 +15,7 @@ class LearnersView extends StackedView<LearnersViewModel> {
     LearnersViewModel viewModel,
     Widget? child,
   ) {
-     return Scaffold(
+    return Scaffold(
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,

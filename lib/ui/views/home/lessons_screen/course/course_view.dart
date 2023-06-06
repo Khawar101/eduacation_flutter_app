@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -15,12 +17,15 @@ class CourseView extends StackedView<CourseViewModel> {
     CourseViewModel viewModel,
     Widget? child,
   ) {
+    // viewModel.initState;
     return Scaffold(
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
           leading: GestureDetector(
-            onTap: viewModel.navigateonBack,
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: const Icon(
               Icons.arrow_back_ios,
               color: Colors.black54,
@@ -80,48 +85,49 @@ class CourseView extends StackedView<CourseViewModel> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-            Text("first you can play video right here"),
             //video
 
-            // viewModel.controller.value.isInitialized
-            //     ? Stack(
-            //         children: [
-            //           AspectRatio(
-            //             aspectRatio: viewModel.controller.value.aspectRatio,
-            //             child: VideoPlayer(viewModel.controller),
-            //           ),
-            //           Positioned(
-            //             bottom: 0,
-            //             left: 0,
-            //             right: 0,
-            //             child: Container(
-            //               padding: const EdgeInsets.symmetric(vertical: 10),
-            //               color: Colors.black.withOpacity(0.5),
-            //               child: Row(
-            //                 mainAxisAlignment: MainAxisAlignment.center,
-            //                 children: [
-            //                   IconButton(
-            //                     icon: Icon(
-            //                       viewModel.isPlaying
-            //                           ? Icons.pause
-            //                           : Icons.play_arrow,
-            //                       color: Colors.white,
-            //                     ),
-            //                     onPressed: viewModel.videoController(),
-            //                   ),
-            //                   Text(
-            //                     '${viewModel.controller.value.position.inMinutes}:${(viewModel.controller.value.position.inSeconds % 60).toString().padLeft(2, '0')} / ${viewModel.controller.value.duration.inMinutes}:${(viewModel.controller.value.duration.inSeconds % 60).toString().padLeft(2, '0')}',
-            //                     style: const TextStyle(color: Colors.white),
-            //                   ),
-            //                 ],
+            // viewModel.controllerLoad == true
+            //     ? viewModel.controller.value.isInitialized
+            //         ? Stack(
+            //             children: [
+            //               AspectRatio(
+            //                 aspectRatio: viewModel.controller.value.aspectRatio,
+            //                 child: VideoPlayer(viewModel.controller),
             //               ),
-            //             ),
-            //           ),
-            //         ],
-            //       )
-            //     : const Center(
-            //         child: CircularProgressIndicator(),
-            //       ),
+            //               Positioned(
+            //                 bottom: 0,
+            //                 left: 0,
+            //                 right: 0,
+            //                 child: Container(
+            //                   padding: const EdgeInsets.symmetric(vertical: 10),
+            //                   color: Colors.black.withOpacity(0.5),
+            //                   child: Row(
+            //                     mainAxisAlignment: MainAxisAlignment.center,
+            //                     children: [
+            //                       IconButton(
+            //                         icon: Icon(
+            //                           viewModel.isPlaying
+            //                               ? Icons.pause
+            //                               : Icons.play_arrow,
+            //                           color: Colors.white,
+            //                         ),
+            //                         onPressed: viewModel.videoController(),
+            //                       ),
+            //                       Text(
+            //                         '${viewModel.controller.value.position.inMinutes}:${(viewModel.controller.value.position.inSeconds % 60).toString().padLeft(2, '0')} / ${viewModel.controller.value.duration.inMinutes}:${(viewModel.controller.value.duration.inSeconds % 60).toString().padLeft(2, '0')}',
+            //                         style: const TextStyle(color: Colors.white),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           )
+            //         : const Center(
+            //             child: CircularProgressIndicator(),
+            //           )
+            //     : const Text("Loading..."),
 
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Padding(
@@ -248,7 +254,7 @@ class CourseView extends StackedView<CourseViewModel> {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                   GestureDetector(
-                  onTap: viewModel.navigateLerners,
+                    onTap: viewModel.navigateLerners,
                     child: Container(
                       height: 40,
                       width: double.infinity,
