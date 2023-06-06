@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../widgets/app_utils.dart';
-import 'teacher_viewmodel.dart';
+import '../../../widgets/app_utils.dart';
+import 'detail_viewmodel.dart';
 
-class TeacherView extends StackedView<TeacherViewModel> {
-  const TeacherView({Key? key}) : super(key: key);
+class DetailView extends StackedView<DetailViewModel> {
+  const DetailView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    TeacherViewModel viewModel,
+    DetailViewModel viewModel,
     Widget? child,
   ) {
        return Scaffold(
@@ -193,8 +193,8 @@ class TeacherView extends StackedView<TeacherViewModel> {
   }
 
   @override
-  TeacherViewModel viewModelBuilder(
+  DetailViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      TeacherViewModel();
+      DetailViewModel();
 }

@@ -23,6 +23,8 @@ import 'package:education/ui/views/notification/notification_view.dart';
 import 'package:education/ui/views/setting/setting_view.dart';
 import 'package:education/ui/views/contact/contact_view.dart';
 import 'package:education/ui/views/teacher/teacher_view.dart';
+import 'package:education/ui/views/teacher/popular/popular_view.dart';
+import 'package:education/ui/views/teacher/detail/detail_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -48,6 +50,8 @@ import 'package:education/ui/views/teacher/teacher_view.dart';
     MaterialRoute(page: SettingView),
     MaterialRoute(page: ContactView),
     MaterialRoute(page: TeacherView),
+    MaterialRoute(page: PopularView),
+    MaterialRoute(page: DetailView),
 // @stacked-route
   ],
   dependencies: [
