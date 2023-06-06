@@ -141,12 +141,10 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
                         itemCount: 7, // Replace with the actual item count
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                            onTap: () {
-                              // Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomeScreen2()));
-                            },
+                             onTap: viewModel.navigateMarketing,
                             child: Padding(
                               padding: const EdgeInsets.only(right: 10),
-                              child: Container(
+                              child: SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.43,
                                 // decoration: BoxDecoration(
                                 //     borderRadius: BorderRadius.circular(10),

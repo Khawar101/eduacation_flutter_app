@@ -1,3 +1,13 @@
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-class MarketingViewModel extends BaseViewModel {}
+import '../../../../../app/app.locator.dart';
+
+class MarketingViewModel extends BaseViewModel {
+  final _navigationService = locator<NavigationService>();
+
+  navigateonBack() {
+    // log('====>not move');
+    _navigationService.back();
+  }
+}

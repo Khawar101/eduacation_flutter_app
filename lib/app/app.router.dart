@@ -131,6 +131,10 @@ class StackedRouter extends _i1.RouterBase {
       Routes.marketingView,
       page: _i15.MarketingView,
     ),
+    _i1.RouteDef(
+      Routes.marketingView,
+      page: _i15.MarketingView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
