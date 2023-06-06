@@ -16,25 +16,25 @@ class ContactView extends StackedView<ContactViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-        // drawer: const DrawerHeaderPage(),
+      // drawer: const DrawerHeaderPage(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-       leading: Builder(
-    builder: (BuildContext context) {
-      return IconButton(
-        icon: const  Icon(
-               Icons.vertical_distribute_sharp,
-               color: Colors.black54,
-               size: 18,
-             ),
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
-        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-      );
-    },
-  ),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.vertical_distribute_sharp,
+                color: Colors.black54,
+                size: 18,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
         title: Text(
           "Contacts",
           textAlign: TextAlign.center,
@@ -101,7 +101,6 @@ class ContactView extends StackedView<ContactViewModel> {
         ),
       ),
     );
- 
   }
 
   @override
