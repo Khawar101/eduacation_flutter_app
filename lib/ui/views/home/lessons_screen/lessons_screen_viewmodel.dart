@@ -13,10 +13,10 @@ class LessonsScreenViewModel extends BaseViewModel {
     'Lesson Content(50)',
     '120 Reviews'
   ];
- final _navigationService = locator<NavigationService>();
+  final _navigationService = locator<NavigationService>();
 
   navigateMarketing() {
     // log('====>not move');
     _navigationService.navigateToMarketingView();
   }
- }
+}

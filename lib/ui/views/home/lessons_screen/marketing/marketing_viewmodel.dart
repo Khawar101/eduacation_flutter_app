@@ -1,3 +1,4 @@
+import 'package:education/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -9,5 +10,10 @@ class MarketingViewModel extends BaseViewModel {
   navigateonBack() {
     // log('====>not move');
     _navigationService.back();
+  }
+
+  navigateCourses() {
+    // log('====>not move');
+    _navigationService.navigateToCourseView();
   }
 }

@@ -141,7 +141,7 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
                         itemCount: 7, // Replace with the actual item count
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                             onTap: viewModel.navigateMarketing,
+                            onTap: viewModel.navigateMarketing,
                             child: Padding(
                               padding: const EdgeInsets.only(right: 10),
                               child: SizedBox(

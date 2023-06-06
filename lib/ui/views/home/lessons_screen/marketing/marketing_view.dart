@@ -15,7 +15,7 @@ class MarketingView extends StackedView<MarketingViewModel> {
     MarketingViewModel viewModel,
     Widget? child,
   ) {
-        return Scaffold(
+    return Scaffold(
       // backgroundColor: const Color(0xffe4f1f8),
       appBar: AppBar(
           elevation: 0,
@@ -213,12 +213,7 @@ class MarketingView extends StackedView<MarketingViewModel> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.08),
 
                   GestureDetector(
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: ((context) => const HomeScreen3())));
-                    },
+                    onTap: viewModel.navigateCourses,
                     child: Container(
                       height: 40,
                       width: double.infinity,
@@ -238,7 +233,6 @@ class MarketingView extends StackedView<MarketingViewModel> {
         ),
       ),
     );
-  
   }
 
   @override

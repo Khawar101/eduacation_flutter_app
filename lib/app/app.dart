@@ -15,8 +15,9 @@ import 'package:education/ui/views/home/chat/inbox/inbox_view.dart';
 import 'package:education/ui/views/home/profile/profile_view.dart';
 import 'package:education/ui/views/home/edit_info/edit_info_view.dart';
 import 'package:education/ui/views/home/lessons_screen/lessons_screen_view.dart';
-import 'package:education/ui/views/marketing/marketing_view.dart';
-import 'package:education/ui/views/marketing/marketing_view.dart';
+import 'package:education/ui/views/home/lessons_screen/marketing/marketing_view.dart';
+import 'package:education/ui/views/home/lessons_screen/course/course_view.dart';
+import 'package:education/ui/views/home/lessons_screen/learners/learners_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -35,7 +36,8 @@ import 'package:education/ui/views/marketing/marketing_view.dart';
     MaterialRoute(page: EditInfoView),
     MaterialRoute(page: LessonsScreenView),
     MaterialRoute(page: MarketingView),
-    MaterialRoute(page: MarketingView),
+    MaterialRoute(page: CourseView),
+    MaterialRoute(page: LearnersView),
 // @stacked-route
   ],
   dependencies: [
