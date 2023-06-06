@@ -19,6 +19,7 @@ import 'package:education/ui/views/home/lessons_screen/marketing/marketing_view.
 import 'package:education/ui/views/home/lessons_screen/course/course_view.dart';
 import 'package:education/ui/views/home/lessons_screen/learners/learners_view.dart';
 import 'package:education/ui/views/home/student_information/student_information_view.dart';
+import 'package:education/ui/views/notification/notification_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -40,6 +41,7 @@ import 'package:education/ui/views/home/student_information/student_information_
     MaterialRoute(page: CourseView),
     MaterialRoute(page: LearnersView),
     MaterialRoute(page: StudentInformationView),
+    MaterialRoute(page: NotificationView),
 // @stacked-route
   ],
   dependencies: [

@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../widgets/app_utils.dart';
 
-
 Widget Project(context) {
   return MediaQuery.removePadding(
     context: context,
