@@ -91,7 +91,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Account'),
                     minLeadingWidth: 0.009,
-                    onTap:viewModel.navigateAcount,
+                    onTap: viewModel.navigateAcount,
                   ),
                   ListTile(
                     leading: Icon(

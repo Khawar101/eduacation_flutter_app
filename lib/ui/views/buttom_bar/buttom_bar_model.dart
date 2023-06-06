@@ -11,7 +11,6 @@ import '../buttom_bar/chat/chats/chats_view.dart';
 import 'dashboard/dashboard.dart';
 import 'profile/profile_view.dart';
 
-
 class ButtomBarViewModel extends BaseViewModel {
   List<Widget> views = [
     const DashboardView(),

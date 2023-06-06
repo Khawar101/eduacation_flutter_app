@@ -162,13 +162,7 @@ class DetailView extends StackedView<DetailViewModel> {
                   color: Colors.black45),
               const SizedBox(height: 20),
               GestureDetector(
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //       builder: (context) => const SlectDateTime()),
-                  // );
-                },
+                onTap: viewModel.navigateSlectDate,
                 child: Container(
                   height: 50,
                   width: double.infinity,

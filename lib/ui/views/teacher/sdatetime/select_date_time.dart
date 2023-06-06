@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-import '../../widgets/app_utils.dart';
+import '../../../widgets/app_utils.dart';
 
 class SlectDateTime extends StatefulWidget {
   const SlectDateTime({super.key});
