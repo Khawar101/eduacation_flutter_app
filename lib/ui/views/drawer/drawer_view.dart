@@ -165,12 +165,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Settings'),
                     minLeadingWidth: 0.009,
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: ((context) => const SettingScreen())));
-                    },
+                    onTap: viewModel.navigateSetting,
                   ),
                   ListTile(
                     leading: Icon(

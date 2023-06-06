@@ -9,6 +9,7 @@ class DrawerViewModel extends BaseViewModel {
 
   navigatebottomdashboard() {
     _navigationService.navigateToButtomBarView();
+    notifyListeners();
   }
 
   navigatecontact() {
@@ -24,7 +25,7 @@ class DrawerViewModel extends BaseViewModel {
   }
 
   navigateSetting() {
-    _navigationService.navigateToPopularView();
+    _navigationService.navigateToSettingView();
   }
 
   navigateEbook() {
