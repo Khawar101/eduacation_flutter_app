@@ -21,6 +21,7 @@ import 'package:education/ui/views/home/lessons_screen/learners/learners_view.da
 import 'package:education/ui/views/home/student_information/student_information_view.dart';
 import 'package:education/ui/views/notification/notification_view.dart';
 import 'package:education/ui/views/setting/setting_view.dart';
+import 'package:education/ui/views/contact/contact_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -44,6 +45,7 @@ import 'package:education/ui/views/setting/setting_view.dart';
     MaterialRoute(page: StudentInformationView),
     MaterialRoute(page: NotificationView),
     MaterialRoute(page: SettingView),
+    MaterialRoute(page: ContactView),
 // @stacked-route
   ],
   dependencies: [

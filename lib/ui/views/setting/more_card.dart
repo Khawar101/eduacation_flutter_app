@@ -19,14 +19,16 @@ Widget MoreCard(icon, title, fun) {
         children: [
           Row(
             children: [
-           icon.runtimeType ==IconData?  Icon(
-                icon,
-                size: 18,
-                color: const Color(0xFF4873A6).withOpacity(0.7),
-              ):ButtonText(
-                text: icon,
-                color: const Color(0xFF4873A6).withOpacity(0.7),
-              ),
+              icon.runtimeType == IconData
+                  ? Icon(
+                      icon,
+                      size: 18,
+                      color: const Color(0xFF4873A6).withOpacity(0.7),
+                    )
+                  : ButtonText(
+                      text: icon,
+                      color: const Color(0xFF4873A6).withOpacity(0.7),
+                    ),
               const SizedBox(width: 10),
               ButtonText(
                 text: title,
