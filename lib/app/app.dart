@@ -23,10 +23,9 @@ import 'package:education/ui/views/notification/notification_view.dart';
 import 'package:education/ui/views/setting/setting_view.dart';
 import 'package:education/ui/views/contact/contact_view.dart';
 import 'package:education/ui/views/teacher/detail/detail_view.dart';
-import 'package:education/ui/views/booking/booking_view.dart';
+import 'package:education/ui/views/teacher/booking/booking_view.dart';
 
 import '../ui/views/teacher/popular_view.dart';
-import 'package:education/ui/views/booking/booking_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -53,8 +52,6 @@ import 'package:education/ui/views/booking/booking_view.dart';
     MaterialRoute(page: ContactView),
     MaterialRoute(page: PopularView),
     MaterialRoute(page: DetailView),
-    MaterialRoute(page: BookingView),
-    MaterialRoute(page: BookingView),
     MaterialRoute(page: BookingView),
 // @stacked-route
   ],

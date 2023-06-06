@@ -9,7 +9,7 @@ import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
 import 'package:education/ui/views/auth/forget/login/login_view.dart' as _i4;
 import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
 import 'package:education/ui/views/auth/verify/verify_view.dart' as _i7;
-import 'package:education/ui/views/booking/booking_view.dart' as _i24;
+import 'package:education/ui/views/teacher/booking/booking_view.dart' as _i24;
 import 'package:education/ui/views/contact/contact_view.dart' as _i21;
 import 'package:education/ui/views/home/buttom_bar/buttom_bar.dart' as _i8;
 import 'package:education/ui/views/home/chat/chats/chats_view.dart' as _i10;
