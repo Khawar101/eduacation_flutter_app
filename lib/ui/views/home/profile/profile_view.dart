@@ -67,7 +67,6 @@ class ProfileView extends StackedView<ProfileViewModel> {
             const CircleAvatar(
               radius: 80,
               backgroundImage: AssetImage('assets/images/download.jpeg'),
-              //   backgroundColor: Colors.black,
             ),
             const SizedBox(height: 10),
             const Center(
@@ -98,9 +97,6 @@ class ProfileView extends StackedView<ProfileViewModel> {
               child: Column(
                 children: [
                   Container(
-                    //      height: 80,
-                    //       width: double.infinity,
-
                     decoration: BoxDecoration(
                       color: const Color(0xFF4873A6).withOpacity(0.7),
                       borderRadius: BorderRadius.circular(10),

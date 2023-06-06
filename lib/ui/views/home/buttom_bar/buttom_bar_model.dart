@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:education/ui/views/home/lessons_screen/lessons_screen_view.dart';
 import 'package:education/ui/views/home/student_information/student_information_view.dart';
 

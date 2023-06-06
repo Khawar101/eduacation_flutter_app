@@ -67,10 +67,6 @@ class DrawerView extends StackedView<DrawerViewModel> {
                       ),
                     ],
                   ),
-                  // const Spacer(),
-                  // const Divider(
-                  //   color: Colors.black,
-                  // )
                 ],
               ),
             ),
@@ -86,16 +82,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Home'),
                     minLeadingWidth: 0.009,
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => const HomeButtomBar()));
-                      // Update the state of the app
-                      // ...
-                      // Then close the drawer
-                      // Navigator.pop(context);
-                    },
+                    onTap: viewModel.navigatebottomdashboard,
                   ),
                   ListTile(
                     leading: Icon(
