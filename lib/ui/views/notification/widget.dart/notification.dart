@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../../widgets/app_utils.dart';
 import '../notification_viewmodel.dart';
 
 class NotificationWidget extends StackedView<NotificationViewModel> {
