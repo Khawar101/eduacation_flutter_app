@@ -91,12 +91,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Account'),
                     minLeadingWidth: 0.009,
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: ((context) => const AcountScreen())));
-                    },
+                    onTap:viewModel.navigateAcount,
                   ),
                   ListTile(
                     leading: Icon(
@@ -108,14 +103,13 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     onTap: viewModel.navigatecontact,
                   ),
                   ListTile(
-                    leading: Icon(
-                      Icons.groups_2_outlined,
-                      color: const Color(0xff4873a6).withOpacity(0.7),
-                    ),
-                    title: const Text('Teachers'),
-                    minLeadingWidth: 0.009,
-                    onTap: viewModel.navigatePopularTeacher
-                  ),
+                      leading: Icon(
+                        Icons.groups_2_outlined,
+                        color: const Color(0xff4873a6).withOpacity(0.7),
+                      ),
+                      title: const Text('Teachers'),
+                      minLeadingWidth: 0.009,
+                      onTap: viewModel.navigatePopularTeacher),
                   ListTile(
                     leading: Icon(
                       Icons.book_outlined,

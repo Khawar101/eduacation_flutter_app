@@ -5,6 +5,7 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:education/ui/views/acount/acount_view.dart' as _i26;
 import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
 import 'package:education/ui/views/auth/forget/login/login_view.dart' as _i4;
 import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
@@ -90,7 +91,7 @@ class Routes {
 
   static const drawerView = '/drawer-view';
 
-  static const drawView = '/draw-view';
+  static const acountView = '/acount-view';
 
   static const all = <String>{
     startupView,
@@ -117,7 +118,7 @@ class Routes {
     detailView,
     bookingView,
     drawerView,
-    drawView,
+    acountView,
   };
 }
 
@@ -218,6 +219,10 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.drawerView,
       page: _i25.DrawerView,
+    ),
+    _i1.RouteDef(
+      Routes.acountView,
+      page: _i26.AcountView,
     ),
   ];
 
@@ -363,6 +368,12 @@ class StackedRouter extends _i1.RouterBase {
     _i25.DrawerView: (data) {
       return _i27.MaterialPageRoute<dynamic>(
         builder: (context) => const _i25.DrawerView(),
+        settings: data,
+      );
+    },
+    _i26.AcountView: (data) {
+      return _i27.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i26.AcountView(),
         settings: data,
       );
     },
@@ -711,14 +722,14 @@ extension NavigatorStateExtension on _i28.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToDrawView([
+  Future<dynamic> navigateToAcountView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return navigateTo<dynamic>(Routes.drawView,
+    return navigateTo<dynamic>(Routes.acountView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1055,6 +1066,20 @@ extension NavigatorStateExtension on _i28.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.drawerView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithAcountView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.acountView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
