@@ -28,22 +28,12 @@ class CarddataView extends StackedView<CarddataViewModel> {
             color: Colors.black54,
             size: 18,
           ),
-        ),
-        // title: Text(
-        //   "Slect Date & Time",
-        //   textAlign: TextAlign.center,
-        //   style: GoogleFonts.ibmPlexSans(
-        //       fontSize: 18,
-        //       color: const Color(0xff4873a6).withOpacity(0.7),
-        //       fontWeight: FontWeight.w600),
-        // ),
-        // centerTitle: true,
+        ),   
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            // vertical: MediaQuery.of(context).size.height*0.05
+            horizontal: 20,         
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,7 +188,6 @@ class CarddataView extends StackedView<CarddataViewModel> {
       ),
     );
   }
-
   @override
   CarddataViewModel viewModelBuilder(
     BuildContext context,
