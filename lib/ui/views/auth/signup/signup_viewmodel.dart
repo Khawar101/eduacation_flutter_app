@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:education/app/app.router.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -19,6 +20,11 @@ class SignupViewModel extends BaseViewModel {
     _navigationService.navigateToVerifyView();
   }
 
+
+TextEditingController nameController=TextEditingController();
+TextEditingController emailController=TextEditingController();
+TextEditingController passwordController=TextEditingController();
+TextEditingController numberController=TextEditingController();
 
 
   void createAccount() async{
