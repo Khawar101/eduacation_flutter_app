@@ -24,6 +24,8 @@ class LoginViewModel extends BaseViewModel {
   navigateForget() {
     _navigationService.navigateToForgetView();
   }
+
+
   // final LocalAuthentication auth = LocalAuthentication();
   // _SupportState _supportState = _SupportState.unknown;
   // bool? _canCheckBiometrics;

@@ -9,12 +9,11 @@ import '../../../../app/app.locator.dart';
 class SignupViewModel extends BaseViewModel {
   bool visibleCheck = true;
   final _navigationService = locator<NavigationService>();
- 
-   visible_check() {
+
+  visible_check() {
     visibleCheck = !visibleCheck;
     notifyListeners();
   }
-
 
   navigateVerify() {
     _navigationService.navigateToVerifyView();
