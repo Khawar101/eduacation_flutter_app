@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../widgets/video_player.dart';
+import 'widgets/studentintro.dart';
 
 class CoursedetailView extends StatefulWidget {
   const CoursedetailView({super.key});
@@ -81,7 +82,7 @@ class _CoursedetailViewState extends State<CoursedetailView>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 16),
-                        // studentintro(context),
+                        studentintro(context),
                         const SizedBox(height: 40),
                       ],
                     ),
