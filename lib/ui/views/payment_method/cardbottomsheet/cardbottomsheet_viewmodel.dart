@@ -42,8 +42,7 @@ class CardbottomsheetViewModel extends BaseViewModel {
     }
   }
 
-
-   final _navigationService = locator<NavigationService>();
+  final _navigationService = locator<NavigationService>();
 
   navigatesuccessdone() {
     _navigationService.navigateToPaymentdoneView();

@@ -13,7 +13,7 @@ class PaymentdoneView extends StackedView<PaymentdoneViewModel> {
     PaymentdoneViewModel viewModel,
     Widget? child,
   ) {
-       return Scaffold(
+    return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: 20, vertical: MediaQuery.of(context).size.height * 0.2),
@@ -26,12 +26,7 @@ class PaymentdoneView extends StackedView<PaymentdoneViewModel> {
             const BigText(text: "Successful purchase!", color: Colors.black),
             SizedBox(height: MediaQuery.of(context).size.height * 0.04),
             GestureDetector(
-              onTap: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: ((context) => const ListOfCourses())));
-              },
+              onTap: viewModel.navigateListOfCourses,
               child: Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.7,
@@ -48,7 +43,6 @@ class PaymentdoneView extends StackedView<PaymentdoneViewModel> {
         ),
       ),
     );
-  
   }
 
   @override

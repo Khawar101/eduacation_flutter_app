@@ -10,7 +10,6 @@ class EnhanceViewModel extends BaseViewModel {
   bool isChecked = false;
   bool isChecked1 = false;
   update(value) {
-    log("dfgd$value");
     isChecked = !isChecked;
     notifyListeners();
   }

@@ -117,12 +117,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Courses'),
                     minLeadingWidth: 0.009,
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: ((context) => const ListOfCourses())));
-                    },
+                    onTap: viewModel.navigateListOfCourses,
                   ),
                   ListTile(
                     leading: Icon(

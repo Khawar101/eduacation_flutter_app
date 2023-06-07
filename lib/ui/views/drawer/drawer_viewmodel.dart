@@ -33,7 +33,7 @@ class DrawerViewModel extends BaseViewModel {
   }
 
   navigateListOfCourses() {
-    _navigationService.navigateToPopularView();
+    _navigationService.navigateToCoursesView();
   }
 
   navigateAcount() {
