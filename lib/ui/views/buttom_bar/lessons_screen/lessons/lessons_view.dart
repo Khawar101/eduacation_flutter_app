@@ -3,9 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-import 'package:video_player/video_player.dart';
-
 import '../../../../widgets/app_utils.dart';
+import '../../../../widgets/video_player.dart';
 import 'lessons_viewmodel.dart';
 
 class LessonsView extends StatefulWidget {
@@ -16,27 +15,6 @@ class LessonsView extends StatefulWidget {
 }
 
 class _LessonsViewState extends State<LessonsView> {
-  String dataSource =
-      "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-  late VideoPlayerController _controller;
-  bool _isPlaying = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.network(dataSource)
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        setState(() {});
-      });
-    //    controller!.play();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,55 +89,10 @@ class _LessonsViewState extends State<LessonsView> {
                 children: [
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   //video
-
-                  _controller.value.isInitialized
-                      ? Stack(
-                          children: [
-                            AspectRatio(
-                              aspectRatio: _controller.value.aspectRatio,
-                              child: VideoPlayer(_controller),
-                            ),
-                            Positioned(
-                              bottom: 0,
-                              left: 0,
-                              right: 0,
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                color: Colors.black.withOpacity(0.5),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    IconButton(
-                                      icon: Icon(
-                                        _isPlaying
-                                            ? Icons.pause
-                                            : Icons.play_arrow,
-                                        color: Colors.white,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _isPlaying = !_isPlaying;
-                                          _isPlaying
-                                              ? _controller.play()
-                                              : _controller.pause();
-                                        });
-                                      },
-                                    ),
-                                    Text(
-                                      '${_controller.value.position.inMinutes}:${(_controller.value.position.inSeconds % 60).toString().padLeft(2, '0')} / ${_controller.value.duration.inMinutes}:${(_controller.value.duration.inSeconds % 60).toString().padLeft(2, '0')}',
-                                      style:
-                                          const TextStyle(color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      : const Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                  const videoPlayer(
+                      url:
+                          "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
+    
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   Padding(

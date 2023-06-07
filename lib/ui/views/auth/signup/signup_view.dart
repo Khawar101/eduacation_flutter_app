@@ -98,9 +98,9 @@ class SignupView extends StackedView<SignupViewModel> {
                       hintText: 'Password',
                       isObscureText: viewModel.visibleCheck,
                       suffix: GestureDetector(
-                        onTap: () {
-                          viewModel.visibleCheck = !viewModel.visibleCheck;
-                        },
+                        onTap: 
+                        viewModel.visible_check,
+                        
                         child: Icon(
                           viewModel.visibleCheck == true
                               ? Icons.visibility_off_outlined

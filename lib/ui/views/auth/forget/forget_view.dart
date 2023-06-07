@@ -17,8 +17,6 @@ class ForgetView extends StackedView<ForgetViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
-      //  backgroundColor: const Color(0xffe4f1f8),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
