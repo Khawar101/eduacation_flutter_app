@@ -1,10 +1,11 @@
 // ignore_for_file: unnecessary_import
 
+import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/comment/addcomment/addcomment_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../widgets/app_utils.dart';
+import '../../../../../../../widgets/app_utils.dart';
 
 Widget comments(context) {
   return Column(
@@ -32,10 +33,10 @@ Widget comments(context) {
           ),
           GestureDetector(
             onTap: () {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => const CommentScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AddcommentView()));
             },
             child: Container(
               decoration: BoxDecoration(

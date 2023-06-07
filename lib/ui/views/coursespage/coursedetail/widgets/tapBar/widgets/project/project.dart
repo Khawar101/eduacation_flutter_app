@@ -1,10 +1,12 @@
 // ignore_for_file: unnecessary_import
 
+import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/addproject_view.dart';
+import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/poster/poster_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../widgets/app_utils.dart';
+import '../../../../../../../widgets/app_utils.dart';
 
 Widget project(context) {
   return Column(
@@ -19,10 +21,10 @@ Widget project(context) {
           ),
           GestureDetector(
             onTap: () {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => const ProjectInfo()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AddprojectView()));
             },
             child: Text(
               "Add projet",
@@ -49,11 +51,10 @@ Widget project(context) {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             const PosterScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PosterView()));
                   },
                   child: Card(
                       shape: RoundedRectangleBorder(

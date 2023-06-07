@@ -7,7 +7,6 @@ import 'package:readmore/readmore.dart';
 
 import '../../../../../widgets/app_utils.dart';
 
-
 Widget complete(context) {
   return SizedBox(
       child: Padding(

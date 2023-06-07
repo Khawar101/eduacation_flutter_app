@@ -1,16 +1,11 @@
 // ignore_for_file: unnecessary_import
-
-
-
-
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
-
 import '../../../../../widgets/app_utils.dart';
-import 'widgets/comments.dart';
-import 'widgets/project.dart';
+import 'widgets/comment/comments.dart';
+import 'widgets/project/project.dart';
 
 Widget overview(context) {
   return SizedBox(
