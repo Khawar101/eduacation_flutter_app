@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../widgets/video_player.dart';
 import 'widgets/studentintro.dart';
+import 'widgets/tapBar/completetab.dart';
+import 'widgets/tapBar/overviewdart.dart';
 
 class CoursedetailView extends StatefulWidget {
   const CoursedetailView({super.key});
@@ -107,7 +109,9 @@ class _CoursedetailViewState extends State<CoursedetailView>
                       ),
                     ],
                   ),
-                  // _getTabAtIndex(tabController.index),
+                  tabController.index == 0
+                      ? overview(context)
+                      : complete(context),
                 ])),
               ),
             ],

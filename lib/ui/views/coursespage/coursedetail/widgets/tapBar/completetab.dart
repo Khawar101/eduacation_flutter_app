@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 
-import '../../../../widgets/app_utils.dart';
+import '../../../../../widgets/app_utils.dart';
+
 
 Widget complete(context) {
   return SizedBox(
