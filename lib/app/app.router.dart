@@ -7,7 +7,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:education/ui/views/acount/acount_view.dart' as _i26;
 import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
-import 'package:education/ui/views/auth/forget/login/login_view.dart' as _i4;
+import 'package:education/ui/views/auth/login/login_view.dart' as _i4;
 import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
 import 'package:education/ui/views/auth/verify/verify_view.dart' as _i7;
 import 'package:education/ui/views/e_book/book_detail/book_detail_view.dart' as _i42;

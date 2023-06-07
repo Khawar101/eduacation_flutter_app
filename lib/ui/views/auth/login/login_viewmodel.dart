@@ -2,14 +2,20 @@ import 'package:education/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../../../../app/app.locator.dart';
+import '../../../../app/app.locator.dart';
 
 class LoginViewModel extends BaseViewModel {
   bool visibleCheck = true;
   final _navigationService = locator<NavigationService>();
+  // ignore: non_constant_identifier_names
+  visible_check() {
+    print("......");
+    visibleCheck = !visibleCheck;
+    notifyListeners();
+  }
 
   navigateButtomBar() {
-    // _navigationService.navigateToLoginView();
+    _navigationService.navigateToButtomBarView();
   }
 
   navigateSignup() {

@@ -4,7 +4,7 @@ import 'package:education/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:education/ui/views/splash_screen/splash_screen_view.dart';
-import 'package:education/ui/views/auth/forget/login/login_view.dart';
+import 'package:education/ui/views/auth/login/login_view.dart';
 import 'package:education/ui/views/auth/signup/signup_view.dart';
 import 'package:education/ui/views/auth/forget/forget_view.dart';
 import 'package:education/ui/views/auth/verify/verify_view.dart';

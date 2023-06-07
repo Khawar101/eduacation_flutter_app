@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../../widgets/app_utils.dart';
-import '../../../../widgets/custom_text_form_field.dart';
+import '../../../widgets/app_utils.dart';
+import '../../../widgets/custom_text_form_field.dart';
 import 'login_viewmodel.dart';
 
 class LoginView extends StackedView<LoginViewModel> {
@@ -72,9 +72,7 @@ class LoginView extends StackedView<LoginViewModel> {
                       hintText: 'Password',
                       isObscureText: viewModel.visibleCheck,
                       prefix: GestureDetector(
-                        onTap: () {
-                          viewModel.visibleCheck = !viewModel.visibleCheck;
-                        },
+                        onTap: viewModel.visible_check,
                         child: Icon(
                           viewModel.visibleCheck == true
                               ? Icons.visibility_off_outlined
