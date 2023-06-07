@@ -37,6 +37,7 @@ import 'package:education/ui/views/payment_method/cardbottomsheet/cardbottomshee
 import 'package:education/ui/views/payment_method/paymentdone/paymentdone_view.dart';
 import 'package:education/ui/views/coursespage/favouritesub/favouritesub_view.dart';
 import 'package:education/ui/views/buttom_bar/lessons_screen/lessons/lessons_view.dart';
+import 'package:education/ui/views/e_learning/e_learning_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -76,6 +77,7 @@ import 'package:education/ui/views/buttom_bar/lessons_screen/lessons/lessons_vie
 
     MaterialRoute(page: LessonsView),
     MaterialRoute(page: CoursedetailView),
+    MaterialRoute(page: ELearningView),
 // @stacked-route
   ],
   dependencies: [
