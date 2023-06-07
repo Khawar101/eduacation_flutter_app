@@ -73,10 +73,7 @@ class SplashContainer5 extends StackedView<SplashScreenViewModel> {
                               height:
                                   MediaQuery.of(context).size.height * 0.044),
                           GestureDetector(
-                            onTap: () {
-                              viewModel.navigateLogin();
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) => const LogInScreen()));
-                            },
+                            onTap: viewModel.navigateLogin,
                             child: CircularStepProgressIndicator(
                               totalSteps: 4,
                               currentStep: 4,

@@ -9,5 +9,7 @@ class BookingViewModel extends BaseViewModel {
 
   navigatedetail() {
     _navigationService.navigateToDetailView();
+  }  navigateNotification() {
+    _navigationService.navigateToNotificationView();
   }
 }

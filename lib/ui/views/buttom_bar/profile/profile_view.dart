@@ -49,9 +49,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
             Padding(
               padding: const EdgeInsets.only(right: 15),
               child: GestureDetector(
-                onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: ((context) => const SettingScreen())));
-                },
+                onTap: viewModel.navigateSetting,
                 child: const Icon(
                   Icons.settings_outlined,
                   color: Colors.black54,

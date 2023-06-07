@@ -1,8 +1,12 @@
+import 'package:education/app/app.router.dart';
 import 'package:education/ui/views/buttom_bar/dashboard/widgets/bottomTitle.dart';
 import 'package:education/ui/views/buttom_bar/dashboard/widgets/leftTitle.dart';
 import 'package:stacked/stacked.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked_services/stacked_services.dart';
+
+import '../../../../app/app.locator.dart';
 
 class DashboardViewModel extends BaseViewModel {
   final bool isShowingMainData = true;
@@ -119,4 +123,10 @@ class DashboardViewModel extends BaseViewModel {
           FlSpot(13, 1.8),
         ],
       );
+
+  final _navigationService = locator<NavigationService>();
+
+  navigateNotification() {
+    _navigationService.navigateToNotificationView();
+  }
 }

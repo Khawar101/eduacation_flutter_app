@@ -303,12 +303,7 @@ class _LessonsViewState extends State<LessonsView> {
                         SizedBox(
                             height: MediaQuery.of(context).size.height * 0.04),
                         GestureDetector(
-                          onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: ((context) => const HomeScreen4())));
-                          },
+                          onTap: viewModel.navigateLerners,
                           child: Container(
                             height: 40,
                             width: double.infinity,

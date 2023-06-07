@@ -170,10 +170,10 @@ class _BookDetailViewState extends State<BookDetailView> with TickerProviderStat
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: ((context) => const BookDetail())));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const BookDetailView())));
                   },
                   child: Padding(
                     padding: EdgeInsets.only(

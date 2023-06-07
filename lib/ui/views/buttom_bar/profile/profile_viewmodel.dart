@@ -13,4 +13,9 @@ class ProfileViewModel extends BaseViewModel {
     log('====>not move');
     _navigationService.navigateToEditInfoView();
   }
+
+  navigateSetting() {
+    log('====>not move');
+    _navigationService.navigateToSettingView();
+  }
 }

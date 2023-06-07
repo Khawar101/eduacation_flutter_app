@@ -74,9 +74,7 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
           centerTitle: true,
           actions: [
             GestureDetector(
-              onTap: () {
-                // Navigator.push(context, MaterialPageRoute(builder: ((context) => const NotificationScreen())));
-              },
+              onTap: viewModel.navigateNotifications,
               child: const Padding(
                 padding: EdgeInsets.only(right: 15),
                 child: Icon(

@@ -16,7 +16,10 @@ class LessonsScreenViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   navigateMarketing() {
-    // log('====>not move');
     _navigationService.navigateToMarketingView();
+  }
+
+  navigateNotifications() {
+    _navigationService.navigateToNotificationView();
   }
 }

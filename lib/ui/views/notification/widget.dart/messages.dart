@@ -18,12 +18,7 @@ class MessagesWidget extends StackedView<NotificationViewModel> {
       context: context,
       removeTop: true,
       child: GestureDetector(
-        onTap: () {
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (_) => const ChatPageScreen()));
-        },
+        onTap: viewModel.navigateEditProfile,
         child: ListView.builder(
           itemCount: 7,
           itemBuilder: (BuildContext context, index) {

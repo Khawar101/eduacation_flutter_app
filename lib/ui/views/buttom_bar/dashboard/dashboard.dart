@@ -51,13 +51,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
               Padding(
                 padding: const EdgeInsets.only(right: 15, top: 10),
                 child: GestureDetector(
-                  onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: ((context) =>
-                    //             const NotificationScreen())));
-                  },
+                  onTap: viewModel.navigateNotification,
                   child: Stack(
                     children: [
                       const Icon(
