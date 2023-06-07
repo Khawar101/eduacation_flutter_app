@@ -13,9 +13,9 @@ Future<void> main() async {
   setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
-    WidgetsFlutterBinding.ensureInitialized();
- await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
- 
+//     WidgetsFlutterBinding.ensureInitialized();
+//  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        // home: (FirebaseAuth.instance.currentUser != null) ? HomePage() :LogInScreen(),
+    // home: (FirebaseAuth.instance.currentUser != null) ? HomePage() :LogInScreen(),
 
     return MaterialApp(
       title: 'Flutter Demo',
