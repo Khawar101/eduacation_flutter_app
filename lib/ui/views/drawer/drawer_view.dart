@@ -140,7 +140,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('E-Learning'),
                     minLeadingWidth: 0.009,
-                    onTap:viewModel.navigateELearning(),
+                    onTap: viewModel.navigateELearning,
                   ),
                   ListTile(
                     leading: Icon(
