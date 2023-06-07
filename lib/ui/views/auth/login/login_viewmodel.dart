@@ -9,7 +9,6 @@ class LoginViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   // ignore: non_constant_identifier_names
   visible_check() {
-    print("......");
     visibleCheck = !visibleCheck;
     notifyListeners();
   }
