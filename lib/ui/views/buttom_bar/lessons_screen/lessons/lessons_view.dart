@@ -6,16 +6,16 @@ import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../../widgets/app_utils.dart';
-import 'course_viewmodel.dart';
+import 'lessons_viewmodel.dart';
 
-class CourseView extends StatefulWidget {
-  const CourseView({super.key});
+class LessonsView extends StatefulWidget {
+  const LessonsView({super.key});
 
   @override
-  State<CourseView> createState() => _CourseViewState();
+  State<LessonsView> createState() => _LessonsViewState();
 }
 
-class _CourseViewState extends State<CourseView> {
+class _LessonsViewState extends State<LessonsView> {
   String dataSource =
       "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
   late VideoPlayerController _controller;
@@ -40,8 +40,8 @@ class _CourseViewState extends State<CourseView> {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CourseViewModel>.reactive(
-        viewModelBuilder: () => CourseViewModel(),
+    return ViewModelBuilder<LessonsViewModel>.reactive(
+        viewModelBuilder: () => LessonsViewModel(),
         builder: (context, viewModel, child) {
           return Scaffold(
             appBar: AppBar(

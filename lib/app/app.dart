@@ -16,7 +16,6 @@ import 'package:education/ui/views/buttom_bar/profile/profile_view.dart';
 import 'package:education/ui/views/buttom_bar/profile/edit_info/edit_info_view.dart';
 import 'package:education/ui/views/buttom_bar/lessons_screen/lessons_screen_view.dart';
 import 'package:education/ui/views/buttom_bar/lessons_screen/marketing/marketing_view.dart';
-import 'package:education/ui/views/buttom_bar/lessons_screen/course/course_view.dart';
 import 'package:education/ui/views/buttom_bar/lessons_screen/learners/learners_view.dart';
 import 'package:education/ui/views/buttom_bar/student_information/student_information_view.dart';
 import 'package:education/ui/views/notification/notification_view.dart';
@@ -25,6 +24,8 @@ import 'package:education/ui/views/contact/contact_view.dart';
 import 'package:education/ui/views/teacher/detail/detail_view.dart';
 import 'package:education/ui/views/teacher/booking/booking_view.dart';
 
+import '../ui/views/coursespage/coursedetail/coursedetail_view.dart';
+import '../ui/views/coursespage/courses_view.dart';
 import '../ui/views/teacher/popular_view.dart';
 import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:education/ui/views/acount/acount_view.dart';
@@ -34,9 +35,8 @@ import 'package:education/ui/views/payment_method/carddata/carddata_view.dart';
 import 'package:education/ui/views/payment_method/card/card_view.dart';
 import 'package:education/ui/views/payment_method/cardbottomsheet/cardbottomsheet_view.dart';
 import 'package:education/ui/views/payment_method/paymentdone/paymentdone_view.dart';
-import 'package:education/ui/views/coursespage/courses/courses_view.dart';
 import 'package:education/ui/views/coursespage/favouritesub/favouritesub_view.dart';
-import 'package:education/ui/views/coursespage/coursedetail/coursedetail_view.dart';
+import 'package:education/ui/views/buttom_bar/lessons_screen/lessons/lessons_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -55,7 +55,7 @@ import 'package:education/ui/views/coursespage/coursedetail/coursedetail_view.da
     MaterialRoute(page: EditInfoView),
     MaterialRoute(page: LessonsScreenView),
     MaterialRoute(page: MarketingView),
-    MaterialRoute(page: CourseView),
+    MaterialRoute(page: CoursesView),
     MaterialRoute(page: LearnersView),
     MaterialRoute(page: StudentInformationView),
     MaterialRoute(page: NotificationView),
@@ -72,8 +72,9 @@ import 'package:education/ui/views/coursespage/coursedetail/coursedetail_view.da
     MaterialRoute(page: CardView),
     MaterialRoute(page: CardbottomsheetView),
     MaterialRoute(page: PaymentdoneView),
-    MaterialRoute(page: CoursesView),
     MaterialRoute(page: FavouritesubView),
+
+    MaterialRoute(page: LessonsView),
     MaterialRoute(page: CoursedetailView),
 // @stacked-route
   ],

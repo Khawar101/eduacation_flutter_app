@@ -12,7 +12,6 @@ class videoPlayer extends StatefulWidget {
 }
 
 class _videoPlayerState extends State<videoPlayer> {
-   
   late VideoPlayerController controller;
   bool _isPlaying = false;
   @override

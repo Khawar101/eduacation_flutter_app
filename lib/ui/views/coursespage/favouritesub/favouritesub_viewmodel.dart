@@ -7,11 +7,10 @@ import '../../../../app/app.locator.dart';
 class FavouritesubViewModel extends BaseViewModel {
   bool data = false;
 
-   final _navigationService = locator<NavigationService>();
+  final _navigationService = locator<NavigationService>();
 
-
- navigatecoursedetail() {
-    _navigationService.navigateToCoursedetailView();
+  navigatecoursedetail() {
+    _navigationService.navigateToCoursesView();
     notifyListeners();
   }
 }

@@ -14,6 +14,6 @@ class MarketingViewModel extends BaseViewModel {
 
   navigateCourses() {
     // log('====>not move');
-    _navigationService.navigateToCourseView();
+    _navigationService.navigateToLessonsView();
   }
 }
