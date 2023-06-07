@@ -14,21 +14,20 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
     AddcommentViewModel viewModel,
     Widget? child,
   ) {
-      return Scaffold(
-      
+    return Scaffold(
       appBar: AppBar(
-         elevation: 0,
-          backgroundColor: Colors.white,
+        elevation: 0,
+        backgroundColor: Colors.white,
         leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black54,
-              size: 18,
-            ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black54,
+            size: 18,
           ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -51,11 +50,13 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                         height: 40,
                         width: 100,
                         decoration: BoxDecoration(
-                           color: const Color(0xff4873a6).withOpacity(0.7),
+                            color: const Color(0xff4873a6).withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
                         child: const Center(
-                             child:ButtonText(text: "Add reply" , color:Colors.white, ),
-                      
+                          child: ButtonText(
+                            text: "Add reply",
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
@@ -68,7 +69,7 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                      Row(
+                        Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const CircleAvatar(
@@ -84,7 +85,8 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                 const ButtonText(text: "@mouni", color: Colors.black),
+                                const ButtonText(
+                                    text: "@mouni", color: Colors.black),
                                 const SizedBox(
                                   height: 2,
                                 ),
@@ -130,13 +132,16 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                           padding: EdgeInsets.only(
                               left: MediaQuery.of(context).size.width * 0.17,
                               top: MediaQuery.of(context).size.height * 0.02),
-                          child:Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
-                                  SmallText(text:"Liked" ,color:   const Color(0xff4873a6).withOpacity(0.7),),
-                                
+                                  SmallText(
+                                    text: "Liked",
+                                    color: const Color(0xff4873a6)
+                                        .withOpacity(0.7),
+                                  ),
                                   SizedBox(
                                       width: MediaQuery.of(context).size.width *
                                           0.05),
@@ -149,10 +154,11 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                               ),
                               Row(
                                 children: [
-                                   Icon(
+                                  Icon(
                                     Icons.thumb_up_off_alt_outlined,
                                     size: 15,
-                                   color:  const Color(0xff4873a6).withOpacity(0.7),
+                                    color: const Color(0xff4873a6)
+                                        .withOpacity(0.7),
                                   ),
                                   SizedBox(
                                       width: MediaQuery.of(context).size.width *
@@ -191,8 +197,7 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                                 width:
                                     MediaQuery.of(context).size.width * 0.03),
                             Column(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -212,7 +217,7 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                                       style:
                                           GoogleFonts.ibmPlexSans(fontSize: 12),
                                     ),
-                                     SizedBox(
+                                    SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 0.03),
@@ -230,8 +235,6 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                                 ),
                               ],
                             ),
-                         
-                           
                           ],
                         ),
                         //   SizedBox(height: MediaQuery.of(context).size.height*0.02),
@@ -249,13 +252,16 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                           padding: EdgeInsets.only(
                               left: MediaQuery.of(context).size.width * 0.17,
                               top: MediaQuery.of(context).size.height * 0.02),
-                          child:Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
-                                  SmallText(text:"Liked" ,color:   const Color(0xff4873a6).withOpacity(0.7),),
-                                
+                                  SmallText(
+                                    text: "Liked",
+                                    color: const Color(0xff4873a6)
+                                        .withOpacity(0.7),
+                                  ),
                                   SizedBox(
                                       width: MediaQuery.of(context).size.width *
                                           0.05),
@@ -268,10 +274,11 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                               ),
                               Row(
                                 children: [
-                                   Icon(
+                                  Icon(
                                     Icons.thumb_up_off_alt_outlined,
                                     size: 15,
-                                   color:  const Color(0xff4873a6).withOpacity(0.7),
+                                    color: const Color(0xff4873a6)
+                                        .withOpacity(0.7),
                                   ),
                                   SizedBox(
                                       width: MediaQuery.of(context).size.width *
@@ -299,7 +306,7 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
         width: MediaQuery.of(context).size.width * 1,
         height: 70,
         color: Colors.white,
-        child:  Padding(
+        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             children: [
@@ -320,7 +327,7 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
               Icon(
                 Icons.send_sharp,
                 size: 30,
-                   color:  const Color(0xff4873a6).withOpacity(0.7), 
+                color: const Color(0xff4873a6).withOpacity(0.7),
               ),
               const SizedBox(width: 10),
             ],
@@ -328,7 +335,6 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
         ),
       ),
     );
-  
   }
 
   @override
