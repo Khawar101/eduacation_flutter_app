@@ -42,13 +42,16 @@ class CategoriesViewModel extends BaseViewModel {
   ];
   updateTag1(val) {
     tags1 = val;
+    notifyListeners();
   }
 
   updateValue(val) {
     values = val;
+    notifyListeners();
   }
 
   updateTag(val) {
     tags = val;
+    notifyListeners();
   }
 }

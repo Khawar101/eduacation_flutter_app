@@ -108,10 +108,7 @@ class ELearningView extends StackedView<ELearningViewModel> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.04),
                             GestureDetector(
-                              onTap: () {
-                                // Navigator.push(context, MaterialPageRoute(builder:
-                                //((context) =>const CategoriesSearch())));
-                              },
+                              onTap: viewModel.navigateCategories,
                               child: Container(
                                 width: 110,
                                 decoration: BoxDecoration(
