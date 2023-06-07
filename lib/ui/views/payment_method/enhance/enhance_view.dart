@@ -70,16 +70,11 @@ class EnhanceView extends StackedView<EnhanceViewModel> {
               child: Row(
                 children: [
                   Checkbox(
-                    checkColor: const Color(0xff4873a6).withOpacity(0.7),
-                    activeColor: Colors.white,
-                    side: const BorderSide(color: Colors.white),
-                    value: viewModel.isChecked,
-                    onChanged: (bool? value) {
-                      // setState(() {
-                      viewModel.isChecked = value!;
-                      // });
-                    },
-                  ),
+                      checkColor: const Color(0xff4873a6).withOpacity(0.7),
+                      activeColor: Colors.white,
+                      side: const BorderSide(color: Colors.white),
+                      value: viewModel.isChecked,
+                      onChanged: (bool? value) => viewModel.update(value)),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -105,16 +100,11 @@ class EnhanceView extends StackedView<EnhanceViewModel> {
               child: Row(
                 children: [
                   Checkbox(
-                    checkColor: const Color(0xff4873a6).withOpacity(0.7),
-                    activeColor: Colors.white,
-                    side: const BorderSide(color: Colors.white),
-                    value: viewModel.isChecked1,
-                    onChanged: (bool? value) {
-                      // setState(() {
-                      viewModel.isChecked1 = value!;
-                      // });
-                    },
-                  ),
+                      checkColor: const Color(0xff4873a6).withOpacity(0.7),
+                      activeColor: Colors.white,
+                      side: const BorderSide(color: Colors.white),
+                      value: viewModel.isChecked1,
+                      onChanged: (bool? value) => viewModel.update1(value)),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.center,

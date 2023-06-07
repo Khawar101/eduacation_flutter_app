@@ -16,7 +16,7 @@ class CardView extends StackedView<CardViewModel> {
     CardViewModel viewModel,
     Widget? child,
   ) {
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -51,24 +51,27 @@ class CardView extends StackedView<CardViewModel> {
               const ButtonText(text: "My card", color: Colors.black),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               CreditCardWidget(
-                glassmorphismConfig:
-                viewModel.    useGlassMorphism ? Glassmorphism.defaultConfig() : null,
-                cardNumber:   viewModel. cardNumber,
-                expiryDate:    viewModel. expiryDate,
-                cardHolderName:   viewModel.  cardHolderName,
-                cvvCode:    viewModel. cvvCode,
+                glassmorphismConfig: viewModel.useGlassMorphism
+                    ? Glassmorphism.defaultConfig()
+                    : null,
+                cardNumber: viewModel.cardNumber,
+                expiryDate: viewModel.expiryDate,
+                cardHolderName: viewModel.cardHolderName,
+                cvvCode: viewModel.cvvCode,
                 bankName: 'Axis Bank',
-                frontCardBorder:
-                    !   viewModel. useGlassMorphism ? Border.all(color: Colors.grey) : null,
-                backCardBorder:
-                    !   viewModel. useGlassMorphism ? Border.all(color: Colors.grey) : null,
-                showBackView:    viewModel. isCvvFocused,
+                frontCardBorder: !viewModel.useGlassMorphism
+                    ? Border.all(color: Colors.grey)
+                    : null,
+                backCardBorder: !viewModel.useGlassMorphism
+                    ? Border.all(color: Colors.grey)
+                    : null,
+                showBackView: viewModel.isCvvFocused,
                 obscureCardNumber: true,
                 obscureCardCvv: true,
                 isHolderNameVisible: true,
                 cardBgColor: const Color(0xff4873a6).withOpacity(0.7),
                 backgroundImage:
-                      viewModel.  useBackgroundImage ? 'assets/card_bg.png' : null,
+                    viewModel.useBackgroundImage ? 'assets/card_bg.png' : null,
                 isSwipeGestureEnabled: true,
                 onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
                 // customCardTypeIcons: <CustomCardTypeIcon>[
@@ -84,7 +87,7 @@ class CardView extends StackedView<CardViewModel> {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               GestureDetector(
-                // onTap: () => _openBottomSheet(context),
+                onTap: () => viewModel.openBottomSheet(context),
                 child: Container(
                   height: 50,
                   width: double.infinity,
@@ -105,7 +108,6 @@ class CardView extends StackedView<CardViewModel> {
         ),
       ),
     );
-  
   }
 
   @override

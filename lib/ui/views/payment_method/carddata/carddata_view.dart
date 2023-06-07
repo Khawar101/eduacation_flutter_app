@@ -28,12 +28,12 @@ class CarddataView extends StackedView<CarddataViewModel> {
             color: Colors.black54,
             size: 18,
           ),
-        ),   
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 20,         
+            horizontal: 20,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -188,6 +188,7 @@ class CarddataView extends StackedView<CarddataViewModel> {
       ),
     );
   }
+
   @override
   CarddataViewModel viewModelBuilder(
     BuildContext context,

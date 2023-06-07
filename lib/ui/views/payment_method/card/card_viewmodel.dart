@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../cardbottomsheet/cardbottomsheet_view.dart';
+
 class CardViewModel extends BaseViewModel {
-   void _openBottomSheet(BuildContext context) {
+  void openBottomSheet(BuildContext context) {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
         return const FractionallySizedBox(
-            heightFactor: 0.7, 
-            //child: BottomSheetOpen()
-            );
+            heightFactor: 0.7, child: CardbottomsheetView());
       },
       backgroundColor:
           Colors.transparent, // Set the background color to transparent
@@ -30,7 +30,6 @@ class CardViewModel extends BaseViewModel {
   OutlineInputBorder? border;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  @override
   void initState() {
     border = OutlineInputBorder(
       borderSide: BorderSide(

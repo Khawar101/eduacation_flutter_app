@@ -32,6 +32,8 @@ import 'package:education/ui/views/teacher/sdatetime/sdatetime_view.dart';
 import 'package:education/ui/views/payment_method/enhance/enhance_view.dart';
 import 'package:education/ui/views/payment_method/carddata/carddata_view.dart';
 import 'package:education/ui/views/payment_method/card/card_view.dart';
+import 'package:education/ui/views/payment_method/cardbottomsheet/cardbottomsheet_view.dart';
+import 'package:education/ui/views/payment_method/paymentdone/paymentdone_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -65,6 +67,8 @@ import 'package:education/ui/views/payment_method/card/card_view.dart';
     MaterialRoute(page: EnhanceView),
     MaterialRoute(page: CarddataView),
     MaterialRoute(page: CardView),
+    MaterialRoute(page: CardbottomsheetView),
+    MaterialRoute(page: PaymentdoneView),
 // @stacked-route
   ],
   dependencies: [
