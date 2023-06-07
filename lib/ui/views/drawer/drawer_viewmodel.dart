@@ -21,7 +21,7 @@ class DrawerViewModel extends BaseViewModel {
   }
 
   navigateELearning() {
-    _navigationService.navigateToPopularView();
+    _navigationService.navigateToELearningView();
   }
 
   navigateSetting() {

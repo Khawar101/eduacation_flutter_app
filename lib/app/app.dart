@@ -40,6 +40,8 @@ import 'package:education/ui/views/buttom_bar/lessons_screen/lessons/lessons_vie
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/addproject_view.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/poster/poster_view.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/comment/addcomment/addcomment_view.dart';
+import 'package:education/ui/views/e_learning/e_learning_view.dart';
+import 'package:education/ui/views/e_learning/categories/categories_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -82,6 +84,8 @@ import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widge
     MaterialRoute(page: AddprojectView),
     MaterialRoute(page: PosterView),
     MaterialRoute(page: AddcommentView),
+    MaterialRoute(page: ELearningView),
+    MaterialRoute(page: CategoriesView),
 // @stacked-route
   ],
   dependencies: [
