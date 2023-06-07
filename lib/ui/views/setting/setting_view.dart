@@ -102,7 +102,51 @@ class SettingView extends StackedView<SettingViewModel> {
               MoreCard(Icons.surround_sound_sharp, "Learning & sound setting",
                   () {}),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-              MoreCard(Icons.dark_mode, "Dark Mode", () {}),
+              Container(
+                height: 40,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: const Color(0xFF4873A6).withOpacity(0.7),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.dark_mode,
+                            size: 18,
+                            color: const Color(0xFF4873A6).withOpacity(0.7),
+                          ),
+                          const SizedBox(width: 10),
+                          ButtonText(
+                            text: 'Dark Mode',
+                            color: const Color(0xFF4873A6).withOpacity(0.7),
+                          ),
+                        ],
+                      ),
+                      Switch(
+                        thumbIcon: viewModel.thumbIcon,
+                        activeColor: const Color(0xFF4873A6).withOpacity(0.7),
+                        activeTrackColor: Colors.grey,
+                        inactiveThumbColor: Colors.grey,
+                        inactiveTrackColor:
+                            const Color(0xFF4873A6).withOpacity(0.7),
+                        splashRadius: 5000,
+                        value: viewModel.light1,
+                        onChanged: (bool value) {
+                          viewModel.upadtelight1(value);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
               MoreCard(Icons.question_mark, "Help", () {}),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
