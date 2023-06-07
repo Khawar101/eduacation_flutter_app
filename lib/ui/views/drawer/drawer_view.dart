@@ -126,12 +126,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('E-Book'),
                     minLeadingWidth: 0.009,
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: ((context) => const EbookScreen())));
-                    },
+                    onTap: viewModel.navigateEbook,
                   ),
                   ListTile(
                     leading: Icon(

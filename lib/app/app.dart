@@ -43,6 +43,7 @@ import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widge
 import 'package:education/ui/views/e_learning/e_learning_view.dart';
 import 'package:education/ui/views/e_learning/categories/categories_view.dart';
 import 'package:education/ui/views/e_book/e_book_view.dart';
+import 'package:education/ui/views/e_book/book_detail/book_detail_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -88,6 +89,7 @@ import 'package:education/ui/views/e_book/e_book_view.dart';
     MaterialRoute(page: ELearningView),
     MaterialRoute(page: CategoriesView),
     MaterialRoute(page: EBookView),
+    MaterialRoute(page: BookDetailView),
 // @stacked-route
   ],
   dependencies: [

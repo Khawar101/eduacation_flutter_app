@@ -29,7 +29,7 @@ class DrawerViewModel extends BaseViewModel {
   }
 
   navigateEbook() {
-    _navigationService.navigateToPopularView();
+    _navigationService.navigateToEBookView();
   }
 
   navigateListOfCourses() {
