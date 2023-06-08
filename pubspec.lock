@@ -285,10 +285,10 @@ packages:
     dependency: "direct main"
     description:
       name: email_auth
-      sha256: a382b6d510c2f6a5dad5e424b693168c65681fff29d36d0abec7916472aaba1b
+      sha256: "0e5d6cf645fa84b1a05f691c4fc1a12ca2e6ea42ef0383e6dbffb8bc0e9baf35"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "0.0.1+4"
   equatable:
     dependency: transitive
     description:

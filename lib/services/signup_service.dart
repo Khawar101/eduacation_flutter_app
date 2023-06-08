@@ -8,14 +8,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class SignupService {
-  var signupMessage = "";
   var message = "";
-  EmailAuth emailAuth = EmailAuth(sessionName: "Sample session");
+  var profile;
 
-  config() {
-    print("O=====>");
-    emailAuth.config({"server": "server url", "serverKey": "serverKey"});
-  }
+  // config() {
+  //   print("O=====>");
+  //   emailAuth.config({"server": "server url", "serverKey": "serverKey"});
+  // }
 
   late final XFile? image;
   pickImage() async {
@@ -31,9 +30,8 @@ class SignupService {
 
     // });
     uploadTask.whenComplete(() async {
-      var url = await ref.getDownloadURL();
-      FirebaseAuth.instance.currentUser!.updatePhotoURL(url);
-      print(url);
+      profile = await ref.getDownloadURL();
+      log(profile);
       // FirebaseFirestore firestore = FirebaseFirestore.instance;
 
       // await firestore.collection("users").doc(widget.UserData["UID"]).update({
@@ -41,7 +39,7 @@ class SignupService {
       // });
       // widget.UserData["profile"] = url;
     }).catchError((onError) {
-      print(onError);
+      log(onError);
       // snackBar(context, onError.toString());
     });
   }
@@ -54,7 +52,7 @@ class SignupService {
     String password = passwordCTRL.text.trim();
 
     if (name == "" || email == "" || password == "") {
-      signupMessage = "filled all filed";
+      message = "filled all filed";
     } else {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
@@ -67,27 +65,34 @@ class SignupService {
         //   return null;
         // } else if (userCredential.user != null) {
         // }
+        FirebaseAuth.instance.currentUser!.updatePhotoURL(profile);
+        log(userCredential.toString());
 
-        signupMessage = "Login Successfully";
+        message = "Login Successfully";
         userdata = userCredential;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
-          signupMessage = 'The password provided is too weak.';
+          message = 'The password provided is too weak.';
         } else if (e.code == 'email-already-in-use') {
-          signupMessage = 'The account already exists for that email.';
+          message = 'The account already exists for that email.';
         }
       } catch (e) {
-        signupMessage = e.toString();
+        message = e.toString();
       }
     }
   }
 
-  verify(otp) {
-    bool result = emailAuth.validateOtp(
-        recipientMail: otp.value.text, userOtp: otp.value.text);
+  verify(otp, email) {
+    bool result = (EmailAuth.validate(
+        receiverMail:
+            email.value.text, //to make sure the email ID is not changed
+        userOTP: otp.value.text)); //pass in the OTP typed in
+    ///This will return you a bool, and you can proceed further after that, add a fail case and a success case (result will be true/false)
+
     if (!result) {
       message = "enter Correct OTP";
     }
+
     return result;
   }
 
@@ -95,14 +100,18 @@ class SignupService {
   /// Can also be converted into a Boolean function and render accordingly for providers
   sendOtpS(emailCTRL) async {
     try {
-      bool result = await emailAuth.sendOtp(
-          recipientMail: emailCTRL.value.text, otpLength: 5);
+      ///Accessing the EmailAuth class from the package
+      EmailAuth.sessionName = "Sample";
+
+      ///a boolean value will be returned if the OTP is sent successfully
+      var result = await EmailAuth.sendOtp(receiverMail: emailCTRL.text);
+
       if (result) {
         message = "OTP sent Successfully";
       }
       log(result.toString());
     } catch (e) {
-      log(e.toString());
+      log("=====>${e.toString()}");
     }
   }
 }

@@ -68,15 +68,18 @@ class SignupView extends StackedView<SignupViewModel> {
                         foregroundColor: Colors.transparent,
                         child: Align(
                           alignment: Alignment.bottomCenter,
-                          child: Container(
-                            height: 40,
-                            width: 55,
-                            decoration: BoxDecoration(
-                              color: const Color(0xff4873a6).withOpacity(0.7),
-                              borderRadius: BorderRadius.circular(25),
+                          child: GestureDetector(
+                            onTap: viewModel.uploadProfile,
+                            child: Container(
+                              height: 40,
+                              width: 55,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff4873a6).withOpacity(0.7),
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              child: const Icon(Icons.edit_outlined,
+                                  color: Color(0xffffffff), size: 30),
                             ),
-                            child: const Icon(Icons.edit_outlined,
-                                color: Color(0xffffffff), size: 30),
                           ),
                         ),
                       ),
@@ -114,7 +117,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     GestureDetector(
                       onTap: () {
                         // viewModel.navigateVerify();
-                        viewModel.sendOtp();
+                        viewModel.signUP();
                       },
                       child: Container(
                         height: 50,
