@@ -1,11 +1,11 @@
+import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-
-
-
 
 class SignupService {
   var signupMessage = "";
+  var message = "";
+  EmailAuth emailAuth = new EmailAuth(sessionName: "Sample session");
+
   late UserCredential userdata;
   createAccount(nameCTRL, emailCTRL, passwordCTRL) async {
     String name = nameCTRL.text.trim();
@@ -39,6 +39,25 @@ class SignupService {
       } catch (e) {
         signupMessage = e.toString();
       }
+    }
+  }
+
+  verify(otp) {
+    bool result = emailAuth.validateOtp(
+        recipientMail: otp.value.text, userOtp: otp.value.text);
+    if (!result) {
+      message = "enter Correct OTP";
+    }
+    return result;
+  }
+
+  /// a void funtion to send the OTP to the user
+  /// Can also be converted into a Boolean function and render accordingly for providers
+  void sendOtp(emailCTRL) async {
+    bool result = await emailAuth.sendOtp(
+        recipientMail: emailCTRL.value.text, otpLength: 5);
+    if (result) {
+      message = "OTP sent Successfully";
     }
   }
 }
