@@ -45,6 +45,7 @@ import 'package:education/ui/views/e_learning/categories/categories_view.dart';
 import 'package:education/ui/views/e_book/e_book_view.dart';
 import 'package:education/ui/views/e_book/book_detail/book_detail_view.dart';
 import 'package:education/services/signup_service.dart';
+import 'package:education/services/login_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -98,6 +99,7 @@ import 'package:education/services/signup_service.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: SignupService),
+    LazySingleton(classType: LoginService),
 // @stacked-service
   ],
   bottomsheets: [
