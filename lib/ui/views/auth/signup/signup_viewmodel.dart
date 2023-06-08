@@ -41,19 +41,17 @@ class SignupViewModel extends BaseViewModel {
 
   uploadProfile() async {
     await _signupService.pickImage().whenComplete(() {
-      Future.delayed(const Duration(milliseconds: 500), () {
-        if (_signupService.message != '') {
-          log("Profile uploded successfully...");
-          // _navigationService.navigateToVerifyView();
-          profile = _signupService.profile;
-          log('2====>$profile');
-          notifyListeners();
-        } else {
-          log("try again...");
-        }
-        log("=====>${_signupService.message}");
-      });
-    }).onError((error, stackTrace) => log(error.toString()));
+      if (_signupService.message != '') {
+        log("Profile uploded successfully...");
+        // _navigationService.navigateToVerifyView();
+        profile = _signupService.profile;
+        log('2====>$profile');
+        notifyListeners();
+      } else {
+        log("try again...");
+      }
+      log("=====>${_signupService.message}");
+    });
   }
 
   sendOtp() async {

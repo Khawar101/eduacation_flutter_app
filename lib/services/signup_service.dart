@@ -45,7 +45,7 @@ class SignupService {
       log(onError);
       // snackBar(context, onError.toString());
     });
-    return null;
+    return profile;
   }
 
   createAccount(nameCTRL, emailCTRL, passwordCTRL) async {
