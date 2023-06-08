@@ -6,10 +6,11 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../../app/app.locator.dart';
+import '../../../../services/login_service.dart';
 
 class ProfileViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
-  // final _loginService = locator<LoginService>();
+  final loginService = locator<LoginService>();
 
   navigateEditProfile() {
     log('====>not move');

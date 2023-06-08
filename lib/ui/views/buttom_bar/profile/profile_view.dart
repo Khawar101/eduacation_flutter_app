@@ -62,14 +62,15 @@ class ProfileView extends StackedView<ProfileViewModel> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               radius: 80,
-              backgroundImage: AssetImage('assets/images/download.jpeg'),
+              backgroundImage: NetworkImage(
+                  viewModel.loginService.UserData.profile.toString()),
             ),
             const SizedBox(height: 10),
-            const Center(
+            Center(
                 child: BigText(
-              text: "Rakibull hassan",
+              text: viewModel.loginService.UserData.username.toString(),
               color: Colors.black,
             )),
             const SizedBox(height: 12),
