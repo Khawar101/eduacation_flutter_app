@@ -24,7 +24,7 @@ class SignupViewModel extends BaseViewModel {
 
   TextEditingController nameCTRL = TextEditingController(text: "xyz");
   TextEditingController emailCTRL =
-      TextEditingController(text: "q@gmail.com");
+      TextEditingController(text: "xyz@gmail.com");
   // TextEditingController numberCTRL = TextEditingController();
   TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
   signUP() async {

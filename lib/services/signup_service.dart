@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,11 +11,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 class SignupService {
   var message = "";
   var profile;
+  var userdata;
 
   // config() {
   //   print("O=====>");
   //   emailAuth.config({"server": "server url", "serverKey": "serverKey"});
   // }
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   late final XFile? image;
   pickImage() async {
@@ -22,7 +25,7 @@ class SignupService {
         .pickImage(source: ImageSource.gallery, imageQuality: 45);
     Reference ref = FirebaseStorage.instance
         .ref()
-        .child("${DateTime.now().microsecondsSinceEpoch}");
+        .child("profile/${DateTime.now().microsecondsSinceEpoch}");
     UploadTask uploadTask = ref.putFile(File(image!.path));
     // uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
     //   double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -44,7 +47,6 @@ class SignupService {
     });
   }
 
-  late UserCredential userdata;
   createAccount(nameCTRL, emailCTRL, passwordCTRL) async {
     String name = nameCTRL.text.trim();
     String email = emailCTRL.text.trim();
@@ -55,7 +57,7 @@ class SignupService {
       message = "filled all filed";
     } else {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
+        UserCredential user = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
         // if (password.length < 6) {
         //   log(password);
@@ -65,11 +67,17 @@ class SignupService {
         //   return null;
         // } else if (userCredential.user != null) {
         // }
-        FirebaseAuth.instance.currentUser!.updatePhotoURL(profile);
-        log(userCredential.toString());
+        userdata = {
+          "UID": user.user!.uid,
+          "username": name,
+          "email": email,
+          "password": password,
+          "profile": profile
+        };
+        await firestore.collection("users").doc(user.user!.uid).set(userdata);
+        log(user.toString());
 
         message = "Login Successfully";
-        userdata = userCredential;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           message = 'The password provided is too weak.';
