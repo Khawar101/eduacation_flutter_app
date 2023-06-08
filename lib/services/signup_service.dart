@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -53,11 +55,16 @@ class SignupService {
 
   /// a void funtion to send the OTP to the user
   /// Can also be converted into a Boolean function and render accordingly for providers
-  void sendOtp(emailCTRL) async {
-    bool result = await emailAuth.sendOtp(
-        recipientMail: emailCTRL.value.text, otpLength: 5);
-    if (result) {
-      message = "OTP sent Successfully";
+  sendOtpS(emailCTRL) async {
+    try {
+      bool result = await emailAuth.sendOtp(
+          recipientMail: emailCTRL.value.text, otpLength: 5);
+      if (result) {
+        message = "OTP sent Successfully";
+      }
+      log(result.toString());
+    } catch (e) {
+      log(e.toString());
     }
   }
 }
