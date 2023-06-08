@@ -12,12 +12,7 @@ class ChatsViewModel extends BaseViewModel {
   navigateinbox() {
     _navigationService.navigateToInboxView();
   }
-  // final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
-  //   .collection('users')
-  //   // .orderBy('index', descending: true)
-  //   // .where('index', isGreaterThan: '3')
-  //   // .limitToLast(2)
-  //   .snapshots();
+
 
   //  StreamBuilder<QuerySnapshot>(
   //     stream: _usersStream,
