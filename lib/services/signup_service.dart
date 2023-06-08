@@ -3,6 +3,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -56,6 +57,7 @@ class SignupService {
 
     if (name == "" || email == "" || password == "") {
       message = "filled all filed";
+      
     } else {
       try {
         UserCredential user = await FirebaseAuth.instance
