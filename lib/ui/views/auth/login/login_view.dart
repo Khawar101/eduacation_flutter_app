@@ -51,6 +51,7 @@ class LoginView extends StackedView<LoginViewModel> {
               ),
               const SizedBox(height: 25),
               CustomTextFormField(
+                controller: viewModel.emailCTRL,
                 hintText: 'Email id',
                 prefix: const Icon(
                   Icons.mail_outlined,
@@ -69,6 +70,7 @@ class LoginView extends StackedView<LoginViewModel> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: CustomTextFormField(
+                      controller: viewModel.passwordCTRL,
                       hintText: 'Password',
                       isObscureText: viewModel.visibleCheck,
                       prefix: GestureDetector(
@@ -130,7 +132,8 @@ class LoginView extends StackedView<LoginViewModel> {
               const SizedBox(height: 15),
               GestureDetector(
                 onTap: () {
-                  viewModel.navigateButtomBar();
+                  // viewModel.navigateButtomBar();
+                  viewModel.logIN();
                 },
                 child: Container(
                   height: 50,
