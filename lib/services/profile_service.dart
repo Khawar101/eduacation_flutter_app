@@ -1,4 +1,6 @@
 // ignore_for_file: unrelated_type_equality_checks
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/userData.dart';
 import '../app/app.locator.dart';
@@ -11,15 +13,15 @@ class ProfileService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   updateProfile(String email, password, firstName, lastName) async {
-    if (loginService.UserData.email == email.trim &&
-        loginService.UserData.password == password) {
+    // log("${UserData.email == email}, ${UserData.password == password}, ${UserData.email}, $email");
+    var UserData = loginService.UserData;
+    log(UserData.email.toString());
+    var uid = UserData.uID.toString();
+    log(uid);
+    if (UserData.email == email && UserData.password == password) {
       try {
-        loginService.UserData =
-            userData(firstName: firstName, lastName: lastName);
-        await firestore
-            .collection("users")
-            .doc(loginService.UserData.uID)
-            .update({
+        UserData = userData(firstName: firstName, lastName: lastName);
+        await firestore.collection("users").doc(uid).update({
           "firstName": firstName,
           "lastName": lastName,
         });

@@ -31,7 +31,7 @@ class LoginService {
         // storage.write(key: "UID", value: user.user?.uid);
         // final data = snapshot.data();
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-
+        log(data["UID"]);
         UserData = userData(
             uID: data["UID"],
             username: data["username"],

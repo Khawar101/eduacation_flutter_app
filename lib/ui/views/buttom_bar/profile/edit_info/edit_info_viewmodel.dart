@@ -15,6 +15,11 @@ class EditInfoViewModel extends BaseViewModel {
   final _profileService = locator<ProfileService>();
   final loginService = locator<LoginService>();
 
+  visible_check() {
+    visibleCheck = !visibleCheck;
+    notifyListeners();
+  }
+
   navigateSetting() {
     _navigationService.navigateToSettingView();
   }

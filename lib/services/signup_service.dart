@@ -73,7 +73,9 @@ class SignupService {
           "username": name,
           "email": email,
           "password": password,
-          "profile": profile
+          "profile": profile,
+           "firstName": "",
+          "lastName": "",
         };
         await firestore.collection("users").doc(user.user!.uid).set(userdata);
         log(user.toString());
