@@ -26,7 +26,7 @@ class ProfileService {
           "lastName": lastName,
         });
 
-        message = "Login Successfully";
+        message = "update successfully";
       } catch (e) {
         message = e.toString();
       }

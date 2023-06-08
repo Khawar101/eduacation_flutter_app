@@ -200,15 +200,17 @@ class ProfileView extends StackedView<ProfileViewModel> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.024,
                           ),
-                          const ButtonText(
-                            text: "First Name: ",
+                          ButtonText(
+                            text:
+                                "First Name: ${viewModel.loginService.UserData.firstName.toString()}",
                             color: Colors.white,
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.024,
                           ),
-                          const ButtonText(
-                            text: "Last Name: ",
+                          ButtonText(
+                            text:
+                                "Last Name: ${viewModel.loginService.UserData.lastName.toString()}",
                             color: Colors.white,
                           ),
                         ],

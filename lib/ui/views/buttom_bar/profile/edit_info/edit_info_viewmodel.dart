@@ -31,6 +31,7 @@ class EditInfoViewModel extends BaseViewModel {
   updatedProfile() async {
     await _profileService.updateProfile(emailCTRL.text, passwordCTRL.text,
         firstNameCTRL.text, lastNameCTRL.text);
+    notifyListeners();
     if (_profileService.message == 'update successfully') {
       log("=====>${_profileService.message}");
       _navigationService.back();
