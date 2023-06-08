@@ -106,12 +106,14 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     hintText: 'E-Mail',
+                    controller: viewModel.emailCTRL,
                   ),
                   const SizedBox(height: 20),
                   const ButtonText(text: "Password", color: Colors.black),
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     hintText: 'Password',
+                    controller: viewModel.passwordCTRL,
                     isObscureText: viewModel.visibleCheck,
                     suffix: GestureDetector(
                       onTap: () {
@@ -130,17 +132,19 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     hintText: 'First Name',
+                    controller: viewModel.firstNameCTRL,
                   ),
                   const SizedBox(height: 20),
                   const ButtonText(text: "Last Name", color: Colors.black),
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     hintText: 'Last Name',
+                    controller: viewModel.lastNameCTRL,
                   ),
                   const SizedBox(height: 35),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
+                      viewModel.updatedProfile();
                     },
                     child: Container(
                       height: 40,
