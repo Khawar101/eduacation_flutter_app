@@ -184,29 +184,31 @@ class ProfileView extends StackedView<ProfileViewModel> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.028,
                           ),
-                          const ButtonText(
-                            text: "Email Address",
+                          ButtonText(
+                            text:
+                                "Email: ${viewModel.loginService.UserData.email.toString()}",
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.024,
+                          ),
+                          ButtonText(
+                            text:
+                                "Password: ${viewModel.loginService.UserData.password.toString()}",
                             color: Colors.white,
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.024,
                           ),
                           const ButtonText(
-                            text: "Password",
+                            text: "First Name: ",
                             color: Colors.white,
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.024,
                           ),
                           const ButtonText(
-                            text: "First Name",
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.024,
-                          ),
-                          const ButtonText(
-                            text: "Last Name",
+                            text: "Last Name: ",
                             color: Colors.white,
                           ),
                         ],
