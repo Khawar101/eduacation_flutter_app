@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/login_service.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../app/app.locator.dart';
@@ -41,15 +42,18 @@ class LoginViewModel extends BaseViewModel {
   bool looding = false;
   bool _obscureText = true;
 
-  logIN() async {
+  logIN(context) async {
     await _loginService.logins(emailCTRL, passwordCTRL);
     if (_loginService.message == 'login successfully') {
       // log("sign up now...");
       _navigationService.navigateToButtomBarView();
     } else {
+    
       log("try again...");
     }
     log("=====>${_loginService.message}");
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: 
+    Text('Ticket Added Sucessfully'),dismissDirection: DismissDirection.endToStart,));
   }
 
   // final LocalAuthentication auth = LocalAuthentication();

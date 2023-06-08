@@ -131,7 +131,8 @@ class LoginView extends StackedView<LoginViewModel> {
               GestureDetector(
                 onTap: () {
                   // viewModel.navigateButtomBar();
-                  viewModel.logIN();
+                  viewModel.logIN(context);
+                
                 },
                 child: Container(
                   height: 50,
