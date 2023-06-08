@@ -35,7 +35,7 @@ class LoginViewModel extends BaseViewModel {
 //     // String number = numberCTRL.text.trim();
 //     String password = passwordCTRL.text.trim();
   
-  TextEditingController emailCTRL =  TextEditingController(text: "q@gmail.com");
+  TextEditingController emailCTRL =  TextEditingController(text: "xyz@gmail.com");
      
   TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
 
