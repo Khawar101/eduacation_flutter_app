@@ -20,7 +20,7 @@ class SignupService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   late final XFile? image;
-  pickImage() async {
+  Future pickImage() async {
     image = await ImagePicker()
         .pickImage(source: ImageSource.gallery, imageQuality: 45);
     Reference ref = FirebaseStorage.instance
@@ -45,6 +45,7 @@ class SignupService {
       log(onError);
       // snackBar(context, onError.toString());
     });
+    return null;
   }
 
   createAccount(nameCTRL, emailCTRL, passwordCTRL) async {
