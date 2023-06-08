@@ -7,12 +7,14 @@ import 'package:education/app/app.router.dart';
 import 'package:education/ui/common/app_colors.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import 'firebase_options.dart';
+
 Future<void> main() async {
   setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
