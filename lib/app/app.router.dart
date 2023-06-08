@@ -10,7 +10,6 @@ import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
 import 'package:education/ui/views/auth/login/login_view.dart' as _i4;
 import 'package:education/ui/views/auth/signup/signup_view.dart' as _i5;
 import 'package:education/ui/views/auth/verify/verify_view.dart' as _i7;
-import 'package:education/ui/views/e_book/book_detail/book_detail_view.dart' as _i42;
 import 'package:education/ui/views/buttom_bar/buttom_bar.dart' as _i8;
 import 'package:education/ui/views/buttom_bar/chat/chats/chats_view.dart'
     as _i10;
@@ -44,6 +43,8 @@ import 'package:education/ui/views/coursespage/courses_view.dart' as _i16;
 import 'package:education/ui/views/coursespage/favouritesub/favouritesub_view.dart'
     as _i33;
 import 'package:education/ui/views/drawer/drawer_view.dart' as _i25;
+import 'package:education/ui/views/e_book/book_detail/book_detail_view.dart'
+    as _i42;
 import 'package:education/ui/views/e_book/e_book_view.dart' as _i41;
 import 'package:education/ui/views/e_learning/categories/categories_view.dart'
     as _i40;

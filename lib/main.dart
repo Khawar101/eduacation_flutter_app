@@ -43,3 +43,33 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+// final User? user = FirebaseAuth.instance.currentUser;
+// get_Data() async {
+//   final DocumentSnapshot snapshot =
+//       await firestore.collection("users").doc(user?.uid).get();
+//   // storage.write(key: "UID", value: user.user?.uid);
+//   if (snapshot.exists) {
+//     return snapshot.data();
+//   }
+//   return null;
+// }
+
+// FutureBuilder(
+//         future: get_Data(),
+//         builder: (context, snapshot) {
+//           if (snapshot.hasError) {
+//             return const Text("Some thing Went Wrong");
+//           }
+
+//           // Once complete, show your application
+//           if (snapshot.hasData) {
+//             return BottomNavigBar(UserData: snapshot.data as Map);
+//           }
+
+//           // Otherwise, show something whilst waiting for initialization to complete
+//           return signInScreen();
+//         },
+//       ),

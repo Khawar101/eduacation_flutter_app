@@ -15,7 +15,6 @@ class LessonsView extends StatefulWidget {
 }
 
 class _LessonsViewState extends State<LessonsView> {
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LessonsViewModel>.reactive(
@@ -92,7 +91,6 @@ class _LessonsViewState extends State<LessonsView> {
                   const videoPlayer(
                       url:
                           "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
-    
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   Padding(

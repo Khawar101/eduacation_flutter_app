@@ -88,19 +88,20 @@ class SignupView extends StackedView<SignupViewModel> {
                   children: [
                     CustomTextFormField(
                       hintText: 'Name',
+                      controller: viewModel.nameCTRL,
                     ),
                     const SizedBox(height: 12),
                     CustomTextFormField(
                       hintText: 'E-Mail',
+                      controller: viewModel.emailCTRL,
                     ),
                     const SizedBox(height: 12),
                     CustomTextFormField(
                       hintText: 'Password',
+                      controller: viewModel.passwordCTRL,
                       isObscureText: viewModel.visibleCheck,
                       suffix: GestureDetector(
-                        onTap: 
-                        viewModel.visible_check,
-                        
+                        onTap: viewModel.visible_check,
                         child: Icon(
                           viewModel.visibleCheck == true
                               ? Icons.visibility_off_outlined
@@ -112,7 +113,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.09),
                     GestureDetector(
                       onTap: () {
-                        viewModel.navigateVerify();
+                        // viewModel.navigateVerify();
                       },
                       child: Container(
                         height: 50,

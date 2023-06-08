@@ -10,10 +10,11 @@ class EBookViewModel extends BaseViewModel {
     _navigationService.navigateToBookDetailView();
   }
 
-    navigateNotification() {
+  navigateNotification() {
     _navigationService.navigateToNotificationView();
   }
-    navigateBack() {
+
+  navigateBack() {
     _navigationService.back();
   }
 }

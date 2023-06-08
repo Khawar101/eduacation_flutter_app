@@ -20,7 +20,7 @@ class EBookView extends StackedView<EBookViewModel> {
           elevation: 0,
           backgroundColor: Colors.white,
           leading: GestureDetector(
-            onTap:viewModel.navigateBack,
+            onTap: viewModel.navigateBack,
             child: const Icon(
               Icons.arrow_back_ios,
               color: Colors.black54,

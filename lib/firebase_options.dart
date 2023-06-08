@@ -67,8 +67,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '771836921251',
     projectId: 'education-app-b5aed',
     storageBucket: 'education-app-b5aed.appspot.com',
-    androidClientId: '771836921251-b0kln0o3ok07bq2i46sqeqns4mmpbspr.apps.googleusercontent.com',
-    iosClientId: '771836921251-qs8cutu6q3uf3h610pj4ipf6vupahris.apps.googleusercontent.com',
+    androidClientId:
+        '771836921251-b0kln0o3ok07bq2i46sqeqns4mmpbspr.apps.googleusercontent.com',
+    iosClientId:
+        '771836921251-qs8cutu6q3uf3h610pj4ipf6vupahris.apps.googleusercontent.com',
     iosBundleId: 'com.example.education',
   );
 
@@ -78,8 +80,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '771836921251',
     projectId: 'education-app-b5aed',
     storageBucket: 'education-app-b5aed.appspot.com',
-    androidClientId: '771836921251-b0kln0o3ok07bq2i46sqeqns4mmpbspr.apps.googleusercontent.com',
-    iosClientId: '771836921251-3k37cnji4is1rtotbej4ctaa159pu2n7.apps.googleusercontent.com',
+    androidClientId:
+        '771836921251-b0kln0o3ok07bq2i46sqeqns4mmpbspr.apps.googleusercontent.com',
+    iosClientId:
+        '771836921251-3k37cnji4is1rtotbej4ctaa159pu2n7.apps.googleusercontent.com',
     iosBundleId: 'com.example.education.RunnerTests',
   );
 }

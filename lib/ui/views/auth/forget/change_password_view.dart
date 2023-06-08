@@ -68,7 +68,7 @@ class ChangePasswordView extends StackedView<ForgetViewModel> {
                       hintText: 'New Password',
                       isObscureText: viewModel.visibleCheck,
                       suffix: GestureDetector(
-                        onTap:  viewModel.visible_check,
+                        onTap: viewModel.visible_check,
                         child: Icon(
                           viewModel.visibleCheck == true
                               ? Icons.visibility_off_outlined
@@ -84,7 +84,7 @@ class ChangePasswordView extends StackedView<ForgetViewModel> {
                         hintText: 'Confirm Password',
                         isObscureText: viewModel.visibleCheck2,
                         suffix: GestureDetector(
-                           onTap: viewModel.visible_check2,
+                          onTap: viewModel.visible_check2,
                           child: Icon(
                             viewModel.visibleCheck2 == true
                                 ? Icons.visibility_off_outlined

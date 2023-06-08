@@ -43,7 +43,7 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
             Padding(
               padding: const EdgeInsets.only(right: 15),
               child: GestureDetector(
-                               onTap: viewModel.navigateSetting,
+                onTap: viewModel.navigateSetting,
                 child: const Icon(
                   Icons.settings_outlined,
                   color: Colors.black54,
