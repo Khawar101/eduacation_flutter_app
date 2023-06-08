@@ -1,45 +1,51 @@
 {
   "project_info": {
-    "project_number": "296138001275",
-    "project_id": "flutter-signup-login-app",
-    "storage_bucket": "flutter-signup-login-app.appspot.com"
+    "project_number": "771836921251",
+    "project_id": "education-app-b5aed",
+    "storage_bucket": "education-app-b5aed.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:296138001275:android:60cbedd708a3d6ff7d8bde",
+        "mobilesdk_app_id": "1:771836921251:android:ef9c9612e2fbc0a8e98616",
         "android_client_info": {
           "package_name": "com.example.education"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "771836921251-b0kln0o3ok07bq2i46sqeqns4mmpbspr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.education",
+            "certificate_hash": "3c1ed41abc5136915c90c83513709758a9f63932"
+          }
+        },
+        {
+          "client_id": "771836921251-mer7fnbuep3g3dt82r25psmu2gtb0ff7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDFt9rfagvcgwcJu2R7DFizFqBEztxsrWg"
+          "current_key": "AIzaSyDGFMAhWG2lDZSEaUAuFR0oRp8JOfxmcHM"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:296138001275:android:2bd2fd3b36ead7177d8bde",
-        "android_client_info": {
-          "package_name": "com.example.login_signup_firebase"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDFt9rfagvcgwcJu2R7DFizFqBEztxsrWg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771836921251-mer7fnbuep3g3dt82r25psmu2gtb0ff7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "771836921251-3k37cnji4is1rtotbej4ctaa159pu2n7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.education.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }
