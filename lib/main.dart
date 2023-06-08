@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
               bodyColor: Colors.black,
             ),
       ),
-      initialRoute: Routes.splashScreenView,
+      initialRoute: Routes.signupView,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       navigatorKey: StackedService.navigatorKey,
       navigatorObservers: [

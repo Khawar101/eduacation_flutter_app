@@ -1,9 +1,8 @@
-// ignore_for_file: non_constant_identifier_names
-
+// ignore_for_file: non_constant_identifier_names, unnecessary_null_comparison
 import 'dart:developer';
 
 import 'package:education/app/app.router.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:education/services/signup_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,6 +12,7 @@ import '../../../../app/app.locator.dart';
 class SignupViewModel extends BaseViewModel {
   bool visibleCheck = true;
   final _navigationService = locator<NavigationService>();
+  final _signupService = locator<SignupService>();
 
   visible_check() {
     visibleCheck = !visibleCheck;
@@ -23,11 +23,21 @@ class SignupViewModel extends BaseViewModel {
     _navigationService.navigateToVerifyView();
   }
 
-  TextEditingController nameCTRL = TextEditingController();
-  TextEditingController emailCTRL = TextEditingController();
+  TextEditingController nameCTRL = TextEditingController(text: "xyz");
+  TextEditingController emailCTRL =
+      TextEditingController(text: "xyz@gmail.com");
   // TextEditingController numberCTRL = TextEditingController();
-  TextEditingController passwordCTRL = TextEditingController();
-
+  TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
+  signUP() async {
+    await _signupService.createAccount(nameCTRL, emailCTRL, passwordCTRL);
+    if (_signupService.signupMessage == '') {
+      log("sign up now...");
+      // _navigationService.navigateToVerifyView();
+    } else {
+      log("try again...");
+    }
+    log("=====>${_signupService.signupMessage}");
+  }
 
   // void sendOTP() async {
   //   String number = "+92" + numberCTRL.text.trim();
