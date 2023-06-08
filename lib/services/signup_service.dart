@@ -1,12 +1,50 @@
-import 'dart:developer';
+// ignore_for_file: body_might_complete_normally_catch_error
 
+import 'dart:developer';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class SignupService {
   var signupMessage = "";
   var message = "";
-  EmailAuth emailAuth = new EmailAuth(sessionName: "Sample session");
+  EmailAuth emailAuth = EmailAuth(sessionName: "Sample session");
+
+  config() {
+    print("O=====>");
+    emailAuth.config({"server": "server url", "serverKey": "serverKey"});
+  }
+
+  late final XFile? image;
+  pickImage() async {
+    image = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 45);
+    Reference ref = FirebaseStorage.instance
+        .ref()
+        .child("${DateTime.now().microsecondsSinceEpoch}");
+    UploadTask uploadTask = ref.putFile(File(image!.path));
+    // uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
+    //   double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    //     progressshow = progress;
+
+    // });
+    uploadTask.whenComplete(() async {
+      var url = await ref.getDownloadURL();
+      FirebaseAuth.instance.currentUser!.updatePhotoURL(url);
+      print(url);
+      // FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+      // await firestore.collection("users").doc(widget.UserData["UID"]).update({
+      //   "profile": url,
+      // });
+      // widget.UserData["profile"] = url;
+    }).catchError((onError) {
+      print(onError);
+      // snackBar(context, onError.toString());
+    });
+  }
 
   late UserCredential userdata;
   createAccount(nameCTRL, emailCTRL, passwordCTRL) async {

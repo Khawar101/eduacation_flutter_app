@@ -13,7 +13,6 @@ class SignupViewModel extends BaseViewModel {
   bool visibleCheck = true;
   final _navigationService = locator<NavigationService>();
   final _signupService = locator<SignupService>();
-
   visible_check() {
     visibleCheck = !visibleCheck;
     notifyListeners();
@@ -24,7 +23,7 @@ class SignupViewModel extends BaseViewModel {
   }
 
   TextEditingController nameCTRL = TextEditingController(text: "xyz");
-  TextEditingController emailCTRL = TextEditingController(text: "@gmail.com");
+  TextEditingController emailCTRL = TextEditingController(text: "mudassirmukhtar4@gmail.com");
   // TextEditingController numberCTRL = TextEditingController();
   TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
   signUP() async {
