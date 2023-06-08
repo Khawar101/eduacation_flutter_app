@@ -52,14 +52,22 @@ class SignupView extends StackedView<SignupViewModel> {
                 // ignore: prefer_const_constructors
                 Stack(
                   children: [
-                    const Center(
-                      child: CircleAvatar(
-                        radius: 65,
-                        backgroundImage:
-                            AssetImage('assets/images/download.jpeg'),
-                        backgroundColor: Colors.transparent,
-                        foregroundColor: Colors.transparent,
-                      ),
+                    Center(
+                      child: viewModel.signupService.profile == null
+                          ? const CircleAvatar(
+                              radius: 65,
+                              backgroundImage:
+                                  AssetImage('assets/images/download.jpeg'),
+                              backgroundColor: Colors.transparent,
+                              foregroundColor: Colors.transparent,
+                            )
+                          : CircleAvatar(
+                              radius: 65,
+                              backgroundImage:
+                                  NetworkImage(viewModel.profile),
+                              backgroundColor: Colors.transparent,
+                              foregroundColor: Colors.transparent,
+                            ),
                     ),
                     Center(
                       child: CircleAvatar(
