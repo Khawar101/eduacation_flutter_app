@@ -1,13 +1,11 @@
 // ignore_for_file: unused_field, prefer_final_fields, non_constant_identifier_names
 
 import 'dart:developer';
-
 import 'package:education/app/app.router.dart';
 import 'package:education/services/login_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../../app/app.locator.dart';
 
 class LoginViewModel extends BaseViewModel {

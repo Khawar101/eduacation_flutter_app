@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../widgets/app_utils.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import 'signup_viewmodel.dart';

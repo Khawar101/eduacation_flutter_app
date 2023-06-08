@@ -56,8 +56,7 @@ class SignupService {
     String password = passwordCTRL.text.trim();
 
     if (name == "" || email == "" || password == "") {
-      message = "filled all filed";
-      
+      message = "filled all filed";   
     } else {
       try {
         UserCredential user = await FirebaseAuth.instance
@@ -94,13 +93,12 @@ class SignupService {
       }
     }
   }
-
   verify(otp, email) {
     bool result = (EmailAuth.validate(
         receiverMail:
             email.value.text, //to make sure the email ID is not changed
         userOTP: otp.value.text)); //pass in the OTP typed in
-    ///This will return you a bool, and you can proceed further after that, add a fail case and a success case (result will be true/false)
+
 
     if (!result) {
       message = "enter Correct OTP";
@@ -109,14 +107,12 @@ class SignupService {
     return result;
   }
 
-  /// a void funtion to send the OTP to the user
-  /// Can also be converted into a Boolean function and render accordingly for providers
+  
   sendOtpS(emailCTRL) async {
     try {
-      ///Accessing the EmailAuth class from the package
+   
       EmailAuth.sessionName = "Sample";
 
-      ///a boolean value will be returned if the OTP is sent successfully
       var result = await EmailAuth.sendOtp(receiverMail: emailCTRL.text);
 
       if (result) {
