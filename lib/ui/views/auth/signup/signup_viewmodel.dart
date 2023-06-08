@@ -13,7 +13,7 @@ class SignupViewModel extends BaseViewModel {
   bool visibleCheck = true;
   var profile;
   final _navigationService = locator<NavigationService>();
-  final signupService = locator<SignupService>();
+  final _signupService = locator<SignupService>();
   visible_check() {
     visibleCheck = !visibleCheck;
     notifyListeners();
@@ -29,39 +29,39 @@ class SignupViewModel extends BaseViewModel {
   // TextEditingController numberCTRL = TextEditingController();
   TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
   signUP() async {
-    await signupService.createAccount(nameCTRL, emailCTRL, passwordCTRL);
-    if (signupService.message == '') {
+    await _signupService.createAccount(nameCTRL, emailCTRL, passwordCTRL);
+    if (_signupService.message == '') {
       log("sign up now...");
       // _navigationService.navigateToVerifyView();
     } else {
       log("try again...");
     }
-    log("=====>${signupService.message}");
+    log("=====>${_signupService.message}");
   }
 
   uploadProfile() async {
-    await signupService.pickImage();
-    if (signupService.message != '') {
+    await _signupService.pickImage();
+    if (_signupService.message != '') {
       log("Profile uploded successfully...");
       // _navigationService.navigateToVerifyView();
-      profile = signupService.profile;
+      profile = _signupService.profile;
       log('2====>$profile');
       notifyListeners();
     } else {
       log("try again...");
     }
-    log("=====>${signupService.message}");
+    log("=====>${_signupService.message}");
   }
 
   sendOtp() async {
-    await signupService.sendOtpS(emailCTRL);
-    if (signupService.message == '') {
+    await _signupService.sendOtpS(emailCTRL);
+    if (_signupService.message == '') {
       log("sign up now...");
       // _navigationService.navigateToVerifyView();
     } else {
       log("try again...");
     }
-    log("=====>${signupService.message}");
+    log("=====>${_signupService.message}");
   }
 
   // void sendOTP() async {

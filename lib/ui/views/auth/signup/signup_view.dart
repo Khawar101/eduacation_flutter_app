@@ -53,7 +53,7 @@ class SignupView extends StackedView<SignupViewModel> {
                 Stack(
                   children: [
                     Center(
-                      child: viewModel.signupService.profile == null
+                      child: viewModel.profile == null
                           ? const CircleAvatar(
                               radius: 65,
                               backgroundImage:
