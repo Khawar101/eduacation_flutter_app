@@ -63,8 +63,7 @@ class SignupView extends StackedView<SignupViewModel> {
                             )
                           : CircleAvatar(
                               radius: 65,
-                              backgroundImage:
-                                  NetworkImage(viewModel.profile),
+                              backgroundImage: NetworkImage(viewModel.profile),
                               backgroundColor: Colors.transparent,
                               foregroundColor: Colors.transparent,
                             ),

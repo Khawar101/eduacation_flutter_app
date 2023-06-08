@@ -4,6 +4,7 @@ import 'package:education/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:education/services/signup_service.dart';
 import 'package:education/services/login_service.dart';
+import 'package:education/services/profile_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -14,6 +15,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SignupService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<LoginService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<ProfileService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -22,6 +24,7 @@ void registerServices() {
   getAndRegisterDialogService();
   getAndRegisterSignupService();
   getAndRegisterLoginService();
+  getAndRegisterProfileService();
 // @stacked-mock-register
 }
 
@@ -86,6 +89,13 @@ MockLoginService getAndRegisterLoginService() {
   _removeRegistrationIfExists<LoginService>();
   final service = MockLoginService();
   locator.registerSingleton<LoginService>(service);
+  return service;
+}
+
+MockProfileService getAndRegisterProfileService() {
+  _removeRegistrationIfExists<ProfileService>();
+  final service = MockProfileService();
+  locator.registerSingleton<ProfileService>(service);
   return service;
 }
 // @stacked-mock-create

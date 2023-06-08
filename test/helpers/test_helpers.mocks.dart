@@ -8,11 +8,13 @@
 import 'dart:async' as _i6;
 import 'dart:ui' as _i7;
 
-import 'package:education/services/login_service.dart' as _i9;
+import 'package:cloud_firestore/cloud_firestore.dart' as _i2;
+import 'package:education/services/login_service.dart' as _i10;
+import 'package:education/services/Model/userData.dart' as _i3;
+import 'package:education/services/profile_service.dart' as _i11;
 import 'package:education/services/signup_service.dart' as _i8;
-import 'package:email_auth/email_auth.dart' as _i2;
-import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:flutter/material.dart' as _i5;
+import 'package:image_picker/image_picker.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i4;
 
@@ -27,8 +29,9 @@ import 'package:stacked_services/stacked_services.dart' as _i4;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeEmailAuth_0 extends _i1.SmartFake implements _i2.EmailAuth {
-  _FakeEmailAuth_0(
+class _FakeFirebaseFirestore_0 extends _i1.SmartFake
+    implements _i2.FirebaseFirestore {
+  _FakeFirebaseFirestore_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -37,9 +40,8 @@ class _FakeEmailAuth_0 extends _i1.SmartFake implements _i2.EmailAuth {
         );
 }
 
-class _FakeUserCredential_1 extends _i1.SmartFake
-    implements _i3.UserCredential {
-  _FakeUserCredential_1(
+class _FakeuserData_1 extends _i1.SmartFake implements _i3.userData {
+  _FakeuserData_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -658,19 +660,78 @@ class MockDialogService extends _i1.Mock implements _i4.DialogService {
 /// See the documentation for Mockito's code generation for more information.
 class MockSignupService extends _i1.Mock implements _i8.SignupService {
   @override
-  String get signupMessage => (super.noSuchMethod(
-        Invocation.getter(#signupMessage),
+  String get message => (super.noSuchMethod(
+        Invocation.getter(#message),
         returnValue: '',
         returnValueForMissingStub: '',
       ) as String);
   @override
-  set signupMessage(String? _signupMessage) => super.noSuchMethod(
+  set message(String? _message) => super.noSuchMethod(
         Invocation.setter(
-          #signupMessage,
-          _signupMessage,
+          #message,
+          _message,
         ),
         returnValueForMissingStub: null,
       );
+  @override
+  set profile(dynamic _profile) => super.noSuchMethod(
+        Invocation.setter(
+          #profile,
+          _profile,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set userdata(dynamic _userdata) => super.noSuchMethod(
+        Invocation.setter(
+          #userdata,
+          _userdata,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i2.FirebaseFirestore get firestore => (super.noSuchMethod(
+        Invocation.getter(#firestore),
+        returnValue: _FakeFirebaseFirestore_0(
+          this,
+          Invocation.getter(#firestore),
+        ),
+        returnValueForMissingStub: _FakeFirebaseFirestore_0(
+          this,
+          Invocation.getter(#firestore),
+        ),
+      ) as _i2.FirebaseFirestore);
+  @override
+  set firestore(_i2.FirebaseFirestore? _firestore) => super.noSuchMethod(
+        Invocation.setter(
+          #firestore,
+          _firestore,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set image(_i9.XFile? _image) => super.noSuchMethod(
+        Invocation.setter(
+          #image,
+          _image,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i6.Future<dynamic> pickImage() => (super.noSuchMethod(
+        Invocation.method(
+          #pickImage,
+          [],
+        ),
+        returnValue: _i6.Future<dynamic>.value(),
+        returnValueForMissingStub: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
+}
+
+/// A class which mocks [LoginService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLoginService extends _i1.Mock implements _i10.LoginService {
   @override
   String get message => (super.noSuchMethod(
         Invocation.getter(#message),
@@ -686,48 +747,28 @@ class MockSignupService extends _i1.Mock implements _i8.SignupService {
         returnValueForMissingStub: null,
       );
   @override
-  _i2.EmailAuth get emailAuth => (super.noSuchMethod(
-        Invocation.getter(#emailAuth),
-        returnValue: _FakeEmailAuth_0(
+  _i3.userData get UserData => (super.noSuchMethod(
+        Invocation.getter(#UserData),
+        returnValue: _FakeuserData_1(
           this,
-          Invocation.getter(#emailAuth),
+          Invocation.getter(#UserData),
         ),
-        returnValueForMissingStub: _FakeEmailAuth_0(
+        returnValueForMissingStub: _FakeuserData_1(
           this,
-          Invocation.getter(#emailAuth),
+          Invocation.getter(#UserData),
         ),
-      ) as _i2.EmailAuth);
+      ) as _i3.userData);
   @override
-  set emailAuth(_i2.EmailAuth? _emailAuth) => super.noSuchMethod(
+  set UserData(_i3.userData? _UserData) => super.noSuchMethod(
         Invocation.setter(
-          #emailAuth,
-          _emailAuth,
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
-  _i3.UserCredential get userdata => (super.noSuchMethod(
-        Invocation.getter(#userdata),
-        returnValue: _FakeUserCredential_1(
-          this,
-          Invocation.getter(#userdata),
-        ),
-        returnValueForMissingStub: _FakeUserCredential_1(
-          this,
-          Invocation.getter(#userdata),
-        ),
-      ) as _i3.UserCredential);
-  @override
-  set userdata(_i3.UserCredential? _userdata) => super.noSuchMethod(
-        Invocation.setter(
-          #userdata,
-          _userdata,
+          #UserData,
+          _UserData,
         ),
         returnValueForMissingStub: null,
       );
 }
 
-/// A class which mocks [LoginService].
+/// A class which mocks [ProfileService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLoginService extends _i1.Mock implements _i9.LoginService {}
+class MockProfileService extends _i1.Mock implements _i11.ProfileService {}

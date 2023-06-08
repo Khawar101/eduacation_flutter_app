@@ -13,8 +13,8 @@ import '../../../../app/app.locator.dart';
 class LoginViewModel extends BaseViewModel {
   bool visibleCheck = true;
   final _navigationService = locator<NavigationService>();
-   final _loginService = locator<LoginService>();
-  
+  final _loginService = locator<LoginService>();
+
   visible_check() {
     visibleCheck = !visibleCheck;
     notifyListeners();
@@ -34,17 +34,17 @@ class LoginViewModel extends BaseViewModel {
 //  String email = emailCTRL.text.trim();
 //     // String number = numberCTRL.text.trim();
 //     String password = passwordCTRL.text.trim();
-  
-  TextEditingController emailCTRL =  TextEditingController(text: "xyz@gmail.com");
-     
+
+  TextEditingController emailCTRL =
+      TextEditingController(text: "xyz@gmail.com");
+
   TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
 
   bool looding = false;
   bool _obscureText = true;
 
-  
   logIN() async {
-    await _loginService.logins( emailCTRL, passwordCTRL);
+    await _loginService.logins(emailCTRL, passwordCTRL);
     if (_loginService.message == 'login successfully') {
       // log("sign up now...");
       _navigationService.navigateToButtomBarView();
@@ -53,9 +53,6 @@ class LoginViewModel extends BaseViewModel {
     }
     log("=====>${_loginService.message}");
   }
-
-
-
 
   // final LocalAuthentication auth = LocalAuthentication();
   // _SupportState _supportState = _SupportState.unknown;
