@@ -12,7 +12,13 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
   final String password;
   final String fName;
   final String LName;
-  const EditInfoView( {Key? key,required this.email,required this.password,required this.fName,required this.LName,}) : super(key: key);
+  const EditInfoView({
+    Key? key,
+    required this.email,
+    required this.password,
+    required this.fName,
+    required this.LName,
+  }) : super(key: key);
 
   @override
   Widget builder(
@@ -110,6 +116,7 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     hintText: 'E-Mail',
+                    initialValue: email,
                     controller: viewModel.emailCTRL,
                   ),
                   const SizedBox(height: 20),
@@ -117,6 +124,7 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     hintText: 'Password',
+                    initialValue: password,
                     controller: viewModel.passwordCTRL,
                     isObscureText: viewModel.visibleCheck,
                     suffix: GestureDetector(
@@ -134,6 +142,7 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     hintText: 'First Name',
+                    initialValue: fName,
                     controller: viewModel.firstNameCTRL,
                   ),
                   const SizedBox(height: 20),
@@ -141,6 +150,7 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     hintText: 'Last Name',
+                    initialValue: LName,
                     controller: viewModel.lastNameCTRL,
                   ),
                   const SizedBox(height: 35),
@@ -173,5 +183,5 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
   EditInfoViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      EditInfoViewModel(email, password, fName,LName,);
+      EditInfoViewModel();
 }

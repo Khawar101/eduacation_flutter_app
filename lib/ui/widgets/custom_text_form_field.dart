@@ -30,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
     this.disabledBorder,
     this.hintStyle,
     this.inputFormaters,
+    this.initialValue,
     this.textAlign,
   });
 
@@ -70,7 +71,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget? suffix;
 
   BoxConstraints? suffixConstraints;
-
+  var initialValue;
   FormFieldValidator<String>? validator;
 
   InputBorder? border;
@@ -116,6 +117,7 @@ class CustomTextFormField extends StatelessWidget {
         inputFormatters: inputFormaters,
         maxLines: maxLines ?? 1,
         decoration: _buildDecoration(),
+        initialValue: initialValue,
         validator: validator,
       ),
     );
