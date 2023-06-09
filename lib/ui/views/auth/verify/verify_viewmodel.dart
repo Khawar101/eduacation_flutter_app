@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:education/app/app.router.dart';
 import 'package:education/services/signup_service.dart';
-import 'package:education/ui/views/auth/forget/otp_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';

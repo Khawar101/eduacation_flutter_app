@@ -42,7 +42,6 @@ class LoginService {
         message = "login successfully";
       } else {
         message = "Please fill all text field";
-              
       }
     } catch (e) {
       message = e.toString();

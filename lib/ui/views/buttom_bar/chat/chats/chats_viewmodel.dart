@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.router.dart';
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -12,7 +10,6 @@ class ChatsViewModel extends BaseViewModel {
   navigateinbox() {
     _navigationService.navigateToInboxView();
   }
-
 
   //  StreamBuilder<QuerySnapshot>(
   //     stream: _usersStream,

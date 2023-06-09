@@ -132,7 +132,6 @@ class LoginView extends StackedView<LoginViewModel> {
                 onTap: () {
                   // viewModel.navigateButtomBar();
                   viewModel.logIN(context);
-                
                 },
                 child: Container(
                   height: 50,
