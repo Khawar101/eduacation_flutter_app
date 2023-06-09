@@ -48,12 +48,13 @@ class LoginViewModel extends BaseViewModel {
       // log("sign up now...");
       _navigationService.navigateToButtomBarView();
     } else {
-    
       log("try again...");
     }
     log("=====>${_loginService.message}");
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: 
-    Text('Ticket Added Sucessfully'),dismissDirection: DismissDirection.endToStart,));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Ticket Added Sucessfully'),
+      dismissDirection: DismissDirection.endToStart,
+    ));
   }
 
   // final LocalAuthentication auth = LocalAuthentication();

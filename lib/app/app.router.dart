@@ -437,8 +437,14 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i13.EditInfoView: (data) {
+      final args = data.getArgs<EditInfoViewArguments>(nullOk: false);
       return _i43.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i13.EditInfoView(),
+        builder: (context) => _i13.EditInfoView(
+            key: args.key,
+            email: args.email,
+            password: args.password,
+            fName: args.fName,
+            LName: args.LName),
         settings: data,
       );
     },
@@ -624,6 +630,50 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
+class EditInfoViewArguments {
+  const EditInfoViewArguments({
+    this.key,
+    required this.email,
+    required this.password,
+    required this.fName,
+    required this.LName,
+  });
+
+  final _i43.Key? key;
+
+  final String email;
+
+  final String password;
+
+  final String fName;
+
+  final String LName;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "email": "$email", "password": "$password", "fName": "$fName", "LName": "$LName"}';
+  }
+
+  @override
+  bool operator ==(covariant EditInfoViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.email == email &&
+        other.password == password &&
+        other.fName == fName &&
+        other.LName == LName;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^
+        email.hashCode ^
+        password.hashCode ^
+        fName.hashCode ^
+        LName.hashCode;
+  }
+}
+
 extension NavigatorStateExtension on _i44.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
@@ -779,14 +829,25 @@ extension NavigatorStateExtension on _i44.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToEditInfoView([
+  Future<dynamic> navigateToEditInfoView({
+    _i43.Key? key,
+    required String email,
+    required String password,
+    required String fName,
+    required String LName,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.editInfoView,
+        arguments: EditInfoViewArguments(
+            key: key,
+            email: email,
+            password: password,
+            fName: fName,
+            LName: LName),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1353,14 +1414,25 @@ extension NavigatorStateExtension on _i44.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithEditInfoView([
+  Future<dynamic> replaceWithEditInfoView({
+    _i43.Key? key,
+    required String email,
+    required String password,
+    required String fName,
+    required String LName,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.editInfoView,
+        arguments: EditInfoViewArguments(
+            key: key,
+            email: email,
+            password: password,
+            fName: fName,
+            LName: LName),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

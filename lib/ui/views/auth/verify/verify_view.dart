@@ -123,7 +123,6 @@ class VerifyView extends StackedView<VerifyViewModel> {
                     GestureDetector(
                       onTap: () {
                         viewModel.verifyOtp();
-
                       },
                       child: Container(
                         height: 50,
@@ -144,7 +143,6 @@ class VerifyView extends StackedView<VerifyViewModel> {
               ),
               NumericKeyboard(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                
                 onKeyboardTap: (value) =>
                     viewModel.onKeyboardTap(value, context),
                 textColor: Colors.black,

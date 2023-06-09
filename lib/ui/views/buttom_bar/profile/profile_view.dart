@@ -172,7 +172,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                                 color: Colors.white,
                               ),
                               GestureDetector(
-                                onTap: viewModel.navigateEditProfile,
+                                onTap: viewModel.navigateEditProfile(viewModel.loginService.UserData),
                                 child: Image.asset(
                                   'assets/icons/pencil-book.png',
                                   scale: 1.5,

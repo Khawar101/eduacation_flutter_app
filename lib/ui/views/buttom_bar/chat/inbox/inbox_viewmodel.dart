@@ -44,7 +44,7 @@ class InboxViewModel extends BaseViewModel {
   //     }
   //   } catch (e) {
   //     // ScaffoldMessenger.of(context).showSnackBar(
-  //     //   SnackBar(
+  //     //   Bar(
   //     //     content: Text(e.toString()),
   //     //   ),
   //     // );

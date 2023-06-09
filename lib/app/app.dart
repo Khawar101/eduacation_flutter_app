@@ -48,6 +48,7 @@ import 'package:education/services/signup_service.dart';
 import 'package:education/services/login_service.dart';
 import 'package:education/services/profile_service.dart';
 import 'package:education/services/chats_service.dart';
+import 'package:education/services/forgetpassword_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -104,6 +105,7 @@ import 'package:education/services/chats_service.dart';
     LazySingleton(classType: LoginService),
     LazySingleton(classType: ProfileService),
     LazySingleton(classType: ChatsService),
+    LazySingleton(classType: ForgetpasswordService),
 // @stacked-service
   ],
   bottomsheets: [

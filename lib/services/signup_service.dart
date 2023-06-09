@@ -47,7 +47,7 @@ class SignupService {
     String name = nameCTRL.text.trim();
     String email = emailCTRL.text.trim();
     String password = passwordCTRL.text.trim();
-    if (name == "" || email == "" || password == "" || profile == null) {
+    if (name == "" || email == "" || password == "") {
       message = "filled all filed";
     } else {
       try {
@@ -82,7 +82,7 @@ class SignupService {
     String email = emailCTRL.text.trim();
     String password = passwordCTRL.text.trim();
 
-    if (name == "" || email == "" || password == "" || profile == '') {
+    if (name == "" || email == "" || password == "") {
       message = "filled all filed";
     } else {
       try {

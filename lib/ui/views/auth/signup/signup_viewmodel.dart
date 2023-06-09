@@ -24,10 +24,10 @@ class SignupViewModel extends BaseViewModel {
   }
 
   TextEditingController nameCTRL = TextEditingController(text: "xyz");
-  TextEditingController emailCTRL =TextEditingController(text: "khawarjutt101@gmail.com");
+  TextEditingController emailCTRL =
+      TextEditingController(text: "khawarjutt101@gmail.com");
   TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
   signUP() async {
-    
     await _signupService.createAccount(nameCTRL, emailCTRL, passwordCTRL);
     if (_signupService.message == '') {
       log("sign up now...");
@@ -57,11 +57,10 @@ class SignupViewModel extends BaseViewModel {
     await _signupService.sendOtpS(nameCTRL, emailCTRL, passwordCTRL);
     if (_signupService.message == 'OTP has been sent') {
       log("sign up now...");
-       _navigationService.navigateToVerifyView();
+      _navigationService.navigateToVerifyView();
     } else {
       log("try again...");
     }
     log("=====>${_signupService.message}");
   }
-
 }
