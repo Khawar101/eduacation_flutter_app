@@ -8,7 +8,11 @@ import '../../../../widgets/custom_text_form_field.dart';
 import 'edit_info_viewmodel.dart';
 
 class EditInfoView extends StackedView<EditInfoViewModel> {
-  const EditInfoView({Key? key}) : super(key: key);
+  final String email;
+  final String password;
+  final String fName;
+  final String LName;
+  const EditInfoView( {Key? key,required this.email,required this.password,required this.fName,required this.LName,}) : super(key: key);
 
   @override
   Widget builder(
@@ -169,5 +173,5 @@ class EditInfoView extends StackedView<EditInfoViewModel> {
   EditInfoViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      EditInfoViewModel();
+      EditInfoViewModel(email, password, fName,LName,);
 }

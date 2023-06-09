@@ -10,10 +10,15 @@ import '../../../../../app/app.locator.dart';
 import '../../../../../services/login_service.dart';
 
 class EditInfoViewModel extends BaseViewModel {
-  bool visibleCheck = true;
+  final String email;
+  final String password;
+  final String fName;
+  final String LName;  bool visibleCheck = true;
   final _navigationService = locator<NavigationService>();
   final _profileService = locator<ProfileService>();
   final loginService = locator<LoginService>();
+
+  EditInfoViewModel(this.email, this.password, this.fName, this.LName);
 
   visible_check() {
     visibleCheck = !visibleCheck;
@@ -24,7 +29,7 @@ class EditInfoViewModel extends BaseViewModel {
     _navigationService.navigateToSettingView();
   }
 
-  TextEditingController emailCTRL = TextEditingController();
+  TextEditingController emailCTRL = TextEditingController(text: email);
   TextEditingController passwordCTRL = TextEditingController();
   TextEditingController firstNameCTRL = TextEditingController();
   TextEditingController lastNameCTRL = TextEditingController();

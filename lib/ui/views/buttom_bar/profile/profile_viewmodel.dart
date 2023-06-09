@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:education/app/app.router.dart';
+import 'package:education/services/Model/userData.dart';
 // import 'package:education/services/login_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -12,13 +13,17 @@ class ProfileViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final loginService = locator<LoginService>();
 
-  navigateEditProfile() {
-    log('====>not move');
-    _navigationService.navigateToEditInfoView();
+  navigateEditProfile(userData data) async {
+    await _navigationService.navigateToEditInfoView(
+        email: data.email.toString(),
+        password: data.password.toString(),
+        fName: data.firstName.toString(),
+        LName: data.lastName.toString());
+    log("hello");
+    rebuildUi();
   }
 
   navigateSetting() {
-    log('====>not move');
     _navigationService.navigateToSettingView();
   }
 }
