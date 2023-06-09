@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../widgets/app_utils.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import 'forget_viewmodel.dart';
@@ -17,6 +16,20 @@ class ForgetView extends StackedView<ForgetViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black54,
+            size: 18,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -60,10 +73,10 @@ class ForgetView extends StackedView<ForgetViewModel> {
               ), //
               const SizedBox(height: 25),
               CustomTextFormField(
-                hintText: 'Phone Number',
-                textInputType: TextInputType.number,
+                // controller: viewModel.emailCTRL,
+                hintText: 'Email id',
                 prefix: const Icon(
-                  Icons.phone_forwarded,
+                  Icons.mail_outlined,
                   size: 20,
                   color: Colors.black,
                 ),
@@ -105,7 +118,7 @@ class ForgetView extends StackedView<ForgetViewModel> {
                         color: Color(0xff4873a6),
                       ),
                     ),
-                    TextSpan(text: 'to your\n phone number.'),
+                    TextSpan(text: 'to your\n Email Address.'),
                   ],
                 ),
               ),
