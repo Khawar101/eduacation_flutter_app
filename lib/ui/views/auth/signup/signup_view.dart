@@ -123,7 +123,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     GestureDetector(
                       onTap: () {
                         // viewModel.navigateVerify();
-                        viewModel.signUP();
+                        viewModel.sendOtp();
                       },
                       child: Container(
                         height: 50,

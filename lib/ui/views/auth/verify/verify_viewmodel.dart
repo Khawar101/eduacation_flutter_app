@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:education/app/app.router.dart';
+import 'package:education/services/signup_service.dart';
+import 'package:education/ui/views/auth/forget/otp_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -6,6 +10,9 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../../../app/app.locator.dart';
 
 class VerifyViewModel extends BaseViewModel {
+  final _navigationService = locator<NavigationService>();
+  final _signupService = locator<SignupService>();
+
   final List<String> _codes = ['', '', '', '', '', ''];
   List<String> get codes => _codes;
   onKeyboardTap(String value, context) {
@@ -38,9 +45,20 @@ class VerifyViewModel extends BaseViewModel {
     }
   }
 
-  final _navigationService = locator<NavigationService>();
+  verifyOtp() async {
+    var otp = _codes.reduce((value, element) => value + element);
 
-  navigateLogin() {
-    _navigationService.navigateToLoginView();
+    await _signupService.verify(otp);
+    if (_signupService.message == 'verify correct') {
+      log("otp is correct congratulation");
+      _navigationService.navigateToButtomBarView();
+    } else {
+      log("try again...");
+    }
+    log("=====>${_signupService.message}");
+  }
+
+  navigateapplication() {
+    _navigationService.navigateToButtomBarView();
   }
 }

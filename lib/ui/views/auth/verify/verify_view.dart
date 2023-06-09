@@ -16,7 +16,6 @@ class VerifyView extends StackedView<VerifyViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      //    backgroundColor: const Color(0xffe4f1f8),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -123,7 +122,8 @@ class VerifyView extends StackedView<VerifyViewModel> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        viewModel.navigateLogin();
+                        viewModel.verifyOtp();
+
                       },
                       child: Container(
                         height: 50,
@@ -144,6 +144,7 @@ class VerifyView extends StackedView<VerifyViewModel> {
               ),
               NumericKeyboard(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                
                 onKeyboardTap: (value) =>
                     viewModel.onKeyboardTap(value, context),
                 textColor: Colors.black,
