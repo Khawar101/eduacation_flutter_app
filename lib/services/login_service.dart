@@ -1,7 +1,5 @@
 // ignore_for_file: unused_local_variable, prefer_typing_uninitialized_variables, non_constant_identifier_names
 
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -31,7 +29,6 @@ class LoginService {
         // storage.write(key: "UID", value: user.user?.uid);
         // final data = snapshot.data();
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-        log(data["UID"]);
         UserData = userData(
             uID: data["UID"],
             username: data["username"],
@@ -40,7 +37,6 @@ class LoginService {
             email: data["email"],
             password: data["password"],
             profile: data["profile"]);
-        log(UserData.email.toString());
         message = "login successfully";
       } else {
         message = "Please fill all text field";
@@ -48,5 +44,21 @@ class LoginService {
     } catch (e) {
       message = e.toString();
     }
+  }
+
+  updateUserData() async {
+    final DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(UserData.uID)
+        .get();
+    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+    UserData = userData(
+        uID: data["UID"],
+        username: data["username"],
+        firstName: data["firstName"],
+        lastName: data["lastName"],
+        email: data["email"],
+        password: data["password"],
+        profile: data["profile"]);
   }
 }

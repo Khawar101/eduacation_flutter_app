@@ -13,8 +13,8 @@ class ProfileViewModel extends BaseViewModel {
     await _navigationService.navigateToEditInfoView(
         email: data.email.toString(),
         password: data.password.toString(),
-        fName: data.firstName.toString(),
-        LName: data.lastName.toString());
+        firstName: data.firstName.toString(),
+        lastName: data.lastName.toString());
     rebuildUi();
   }
 

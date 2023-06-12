@@ -443,8 +443,8 @@ class StackedRouter extends _i1.RouterBase {
             key: args.key,
             email: args.email,
             password: args.password,
-            fName: args.fName,
-            LName: args.LName),
+            firstName: args.firstName,
+            lastName: args.lastName),
         settings: data,
       );
     },
@@ -635,8 +635,8 @@ class EditInfoViewArguments {
     this.key,
     required this.email,
     required this.password,
-    required this.fName,
-    required this.LName,
+    required this.firstName,
+    required this.lastName,
   });
 
   final _i43.Key? key;
@@ -645,13 +645,13 @@ class EditInfoViewArguments {
 
   final String password;
 
-  final String fName;
+  final String firstName;
 
-  final String LName;
+  final String lastName;
 
   @override
   String toString() {
-    return '{"key": "$key", "email": "$email", "password": "$password", "fName": "$fName", "LName": "$LName"}';
+    return '{"key": "$key", "email": "$email", "password": "$password", "firstName": "$firstName", "lastName": "$lastName"}';
   }
 
   @override
@@ -660,8 +660,8 @@ class EditInfoViewArguments {
     return other.key == key &&
         other.email == email &&
         other.password == password &&
-        other.fName == fName &&
-        other.LName == LName;
+        other.firstName == firstName &&
+        other.lastName == lastName;
   }
 
   @override
@@ -669,8 +669,8 @@ class EditInfoViewArguments {
     return key.hashCode ^
         email.hashCode ^
         password.hashCode ^
-        fName.hashCode ^
-        LName.hashCode;
+        firstName.hashCode ^
+        lastName.hashCode;
   }
 }
 
@@ -833,8 +833,8 @@ extension NavigatorStateExtension on _i44.NavigationService {
     _i43.Key? key,
     required String email,
     required String password,
-    required String fName,
-    required String LName,
+    required String firstName,
+    required String lastName,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -846,8 +846,8 @@ extension NavigatorStateExtension on _i44.NavigationService {
             key: key,
             email: email,
             password: password,
-            fName: fName,
-            LName: LName),
+            firstName: firstName,
+            lastName: lastName),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1418,8 +1418,8 @@ extension NavigatorStateExtension on _i44.NavigationService {
     _i43.Key? key,
     required String email,
     required String password,
-    required String fName,
-    required String LName,
+    required String firstName,
+    required String lastName,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1431,8 +1431,8 @@ extension NavigatorStateExtension on _i44.NavigationService {
             key: key,
             email: email,
             password: password,
-            fName: fName,
-            LName: LName),
+            firstName: firstName,
+            lastName: lastName),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

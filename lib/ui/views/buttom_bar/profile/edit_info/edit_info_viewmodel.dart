@@ -34,8 +34,9 @@ class EditInfoViewModel extends BaseViewModel {
     notifyListeners();
     if (_profileService.message == 'update successfully') {
       log("=====>${_profileService.message}");
+      loginService.updateUserData();
       _navigationService.back();
-          rebuildUi();
+      rebuildUi();
     } else {
       log("=====>${_profileService.message}");
     }
