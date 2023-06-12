@@ -1,7 +1,12 @@
+import 'package:education/services/setting_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../app/app.locator.dart';
+
 class SettingViewModel extends BaseViewModel {
+    final settingService = locator<SettingService>();
+
   bool light0 = true;
   bool light1 = true;
 
@@ -26,4 +31,5 @@ class SettingViewModel extends BaseViewModel {
     light1 = value;
     notifyListeners();
   }
+  
 }
