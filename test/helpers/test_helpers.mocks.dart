@@ -14,6 +14,7 @@ import 'package:education/services/forgetpassword_service.dart' as _i14;
 import 'package:education/services/login_service.dart' as _i5;
 import 'package:education/services/Model/userData.dart' as _i4;
 import 'package:education/services/profile_service.dart' as _i12;
+import 'package:education/services/setting_service.dart' as _i15;
 import 'package:education/services/signup_service.dart' as _i10;
 import 'package:email_otp/email_otp.dart' as _i3;
 import 'package:flutter/material.dart' as _i7;
@@ -892,3 +893,8 @@ class MockChatsService extends _i1.Mock implements _i13.ChatsService {}
 /// See the documentation for Mockito's code generation for more information.
 class MockForgetpasswordService extends _i1.Mock
     implements _i14.ForgetpasswordService {}
+
+/// A class which mocks [SettingService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSettingService extends _i1.Mock implements _i15.SettingService {}

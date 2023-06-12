@@ -16,7 +16,7 @@ class ForgetView extends StackedView<ForgetViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
         leading: GestureDetector(

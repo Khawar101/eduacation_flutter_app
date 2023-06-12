@@ -130,7 +130,7 @@ class LoginView extends StackedView<LoginViewModel> {
               const SizedBox(height: 15),
               GestureDetector(
                 onTap: () {
-                  viewModel.logIN(context);             
+                  viewModel.logIN(context);
                 },
                 child: Container(
                   height: 50,

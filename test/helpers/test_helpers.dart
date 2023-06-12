@@ -7,6 +7,7 @@ import 'package:education/services/login_service.dart';
 import 'package:education/services/profile_service.dart';
 import 'package:education/services/chats_service.dart';
 import 'package:education/services/forgetpassword_service.dart';
+import 'package:education/services/setting_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -20,6 +21,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<ProfileService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ChatsService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ForgetpasswordService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SettingService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -31,6 +33,7 @@ void registerServices() {
   getAndRegisterProfileService();
   getAndRegisterChatsService();
   getAndRegisterForgetpasswordService();
+  getAndRegisterSettingService();
 // @stacked-mock-register
 }
 
@@ -116,6 +119,13 @@ MockForgetpasswordService getAndRegisterForgetpasswordService() {
   _removeRegistrationIfExists<ForgetpasswordService>();
   final service = MockForgetpasswordService();
   locator.registerSingleton<ForgetpasswordService>(service);
+  return service;
+}
+
+MockSettingService getAndRegisterSettingService() {
+  _removeRegistrationIfExists<SettingService>();
+  final service = MockSettingService();
+  locator.registerSingleton<SettingService>(service);
   return service;
 }
 // @stacked-mock-create

@@ -15,6 +15,7 @@ import '../services/chats_service.dart';
 import '../services/forgetpassword_service.dart';
 import '../services/login_service.dart';
 import '../services/profile_service.dart';
+import '../services/setting_service.dart';
 import '../services/signup_service.dart';
 
 final locator = StackedLocator.instance;
@@ -36,4 +37,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => ProfileService());
   locator.registerLazySingleton(() => ChatsService());
   locator.registerLazySingleton(() => ForgetpasswordService());
+  locator.registerLazySingleton(() => SettingService());
 }
