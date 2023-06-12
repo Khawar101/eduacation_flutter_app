@@ -1,3 +1,4 @@
+import 'package:education/ui/views/auth/signup/ganderButton.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -119,6 +120,7 @@ class SignupView extends StackedView<SignupViewModel> {
                         ),
                       ),
                     ),
+                    ganderButton(viewModel),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.09),
                     GestureDetector(
                       onTap: () {

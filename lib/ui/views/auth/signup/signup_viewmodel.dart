@@ -11,11 +11,17 @@ import '../../../../app/app.locator.dart';
 
 class SignupViewModel extends BaseViewModel {
   bool visibleCheck = true;
+  String gender = "male";
   var profile;
   final _navigationService = locator<NavigationService>();
   final _signupService = locator<SignupService>();
   visible_check() {
     visibleCheck = !visibleCheck;
+    notifyListeners();
+  }
+
+  changeGender(value) {
+    gender = value;
     notifyListeners();
   }
 
