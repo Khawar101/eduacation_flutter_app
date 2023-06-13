@@ -197,7 +197,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                           ),
                           ButtonText(
                             text:
-                                "Password: ${viewModel.loginService.UserData.password.toString()}",
+                                "Phone No: ${viewModel.loginService.UserData.password.toString()}",
                             color: Colors.white,
                           ),
                           SizedBox(

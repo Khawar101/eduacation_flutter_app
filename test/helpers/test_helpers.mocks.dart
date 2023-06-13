@@ -12,7 +12,7 @@ import 'package:cloud_firestore/cloud_firestore.dart' as _i2;
 import 'package:education/services/chats_service.dart' as _i13;
 import 'package:education/services/forgetpassword_service.dart' as _i14;
 import 'package:education/services/login_service.dart' as _i5;
-import 'package:education/services/Model/userData.dart' as _i4;
+import 'package:education/services/Model/userData.jason' as _i4;
 import 'package:education/services/profile_service.dart' as _i12;
 import 'package:education/services/setting_service.dart' as _i15;
 import 'package:education/services/signup_service.dart' as _i10;
