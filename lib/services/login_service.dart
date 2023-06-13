@@ -30,14 +30,21 @@ class LoginService {
         // final data = snapshot.data();
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
         UserData = userData(
-            uID: data["UID"],
-            username: data["username"],
-            firstName: data["firstName"],
-            lastName: data["lastName"],
-            email: data["email"],
-            password: data["password"],
-            profile: data["profile"],
-            userType: data["userType"]);
+          uID: data["UID"],
+          username: data["username"],
+          firstName: data["firstName"],
+          lastName: data["lastName"],
+          email: data["email"],
+          password: data["password"],
+          profile: data["profile"],
+          userType: data["userType"],
+          gender: data["gender"],
+          phoneNo: data["phoneNo"],
+          address: data["address"],
+          clas: data["clas"],
+          educationSector: data["educationSector"],
+          socialLinks: data["socialLinks"],
+        );
         message = "login successfully";
       } else {
         message = "Please fill all text field";

@@ -7,12 +7,12 @@
 //     "lastName": "",
 //     "profile": "",
 //     "userType": "",
-//     "gender": true,
-//     "PhoneNo": "",
+//     "gender": "",
+//     "phoneNo": "",
 //     "address": "",
 //     "clas": "",
 //     "educationSector": "",
-//     "SocialLinks": {
+//     "socialLinks": {
 //         "facebook": "",
 //         "instagram": "",
 //         "twitter": ""
@@ -29,7 +29,7 @@ class userData {
   String? lastName;
   String? profile;
   String? userType;
-  bool? gender;
+  String? gender;
   String? phoneNo;
   String? address;
   String? clas;

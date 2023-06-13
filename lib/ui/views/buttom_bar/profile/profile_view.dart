@@ -6,6 +6,7 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../../../widgets/app_utils.dart';
 import '../../drawer/drawer_view.dart';
 import 'profile_viewmodel.dart';
+import 'widgets/detaileRow.dart';
 
 class ProfileView extends StackedView<ProfileViewModel> {
   const ProfileView({Key? key}) : super(key: key);
@@ -187,35 +188,20 @@ class ProfileView extends StackedView<ProfileViewModel> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.028,
                           ),
-                          ButtonText(
-                            text:
-                                "Email: ${viewModel.loginService.UserData.email.toString()}",
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.024,
-                          ),
-                          ButtonText(
-                            text:
-                                "Phone No: ${viewModel.loginService.UserData.password.toString()}",
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.024,
-                          ),
-                          ButtonText(
-                            text:
-                                "First Name: ${viewModel.loginService.UserData.firstName.toString()}",
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.024,
-                          ),
-                          ButtonText(
-                            text:
-                                "Last Name: ${viewModel.loginService.UserData.lastName.toString()}",
-                            color: Colors.white,
-                          ),
+                          detaileRow(
+                              "Email", viewModel.loginService.UserData.email),
+                          detaileRow("Phone No",
+                              viewModel.loginService.UserData.phoneNo),
+                          detaileRow(
+                              "Gender", viewModel.loginService.UserData.gender),
+                          detaileRow("First Name",
+                              viewModel.loginService.UserData.firstName),
+                          detaileRow("Last Name",
+                              viewModel.loginService.UserData.lastName),
+                          detaileRow(
+                              "Address", viewModel.loginService.UserData.address),
+                          detaileRow(
+                              "Class", viewModel.loginService.UserData.clas),
                         ],
                       ),
                     ),
