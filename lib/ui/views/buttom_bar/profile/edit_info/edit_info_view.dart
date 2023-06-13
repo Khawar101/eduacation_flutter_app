@@ -8,16 +8,19 @@ import '../../../../widgets/custom_text_form_field.dart';
 import 'edit_info_viewmodel.dart';
 
 class EditInfoView extends StatefulWidget {
-  final String email;
-  final String password;
   final String firstName;
   final String lastName;
+  final String phoneNo;
+  final String address;
+  final String clas;
+
   const EditInfoView(
       {super.key,
-      required this.email,
-      required this.password,
       required this.firstName,
-      required this.lastName});
+      required this.lastName,
+      required this.phoneNo,
+      required this.address,
+      required this.clas});
 
   @override
   State<EditInfoView> createState() => _EditInfoViewState();
@@ -34,10 +37,10 @@ class _EditInfoViewState extends State<EditInfoView> {
   Widget build(BuildContext context) {
     return ViewModelBuilder<EditInfoViewModel>.reactive(
         onModelReady: (viewModel) {
-          viewModel.emailCTRL.text = widget.email;
-          viewModel.passwordCTRL.text = widget.password;
           viewModel.firstNameCTRL.text = widget.firstName;
           viewModel.lastNameCTRL.text = widget.lastName;
+          viewModel.phoneNoCTRL.text = widget.phoneNo;
+          viewModel.addressCTRL.text = widget.address;
         },
         viewModelBuilder: () => EditInfoViewModel(),
         builder: (context, viewModel, child) {
@@ -127,31 +130,10 @@ class _EditInfoViewState extends State<EditInfoView> {
                         const BigText(
                             text: "Profile Information", color: Colors.black),
                         const SizedBox(height: 25),
-                        const ButtonText(
-                            text: 'Email Address', color: Colors.black),
-                        const SizedBox(height: 10),
                         CustomTextFormField(
-                          hintText: 'E-Mail',
-                          // initialValue: widget.email,
-                          controller: viewModel.emailCTRL,
-                        ),
-                        const SizedBox(height: 20),
-                        const ButtonText(text: "Password", color: Colors.black),
-                        const SizedBox(height: 10),
-                        CustomTextFormField(
-                          hintText: 'Password',
-                          // initialValue: widget.password,
-                          controller: viewModel.passwordCTRL,
-                          isObscureText: viewModel.visibleCheck,
-                          suffix: GestureDetector(
-                            onTap: viewModel.visible_check,
-                            child: Icon(
-                              viewModel.visibleCheck == true
-                                  ? Icons.visibility_off_outlined
-                                  : Icons.visibility_outlined,
-                              color: Colors.black,
-                            ),
-                          ),
+                          hintText: 'Address',
+                          // initialValue: widget. address,
+                          controller: viewModel.addressCTRL,
                         ),
                         const SizedBox(height: 20),
                         const ButtonText(
@@ -171,6 +153,17 @@ class _EditInfoViewState extends State<EditInfoView> {
                           // initialValue: widget.lastName,
                           controller: viewModel.lastNameCTRL,
                         ),
+                        const SizedBox(height: 10),
+                        const ButtonText(
+                            text: 'Phone Number', color: Colors.black),
+                        const SizedBox(height: 10),
+                        CustomTextFormField(
+                          hintText: 'Phone No',
+                          // initialValue: widget. phoneNo,
+                          controller: viewModel.phoneNoCTRL,
+                        ),
+                        const SizedBox(height: 20),
+                        const ButtonText(text: "Address", color: Colors.black),
                         const SizedBox(height: 35),
                         GestureDetector(
                           onTap: () {

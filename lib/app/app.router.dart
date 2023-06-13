@@ -441,10 +441,11 @@ class StackedRouter extends _i1.RouterBase {
       return _i43.MaterialPageRoute<dynamic>(
         builder: (context) => _i13.EditInfoView(
             key: args.key,
-            email: args.email,
-            password: args.password,
             firstName: args.firstName,
-            lastName: args.lastName),
+            lastName: args.lastName,
+            phoneNo: args.phoneNo,
+            address: args.address,
+            clas: args.clas),
         settings: data,
       );
     },
@@ -633,44 +634,49 @@ class StackedRouter extends _i1.RouterBase {
 class EditInfoViewArguments {
   const EditInfoViewArguments({
     this.key,
-    required this.email,
-    required this.password,
     required this.firstName,
     required this.lastName,
+    required this.phoneNo,
+    required this.address,
+    required this.clas,
   });
 
   final _i43.Key? key;
-
-  final String email;
-
-  final String password;
 
   final String firstName;
 
   final String lastName;
 
+  final String phoneNo;
+
+  final String address;
+
+  final String clas;
+
   @override
   String toString() {
-    return '{"key": "$key", "email": "$email", "password": "$password", "firstName": "$firstName", "lastName": "$lastName"}';
+    return '{"key": "$key", "firstName": "$firstName", "lastName": "$lastName", "phoneNo": "$phoneNo", "address": "$address", "clas": "$clas"}';
   }
 
   @override
   bool operator ==(covariant EditInfoViewArguments other) {
     if (identical(this, other)) return true;
     return other.key == key &&
-        other.email == email &&
-        other.password == password &&
         other.firstName == firstName &&
-        other.lastName == lastName;
+        other.lastName == lastName &&
+        other.phoneNo == phoneNo &&
+        other.address == address &&
+        other.clas == clas;
   }
 
   @override
   int get hashCode {
     return key.hashCode ^
-        email.hashCode ^
-        password.hashCode ^
         firstName.hashCode ^
-        lastName.hashCode;
+        lastName.hashCode ^
+        phoneNo.hashCode ^
+        address.hashCode ^
+        clas.hashCode;
   }
 }
 
@@ -831,10 +837,11 @@ extension NavigatorStateExtension on _i44.NavigationService {
 
   Future<dynamic> navigateToEditInfoView({
     _i43.Key? key,
-    required String email,
-    required String password,
     required String firstName,
     required String lastName,
+    required String phoneNo,
+    required String address,
+    required String clas,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -844,10 +851,11 @@ extension NavigatorStateExtension on _i44.NavigationService {
     return navigateTo<dynamic>(Routes.editInfoView,
         arguments: EditInfoViewArguments(
             key: key,
-            email: email,
-            password: password,
             firstName: firstName,
-            lastName: lastName),
+            lastName: lastName,
+            phoneNo: phoneNo,
+            address: address,
+            clas: clas),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1416,10 +1424,11 @@ extension NavigatorStateExtension on _i44.NavigationService {
 
   Future<dynamic> replaceWithEditInfoView({
     _i43.Key? key,
-    required String email,
-    required String password,
     required String firstName,
     required String lastName,
+    required String phoneNo,
+    required String address,
+    required String clas,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1429,10 +1438,11 @@ extension NavigatorStateExtension on _i44.NavigationService {
     return replaceWith<dynamic>(Routes.editInfoView,
         arguments: EditInfoViewArguments(
             key: key,
-            email: email,
-            password: password,
             firstName: firstName,
-            lastName: lastName),
+            lastName: lastName,
+            phoneNo: phoneNo,
+            address: address,
+            clas: clas),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

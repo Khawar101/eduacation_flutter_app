@@ -24,12 +24,12 @@ class EditInfoViewModel extends BaseViewModel {
     _navigationService.navigateToSettingView();
   }
 
-  TextEditingController emailCTRL = TextEditingController();
-  TextEditingController passwordCTRL = TextEditingController();
   TextEditingController firstNameCTRL = TextEditingController();
   TextEditingController lastNameCTRL = TextEditingController();
+  TextEditingController phoneNoCTRL = TextEditingController();
+  TextEditingController addressCTRL = TextEditingController();
   updatedProfile() async {
-    await _profileService.updateProfile(emailCTRL.text, passwordCTRL.text,
+    await _profileService.updateProfile(phoneNoCTRL.text, addressCTRL.text,
         firstNameCTRL.text, lastNameCTRL.text);
     notifyListeners();
     if (_profileService.message == 'update successfully') {

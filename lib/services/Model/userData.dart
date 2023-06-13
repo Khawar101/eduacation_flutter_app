@@ -62,7 +62,7 @@ class userData {
     profile = json['profile'];
     userType = json['userType'];
     gender = json['gender'];
-    phoneNo = json['PhoneNo'];
+    phoneNo = json['phoneNo'];
     address = json['address'];
     clas = json['clas'];
     educationSector = json['educationSector'];
@@ -82,7 +82,7 @@ class userData {
     data['profile'] = this.profile;
     data['userType'] = this.userType;
     data['gender'] = this.gender;
-    data['PhoneNo'] = this.phoneNo;
+    data['phoneNo'] = this.phoneNo;
     data['address'] = this.address;
     data['clas'] = this.clas;
     data['educationSector'] = this.educationSector;

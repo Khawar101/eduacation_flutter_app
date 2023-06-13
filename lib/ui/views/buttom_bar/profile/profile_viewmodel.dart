@@ -11,10 +11,12 @@ class ProfileViewModel extends BaseViewModel {
   final loginService = locator<LoginService>();
   navigateEditProfile(userData data) async {
     await _navigationService.navigateToEditInfoView(
-        email: data.email.toString(),
-        password: data.password.toString(),
-        firstName: data.firstName.toString(),
-        lastName: data.lastName.toString());
+      firstName: data.firstName.toString(),
+      lastName: data.lastName.toString(),
+      phoneNo: data.phoneNo.toString(),
+      clas: data.clas.toString(),
+      address: data.address.toString(),
+    );
     rebuildUi();
   }
 
