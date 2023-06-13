@@ -28,9 +28,10 @@ class EditInfoViewModel extends BaseViewModel {
   TextEditingController lastNameCTRL = TextEditingController();
   TextEditingController phoneNoCTRL = TextEditingController();
   TextEditingController addressCTRL = TextEditingController();
+    TextEditingController clasCTRL = TextEditingController();
   updatedProfile() async {
-    await _profileService.updateProfile(phoneNoCTRL.text, addressCTRL.text,
-        firstNameCTRL.text, lastNameCTRL.text);
+    await _profileService.updateProfile(  firstNameCTRL.text, lastNameCTRL.text, phoneNoCTRL.text, addressCTRL.text,
+      clasCTRL.text);
     notifyListeners();
     if (_profileService.message == 'update successfully') {
       log("=====>${_profileService.message}");

@@ -68,6 +68,9 @@ class LoginService {
         email: data["email"],
         password: data["password"],
         profile: data["profile"],
-        userType: data["userType"]);
+        userType: data["userType"],
+        phoneNo: data["phoneNo"],
+        address: data["address"],
+        clas: data["clas"]);
   }
 }

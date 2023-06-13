@@ -130,12 +130,7 @@ class _EditInfoViewState extends State<EditInfoView> {
                         const BigText(
                             text: "Profile Information", color: Colors.black),
                         const SizedBox(height: 25),
-                        CustomTextFormField(
-                          hintText: 'Address',
-                          // initialValue: widget. address,
-                          controller: viewModel.addressCTRL,
-                        ),
-                        const SizedBox(height: 20),
+                      
                         const ButtonText(
                             text: "First Name", color: Colors.black),
                         const SizedBox(height: 10),
@@ -164,6 +159,21 @@ class _EditInfoViewState extends State<EditInfoView> {
                         ),
                         const SizedBox(height: 20),
                         const ButtonText(text: "Address", color: Colors.black),
+                        const SizedBox(height: 10),
+                          CustomTextFormField(
+                          hintText: 'Address',
+                          // initialValue: widget. address,
+                          controller: viewModel.addressCTRL,
+                        ),
+
+                           const SizedBox(height: 20),
+                        const ButtonText(text: "Class", color: Colors.black),
+                        const SizedBox(height: 10),
+                          CustomTextFormField(
+                          hintText: 'Class',
+                          // initialValue: widget. address,
+                          controller: viewModel.clasCTRL,
+                        ),
                         const SizedBox(height: 35),
                         GestureDetector(
                           onTap: () {
