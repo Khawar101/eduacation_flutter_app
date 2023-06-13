@@ -118,7 +118,7 @@ class _EditInfoViewState extends State<EditInfoView> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const BigSubText(text: "60% complete your profile"),
+                   BigSubText(text: "${viewModel.loginService.profileComplete()}% complete your profile"),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                   Padding(
                     padding: EdgeInsets.symmetric(

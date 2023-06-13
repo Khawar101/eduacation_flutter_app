@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, prefer_typing_uninitialized_variables, non_constant_identifier_names
+// ignore_for_file: unused_local_variable, prefer_typing_uninitialized_variables, non_constant_identifier_names, unrelated_type_equality_checks
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -72,5 +72,41 @@ class LoginService {
         phoneNo: data["phoneNo"],
         address: data["address"],
         clas: data["clas"]);
+  }
+
+  profileComplete() {
+    var profile_complete = 0;
+
+    if (UserData.username != '' || UserData.username != null) {
+      profile_complete += 5;
+    }
+    if (UserData.firstName != '' || UserData.firstName != null) {
+      profile_complete += 5;
+    }
+    if (UserData.lastName != '' || UserData.lastName != null) {
+      profile_complete += 5;
+    }
+    if (UserData.email != '' || UserData.email != null) {
+      profile_complete += 5;
+    }
+    if (UserData.phoneNo != '' || UserData.phoneNo != null) {
+      profile_complete += 5;
+    }
+    if (UserData.clas != '' || UserData.clas != null) {
+      profile_complete += 5;
+    }
+    if (UserData.userType != '' || UserData.userType != null) {
+      profile_complete += 5;
+    }
+    if (UserData.profile != '' || UserData.profile != null) {
+      profile_complete += 5;
+    }
+    if (UserData.socialLinks != '' || UserData.socialLinks != null) {
+      profile_complete += 5;
+    }
+    if (UserData.username != '' || UserData.username != null) {
+      profile_complete += 5;
+    }
+    return profile_complete;
   }
 }

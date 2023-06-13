@@ -89,7 +89,9 @@ class ProfileView extends StackedView<ProfileViewModel> {
               ),
             ),
             const SizedBox(height: 10),
-            const BigSubText(text: "60% complete your profile"),
+            BigSubText(
+                text:
+                    "${viewModel.loginService.profileComplete()}% complete your profile"),
             Padding(
               padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.width * 0.07,
@@ -198,8 +200,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
                               viewModel.loginService.UserData.firstName),
                           detaileRow("Last Name",
                               viewModel.loginService.UserData.lastName),
-                          detaileRow(
-                              "Address", viewModel.loginService.UserData.address),
+                          detaileRow("Address",
+                              viewModel.loginService.UserData.address),
                           detaileRow(
                               "Class", viewModel.loginService.UserData.clas),
                         ],
