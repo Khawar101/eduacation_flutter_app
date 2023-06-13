@@ -77,7 +77,7 @@ class SignupService {
     }
   }
 
-  createAccount(nameCTRL, emailCTRL, passwordCTRL, gender) async {
+  createAccount(nameCTRL, emailCTRL, passwordCTRL, userType) async {
     String name = nameCTRL.text.trim();
     String email = emailCTRL.text.trim();
     String password = passwordCTRL.text.trim();
@@ -97,7 +97,7 @@ class SignupService {
           "profile": profile,
           "firstName": "",
           "lastName": "",
-          "gender": gender,
+          "userType": userType,
         };
         await firestore.collection("users").doc(user.user!.uid).set(userdata);
         log(user.toString());

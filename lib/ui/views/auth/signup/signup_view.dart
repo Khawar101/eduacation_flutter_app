@@ -1,4 +1,4 @@
-import 'package:education/ui/views/auth/signup/ganderButton.dart';
+import 'package:education/ui/views/auth/signup/userTypeButton.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';

@@ -36,7 +36,8 @@ class LoginService {
             lastName: data["lastName"],
             email: data["email"],
             password: data["password"],
-            profile: data["profile"]);
+            profile: data["profile"],
+            userType: data["userType"]);
         message = "login successfully";
       } else {
         message = "Please fill all text field";
@@ -59,6 +60,7 @@ class LoginService {
         lastName: data["lastName"],
         email: data["email"],
         password: data["password"],
-        profile: data["profile"]);
+        profile: data["profile"],
+        userType: data["userType"]);
   }
 }

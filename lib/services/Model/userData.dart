@@ -6,7 +6,7 @@
 //     "firstName": "profile",
 //     "lastName": "profile",
 //     "profile": "profile",
-//     "gender": "profile"
+//     "userType": "profile"
 // }
 
 // ignore_for_file: camel_case_types
@@ -19,7 +19,7 @@ class userData {
   String? firstName;
   String? lastName;
   String? profile;
-  String? gender;
+  String? userType;
 
   userData(
       {this.uID,
@@ -29,7 +29,7 @@ class userData {
       this.firstName,
       this.lastName,
       this.profile,
-      this.gender});
+      this.userType});
 
   userData.fromJson(Map<String, dynamic> json) {
     uID = json['UID'];
@@ -39,7 +39,7 @@ class userData {
     firstName = json['firstName'];
     lastName = json['lastName'];
     profile = json['profile'];
-    gender = json['gender'];
+    userType = json['userType'];
   }
 
   Map<String, dynamic> toJson() {
@@ -51,7 +51,7 @@ class userData {
     data['firstName'] = this.firstName;
     data['lastName'] = this.lastName;
     data['profile'] = this.profile;
-    data['gender'] = this.gender;
+    data['userType'] = this.userType;
     return data;
   }
 }
