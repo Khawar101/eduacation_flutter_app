@@ -80,7 +80,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                   horizontal: MediaQuery.of(context).size.width * 0.24),
               child: StepProgressIndicator(
                 totalSteps: 100,
-                currentStep: 60,
+                currentStep: viewModel.loginService.profileComplete(),
                 size: 8,
                 padding: 0,
                 selectedColor: const Color(0xFF4873A6).withOpacity(0.7),

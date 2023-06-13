@@ -77,36 +77,37 @@ class LoginService {
   profileComplete() {
     var profile_complete = 0;
 
-    if (UserData.username != '' || UserData.username != null) {
-      profile_complete += 5;
+    if (UserData.username != null) {
+      profile_complete += 10;
     }
-    if (UserData.firstName != '' || UserData.firstName != null) {
-      profile_complete += 5;
+    if (UserData.firstName != null) {
+      profile_complete += 10;
     }
-    if (UserData.lastName != '' || UserData.lastName != null) {
-      profile_complete += 5;
+    if (UserData.lastName != null) {
+      profile_complete += 10;
     }
-    if (UserData.email != '' || UserData.email != null) {
-      profile_complete += 5;
+    if (UserData.email != null) {
+      profile_complete += 10;
     }
-    if (UserData.phoneNo != '' || UserData.phoneNo != null) {
-      profile_complete += 5;
+    if (UserData.phoneNo != null) {
+      profile_complete += 10;
     }
-    if (UserData.clas != '' || UserData.clas != null) {
-      profile_complete += 5;
+    if (UserData.clas != null) {
+      profile_complete += 10;
     }
-    if (UserData.userType != '' || UserData.userType != null) {
-      profile_complete += 5;
+    if (UserData.userType != null) {
+      profile_complete += 10;
     }
-    if (UserData.profile != '' || UserData.profile != null) {
-      profile_complete += 5;
+    if (UserData.profile != null) {
+      profile_complete += 10;
     }
-    if (UserData.socialLinks != '' || UserData.socialLinks != null) {
-      profile_complete += 5;
+    if (UserData.address != null) {
+      profile_complete += 10;
     }
-    if (UserData.username != '' || UserData.username != null) {
-      profile_complete += 5;
+    if (UserData.socialLinks != null) {
+      profile_complete += 10;
     }
+
     return profile_complete;
   }
 }
