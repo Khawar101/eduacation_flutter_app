@@ -7,6 +7,14 @@ import 'login_viewmodel.dart';
 
 class LoginView extends StackedView<LoginViewModel> {
   const LoginView({Key? key}) : super(key: key);
+
+  @override
+  void onViewModelReady(LoginViewModel viewModel) {
+    // TODO: implement onViewModelReady
+    super.onViewModelReady(viewModel);
+    viewModel.setFirstTimeFalseToSP();
+  }
+
   @override
   Widget builder(
     BuildContext context,

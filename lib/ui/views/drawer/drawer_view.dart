@@ -1,3 +1,4 @@
+import 'package:education/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -153,11 +154,11 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Logout'),
                     minLeadingWidth: 0.009,
-                    onTap: () {
+                    onTap: () async{
                       // Update the state of the app
                       // ...
                       // Then close the drawer
-                      Navigator.pop(context);
+                      viewModel.removeDataFromSpAndGoToLogin();
                     },
                   ),
                 ],

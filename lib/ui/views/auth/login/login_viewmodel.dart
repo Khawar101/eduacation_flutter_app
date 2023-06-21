@@ -2,12 +2,14 @@
 
 import 'dart:developer';
 import 'package:education/app/app.router.dart';
+import 'package:education/services/Model/userData.dart';
 import 'package:education/services/login_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../app/app.locator.dart';
+import '../../../../utils/shared_preferences.dart';
 
 class LoginViewModel extends BaseViewModel {
   bool visibleCheck = true;
@@ -30,6 +32,10 @@ class LoginViewModel extends BaseViewModel {
   navigateForget() {
     _navigationService.navigateToForgetView();
   }
+
+  setFirstTimeFalseToSP()async{
+    await Store.saveBool('firstRun', false);
+  }
 //  String email = emailCTRL.text.trim();
 //     // String number = numberCTRL.text.trim();
 //     String password = passwordCTRL.text.trim();
@@ -43,9 +49,12 @@ class LoginViewModel extends BaseViewModel {
   bool _obscureText = true;
 
   logIN(context) async {
-    await _loginService.logins(emailCTRL, passwordCTRL);
+    userData userDetail = await _loginService.logins(emailCTRL, passwordCTRL);
     if (_loginService.message == 'login successfully') {
       // log("sign up now...");
+      if(userDetail.username!.isNotEmpty && userDetail.username != ""){
+        await Store.save('userName', userDetail.username!);
+      }
       _navigationService.navigateToButtomBarView();
     } else {
       log("try again...");

@@ -1,6 +1,12 @@
+import 'package:education/ui/views/auth/login/login_view.dart';
+import 'package:education/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:stacked_services/stacked_services.dart';
 
+import '../../../../app/app.locator.dart';
+import '../../../../app/app.router.dart';
+import '../../buttom_bar/buttom_bar.dart';
 import 'SplashContainer2.dart';
 
 class SplashContainer1 extends StatefulWidget {
@@ -12,15 +18,42 @@ class SplashContainer1 extends StatefulWidget {
 }
 
 class _SplashContainer1State extends State<SplashContainer1> {
+  String userName = '';
+  bool isFirstRun = true;
+
+  checkIfUserLoggedIn() async {
+    isFirstRun = await Store.retrieveBool('firstRun');
+    if (isFirstRun == false) {
+      userName = await Store.retrieve('userName');
+      if (userName.isNotEmpty && userName != "") {
+        Future.delayed(const Duration(seconds: 4), () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const ButtomBarView()),
+          );
+        });
+      } else {
+        Future.delayed(const Duration(seconds: 4), () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginView()),
+          );
+        });
+      }
+    } else {
+      Future.delayed(const Duration(seconds: 4), () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const SplashContainer2()),
+        );
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 4), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const SplashContainer2()),
-      );
-    });
+    checkIfUserLoggedIn();
   }
 
   @override

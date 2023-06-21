@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../utils/shared_preferences.dart';
 import 'Model/userData.dart';
 
 class LoginService {
@@ -46,6 +47,7 @@ class LoginService {
           socialLinks: data["socialLinks"],
         );
         message = "login successfully";
+        return UserData;
       } else {
         message = "Please fill all text field";
       }

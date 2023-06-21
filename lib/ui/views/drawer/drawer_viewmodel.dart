@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
+import '../../../utils/shared_preferences.dart';
 
 class DrawerViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
@@ -38,6 +39,12 @@ class DrawerViewModel extends BaseViewModel {
 
   navigateAcount() {
     _navigationService.navigateToAcountView();
+  }
+
+  removeDataFromSpAndGoToLogin()async{
+    _navigationService.back();
+    await Store.removeValueAgainstKey('userName');
+    _navigationService.navigateToLoginView();
   }
 
   // navigatePopularTeacher() {
