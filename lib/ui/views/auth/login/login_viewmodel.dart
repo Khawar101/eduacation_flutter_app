@@ -52,8 +52,8 @@ class LoginViewModel extends BaseViewModel {
     userData userDetail = await _loginService.logins(emailCTRL, passwordCTRL);
     if (_loginService.message == 'login successfully') {
       // log("sign up now...");
-      if(userDetail.username!.isNotEmpty && userDetail.username != ""){
-        await Store.save('userName', userDetail.username!);
+      if(userDetail.uID != null && userDetail.uID != ""){
+        await Store.save('userId', userDetail.uID!);
       }
       _navigationService.navigateToButtomBarView();
     } else {

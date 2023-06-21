@@ -43,7 +43,7 @@ class ProfileService {
           "address": address,
           "clas": clas,
         });
-        await loginService.updateUserData();
+        await loginService.updateUserData(uid);
         message = "update successfully";
       } catch (e) {
         message = e.toString();

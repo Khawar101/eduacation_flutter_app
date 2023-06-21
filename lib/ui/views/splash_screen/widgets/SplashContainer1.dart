@@ -1,11 +1,13 @@
 import 'package:education/ui/views/auth/login/login_view.dart';
 import 'package:education/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/extension.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../../app/app.locator.dart';
 import '../../../../app/app.router.dart';
+import '../../../../services/login_service.dart';
 import '../../buttom_bar/buttom_bar.dart';
 import 'SplashContainer2.dart';
 
@@ -18,14 +20,16 @@ class SplashContainer1 extends StatefulWidget {
 }
 
 class _SplashContainer1State extends State<SplashContainer1> {
-  String userName = '';
+  String userId = '';
   bool isFirstRun = true;
+  final _loginService = locator<LoginService>();
 
   checkIfUserLoggedIn() async {
     isFirstRun = await Store.retrieveBool('firstRun');
     if (isFirstRun == false) {
-      userName = await Store.retrieve('userName');
-      if (userName.isNotEmpty && userName != "") {
+      userId = await Store.retrieve('userId');
+      if (userId.isNotEmpty && userId != "") {
+        _loginService.updateUserData(userId);
         Future.delayed(const Duration(seconds: 4), () {
           Navigator.pushReplacement(
             context,
