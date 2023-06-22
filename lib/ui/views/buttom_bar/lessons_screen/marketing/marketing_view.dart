@@ -1,13 +1,24 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../widgets/app_utils.dart';
 import 'marketing_viewmodel.dart';
 
 class MarketingView extends StackedView<MarketingViewModel> {
-  const MarketingView({Key? key}) : super(key: key);
+  final CoursesModel data;
+  const MarketingView({Key? key,required this.data}) : super(key: key);
+
+  @override
+  void onViewModelReady(MarketingViewModel viewModel) {
+    // TODO: implement onViewModelReady
+    super.onViewModelReady(viewModel);
+    print(data.title);
+  }
 
   @override
   Widget builder(
@@ -86,14 +97,14 @@ class MarketingView extends StackedView<MarketingViewModel> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const BigText(
-                    text: 'Marketing',
+                   BigText(
+                    text: data.title!??"",
                     color: Colors.black,
                   ),
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.017),
-                  const ReadMoreText(
-                    'The Flutter framework builds its layout via the composition of widgets, everything that you construct programmatically is a widget and these are compiled together to create the user interface.',
+                   ReadMoreText(
+                    data.description!,
                     trimLines: 2,
                     trimLength: 80,
                     style: TextStyle(color: Colors.black45),
@@ -111,14 +122,14 @@ class MarketingView extends StackedView<MarketingViewModel> {
                   // SmallText(text: '10 chapter', color: Colors.black),
                   Row(
                     children: [
-                      const CustomText(
-                          text: '10 chapter',
+                       CustomText(
+                          text: data.chapter! +" "+ "Chapters",
                           size: 14,
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                      const CustomText(
-                          text: 'Full 5 hours',
+                      CustomText(
+                          text: "Full"" "+ data.duration!,
                           size: 14,
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
@@ -128,9 +139,9 @@ class MarketingView extends StackedView<MarketingViewModel> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.028),
                   Row(
                     children: [
-                      const CircleAvatar(
+                       CircleAvatar(
                         radius: 25,
-                        backgroundImage: AssetImage('assets/images/moon.webp'),
+                        backgroundImage: NetworkImage(data.publisherData!.profile!)
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                       Column(
@@ -138,7 +149,7 @@ class MarketingView extends StackedView<MarketingViewModel> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Rakibull hassan',
+                            data.publisherData!.name!,
                             style: GoogleFonts.ibmPlexSans(
                                 fontSize: 15, fontWeight: FontWeight.w600),
                           ),

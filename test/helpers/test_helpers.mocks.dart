@@ -862,25 +862,6 @@ class MockProfileService extends _i1.Mock implements _i12.ProfileService {
         ),
         returnValueForMissingStub: null,
       );
-  @override
-  dynamic updateProfile(
-    String? email,
-    dynamic password,
-    dynamic firstName,
-    dynamic lastName,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #updateProfile,
-          [
-            email,
-            password,
-            firstName,
-            lastName,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
 }
 
 /// A class which mocks [ChatsService].

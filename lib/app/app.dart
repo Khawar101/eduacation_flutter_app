@@ -1,3 +1,4 @@
+import 'package:education/services/courses_service.dart';
 import 'package:education/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:education/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:education/ui/views/startup/startup_view.dart';
@@ -108,6 +109,7 @@ import 'package:education/services/setting_service.dart';
     LazySingleton(classType: ChatsService),
     LazySingleton(classType: ForgetpasswordService),
     LazySingleton(classType: SettingService),
+    LazySingleton(classType: CoursesService),
 // @stacked-service
   ],
   bottomsheets: [

@@ -50,6 +50,7 @@ dependencies:
   firebase_storage: ^11.2.2
   email_otp: ^2.0.1
   shared_preferences:
+  loading_animation_widget: ^1.2.0+4
 
 dev_dependencies:
   flutter_test:
