@@ -22,7 +22,7 @@ class LessonsScreenViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final coursesService = locator<CoursesService>();
 
-  navigateMarketing(CoursesModel data) {
+  navigateMarketing(CoursesModel data,BuildContext context) {
     _navigationService.navigateToMarketingView(data: data);
   }
 
@@ -55,7 +55,7 @@ class LessonsScreenViewModel extends BaseViewModel {
             var data = snapshot.data![index];
             return GestureDetector(
               onTap:(){
-                navigateMarketing(data);
+                navigateMarketing(data,context);
               },
               child: Card(
                 child: Column(
