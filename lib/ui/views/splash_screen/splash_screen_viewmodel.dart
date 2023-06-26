@@ -1,6 +1,5 @@
 
 import 'package:education/app/app.router.dart';
-import 'package:education/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';

@@ -1,13 +1,8 @@
-import 'dart:math';
-
-import 'package:education/app/app.dart';
 import 'package:education/ui/widgets/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:stacked/stacked.dart';
-import 'package:video_player/video_player.dart';
-import 'package:flutter/material.dart';
 
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../widgets/app_utils.dart';
@@ -119,7 +114,7 @@ class _MarketingViewState extends State<MarketingView> {
                               child: Column(
                                 children: [
                                   BigText(
-                                    text: widget.data.title! ?? "",
+                                    text: widget.data.title ?? "",
                                     color: Colors.black,
                                   ),
                                   SizedBox(
@@ -129,15 +124,15 @@ class _MarketingViewState extends State<MarketingView> {
                                     widget.data.description!,
                                     trimLines: 2,
                                     trimLength: 80,
-                                    style: TextStyle(color: Colors.black45),
+                                    style: const TextStyle(color: Colors.black45),
                                     colorClickableText: Colors.black,
                                     trimMode: TrimMode.Length,
                                     trimCollapsedText: 'Read More',
-                                    moreStyle: TextStyle(
+                                    moreStyle: const TextStyle(
                                         color: Color(0xff4873a6),
                                         fontWeight: FontWeight.w500),
                                     trimExpandedText: 'Show Less',
-                                    lessStyle: TextStyle(
+                                    lessStyle: const TextStyle(
                                         color: Color(0xff4873a6),
                                         fontWeight: FontWeight.w500),
                                   ),

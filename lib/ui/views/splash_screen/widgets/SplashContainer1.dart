@@ -1,12 +1,8 @@
 import 'package:education/ui/views/auth/login/login_view.dart';
 import 'package:education/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/extension.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked_services/stacked_services.dart';
-
 import '../../../../app/app.locator.dart';
-import '../../../../app/app.router.dart';
 import '../../../../services/login_service.dart';
 import '../../buttom_bar/buttom_bar.dart';
 import 'SplashContainer2.dart';
