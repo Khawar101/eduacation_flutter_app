@@ -150,7 +150,8 @@ class SettingView extends StackedView<SettingViewModel> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
               MoreCard(Icons.question_mark, "Help", () {}),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-              MoreCard(Icons.logout, "Log Out", viewModel.settingService.signOut),
+              MoreCard(
+                  Icons.logout, "Log Out", viewModel.settingService.signOut),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
               MoreCard("", "Privacy Policy", () {}),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),

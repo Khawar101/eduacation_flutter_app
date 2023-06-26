@@ -1,13 +1,8 @@
-import 'dart:math';
-
-import 'package:education/app/app.dart';
 import 'package:education/ui/widgets/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:stacked/stacked.dart';
-import 'package:video_player/video_player.dart';
-import 'package:flutter/material.dart';
 
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../widgets/app_utils.dart';
@@ -31,7 +26,8 @@ class _MarketingViewState extends State<MarketingView> {
         return OrientationBuilder(
           builder: (context, orientation) {
             return WillPopScope(
-              onWillPop: ()async => orientation == Orientation.portrait?true:false,
+              onWillPop: () async =>
+                  orientation == Orientation.portrait ? true : false,
               child: Scaffold(
                 // backgroundColor: const Color(0xffe4f1f8),
                 appBar: orientation == Orientation.portrait
@@ -55,7 +51,8 @@ class _MarketingViewState extends State<MarketingView> {
                             width: 110,
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: const Color(0xff4873a6).withOpacity(0.2),
+                                  color:
+                                      const Color(0xff4873a6).withOpacity(0.2),
                                 ),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Row(
@@ -64,7 +61,8 @@ class _MarketingViewState extends State<MarketingView> {
                                 Icon(
                                   Icons.language,
                                   size: 18,
-                                  color: const Color(0xff4873a6).withOpacity(0.7),
+                                  color:
+                                      const Color(0xff4873a6).withOpacity(0.7),
                                 ),
                                 const SizedBox(width: 3),
                                 Text(
@@ -78,7 +76,8 @@ class _MarketingViewState extends State<MarketingView> {
                                 ),
                                 Icon(
                                   Icons.keyboard_arrow_down_outlined,
-                                  color: const Color(0xff4873a6).withOpacity(0.7),
+                                  color:
+                                      const Color(0xff4873a6).withOpacity(0.7),
                                   size: 24,
                                 )
                               ],
@@ -114,36 +113,39 @@ class _MarketingViewState extends State<MarketingView> {
                               padding: EdgeInsets.symmetric(
                                   horizontal:
                                       MediaQuery.of(context).size.width * 0.04,
-                                  vertical:
-                                      MediaQuery.of(context).size.height * 0.02),
+                                  vertical: MediaQuery.of(context).size.height *
+                                      0.02),
                               child: Column(
                                 children: [
                                   BigText(
-                                    text: widget.data.title! ?? "",
+                                    text: widget.data.title ?? "",
                                     color: Colors.black,
                                   ),
                                   SizedBox(
-                                      height: MediaQuery.of(context).size.height *
-                                          0.017),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.017),
                                   ReadMoreText(
                                     widget.data.description!,
                                     trimLines: 2,
                                     trimLength: 80,
-                                    style: TextStyle(color: Colors.black45),
+                                    style:
+                                        const TextStyle(color: Colors.black45),
                                     colorClickableText: Colors.black,
                                     trimMode: TrimMode.Length,
                                     trimCollapsedText: 'Read More',
-                                    moreStyle: TextStyle(
+                                    moreStyle: const TextStyle(
                                         color: Color(0xff4873a6),
                                         fontWeight: FontWeight.w500),
                                     trimExpandedText: 'Show Less',
-                                    lessStyle: TextStyle(
+                                    lessStyle: const TextStyle(
                                         color: Color(0xff4873a6),
                                         fontWeight: FontWeight.w500),
                                   ),
                                   SizedBox(
-                                      height: MediaQuery.of(context).size.height *
-                                          0.02),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02),
                                   // ButtonText(text: '10 chapter', color: Colors.black),
                                   // SmallText(text: '10 chapter', color: Colors.black),
                                   Row(
@@ -156,12 +158,13 @@ class _MarketingViewState extends State<MarketingView> {
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                       SizedBox(
-                                          width:
-                                              MediaQuery.of(context).size.width *
-                                                  0.1),
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.1),
                                       CustomText(
-                                          text:
-                                              "Full" " " + widget.data.duration!,
+                                          text: "Full" " " +
+                                              widget.data.duration!,
                                           size: 14,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
@@ -169,8 +172,9 @@ class _MarketingViewState extends State<MarketingView> {
                                   ),
 
                                   SizedBox(
-                                      height: MediaQuery.of(context).size.height *
-                                          0.028),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.028),
                                   Row(
                                     children: [
                                       CircleAvatar(
@@ -178,9 +182,10 @@ class _MarketingViewState extends State<MarketingView> {
                                           backgroundImage: NetworkImage(widget
                                               .data.publisherData!.profile!)),
                                       SizedBox(
-                                          width:
-                                              MediaQuery.of(context).size.width *
-                                                  0.03),
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.03),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -228,40 +233,19 @@ class _MarketingViewState extends State<MarketingView> {
                                     ],
                                   ),
                                   SizedBox(
-                                      height: MediaQuery.of(context).size.height *
-                                          0.025),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.025),
                                 ],
                               ),
                             )
                           ],
-                          Stack(
-                            children: [
-                              videoPlayer(
-                                  url: widget.data.lecture![0].videoUrl!,
-                                  orientation: orientation),
-                              // Padding(
-                              //   padding: EdgeInsets.only(
-                              //       right: 10,
-                              //       top: MediaQuery.of(context).size.height * 0.15),
-                              //   child: Align(
-                              //       alignment: Alignment.bottomRight,
-                              //       child: Icon(
-                              //         Icons.play_circle_filled,
-                              //         color: const Color(0xFF4873A6).withOpacity(0.7),
-                              //         size: 40,
-                              //       )),
-                              // ),
-                              // Center(
-                              //   child: Image.asset(
-                              //     'assets/images/startup.png',
-                              //     width: 110,
-                              //     height: 110,
-                              //   ),
-                              // ),
-                            ],
-                          ),
+                          videoPlayer(
+                              url: widget.data.lecture![0].videoUrl!,
+                              orientation: orientation),
                           SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.025),
+                              height:
+                                  MediaQuery.of(context).size.height * 0.025),
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal:
@@ -280,7 +264,8 @@ class _MarketingViewState extends State<MarketingView> {
                                     decoration: BoxDecoration(
                                         color: const Color(0xFF4873A6)
                                             .withOpacity(0.7),
-                                        borderRadius: BorderRadius.circular(10)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                     child: const Center(
                                         child: ButtonText(
                                             text: 'upgrade',
@@ -330,16 +315,18 @@ class _MarketingViewState extends State<MarketingView> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 const ButtonText(
-                                                    text: 'Welcome to the Course',
+                                                    text:
+                                                        'Welcome to the Course',
                                                     color: Colors.black),
                                                 const SizedBox(height: 4),
                                                 Text(
                                                   '56 Minutes',
-                                                  style: GoogleFonts.ibmPlexSans(
-                                                      fontSize: 12,
-                                                      color: Colors.black26,
-                                                      fontWeight:
-                                                          FontWeight.w500),
+                                                  style:
+                                                      GoogleFonts.ibmPlexSans(
+                                                          fontSize: 12,
+                                                          color: Colors.black26,
+                                                          fontWeight:
+                                                              FontWeight.w500),
                                                 ),
                                               ],
                                             ),
@@ -352,13 +339,17 @@ class _MarketingViewState extends State<MarketingView> {
                                               shrinkWrap: true,
                                               physics:
                                                   const NeverScrollableScrollPhysics(),
-                                              itemCount: widget.data.lecture!.length,
-                                              itemBuilder: (BuildContext context,
-                                                  int index) {
-                                                var lecture = widget.data.lecture![index];
+                                              itemCount:
+                                                  widget.data.lecture!.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                var lecture =
+                                                    widget.data.lecture![index];
                                                 return Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      bottom: 20),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 20),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -380,28 +371,34 @@ class _MarketingViewState extends State<MarketingView> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(3.0),
-                                                              child: Image.asset(
+                                                              child:
+                                                                  Image.asset(
                                                                 'assets/icons/lock-24.png',
-                                                                color:
-                                                                    Colors.black,
+                                                                color: Colors
+                                                                    .black,
                                                               ),
                                                             ),
                                                           ),
                                                           const SizedBox(
                                                               width: 16),
                                                           SizedBox(
-                                                            width: MediaQuery.of(context).size.width*.5,
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                .5,
                                                             child: Text(
                                                               lecture.title!,
-                                                              overflow: TextOverflow.ellipsis,
-                                                              style: GoogleFonts
-                                                                  .ibmPlexSans(
-                                                                      fontSize: 12,
-                                                                      color: Colors
-                                                                          .black54,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: GoogleFonts.ibmPlexSans(
+                                                                  fontSize: 12,
+                                                                  color: Colors
+                                                                      .black54,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
                                                             ),
                                                           ),
                                                         ],
@@ -412,7 +409,8 @@ class _MarketingViewState extends State<MarketingView> {
                                                             '56 Minutes',
                                                             style: GoogleFonts
                                                                 .ibmPlexSans(
-                                                                    fontSize: 12,
+                                                                    fontSize:
+                                                                        12,
                                                                     color: Colors
                                                                         .black26,
                                                                     fontWeight:
@@ -453,19 +451,22 @@ class _MarketingViewState extends State<MarketingView> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: viewModel.navigateListOfCourses,
+                            onTap: () {
+                              viewModel.navigateCoursedetail(widget.data);
+                            },
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                   horizontal:
                                       MediaQuery.of(context).size.width * 0.04,
-                                  vertical:
-                                      MediaQuery.of(context).size.height * 0.02),
+                                  vertical: MediaQuery.of(context).size.height *
+                                      0.02),
                               child: Container(
                                 height: 40,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: const Color(0xFF4873A6).withOpacity(0.7),
+                                  color:
+                                      const Color(0xFF4873A6).withOpacity(0.7),
                                 ),
                                 child: const Center(
                                     child: ButtonText(

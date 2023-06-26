@@ -23,7 +23,6 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixConstraints,
     this.suffix,
     this.suffixConstraints,
-    this.validator,
     this.border,
     this.enabledBorder,
     this.focusedBorder,
@@ -72,7 +71,6 @@ class CustomTextFormField extends StatelessWidget {
 
   BoxConstraints? suffixConstraints;
   var initialValue;
-  FormFieldValidator<String>? validator;
 
   InputBorder? border;
   InputBorder? enabledBorder;
@@ -118,7 +116,12 @@ class CustomTextFormField extends StatelessWidget {
         maxLines: maxLines ?? 1,
         decoration: _buildDecoration(),
         initialValue: initialValue,
-        validator: validator,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter some text';
+          }
+          return null;
+        },
       ),
     );
   }

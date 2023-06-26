@@ -1,14 +1,17 @@
 import 'dart:developer';
+import 'package:education/ui/views/coursespage/coursedetail/widgets/courseintro.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../services/Model/CoursesModel.dart';
 import '../../../widgets/video_player.dart';
 import 'widgets/studentintro.dart';
 import 'widgets/tapBar/completetab.dart';
 import 'widgets/tapBar/overviewdart.dart';
 
 class CoursedetailView extends StatefulWidget {
-  const CoursedetailView({super.key});
+  final CoursesModel courseData;
+  const CoursedetailView({super.key, required this.courseData});
 
   @override
   State<CoursedetailView> createState() => _CoursedetailViewState();
@@ -81,7 +84,7 @@ class _CoursedetailViewState extends State<CoursedetailView>
                         child: Column(children: [
                       videoPlayer(
                           url:
-                              "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                              widget.courseData.lecture![0].videoUrl.toString(),
                           orientation: orientation),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,7 +92,9 @@ class _CoursedetailViewState extends State<CoursedetailView>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(height: 16),
-                            studentintro(context),
+                            studentintro(
+                                context, widget.courseData.publisherData!),
+                            courseintro(context, widget.courseData),
                             const SizedBox(height: 40),
                           ],
                         ),
@@ -116,7 +121,7 @@ class _CoursedetailViewState extends State<CoursedetailView>
                         ],
                       ),
                       tabController.index == 0
-                          ? overview(context)
+                          ? overview(context, widget.courseData)
                           : complete(context),
                     ])),
                   ),

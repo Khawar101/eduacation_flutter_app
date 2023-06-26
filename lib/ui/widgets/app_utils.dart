@@ -13,13 +13,8 @@ class AppUtils {
       EdgeInsetsGeometry? margin,
       TextEditingController? controller,
       String? validator}) {
-    FormFieldValidator<String>? useValidator;
-    if (validator != null) {
-      //   useValidator = ValidationRules.getValidator(context, validator);
-    }
     return CustomTextFormField(
       width: width,
-      validator: useValidator,
       focusNode: FocusNode(),
       hintText: hintText,
 

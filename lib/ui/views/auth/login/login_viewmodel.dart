@@ -33,7 +33,7 @@ class LoginViewModel extends BaseViewModel {
     _navigationService.navigateToForgetView();
   }
 
-  setFirstTimeFalseToSP()async{
+  setFirstTimeFalseToSP() async {
     await Store.saveBool('firstRun', false);
   }
 //  String email = emailCTRL.text.trim();
@@ -52,7 +52,7 @@ class LoginViewModel extends BaseViewModel {
     userData userDetail = await _loginService.logins(emailCTRL, passwordCTRL);
     if (_loginService.message == 'login successfully') {
       // log("sign up now...");
-      if(userDetail.uID != null && userDetail.uID != ""){
+      if (userDetail.uID != null && userDetail.uID != "") {
         await Store.save('userId', userDetail.uID!);
       }
       _navigationService.navigateToButtomBarView();
@@ -61,7 +61,7 @@ class LoginViewModel extends BaseViewModel {
     }
     log("=====>${_loginService.message}");
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('Ticket Added Sucessfully'),
+      content: Text(_loginService.message),
       dismissDirection: DismissDirection.endToStart,
     ));
   }

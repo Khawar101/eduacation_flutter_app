@@ -21,7 +21,7 @@ class _LessonsViewState extends State<LessonsView> {
         viewModelBuilder: () => LessonsViewModel(),
         builder: (context, viewModel, child) {
           return OrientationBuilder(
-            builder: (context,orientation){
+            builder: (context, orientation) {
               return Scaffold(
                 appBar: AppBar(
                     elevation: 0,
@@ -60,7 +60,8 @@ class _LessonsViewState extends State<LessonsView> {
                               textAlign: TextAlign.center,
                               style: GoogleFonts.ibmPlexSans(
                                   fontSize: 15,
-                                  color: const Color(0xff4873a6).withOpacity(0.7),
+                                  color:
+                                      const Color(0xff4873a6).withOpacity(0.7),
                                   fontWeight: FontWeight.w600),
                             ),
                             Icon(
@@ -88,16 +89,21 @@ class _LessonsViewState extends State<LessonsView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03),
                       //video
                       videoPlayer(
-                          url:
-                          "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",orientation: orientation,),
+                        url:
+                            "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                        orientation: orientation,
+                      ),
 
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03),
                       Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.of(context).size.width * 0.04),
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.04),
                         child: Column(
                           children: [
                             Container(
@@ -106,18 +112,22 @@ class _LessonsViewState extends State<LessonsView> {
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.white,
                                   border: Border.all(
-                                    color: const Color(0xff4873a6).withOpacity(0.2),
+                                    color: const Color(0xff4873a6)
+                                        .withOpacity(0.2),
                                   )),
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal:
-                                    MediaQuery.of(context).size.width * 0.025,
+                                        MediaQuery.of(context).size.width *
+                                            0.025,
                                     vertical:
-                                    MediaQuery.of(context).size.height * 0.025),
+                                        MediaQuery.of(context).size.height *
+                                            0.025),
                                 child: Column(
                                   children: [
                                     Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         const Icon(
                                           Icons.play_circle_outlined,
@@ -126,7 +136,7 @@ class _LessonsViewState extends State<LessonsView> {
                                         const SizedBox(width: 12),
                                         Column(
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             const ButtonText(
                                                 text: 'Welcome to the Course',
@@ -149,16 +159,17 @@ class _LessonsViewState extends State<LessonsView> {
                                       child: ListView.builder(
                                           shrinkWrap: true,
                                           physics:
-                                          const NeverScrollableScrollPhysics(),
+                                              const NeverScrollableScrollPhysics(),
                                           itemCount: 5,
-                                          itemBuilder:
-                                              (BuildContext context, int index) {
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
                                             return Padding(
-                                              padding:
-                                              const EdgeInsets.only(bottom: 20),
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 20),
                                               child: Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Row(
                                                     children: [
@@ -167,13 +178,15 @@ class _LessonsViewState extends State<LessonsView> {
                                                         width: 22,
                                                         decoration: BoxDecoration(
                                                             border: Border.all(
-                                                                color: Colors.black,
+                                                                color: Colors
+                                                                    .black,
                                                                 width: 1),
-                                                            shape: BoxShape.circle),
+                                                            shape: BoxShape
+                                                                .circle),
                                                         child: Padding(
                                                           padding:
-                                                          const EdgeInsets.all(
-                                                              3.0),
+                                                              const EdgeInsets
+                                                                  .all(3.0),
                                                           child: Image.asset(
                                                             'assets/icons/lock-24.png',
                                                             color: Colors.black,
@@ -183,14 +196,14 @@ class _LessonsViewState extends State<LessonsView> {
                                                       const SizedBox(width: 16),
                                                       Text(
                                                         'what is marketing?',
-                                                        style:
-                                                        GoogleFonts.ibmPlexSans(
-                                                            fontSize: 12,
-                                                            color:
-                                                            Colors.black54,
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .w500),
+                                                        style: GoogleFonts
+                                                            .ibmPlexSans(
+                                                                fontSize: 12,
+                                                                color: Colors
+                                                                    .black54,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
                                                       ),
                                                     ],
                                                   ),
@@ -198,14 +211,14 @@ class _LessonsViewState extends State<LessonsView> {
                                                     children: [
                                                       Text(
                                                         '56 Minutes',
-                                                        style:
-                                                        GoogleFonts.ibmPlexSans(
-                                                            fontSize: 12,
-                                                            color:
-                                                            Colors.black26,
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .w500),
+                                                        style: GoogleFonts
+                                                            .ibmPlexSans(
+                                                                fontSize: 12,
+                                                                color: Colors
+                                                                    .black26,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
                                                       ),
                                                     ],
                                                   ),
@@ -215,13 +228,15 @@ class _LessonsViewState extends State<LessonsView> {
                                           }),
                                     ),
                                     SizedBox(
-                                        height: MediaQuery.of(context).size.height *
-                                            0.03),
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.03),
                                     Container(
                                         height: 30,
                                         width: 150,
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           color: const Color(0xFF4873A6)
                                               .withOpacity(0.7),
                                         ),
@@ -234,7 +249,8 @@ class _LessonsViewState extends State<LessonsView> {
                               ),
                             ),
                             SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.04),
+                                height:
+                                    MediaQuery.of(context).size.height * 0.04),
                             GestureDetector(
                               onTap: viewModel.navigateLerners,
                               child: Container(
@@ -242,7 +258,8 @@ class _LessonsViewState extends State<LessonsView> {
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: const Color(0xFF4873A6).withOpacity(0.7),
+                                  color:
+                                      const Color(0xFF4873A6).withOpacity(0.7),
                                 ),
                                 child: const Center(
                                     child: ButtonText(

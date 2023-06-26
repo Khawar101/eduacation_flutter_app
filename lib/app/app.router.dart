@@ -579,8 +579,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i35.CoursedetailView: (data) {
+      final args = data.getArgs<CoursedetailViewArguments>(nullOk: false);
       return _i43.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i35.CoursedetailView(),
+        builder: (context) =>
+            _i35.CoursedetailView(key: args.key, courseData: args.courseData),
         settings: data,
       );
     },
@@ -707,6 +709,33 @@ class MarketingViewArguments {
   @override
   int get hashCode {
     return key.hashCode ^ data.hashCode;
+  }
+}
+
+class CoursedetailViewArguments {
+  const CoursedetailViewArguments({
+    this.key,
+    required this.courseData,
+  });
+
+  final _i43.Key? key;
+
+  final _i44.CoursesModel courseData;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "courseData": "$courseData"}';
+  }
+
+  @override
+  bool operator ==(covariant CoursedetailViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.courseData == courseData;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ courseData.hashCode;
   }
 }
 
@@ -1189,14 +1218,17 @@ extension NavigatorStateExtension on _i45.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToCoursedetailView([
+  Future<dynamic> navigateToCoursedetailView({
+    _i43.Key? key,
+    required _i44.CoursesModel courseData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.coursedetailView,
+        arguments: CoursedetailViewArguments(key: key, courseData: courseData),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1779,14 +1811,17 @@ extension NavigatorStateExtension on _i45.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithCoursedetailView([
+  Future<dynamic> replaceWithCoursedetailView({
+    _i43.Key? key,
+    required _i44.CoursesModel courseData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.coursedetailView,
+        arguments: CoursedetailViewArguments(key: key, courseData: courseData),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

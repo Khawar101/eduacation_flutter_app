@@ -55,18 +55,18 @@ class CoursesModel {
 
   CoursesModel(
       {this.title,
-        this.category,
-        this.chapter,
-        this.coverPic,
-        this.description,
-        this.publishDate,
-        this.uID,
-        this.fAQ,
-        this.price,
-        this.duration,
-        this.lecture,
-        this.assigment,
-        this.publisherData});
+      this.category,
+      this.chapter,
+      this.coverPic,
+      this.description,
+      this.publishDate,
+      this.uID,
+      this.fAQ,
+      this.price,
+      this.duration,
+      this.lecture,
+      this.assigment,
+      this.publisherData});
 
   CoursesModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -156,10 +156,10 @@ class Lecture {
 
   Lecture(
       {this.title,
-        this.duration,
-        this.description,
-        this.thumbnail,
-        this.videoUrl});
+      this.duration,
+      this.description,
+      this.thumbnail,
+      this.videoUrl});
 
   Lecture.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -189,10 +189,10 @@ class Assigment {
 
   Assigment(
       {this.title,
-        this.lastDate,
-        this.description,
-        this.thumbnail,
-        this.fileUrl});
+      this.lastDate,
+      this.description,
+      this.thumbnail,
+      this.fileUrl});
 
   Assigment.fromJson(Map<String, dynamic> json) {
     title = json['title'];

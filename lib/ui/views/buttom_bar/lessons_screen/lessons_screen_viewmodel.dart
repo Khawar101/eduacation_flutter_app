@@ -1,5 +1,4 @@
 import 'package:education/app/app.router.dart';
-import 'package:education/ui/views/buttom_bar/lessons_screen/widget/pop_up_menu.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +8,7 @@ import '../../../../services/Model/CoursesModel.dart';
 import '../../../../services/courses_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class LessonsScreenViewModel extends BaseViewModel {
   static List<String> itemsnames = [
@@ -22,7 +22,7 @@ class LessonsScreenViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final coursesService = locator<CoursesService>();
 
-  navigateMarketing(CoursesModel data,BuildContext context) {
+  navigateMarketing(CoursesModel data, BuildContext context) {
     _navigationService.navigateToMarketingView(data: data);
   }
 
@@ -47,15 +47,15 @@ class LessonsScreenViewModel extends BaseViewModel {
           itemCount: snapshot.data!.length,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 300,
-            mainAxisExtent: 260,
+            mainAxisExtent: 250,
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
           ),
           itemBuilder: (BuildContext context, int index) {
             var data = snapshot.data![index];
             return GestureDetector(
-              onTap:(){
-                navigateMarketing(data,context);
+              onTap: () {
+                navigateMarketing(data, context);
               },
               child: Card(
                 child: Column(
@@ -63,7 +63,7 @@ class LessonsScreenViewModel extends BaseViewModel {
                   children: [
                     Image.network(
                       data.coverPic.toString(),
-                      fit: BoxFit.fitWidth,
+                      fit: BoxFit.cover,
                       height: 130,
                       width: 300,
                     ),
@@ -87,10 +87,24 @@ class LessonsScreenViewModel extends BaseViewModel {
                                     style: const TextStyle(
                                         overflow: TextOverflow.ellipsis,
                                         fontWeight: FontWeight.bold),
-                                    maxLines: 2,
+                                    maxLines: 1,
                                   ),
-
-                                  // reating(data["rating"], data["reated"]),
+                                  RatingBar.builder(
+                                    wrapAlignment: WrapAlignment.start,
+                                    initialRating: 2.5,
+                                    minRating: 1,
+                                    direction: Axis.horizontal,
+                                    allowHalfRating: true,
+                                    itemCount: 5,
+                                    itemSize: 15,
+                                    itemBuilder: (context, _) => const Icon(
+                                      Icons.star,
+                                      color: Colors.yellow,
+                                    ),
+                                    onRatingUpdate: (rating) {
+                                      //print(rating);
+                                    },
+                                  ),
                                   CustomText(
                                       text: "\$${data.price.toString()}",
                                       size: 17,
@@ -99,11 +113,6 @@ class LessonsScreenViewModel extends BaseViewModel {
                                 ],
                               ),
                             ),
-                            // const Positioned(
-                            //   right: 5,
-                            //   top: 5,
-                            //   child: PopupMenu(),
-                            // )
                           ],
                         ),
                         Padding(
