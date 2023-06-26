@@ -5,11 +5,11 @@ import 'package:readmore/readmore.dart';
 
 import '../../../../widgets/app_utils.dart';
 
-Widget courseintro(context,CoursesModel courseData){
- return Column(
-   children: [
-         const BigText(
-        text: "Comic drawing essential for everyone!",
+Widget courseintro(context, CoursesModel courseData) {
+  return Column(
+    children: [
+       BigText(
+        text:courseData.title.toString(),
         color: Colors.black,
       ),
       const SizedBox(height: 25),
@@ -26,7 +26,7 @@ Widget courseintro(context,CoursesModel courseData){
                     size: 16,
                   ),
                   const SizedBox(width: 7),
-                  Text("1 hours 30 min",
+                  Text(courseData.duration.toString(),
                       style: GoogleFonts.ibmPlexSans(fontSize: 12)),
                 ],
               ),
@@ -61,7 +61,7 @@ Widget courseintro(context,CoursesModel courseData){
                     color: Colors.black54,
                   ),
                   const SizedBox(width: 7),
-                  Text("12 Lessons",
+                  Text("${courseData.chapter} Lessons",
                       style: GoogleFonts.ibmPlexSans(fontSize: 12)),
                 ],
               ),
@@ -86,7 +86,7 @@ Widget courseintro(context,CoursesModel courseData){
       ),
       const SizedBox(height: 20),
       ReadMoreText(
-        "These example sentences are selected automatically from various online news sources to reflect current usage of the word 'text.' Views expressed in the examples do not represent the opinion of Merriam-Webster or its editors",
+        courseData.description.toString(),
         trimLines: 3,
         trimLength: 100,
         style: TextStyle(
@@ -100,7 +100,6 @@ Widget courseintro(context,CoursesModel courseData){
         lessStyle:
             const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
-   
-   ],
- );
+    ],
+  );
 }
