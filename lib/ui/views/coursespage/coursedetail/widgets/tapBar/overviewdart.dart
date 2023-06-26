@@ -50,7 +50,7 @@ Widget overview(context, CoursesModel courseData) {
           //       child: ButtonText(text: 'See more', color: Colors.white)),
           // ),
           const SizedBox(height: 30),
-          feedback(context,courseData),
+          feedback(context, courseData),
           const SizedBox(height: 30),
           project(context),
           // const SizedBox(height: 30),
