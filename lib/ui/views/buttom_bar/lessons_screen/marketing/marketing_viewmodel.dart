@@ -11,14 +11,15 @@ class MarketingViewModel extends BaseViewModel {
     // log('====>not move');
     MediaQuery.of(context).orientation == Orientation.portrait;
     _navigationService.back();
-
   }
 
   navigateCourses() {
     // log('====>not move');
     _navigationService.navigateToLessonsView();
   }
-  navigateListOfCourses() {
-    _navigationService.navigateToCoursesView();
+
+
+  navigateCoursedetail(courseData) {
+    _navigationService.navigateToCoursedetailView(courseData: courseData);
   }
 }

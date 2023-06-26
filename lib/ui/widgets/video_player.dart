@@ -28,7 +28,7 @@ class _videoPlayerState extends State<videoPlayer> {
     // TODO: implement initState
     super.initState();
     controller = VideoPlayerController.network(widget.url)
-      ..addListener(() => setState(() {}))
+      // ..addListener(() => setState(() {}))
       ..setLooping(false)
       ..initialize().then((value) => controller!.play());
   }
