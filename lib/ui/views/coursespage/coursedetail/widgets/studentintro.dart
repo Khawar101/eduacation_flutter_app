@@ -35,7 +35,7 @@ Widget studentintro(context, PublisherData data) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Anny Morriarty",
+              Text(data.name.toString(),
                   style: GoogleFonts.ibmPlexSans(
                       color: Colors.black,
                       fontSize: 17,

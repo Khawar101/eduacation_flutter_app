@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 
@@ -124,12 +125,36 @@ Widget feedback(context) {
                           const SizedBox(
                             height: 2,
                           ),
-                          Text(
-                            "11 min ago",
-                            style: GoogleFonts.ibmPlexSans(
-                                fontSize: 12,
-                                color: Colors.black45,
-                                fontWeight: FontWeight.w500),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 160,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                RatingBar.builder(
+                                  wrapAlignment: WrapAlignment.start,
+                                  initialRating: 2.5,
+                                  minRating: 1,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemSize: 15,
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: Colors.yellow,
+                                  ),
+                                  onRatingUpdate: (rating) {
+                                    //print(rating);
+                                  },
+                                ),
+                                Text(
+                                  "11 min ago",
+                                  style: GoogleFonts.ibmPlexSans(
+                                      fontSize: 12,
+                                      color: Colors.black45,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

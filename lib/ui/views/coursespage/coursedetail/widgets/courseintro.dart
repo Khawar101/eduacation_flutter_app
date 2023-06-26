@@ -1,15 +1,13 @@
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:readmore/readmore.dart';
-
 import '../../../../widgets/app_utils.dart';
 
 Widget courseintro(context, CoursesModel courseData) {
   return Column(
     children: [
-       BigText(
-        text:courseData.title.toString(),
+      BigText(
+        text: courseData.title.toString(),
         color: Colors.black,
       ),
       const SizedBox(height: 25),
@@ -83,22 +81,6 @@ Widget courseintro(context, CoursesModel courseData) {
             ],
           ),
         ],
-      ),
-      const SizedBox(height: 20),
-      ReadMoreText(
-        courseData.description.toString(),
-        trimLines: 3,
-        trimLength: 100,
-        style: TextStyle(
-            color: Colors.black.withOpacity(0.7), height: 1.3, wordSpacing: 2),
-        colorClickableText: Colors.black,
-        trimMode: TrimMode.Length,
-        trimCollapsedText: 'Read more',
-        moreStyle:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        trimExpandedText: '...Show Less',
-        lessStyle:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
     ],
   );

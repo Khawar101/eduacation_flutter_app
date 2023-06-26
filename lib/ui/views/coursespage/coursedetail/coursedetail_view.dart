@@ -121,7 +121,7 @@ class _CoursedetailViewState extends State<CoursedetailView>
                         ],
                       ),
                       tabController.index == 0
-                          ? overview(context)
+                          ? overview(context, widget.courseData)
                           : complete(context),
                     ])),
                   ),
