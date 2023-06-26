@@ -15,9 +15,10 @@ ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
       contentPadding: const EdgeInsets.all(0),
       titlePadding: const EdgeInsets.all(15),
       actionsPadding: const EdgeInsets.all(0),
-	shape: RoundedRectangleBorder(
-		borderRadius: BorderRadius.circular(0),
-	),      title: const Center(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(0),
+      ),
+      title: const Center(
         child: Text(
           'Write a Review',
         ),
@@ -57,16 +58,19 @@ ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
           ),
         ),
       ),
-      actions: const <Widget>[
-        SizedBox(
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Rate Now',
-              ),
-            ],
+      actions: <Widget>[
+        InkWell(
+          onTap: () {},
+          child: const SizedBox(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Rate Now',
+                ),
+              ],
+            ),
           ),
         ),
         // TextButton(
