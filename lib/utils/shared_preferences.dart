@@ -15,6 +15,7 @@ class Store {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.setBool(key, json);
   }
+
   static Future<bool> retrieveBool(String key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool(key) ?? true;

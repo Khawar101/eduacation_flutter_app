@@ -153,7 +153,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     ),
                     title: const Text('Logout'),
                     minLeadingWidth: 0.009,
-                    onTap: () async{
+                    onTap: () async {
                       // Update the state of the app
                       // ...
                       // Then close the drawer

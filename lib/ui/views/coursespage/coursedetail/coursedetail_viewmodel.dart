@@ -8,8 +8,7 @@ import 'widgets/ratingNow.dart';
 class CoursedetailViewModel extends BaseViewModel {
   final _loginService = locator<LoginService>();
 
-  TextEditingController reviewCtrl =
-      TextEditingController();
+  TextEditingController reviewCtrl = TextEditingController();
 
   rateNow(context, courseData) {
     ratingNow(context, reviewCtrl, courseData, _loginService.UserData,

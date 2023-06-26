@@ -8,10 +8,7 @@ class videoPlayer extends StatefulWidget {
   final String url;
   final Orientation orientation;
 
-  const videoPlayer(
-      {super.key,
-      required this.url,
-      required this.orientation});
+  const videoPlayer({super.key, required this.url, required this.orientation});
 
   @override
   State<videoPlayer> createState() => _videoPlayerState();

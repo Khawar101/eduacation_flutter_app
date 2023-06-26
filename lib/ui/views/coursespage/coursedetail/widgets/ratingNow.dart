@@ -15,7 +15,9 @@ ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
       contentPadding: const EdgeInsets.all(0),
       titlePadding: const EdgeInsets.all(15),
       actionsPadding: const EdgeInsets.all(0),
-      title: const Center(
+	shape: RoundedRectangleBorder(
+		borderRadius: BorderRadius.circular(0),
+	),      title: const Center(
         child: Text(
           'Write a Review',
         ),
@@ -40,7 +42,7 @@ ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
                   itemSize: 38,
                   itemBuilder: (context, _) => const Icon(
                     Icons.star,
-                    color: Colors.yellow,
+                    // color: Colors.yellow,
                   ),
                   onRatingUpdate: (rating) {
                     //print(rating);
@@ -62,7 +64,7 @@ ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Submit Review',
+                'Rate Now',
               ),
             ],
           ),

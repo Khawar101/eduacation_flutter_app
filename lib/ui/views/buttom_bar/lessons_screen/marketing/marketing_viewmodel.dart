@@ -18,7 +18,6 @@ class MarketingViewModel extends BaseViewModel {
     _navigationService.navigateToLessonsView();
   }
 
-
   navigateCoursedetail(courseData) {
     _navigationService.navigateToCoursedetailView(courseData: courseData);
   }

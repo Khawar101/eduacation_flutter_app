@@ -55,10 +55,8 @@ class LoginService {
   }
 
   updateUserData(id) async {
-    final DocumentSnapshot snapshot = await FirebaseFirestore.instance
-        .collection("users")
-        .doc(id)
-        .get();
+    final DocumentSnapshot snapshot =
+        await FirebaseFirestore.instance.collection("users").doc(id).get();
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     UserData = userData(
         uID: data["UID"],
