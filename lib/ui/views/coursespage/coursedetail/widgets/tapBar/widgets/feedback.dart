@@ -117,7 +117,7 @@ Widget feedback(context, courseData) {
                 ),
                 IconButton(
                     onPressed: () {
-                      viewModel.rateNowAlert(context, courseData);
+                      viewModel.rateNowAlert(context, courseData, viewModel);
                     },
                     icon: const Icon(Icons.edit))
               ],

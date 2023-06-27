@@ -11,10 +11,21 @@ class CoursedetailViewModel extends BaseViewModel {
   final rateingService = locator<RateingService>();
 
   TextEditingController reviewCtrl = TextEditingController();
+  var rateting;
 
-  rateNowAlert(context, courseData) {
-    ratingNow(context, reviewCtrl, courseData, _loginService.UserData,
-        notifyListeners);
+  rateNowAlert(context, courseData, viewModel) {
+    ratingNow(context, courseData, viewModel, notifyListeners);
   }
 
+  getRating(value) {
+    rateting = value;
+    notifyListeners();
+  }
+
+  postRating(courseData, context) {
+    rateingService.rateNow(reviewCtrl, rateting, courseData);
+    reviewCtrl.clear;
+    notifyListeners();
+    Navigator.pop(context);
+  }
 }

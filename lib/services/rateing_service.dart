@@ -19,7 +19,8 @@ class RateingService {
       message = "Please enter review";
     } else {
       try {
-        await firestore.collection("users").doc().set({
+        var key = "${_userData.uID}${courseData.publishDate}";
+        await firestore.collection("Rateing").doc(key).set({
           "UID": _userData.uID,
           "courseKey": courseData.publishDate,
           "name": _userData.username,
@@ -27,7 +28,7 @@ class RateingService {
           "review": review,
           "rateting": rateting,
         });
-        message = "Login Successfully";
+        message = "Rate Successfully";
       } catch (e) {
         message = e.toString();
       }

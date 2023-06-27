@@ -4,8 +4,9 @@ import 'package:education/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../../../../services/Model/CoursesModel.dart';
+import '../coursedetail_viewmodel.dart';
 
-ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
+ratingNow(context, CoursesModel courseData, CoursedetailViewModel viewModel,
     notifyListeners) {
   var _formKey = GlobalKey<FormState>();
 
@@ -47,10 +48,11 @@ ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
                   ),
                   onRatingUpdate: (rating) {
                     //print(rating);
+                    viewModel.getRating(rating);
                   },
                 ),
                 CustomTextFormField(
-                  controller: reviewCtrl,
+                  controller: viewModel.reviewCtrl,
                   hintText: 'Write anything about this course...',
                 ),
               ],
@@ -60,8 +62,10 @@ ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
       ),
       actions: <Widget>[
         InkWell(
-          onTap: () {},
-          child:  SizedBox(
+          onTap: () {
+            viewModel.postRating(courseData,context);
+          },
+          child: const SizedBox(
             height: 50,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
