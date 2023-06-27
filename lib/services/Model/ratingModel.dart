@@ -8,13 +8,15 @@
 //     "rateting": 6.3
 // }
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class RatingModel {
   String? uID;
   String? courseKey;
   String? name;
   String? profile;
   String? review;
-  String? date;
+  Timestamp? date;
   double? rateting;
 
   RatingModel(

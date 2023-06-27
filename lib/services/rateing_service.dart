@@ -40,6 +40,7 @@ class RateingService {
           "profile": _userData.profile,
           "review": review,
           "rateting": rateting,
+          "date": DateTime.timestamp(),
         });
         message = "Rate Successfully";
       } catch (e) {

@@ -61,10 +61,9 @@ class CoursedetailViewModel extends BaseViewModel {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                         CircleAvatar(
+                        CircleAvatar(
                           radius: 20,
-                          backgroundImage:
-                              NetworkImage(data.profile!),
+                          backgroundImage: NetworkImage(data.profile!),
                         ),
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.03),
@@ -72,8 +71,7 @@ class CoursedetailViewModel extends BaseViewModel {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                             ButtonText(
-                                text: data.name!, color: Colors.black),
+                            ButtonText(text: data.name!, color: Colors.black),
                             const SizedBox(
                               height: 2,
                             ),
@@ -100,7 +98,7 @@ class CoursedetailViewModel extends BaseViewModel {
                                     },
                                   ),
                                   Text(
-                                    "11 min ago",
+                                   data.date.toString(),
                                     style: GoogleFonts.ibmPlexSans(
                                         fontSize: 12,
                                         color: Colors.black45,
