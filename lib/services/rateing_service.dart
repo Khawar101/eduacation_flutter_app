@@ -4,12 +4,25 @@ import 'package:education/services/login_service.dart';
 
 import '../app/app.locator.dart';
 import 'Model/CoursesModel.dart';
+import 'Model/ratingModel.dart';
 
 class RateingService {
   final _loginService = locator<LoginService>();
 
   String message = "";
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+
+
+
+  Stream<List<RatingModel>> coursesStream() {
+    final stream = FirebaseFirestore.instance.collection("courses").snapshots();
+    return stream.map((event) => event.docs.map((doc) {
+          return RatingModel.fromJson(doc.data());
+        }).toList());
+  }
+
+
 
   rateNow(reviewCTRL, rateting, CoursesModel courseData) async {
     userData _userData = _loginService.UserData;
