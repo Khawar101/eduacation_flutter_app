@@ -4,12 +4,25 @@ import 'package:education/services/login_service.dart';
 
 import '../app/app.locator.dart';
 import 'Model/CoursesModel.dart';
+import 'Model/ratingModel.dart';
 
 class RateingService {
   final _loginService = locator<LoginService>();
 
   String message = "";
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+
+
+
+  Stream<List<RatingModel>> ratingStream() {
+    final stream = FirebaseFirestore.instance.collection("Rateing").snapshots();
+    return stream.map((event) => event.docs.map((doc) {
+          return RatingModel.fromJson(doc.data());
+        }).toList());
+  }
+
+
 
   rateNow(reviewCTRL, rateting, CoursesModel courseData) async {
     userData _userData = _loginService.UserData;
@@ -19,15 +32,17 @@ class RateingService {
       message = "Please enter review";
     } else {
       try {
-        await firestore.collection("users").doc().set({
+        var key = "${_userData.uID}${courseData.publishDate}";
+        await firestore.collection("Rateing").doc(key).set({
           "UID": _userData.uID,
           "courseKey": courseData.publishDate,
           "name": _userData.username,
           "profile": _userData.profile,
           "review": review,
           "rateting": rateting,
+          "date": DateTime.timestamp(),
         });
-        message = "Login Successfully";
+        message = "Rate Successfully";
       } catch (e) {
         message = e.toString();
       }

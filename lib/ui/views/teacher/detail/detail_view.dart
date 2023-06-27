@@ -144,9 +144,9 @@ class DetailView extends StackedView<DetailViewModel> {
               const SizedBox(height: 10),
               const ButtonText(text: 'UX/UI Research', color: Colors.black45),
               const SizedBox(height: 10),
-               Row(
+               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   ButtonText(text: 'Experience', color: Colors.black45),
                   ButtonText(text: '10 Years', color: Colors.black45),
                 ],
