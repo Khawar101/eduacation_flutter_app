@@ -4,15 +4,18 @@
 //     "name": "_userData.username",
 //     "profile": "_userData.profile",
 //     "review": "review",
-//     "rateting": 6
+//     "date": "review",
+//     "rateting": 6.3
 // }
+
 class RatingModel {
   String? uID;
   String? courseKey;
   String? name;
   String? profile;
   String? review;
-  int? rateting;
+  String? date;
+  double? rateting;
 
   RatingModel(
       {this.uID,
@@ -20,6 +23,7 @@ class RatingModel {
       this.name,
       this.profile,
       this.review,
+      this.date,
       this.rateting});
 
   RatingModel.fromJson(Map<String, dynamic> json) {
@@ -28,6 +32,7 @@ class RatingModel {
     name = json['name'];
     profile = json['profile'];
     review = json['review'];
+    date = json['date'];
     rateting = json['rateting'];
   }
 
@@ -38,6 +43,7 @@ class RatingModel {
     data['name'] = this.name;
     data['profile'] = this.profile;
     data['review'] = this.review;
+    data['date'] = this.date;
     data['rateting'] = this.rateting;
     return data;
   }

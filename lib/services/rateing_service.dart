@@ -15,8 +15,8 @@ class RateingService {
 
 
 
-  Stream<List<RatingModel>> coursesStream() {
-    final stream = FirebaseFirestore.instance.collection("courses").snapshots();
+  Stream<List<RatingModel>> ratingStream() {
+    final stream = FirebaseFirestore.instance.collection("Rateing").snapshots();
     return stream.map((event) => event.docs.map((doc) {
           return RatingModel.fromJson(doc.data());
         }).toList());
