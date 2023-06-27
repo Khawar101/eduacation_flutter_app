@@ -57,9 +57,10 @@ class CoursedetailViewModel extends BaseViewModel {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 15),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CircleAvatar(
                           radius: 20,
@@ -98,7 +99,7 @@ class CoursedetailViewModel extends BaseViewModel {
                                     },
                                   ),
                                   Text(
-                                   data.date.toString(),
+                                    "${data.date!}",
                                     style: GoogleFonts.ibmPlexSans(
                                         fontSize: 12,
                                         color: Colors.black45,
@@ -113,7 +114,7 @@ class CoursedetailViewModel extends BaseViewModel {
                     ),
                     const SizedBox(height: 8),
                     ReadMoreText(
-                      'The Flutter framework builds its layout via the word composition of widgets, everything that you construct programmatically is a widget and these are compiled together to create the user interface. ',
+                      data.review.toString(),
                       trimLines: 2,
                       trimLength: 80,
                       style: TextStyle(color: Colors.black.withOpacity(0.7)),
