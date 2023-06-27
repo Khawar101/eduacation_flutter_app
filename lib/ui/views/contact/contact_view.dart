@@ -64,7 +64,7 @@ class ContactView extends StackedView<ContactViewModel> {
               child: ListView.builder(
                   itemCount: 20,
                   itemBuilder: (BuildContext context, int index) {
-                    return const Padding(
+                    return  Padding(
                       padding: EdgeInsets.only(bottom: 10),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,

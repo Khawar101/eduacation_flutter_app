@@ -68,7 +68,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10, // Replace with your actual item count
                   itemBuilder: (context, index) {
-                    return const Padding(
+                    return Padding(
                       padding: EdgeInsets.only(right: 16),
                       child: Column(
                         children: [
@@ -108,7 +108,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                       onTap: () {
                         viewModel.navigateinbox();
                       },
-                      child: const Padding(
+                      child:  Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -61,7 +61,7 @@ ratingNow(context, reviewCtrl, CoursesModel courseData, userData userData,
       actions: <Widget>[
         InkWell(
           onTap: () {},
-          child: const SizedBox(
+          child:  SizedBox(
             height: 50,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
