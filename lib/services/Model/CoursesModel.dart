@@ -5,6 +5,8 @@
 //     "coverPic": "",
 //     "description": "",
 //     "publishDate": "",
+//     "rating": 0.2,
+//     "students": 0.3,
 //     "publish": true,
 //     "UID": "",
 //     "FAQ": [
@@ -39,6 +41,8 @@
 //         "profile": ""
 //     }
 // }
+
+
 class CoursesModel {
   String? title;
   String? category;
@@ -46,6 +50,8 @@ class CoursesModel {
   String? coverPic;
   String? description;
   String? publishDate;
+  double? rating;
+  double? students;
   bool? publish;
   String? uID;
   List<FAQ>? fAQ;
@@ -62,6 +68,8 @@ class CoursesModel {
       this.coverPic,
       this.description,
       this.publishDate,
+      this.rating,
+      this.students,
       this.publish,
       this.uID,
       this.fAQ,
@@ -78,6 +86,8 @@ class CoursesModel {
     coverPic = json['coverPic'];
     description = json['description'];
     publishDate = json['publishDate'];
+    rating = json['rating'];
+    students = json['students'];
     publish = json['publish'];
     uID = json['UID'];
     if (json['FAQ'] != null) {
@@ -113,6 +123,8 @@ class CoursesModel {
     data['coverPic'] = this.coverPic;
     data['description'] = this.description;
     data['publishDate'] = this.publishDate;
+    data['rating'] = this.rating;
+    data['students'] = this.students;
     data['publish'] = this.publish;
     data['UID'] = this.uID;
     if (this.fAQ != null) {
