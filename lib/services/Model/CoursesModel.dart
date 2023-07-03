@@ -5,6 +5,7 @@
 //     "coverPic": "",
 //     "description": "",
 //     "publishDate": "",
+//     "publish": true,
 //     "UID": "",
 //     "FAQ": [
 //         {
@@ -45,6 +46,7 @@ class CoursesModel {
   String? coverPic;
   String? description;
   String? publishDate;
+  bool? publish;
   String? uID;
   List<FAQ>? fAQ;
   String? price;
@@ -60,6 +62,7 @@ class CoursesModel {
       this.coverPic,
       this.description,
       this.publishDate,
+      this.publish,
       this.uID,
       this.fAQ,
       this.price,
@@ -75,6 +78,7 @@ class CoursesModel {
     coverPic = json['coverPic'];
     description = json['description'];
     publishDate = json['publishDate'];
+    publish = json['publish'];
     uID = json['UID'];
     if (json['FAQ'] != null) {
       fAQ = <FAQ>[];
@@ -109,6 +113,7 @@ class CoursesModel {
     data['coverPic'] = this.coverPic;
     data['description'] = this.description;
     data['publishDate'] = this.publishDate;
+    data['publish'] = this.publish;
     data['UID'] = this.uID;
     if (this.fAQ != null) {
       data['FAQ'] = this.fAQ!.map((v) => v.toJson()).toList();

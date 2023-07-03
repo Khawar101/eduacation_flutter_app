@@ -10,6 +10,10 @@
 //     "gender": "",
 //     "phoneNo": "",
 //     "address": "",
+//     "country": "",
+//     "city": "",
+//     "postalCode": "",
+//     "bio": "",
 //     "clas": "",
 //     "educationSector": "",
 //     "socialLinks": {
@@ -31,6 +35,10 @@ class userData {
   String? gender;
   String? phoneNo;
   String? address;
+  String? country;
+  String? city;
+  String? postalCode;
+  String? bio;
   String? clas;
   String? educationSector;
   SocialLinks? socialLinks;
@@ -47,6 +55,10 @@ class userData {
       this.gender,
       this.phoneNo,
       this.address,
+      this.country,
+      this.city,
+      this.postalCode,
+      this.bio,
       this.clas,
       this.educationSector,
       this.socialLinks});
@@ -63,10 +75,14 @@ class userData {
     gender = json['gender'];
     phoneNo = json['phoneNo'];
     address = json['address'];
+    country = json['country'];
+    city = json['city'];
+    postalCode = json['postalCode'];
+    bio = json['bio'];
     clas = json['clas'];
     educationSector = json['educationSector'];
-    socialLinks = json['SocialLinks'] != null
-        ? new SocialLinks.fromJson(json['SocialLinks'])
+    socialLinks = json['socialLinks'] != null
+        ? new SocialLinks.fromJson(json['socialLinks'])
         : null;
   }
 
@@ -83,10 +99,14 @@ class userData {
     data['gender'] = this.gender;
     data['phoneNo'] = this.phoneNo;
     data['address'] = this.address;
+    data['country'] = this.country;
+    data['city'] = this.city;
+    data['postalCode'] = this.postalCode;
+    data['bio'] = this.bio;
     data['clas'] = this.clas;
     data['educationSector'] = this.educationSector;
     if (this.socialLinks != null) {
-      data['SocialLinks'] = this.socialLinks!.toJson();
+      data['socialLinks'] = this.socialLinks!.toJson();
     }
     return data;
   }
