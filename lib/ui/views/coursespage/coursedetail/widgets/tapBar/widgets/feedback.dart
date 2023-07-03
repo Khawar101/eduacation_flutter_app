@@ -1,3 +1,4 @@
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/views/coursespage/coursedetail/coursedetail_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,7 +6,7 @@ import 'package:stacked/stacked.dart';
 
 import '../../../../../../widgets/app_utils.dart';
 
-Widget feedback(context, courseData) {
+Widget feedback(context, CoursesModel courseData) {
   return ViewModelBuilder<CoursedetailViewModel>.reactive(
       viewModelBuilder: () => CoursedetailViewModel(),
       builder: (BuildContext context, CoursedetailViewModel viewModel,
@@ -46,7 +47,7 @@ Widget feedback(context, courseData) {
                             ),
                             const SizedBox(width: 08),
                             Text(
-                              "4.7",
+                              courseData.rating.toString(),
                               style: GoogleFonts.ibmPlexSans(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600),
@@ -86,7 +87,7 @@ Widget feedback(context, courseData) {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              "753",
+                              "${courseData.students ?? 0}",
                               style: GoogleFonts.ibmPlexSans(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600),
@@ -120,7 +121,7 @@ Widget feedback(context, courseData) {
                     icon: const Icon(Icons.edit))
               ],
             ),
-            viewModel.ratingBuilder(),
+            viewModel.ratingBuilder(courseData),
             const SizedBox(height: 30),
             Container(
               height: 40,

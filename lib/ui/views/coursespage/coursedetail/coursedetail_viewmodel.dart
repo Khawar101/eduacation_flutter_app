@@ -1,4 +1,5 @@
 // import 'package:education/services/login_service.dart';
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,9 +36,9 @@ class CoursedetailViewModel extends BaseViewModel {
     Navigator.pop(context);
   }
 
-  Widget ratingBuilder() {
+  Widget ratingBuilder(CoursesModel courseData) {
     return StreamBuilder<List<RatingModel>>(
-      stream: rateingService.ratingStream(),
+      stream: rateingService.ratingStream(courseData.publishDate),
       builder:
           (BuildContext context, AsyncSnapshot<List<RatingModel>> snapshot) {
         if (snapshot.hasError) {
