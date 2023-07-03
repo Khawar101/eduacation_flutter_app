@@ -1,43 +1,44 @@
 // import 'package:education/services/login_service.dart';
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:timeago/timeago.dart' as timeago;
 import '../../../../app/app.locator.dart';
 import '../../../../services/Model/ratingModel.dart';
-import '../../../../services/rateing_service.dart';
+import '../../../../services/rating_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
 import 'widgets/ratingNow.dart';
 
 class CoursedetailViewModel extends BaseViewModel {
   // final _loginService = locator<LoginService>();
-  final rateingService = locator<RateingService>();
+  final rateingService = locator<RatingService>();
 
   TextEditingController reviewCtrl = TextEditingController();
-  var rateting;
+  var rating;
 
   rateNowAlert(context, courseData, viewModel) {
     ratingNow(context, courseData, viewModel, notifyListeners);
   }
 
   getRating(value) {
-    rateting = value;
+    rating = value;
     notifyListeners();
   }
 
   postRating(courseData, context) {
-    rateingService.rateNow(reviewCtrl, rateting, courseData);
+    rateingService.rateNow(reviewCtrl, rating, courseData);
     reviewCtrl.clear;
     notifyListeners();
     Navigator.pop(context);
   }
 
-  Widget ratingBuilder() {
+  Widget ratingBuilder(CoursesModel courseData) {
     return StreamBuilder<List<RatingModel>>(
-      stream: rateingService.ratingStream(),
+      stream: rateingService.ratingStream(courseData.publishDate),
       builder:
           (BuildContext context, AsyncSnapshot<List<RatingModel>> snapshot) {
         if (snapshot.hasError) {
@@ -84,7 +85,7 @@ class CoursedetailViewModel extends BaseViewModel {
                                 children: [
                                   RatingBar.builder(
                                     wrapAlignment: WrapAlignment.start,
-                                    initialRating: data.rateting!,
+                                    initialRating: data.rating!,
                                     minRating: 1,
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,
@@ -99,7 +100,9 @@ class CoursedetailViewModel extends BaseViewModel {
                                     },
                                   ),
                                   Text(
-                                    "${data.date!}",
+                                    timeago
+                                        .format(data.date!.toDate())
+                                        .toString(),
                                     style: GoogleFonts.ibmPlexSans(
                                         fontSize: 12,
                                         color: Colors.black45,

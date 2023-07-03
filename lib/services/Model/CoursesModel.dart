@@ -5,6 +5,8 @@
 //     "coverPic": "",
 //     "description": "",
 //     "publishDate": "",
+//     "rating": 0.2,
+//     "students": 0,
 //     "publish": true,
 //     "UID": "",
 //     "FAQ": [
@@ -39,6 +41,9 @@
 //         "profile": ""
 //     }
 // }
+
+// ignore_for_file: file_names
+
 class CoursesModel {
   String? title;
   String? category;
@@ -46,6 +51,8 @@ class CoursesModel {
   String? coverPic;
   String? description;
   String? publishDate;
+  double? rating;
+  int? students;
   bool? publish;
   String? uID;
   List<FAQ>? fAQ;
@@ -56,20 +63,22 @@ class CoursesModel {
   PublisherData? publisherData;
 
   CoursesModel(
-      {this.title,
-      this.category,
-      this.chapter,
-      this.coverPic,
-      this.description,
-      this.publishDate,
-      this.publish,
-      this.uID,
-      this.fAQ,
-      this.price,
-      this.duration,
-      this.lecture,
-      this.assigment,
-      this.publisherData});
+      {title,
+      category,
+      chapter,
+      coverPic,
+      description,
+      publishDate,
+      rating,
+      students,
+      publish,
+      uID,
+      fAQ,
+      price,
+      duration,
+      lecture,
+      assigment,
+      publisherData});
 
   CoursesModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -78,12 +87,14 @@ class CoursesModel {
     coverPic = json['coverPic'];
     description = json['description'];
     publishDate = json['publishDate'];
+    rating = json['rating'];
+    students = json['students'];
     publish = json['publish'];
     uID = json['UID'];
     if (json['FAQ'] != null) {
       fAQ = <FAQ>[];
       json['FAQ'].forEach((v) {
-        fAQ!.add(new FAQ.fromJson(v));
+        fAQ!.add(FAQ.fromJson(v));
       });
     }
     price = json['price'];
@@ -91,43 +102,45 @@ class CoursesModel {
     if (json['lecture'] != null) {
       lecture = <Lecture>[];
       json['lecture'].forEach((v) {
-        lecture!.add(new Lecture.fromJson(v));
+        lecture!.add(Lecture.fromJson(v));
       });
     }
     if (json['assigment'] != null) {
       assigment = <Assigment>[];
       json['assigment'].forEach((v) {
-        assigment!.add(new Assigment.fromJson(v));
+        assigment!.add(Assigment.fromJson(v));
       });
     }
     publisherData = json['publisherData'] != null
-        ? new PublisherData.fromJson(json['publisherData'])
+        ? PublisherData.fromJson(json['publisherData'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['category'] = this.category;
-    data['chapter'] = this.chapter;
-    data['coverPic'] = this.coverPic;
-    data['description'] = this.description;
-    data['publishDate'] = this.publishDate;
-    data['publish'] = this.publish;
-    data['UID'] = this.uID;
-    if (this.fAQ != null) {
-      data['FAQ'] = this.fAQ!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['title'] = title;
+    data['category'] = category;
+    data['chapter'] = chapter;
+    data['coverPic'] = coverPic;
+    data['description'] = description;
+    data['publishDate'] = publishDate;
+    data['rating'] = rating;
+    data['students'] = students;
+    data['publish'] = publish;
+    data['UID'] = uID;
+    if (fAQ != null) {
+      data['FAQ'] = fAQ!.map((v) => v.toJson()).toList();
     }
-    data['price'] = this.price;
-    data['duration'] = this.duration;
-    if (this.lecture != null) {
-      data['lecture'] = this.lecture!.map((v) => v.toJson()).toList();
+    data['price'] = price;
+    data['duration'] = duration;
+    if (lecture != null) {
+      data['lecture'] = lecture!.map((v) => v.toJson()).toList();
     }
-    if (this.assigment != null) {
-      data['assigment'] = this.assigment!.map((v) => v.toJson()).toList();
+    if (assigment != null) {
+      data['assigment'] = assigment!.map((v) => v.toJson()).toList();
     }
-    if (this.publisherData != null) {
-      data['publisherData'] = this.publisherData!.toJson();
+    if (publisherData != null) {
+      data['publisherData'] = publisherData!.toJson();
     }
     return data;
   }
@@ -137,7 +150,7 @@ class FAQ {
   String? question;
   String? answer;
 
-  FAQ({this.question, this.answer});
+  FAQ({question, answer});
 
   FAQ.fromJson(Map<String, dynamic> json) {
     question = json['question'];
@@ -145,9 +158,9 @@ class FAQ {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['question'] = this.question;
-    data['answer'] = this.answer;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['question'] = question;
+    data['answer'] = answer;
     return data;
   }
 }
@@ -159,12 +172,7 @@ class Lecture {
   String? thumbnail;
   String? videoUrl;
 
-  Lecture(
-      {this.title,
-      this.duration,
-      this.description,
-      this.thumbnail,
-      this.videoUrl});
+  Lecture({title, duration, description, thumbnail, videoUrl});
 
   Lecture.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -175,12 +183,12 @@ class Lecture {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['duration'] = this.duration;
-    data['description'] = this.description;
-    data['thumbnail'] = this.thumbnail;
-    data['videoUrl'] = this.videoUrl;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['title'] = title;
+    data['duration'] = duration;
+    data['description'] = description;
+    data['thumbnail'] = thumbnail;
+    data['videoUrl'] = videoUrl;
     return data;
   }
 }
@@ -192,12 +200,7 @@ class Assigment {
   String? thumbnail;
   String? fileUrl;
 
-  Assigment(
-      {this.title,
-      this.lastDate,
-      this.description,
-      this.thumbnail,
-      this.fileUrl});
+  Assigment({title, lastDate, description, thumbnail, fileUrl});
 
   Assigment.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -208,12 +211,12 @@ class Assigment {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['lastDate'] = this.lastDate;
-    data['description'] = this.description;
-    data['thumbnail'] = this.thumbnail;
-    data['fileUrl'] = this.fileUrl;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['title'] = title;
+    data['lastDate'] = lastDate;
+    data['description'] = description;
+    data['thumbnail'] = thumbnail;
+    data['fileUrl'] = fileUrl;
     return data;
   }
 }
@@ -223,7 +226,7 @@ class PublisherData {
   String? email;
   String? profile;
 
-  PublisherData({this.name, this.email, this.profile});
+  PublisherData({name, email, profile});
 
   PublisherData.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -232,10 +235,10 @@ class PublisherData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['profile'] = this.profile;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['name'] = name;
+    data['email'] = email;
+    data['profile'] = profile;
     return data;
   }
 }

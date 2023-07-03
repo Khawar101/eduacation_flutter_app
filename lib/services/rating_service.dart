@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/userData.dart';
 import 'package:education/services/login_service.dart';
@@ -6,25 +8,23 @@ import '../app/app.locator.dart';
 import 'Model/CoursesModel.dart';
 import 'Model/ratingModel.dart';
 
-class RateingService {
+class RatingService {
   final _loginService = locator<LoginService>();
 
   String message = "";
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-
-
-
-  Stream<List<RatingModel>> ratingStream() {
-    final stream = FirebaseFirestore.instance.collection("Rateing").snapshots();
+  Stream<List<RatingModel>> ratingStream(courseKey) {
+    final stream = FirebaseFirestore.instance
+        .collection("Rating")
+        .where("courseKey", isEqualTo: courseKey)
+        .snapshots();
     return stream.map((event) => event.docs.map((doc) {
           return RatingModel.fromJson(doc.data());
         }).toList());
   }
 
-
-
-  rateNow(reviewCTRL, rateting, CoursesModel courseData) async {
+  rateNow(reviewCTRL, rating, CoursesModel courseData) async {
     userData _userData = _loginService.UserData;
     String review = reviewCTRL.text.trim();
 
@@ -32,14 +32,19 @@ class RateingService {
       message = "Please enter review";
     } else {
       try {
-        var key = "${_userData.uID}${courseData.publishDate}";
-        await firestore.collection("Rateing").doc(key).set({
+        log("======>${courseData.rating}");
+        var courseKey = courseData.publishDate;
+        await firestore.collection("courses").doc(courseKey).update({
+          "rating": (courseData.rating ?? 5 + rating) / 2,
+        });
+        var key = "${_userData.uID}$courseKey";
+        await firestore.collection("Rating").doc(key).set({
           "UID": _userData.uID,
           "courseKey": courseData.publishDate,
           "name": _userData.username,
           "profile": _userData.profile,
           "review": review,
-          "rateting": rateting,
+          "rating": rating,
           "date": DateTime.timestamp(),
         });
         message = "Rate Successfully";
