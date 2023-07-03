@@ -6,7 +6,7 @@ import '../app/app.locator.dart';
 import 'Model/CoursesModel.dart';
 import 'Model/ratingModel.dart';
 
-class RateingService {
+class RatingService {
   final _loginService = locator<LoginService>();
 
   String message = "";
@@ -16,7 +16,7 @@ class RateingService {
 
 
   Stream<List<RatingModel>> ratingStream() {
-    final stream = FirebaseFirestore.instance.collection("Rateing").snapshots();
+    final stream = FirebaseFirestore.instance.collection("Rating").snapshots();
     return stream.map((event) => event.docs.map((doc) {
           return RatingModel.fromJson(doc.data());
         }).toList());
@@ -24,7 +24,7 @@ class RateingService {
 
 
 
-  rateNow(reviewCTRL, rateting, CoursesModel courseData) async {
+  rateNow(reviewCTRL, rating, CoursesModel courseData) async {
     userData _userData = _loginService.UserData;
     String review = reviewCTRL.text.trim();
 
@@ -33,13 +33,13 @@ class RateingService {
     } else {
       try {
         var key = "${_userData.uID}${courseData.publishDate}";
-        await firestore.collection("Rateing").doc(key).set({
+        await firestore.collection("Rating").doc(key).set({
           "UID": _userData.uID,
           "courseKey": courseData.publishDate,
           "name": _userData.username,
           "profile": _userData.profile,
           "review": review,
-          "rateting": rateting,
+          "rating": rating,
           "date": DateTime.timestamp(),
         });
         message = "Rate Successfully";

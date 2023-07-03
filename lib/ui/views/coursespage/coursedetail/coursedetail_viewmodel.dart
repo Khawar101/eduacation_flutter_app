@@ -7,29 +7,29 @@ import 'package:stacked/stacked.dart';
 
 import '../../../../app/app.locator.dart';
 import '../../../../services/Model/ratingModel.dart';
-import '../../../../services/rateing_service.dart';
+import '../../../../services/rating_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
 import 'widgets/ratingNow.dart';
 
 class CoursedetailViewModel extends BaseViewModel {
   // final _loginService = locator<LoginService>();
-  final rateingService = locator<RateingService>();
+  final rateingService = locator<RatingService>();
 
   TextEditingController reviewCtrl = TextEditingController();
-  var rateting;
+  var rating;
 
   rateNowAlert(context, courseData, viewModel) {
     ratingNow(context, courseData, viewModel, notifyListeners);
   }
 
   getRating(value) {
-    rateting = value;
+    rating = value;
     notifyListeners();
   }
 
   postRating(courseData, context) {
-    rateingService.rateNow(reviewCtrl, rateting, courseData);
+    rateingService.rateNow(reviewCtrl, rating, courseData);
     reviewCtrl.clear;
     notifyListeners();
     Navigator.pop(context);
@@ -84,7 +84,7 @@ class CoursedetailViewModel extends BaseViewModel {
                                 children: [
                                   RatingBar.builder(
                                     wrapAlignment: WrapAlignment.start,
-                                    initialRating: data.rateting!,
+                                    initialRating: data.rating!,
                                     minRating: 1,
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,

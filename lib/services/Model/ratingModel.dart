@@ -5,7 +5,7 @@
 //     "profile": "_userData.profile",
 //     "review": "review",
 //     "date": "review",
-//     "rateting": 6.3
+//     "rating": 6.3
 // }
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,7 +17,7 @@ class RatingModel {
   String? profile;
   String? review;
   Timestamp? date;
-  double? rateting;
+  double? rating;
 
   RatingModel(
       {this.uID,
@@ -26,7 +26,7 @@ class RatingModel {
       this.profile,
       this.review,
       this.date,
-      this.rateting});
+      this.rating});
 
   RatingModel.fromJson(Map<String, dynamic> json) {
     uID = json['UID'];
@@ -35,7 +35,7 @@ class RatingModel {
     profile = json['profile'];
     review = json['review'];
     date = json['date'];
-    rateting = json['rateting'];
+    rating = json['rating'];
   }
 
   Map<String, dynamic> toJson() {
@@ -46,7 +46,7 @@ class RatingModel {
     data['profile'] = this.profile;
     data['review'] = this.review;
     data['date'] = this.date;
-    data['rateting'] = this.rateting;
+    data['rating'] = this.rating;
     return data;
   }
 }

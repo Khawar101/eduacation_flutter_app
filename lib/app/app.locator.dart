@@ -16,7 +16,7 @@ import '../services/courses_service.dart';
 import '../services/forgetpassword_service.dart';
 import '../services/login_service.dart';
 import '../services/profile_service.dart';
-import '../services/rateing_service.dart';
+import '../services/rating_service.dart';
 import '../services/setting_service.dart';
 import '../services/signup_service.dart';
 
@@ -41,5 +41,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => ForgetpasswordService());
   locator.registerLazySingleton(() => SettingService());
   locator.registerLazySingleton(() => CoursesService());
-  locator.registerLazySingleton(() => RateingService());
+  locator.registerLazySingleton(() => RatingService());
 }
