@@ -4,7 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:timeago/timeago.dart' as timeago;
 import '../../../../app/app.locator.dart';
 import '../../../../services/Model/ratingModel.dart';
 import '../../../../services/rating_service.dart';
@@ -99,7 +99,9 @@ class CoursedetailViewModel extends BaseViewModel {
                                     },
                                   ),
                                   Text(
-                                    "${data.date!}",
+                                    timeago
+                                        .format(data.date!.toDate())
+                                        .toString(),
                                     style: GoogleFonts.ibmPlexSans(
                                         fontSize: 12,
                                         color: Colors.black45,
