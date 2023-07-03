@@ -1,4 +1,4 @@
-import 'package:education/services/login_service.dart';
+// import 'package:education/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +13,7 @@ import '../../../widgets/app_utils.dart';
 import 'widgets/ratingNow.dart';
 
 class CoursedetailViewModel extends BaseViewModel {
-  final _loginService = locator<LoginService>();
+  // final _loginService = locator<LoginService>();
   final rateingService = locator<RateingService>();
 
   TextEditingController reviewCtrl = TextEditingController();

@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-import 'package:education/services/Model/userData.dart';
 import 'package:education/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
