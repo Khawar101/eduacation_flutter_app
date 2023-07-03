@@ -6,7 +6,7 @@
 //     "description": "",
 //     "publishDate": "",
 //     "rating": 0.2,
-//     "students": 0.3,
+//     "students": 0,
 //     "publish": true,
 //     "UID": "",
 //     "FAQ": [
@@ -52,7 +52,7 @@ class CoursesModel {
   String? description;
   String? publishDate;
   double? rating;
-  double? students;
+  int? students;
   bool? publish;
   String? uID;
   List<FAQ>? fAQ;
