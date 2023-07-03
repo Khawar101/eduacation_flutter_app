@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../services/Model/CoursesModel.dart';
 import '../../../widgets/video_player.dart';
 import 'widgets/studentintro.dart';
-import 'widgets/tapBar/completetab.dart';
+import 'widgets/tapBar/contantTab.dart';
 import 'widgets/tapBar/overviewdart.dart';
 
 class CoursedetailView extends StatefulWidget {
@@ -116,13 +116,13 @@ class _CoursedetailViewState extends State<CoursedetailView>
                             text: 'Overview',
                           ),
                           Tab(
-                            text: 'Completed',
+                            text: 'Contant',
                           ),
                         ],
                       ),
                       tabController.index == 0
                           ? overview(context, widget.courseData)
-                          : complete(context),
+                          : contant(context, widget.courseData),
                     ])),
                   ),
                 ],

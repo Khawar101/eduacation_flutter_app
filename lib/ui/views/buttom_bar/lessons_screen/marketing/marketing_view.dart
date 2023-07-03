@@ -344,7 +344,7 @@ class _MarketingViewState extends State<MarketingView> {
                                               itemBuilder:
                                                   (BuildContext context,
                                                       int index) {
-                                                var lecture =
+                                                Lecture lecture =
                                                     widget.data.lecture![index];
                                                 return Padding(
                                                   padding:
@@ -406,7 +406,7 @@ class _MarketingViewState extends State<MarketingView> {
                                                       Row(
                                                         children: [
                                                           Text(
-                                                            '56 Minutes',
+                                                            "${lecture.duration ?? 0}",
                                                             style: GoogleFonts
                                                                 .ibmPlexSans(
                                                                     fontSize:
@@ -424,29 +424,48 @@ class _MarketingViewState extends State<MarketingView> {
                                                 );
                                               }),
                                         ),
-                                        SizedBox(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.03),
-                                        Container(
-                                            height: 30,
-                                            width: 150,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              color: const Color(0xFF4873A6)
-                                                  .withOpacity(0.7),
-                                            ),
-                                            child: const Center(
-                                                child: ButtonText(
-                                                    text: 'See all Lessons',
-                                                    color: Colors.white))),
+                                        // SizedBox(
+                                        //     height: MediaQuery.of(context)
+                                        //             .size
+                                        //             .height *
+                                        //         0.03),
+                                        // Container(
+                                        //     height: 30,
+                                        //     width: 150,
+                                        //     decoration: BoxDecoration(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(10),
+                                        //       color: const Color(0xFF4873A6)
+                                        //           .withOpacity(0.7),
+                                        //     ),
+                                        //     child: const Center(
+                                        //         child: ButtonText(
+                                        //             text: 'See all Lessons',
+                                        //             color: Colors.white))),
                                       ],
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 30),
+                                const SizedBox(height: 10),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          MediaQuery.of(context).size.width *
+                                              0.00,
+                                      vertical: 8),
+                                  child: Column(
+                                    children: [
+                                      const Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: BigText(
+                                            text: "Rating",
+                                            color: Colors.black),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      viewModel.ratingBuilder(widget.data),
+                                    ],
+                                  ),
+                                )
                               ],
                             ),
                           ),
