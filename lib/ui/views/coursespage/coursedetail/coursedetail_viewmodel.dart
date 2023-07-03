@@ -1,4 +1,6 @@
 // import 'package:education/services/login_service.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -19,6 +21,11 @@ class CoursedetailViewModel extends BaseViewModel {
 
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
+  var videoUrl;
+  updateLession(_videoUrl) {
+    videoUrl = _videoUrl;
+    notifyListeners();
+  }
 
   rateNowAlert(context, courseData, viewModel) {
     ratingNow(context, courseData, viewModel, notifyListeners);

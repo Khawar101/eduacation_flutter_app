@@ -108,7 +108,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                       onTap: () {
                         viewModel.navigateinbox();
                       },
-                      child:  Padding(
+                      child: Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

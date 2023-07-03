@@ -78,8 +78,7 @@ class MarketingViewModel extends BaseViewModel {
                               height: 2,
                             ),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 RatingBar.builder(
                                   wrapAlignment: WrapAlignment.start,

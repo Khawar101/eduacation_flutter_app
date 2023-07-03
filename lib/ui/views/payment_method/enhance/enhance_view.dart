@@ -106,7 +106,7 @@ class EnhanceView extends StackedView<EnhanceViewModel> {
                       value: viewModel.isChecked1,
                       onChanged: (bool? value) => viewModel.update1(value)),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                 Column(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

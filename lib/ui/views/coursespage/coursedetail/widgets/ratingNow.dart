@@ -62,7 +62,7 @@ ratingNow(context, CoursesModel courseData, CoursedetailViewModel viewModel,
       actions: <Widget>[
         InkWell(
           onTap: () {
-            viewModel.postRating(courseData,context);
+            viewModel.postRating(courseData, context);
           },
           child: const SizedBox(
             height: 50,

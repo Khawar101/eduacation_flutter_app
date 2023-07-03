@@ -2,9 +2,11 @@ import 'dart:developer';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/courseintro.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../../services/Model/CoursesModel.dart';
 import '../../../widgets/video_player.dart';
+import 'coursedetail_viewmodel.dart';
 import 'widgets/studentintro.dart';
 import 'widgets/tapBar/contantTab.dart';
 import 'widgets/tapBar/overviewdart.dart';
@@ -41,94 +43,104 @@ class _CoursedetailViewState extends State<CoursedetailView>
 
   @override
   Widget build(BuildContext context) {
-    return OrientationBuilder(
-      builder: (context, orientation) {
-        return Scaffold(
-            appBar: AppBar(
-                elevation: 0,
-                backgroundColor: Colors.white,
-                leading: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.black54,
-                    size: 18,
-                  ),
-                ),
-                title: Text(
-                  "Details",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.ibmPlexSans(
-                      fontSize: 18,
-                      color: const Color(0xff4873a6).withOpacity(0.7),
-                      fontWeight: FontWeight.w600),
-                ),
-                centerTitle: true,
-                actions: const [
-                  Padding(
-                    padding: EdgeInsets.only(right: 15),
-                    child: Icon(
-                      Icons.bookmark_border_rounded,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
-                  )
-                ]),
-            body: SafeArea(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                        child: Column(children: [
-                      videoPlayer(
-                          url:
-                              widget.courseData.lecture![0].videoUrl.toString(),
-                          orientation: orientation),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 16),
-                            studentintro(
-                                context, widget.courseData.publisherData!),
-                            courseintro(context, widget.courseData),
-                            const SizedBox(height: 40),
-                          ],
+    return ViewModelBuilder<CoursedetailViewModel>.reactive(
+        viewModelBuilder: () => CoursedetailViewModel(),
+        builder: (BuildContext context, CoursedetailViewModel viewModel,
+            Widget? child) {
+          return OrientationBuilder(
+            builder: (context, orientation) {
+              return Scaffold(
+                  appBar: AppBar(
+                      elevation: 0,
+                      backgroundColor: Colors.white,
+                      leading: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.black54,
+                          size: 18,
                         ),
                       ),
-                      TabBar(
-                        indicatorWeight: 1,
-                        indicatorPadding: const EdgeInsets.only(bottom: 4),
-                        indicatorColor:
-                            const Color(0xff4873a6).withOpacity(0.7),
-                        controller: tabController,
-                        labelStyle: GoogleFonts.ibmPlexSans(
-                            fontSize: 16.0, fontWeight: FontWeight.w600),
-                        onTap: (value) {},
-                        labelColor: Colors.black,
-                        unselectedLabelColor:
-                            const Color(0xff4873a6).withOpacity(0.7),
-                        tabs: const [
-                          Tab(
-                            text: 'Overview',
-                          ),
-                          Tab(
-                            text: 'Contant',
-                          ),
-                        ],
+                      title: Text(
+                        "Details",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.ibmPlexSans(
+                            fontSize: 18,
+                            color: const Color(0xff4873a6).withOpacity(0.7),
+                            fontWeight: FontWeight.w600),
                       ),
-                      tabController.index == 0
-                          ? overview(context, widget.courseData)
-                          : contant(context, widget.courseData),
-                    ])),
-                  ),
-                ],
-              ),
-            ));
-      },
-    );
+                      centerTitle: true,
+                      actions: const [
+                        Padding(
+                          padding: EdgeInsets.only(right: 15),
+                          child: Icon(
+                            Icons.bookmark_border_rounded,
+                            color: Colors.black54,
+                            size: 20,
+                          ),
+                        )
+                      ]),
+                  body: SafeArea(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: SingleChildScrollView(
+                              child: Column(children: [
+                            Text(viewModel.videoUrl ?? ""),
+                            videoPlayer(
+                                url: viewModel.videoUrl ??
+                                    widget.courseData.lecture![0].videoUrl
+                                        .toString(),
+                                orientation: orientation),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 16),
+                                  studentintro(context,
+                                      widget.courseData.publisherData!),
+                                  courseintro(context, widget.courseData),
+                                  const SizedBox(height: 40),
+                                ],
+                              ),
+                            ),
+                            TabBar(
+                              indicatorWeight: 1,
+                              indicatorPadding:
+                                  const EdgeInsets.only(bottom: 4),
+                              indicatorColor:
+                                  const Color(0xff4873a6).withOpacity(0.7),
+                              controller: tabController,
+                              labelStyle: GoogleFonts.ibmPlexSans(
+                                  fontSize: 16.0, fontWeight: FontWeight.w600),
+                              onTap: (value) {},
+                              labelColor: Colors.black,
+                              unselectedLabelColor:
+                                  const Color(0xff4873a6).withOpacity(0.7),
+                              tabs: const [
+                                Tab(
+                                  text: 'Overview',
+                                ),
+                                Tab(
+                                  text: 'Contant',
+                                ),
+                              ],
+                            ),
+                            tabController.index == 0
+                                ? overview(context, widget.courseData)
+                                : contant(
+                                    context, widget.courseData, viewModel),
+                          ])),
+                        ),
+                      ],
+                    ),
+                  ));
+            },
+          );
+        });
   }
 }

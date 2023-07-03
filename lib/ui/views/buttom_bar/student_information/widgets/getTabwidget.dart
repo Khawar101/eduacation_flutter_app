@@ -158,7 +158,7 @@ Widget Following(context) {
                       ),
                       SizedBox(
                           width: MediaQuery.of(context).size.width * 0.025),
-                       Column(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
