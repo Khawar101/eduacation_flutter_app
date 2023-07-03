@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_import
 
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,7 +8,7 @@ import 'package:readmore/readmore.dart';
 
 import '../../../../../widgets/app_utils.dart';
 
-Widget contant(context) {
+Widget contant(context, CoursesModel courseData) {
   return SizedBox(
       child: Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -15,9 +16,10 @@ Widget contant(context) {
       children: [
         ListView.builder(
             shrinkWrap: true,
-            itemCount: 3,
+            itemCount: courseData.lecture!.length,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
+              Lecture lecture = courseData.lecture![index];
               return Padding(
                 padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height * 0.02,
@@ -35,8 +37,8 @@ Widget contant(context) {
                               borderRadius: BorderRadius.circular(10)),
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                'assets/images/girl-images-4.jpg',
+                              child: Image.network(
+                                lecture.thumbnail.toString(),
                                 fit: BoxFit.cover,
                               )),
                         ),
@@ -48,7 +50,7 @@ Widget contant(context) {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Adobe illustrator for all beginner artist",
+                                lecture.title.toString(),
                                 softWrap: true,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
@@ -61,7 +63,7 @@ Widget contant(context) {
                                   height: MediaQuery.of(context).size.height *
                                       0.02),
                               Text(
-                                "Lesson 1",
+                                "Lesson $index",
                                 style: GoogleFonts.ibmPlexSans(
                                     fontSize: 14,
                                     color: Colors.black54,
@@ -74,7 +76,7 @@ Widget contant(context) {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                     ReadMoreText(
-                      'The Flutter framework builds its layout via the composition of widgets, everything that you construct programmatically is a widget and these are compiled together to create the user interface. ',
+                      lecture.description.toString(),
                       trimLines: 2,
                       trimLength: 80,
                       style: TextStyle(color: Colors.black.withOpacity(0.7)),
@@ -95,7 +97,7 @@ Widget contant(context) {
         Align(
           alignment: Alignment.topLeft,
           child: Text(
-            "Resources for download",
+            "Assigments",
             style: GoogleFonts.ibmPlexSans(
                 fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600),
           ),
@@ -104,8 +106,9 @@ Widget contant(context) {
         ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 3,
+            itemCount: courseData.assigment!.length,
             itemBuilder: (context, index) {
+              Assigment assigment = courseData.assigment![index];
               return Padding(
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).size.height * 0.03,

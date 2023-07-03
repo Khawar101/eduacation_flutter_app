@@ -122,7 +122,7 @@ class _CoursedetailViewState extends State<CoursedetailView>
                       ),
                       tabController.index == 0
                           ? overview(context, widget.courseData)
-                          : contant(context),
+                          : contant(context, widget.courseData),
                     ])),
                   ),
                 ],
