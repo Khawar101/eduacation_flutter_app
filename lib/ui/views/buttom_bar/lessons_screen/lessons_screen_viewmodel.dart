@@ -91,7 +91,7 @@ class LessonsScreenViewModel extends BaseViewModel {
                                   ),
                                   RatingBar.builder(
                                     wrapAlignment: WrapAlignment.start,
-                                    initialRating: 2.5,
+                                    initialRating: data.rating ?? 5.0,
                                     minRating: 1,
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,

@@ -48,6 +48,9 @@ class CoursedetailViewModel extends BaseViewModel {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Loading();
         }
+        if (snapshot.data!.isEmpty) {
+          return const Center(child: Text("No rating yet..."));
+        }
         return ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             scrollDirection: Axis.vertical,

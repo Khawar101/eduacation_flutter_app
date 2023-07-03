@@ -7,7 +7,7 @@ import 'package:readmore/readmore.dart';
 
 import '../../../../../widgets/app_utils.dart';
 
-Widget complete(context) {
+Widget contant(context) {
   return SizedBox(
       child: Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
