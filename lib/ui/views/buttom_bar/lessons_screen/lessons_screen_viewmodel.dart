@@ -27,15 +27,15 @@ class LessonsScreenViewModel extends BaseViewModel {
   final _loginService = locator<LoginService>();
 
   checkSubscripNavigate(CoursesModel courseData) {
-    log("------------${_loginService.UserData.buyCourses}");
-    _loginService.UserData.buyCourses?.map((e) {
-      log(e.toString());
-      if (e == courseData.publishDate) {
+    var buyCourses = _loginService.UserData.buyCourses!;
+    for (var i = 0; i < buyCourses.length; i++) {
+      if (buyCourses[i] == courseData.publishDate) {
+        log(buyCourses[i]);
         _navigationService.navigateToCoursedetailView(courseData: courseData);
         return null;
       }
-    });
-    // _navigationService.navigateToMarketingView(data: courseData);
+    }
+    _navigationService.navigateToMarketingView(data: courseData);
   }
 
   navigateNotifications() {

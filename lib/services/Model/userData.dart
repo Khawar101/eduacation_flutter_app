@@ -45,7 +45,7 @@ class userData {
   String? clas;
   String? educationSector;
   SocialLinks? socialLinks;
-  List<String>? buyCourses;
+  List<dynamic>? buyCourses;
 
   userData(
       {this.uID,
