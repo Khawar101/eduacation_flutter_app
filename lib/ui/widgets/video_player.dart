@@ -24,7 +24,7 @@ class _videoPlayerState extends State<videoPlayer> {
   void initState() {
     super.initState();
     controller = VideoPlayerController.network(widget.url)
-      // ..addListener(() => setState(() {}))
+      ..addListener(() => setState(() {}))
       ..setLooping(false)
       ..initialize().then((value) => controller!.play());
   }
@@ -144,13 +144,14 @@ class _videoPlayerState extends State<videoPlayer> {
                         onPressed: () {
                           setLandScape();
                         },
-                        icon: Icon(Icons.fullscreen_exit, color: Colors.black),
+                        icon: const Icon(Icons.fullscreen_exit,
+                            color: Colors.black),
                         iconSize: 40,
                       ),
                     ),
                   ]),
                 ),
               ])
-            : Center(child: CircularProgressIndicator()));
+            : const Center(child: CircularProgressIndicator()));
   }
 }
