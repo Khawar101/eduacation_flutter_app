@@ -39,7 +39,7 @@ Widget introBuilder(CoursesModel coursesModel) {
                       color: Colors.black,
                       fontSize: 17,
                       fontWeight: FontWeight.bold)),
-              const ButtonText(text: 'Teacher', color: Colors.black45)
+              ButtonText(text: _userData.userType!, color: Colors.black45)
             ],
           ),
         ],

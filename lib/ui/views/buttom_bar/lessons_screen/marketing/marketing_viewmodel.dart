@@ -41,7 +41,6 @@ class MarketingViewModel extends BaseViewModel {
     _subscriptionService.buyCourse(courseData);
   }
 
-
   Widget ratingBuilder(CoursesModel courseData) {
     return StreamBuilder<List<RatingModel>>(
       stream: ratingService.ratingStream(courseData.publishDate),
