@@ -17,7 +17,7 @@ import 'widgets/ratingNow.dart';
 
 class CoursedetailViewModel extends BaseViewModel {
   // final _loginService = locator<LoginService>();
-  final rateingService = locator<RatingService>();
+  final ratingService = locator<RatingService>();
 
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
@@ -37,7 +37,7 @@ class CoursedetailViewModel extends BaseViewModel {
   }
 
   postRating(courseData, context) {
-    rateingService.rateNow(reviewCtrl, rating, courseData);
+    ratingService.rateNow(reviewCtrl, rating, courseData);
     reviewCtrl.clear;
     notifyListeners();
     Navigator.pop(context);
@@ -45,7 +45,7 @@ class CoursedetailViewModel extends BaseViewModel {
 
   Widget ratingBuilder(CoursesModel courseData) {
     return StreamBuilder<List<RatingModel>>(
-      stream: rateingService.ratingStream(courseData.publishDate),
+      stream: ratingService.ratingStream(courseData.publishDate),
       builder:
           (BuildContext context, AsyncSnapshot<List<RatingModel>> snapshot) {
         if (snapshot.hasError) {

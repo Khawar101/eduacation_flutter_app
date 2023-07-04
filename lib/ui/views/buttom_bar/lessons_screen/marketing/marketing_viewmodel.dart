@@ -11,13 +11,14 @@ import 'package:timeago/timeago.dart' as timeago;
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../../services/Model/ratingModel.dart';
 import '../../../../../services/rating_service.dart';
+import '../../../../../services/subscription_service.dart';
 import '../../../../../utils/loading.dart';
 import '../../../../widgets/app_utils.dart';
 
 class MarketingViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
-  final rateingService = locator<RatingService>();
-
+  final ratingService = locator<RatingService>();
+  final _subscriptionService = locator<SubscriptionService>();
   navigateonBack(BuildContext context) {
     // log('====>not move');
     MediaQuery.of(context).orientation == Orientation.portrait;
@@ -29,13 +30,17 @@ class MarketingViewModel extends BaseViewModel {
     _navigationService.navigateToLessonsView();
   }
 
-  navigateCoursedetail(courseData) {
-    _navigationService.navigateToCoursedetailView(courseData: courseData);
+  // navigateCoursedetail(courseData) {
+  //   _navigationService.navigateToCoursedetailView(courseData: courseData);
+  // }
+
+  buyCourse(courseData) {
+    _subscriptionService.buyCourse(courseData);
   }
 
   Widget ratingBuilder(CoursesModel courseData) {
     return StreamBuilder<List<RatingModel>>(
-      stream: rateingService.ratingStream(courseData.publishDate),
+      stream: ratingService.ratingStream(courseData.publishDate),
       builder:
           (BuildContext context, AsyncSnapshot<List<RatingModel>> snapshot) {
         if (snapshot.hasError) {

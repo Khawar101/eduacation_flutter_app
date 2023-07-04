@@ -9,6 +9,7 @@ import 'package:education/services/chats_service.dart';
 import 'package:education/services/forgetpassword_service.dart';
 import 'package:education/services/setting_service.dart';
 import 'package:education/services/rating_service.dart';
+import 'package:education/services/subscription_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -23,7 +24,8 @@ import 'test_helpers.mocks.dart';
   MockSpec<ChatsService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ForgetpasswordService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SettingService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<RateingService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<RatingService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SubscriptionService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -36,7 +38,8 @@ void registerServices() {
   getAndRegisterChatsService();
   getAndRegisterForgetpasswordService();
   getAndRegisterSettingService();
-  getAndRegisterRateingService();
+  getAndRegisterRatingService();
+  getAndRegisterSubscriptionService();
 // @stacked-mock-register
 }
 
@@ -132,10 +135,17 @@ MockSettingService getAndRegisterSettingService() {
   return service;
 }
 
-MockRateingService getAndRegisterRateingService() {
-  _removeRegistrationIfExists<RateingService>();
-  final service = MockRateingService();
-  locator.registerSingleton<RateingService>(service);
+MockRatingService getAndRegisterRatingService() {
+  _removeRegistrationIfExists<RatingService>();
+  final service = MockRatingService();
+  locator.registerSingleton<RatingService>(service);
+  return service;
+}
+
+MockSubscriptionService getAndRegisterSubscriptionService() {
+  _removeRegistrationIfExists<SubscriptionService>();
+  final service = MockSubscriptionService();
+  locator.registerSingleton<SubscriptionService>(service);
   return service;
 }
 // @stacked-mock-create

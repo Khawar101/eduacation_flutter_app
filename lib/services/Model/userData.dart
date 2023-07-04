@@ -20,7 +20,10 @@
 //         "facebook": "",
 //         "instagram": "",
 //         "twitter": ""
-//     }
+//     },
+//     "buyCourses": [
+//         ""
+//     ]
 // }
 
 class userData {
@@ -42,6 +45,7 @@ class userData {
   String? clas;
   String? educationSector;
   SocialLinks? socialLinks;
+  List<dynamic>? buyCourses;
 
   userData(
       {this.uID,
@@ -61,7 +65,8 @@ class userData {
       this.bio,
       this.clas,
       this.educationSector,
-      this.socialLinks});
+      this.socialLinks,
+      this.buyCourses});
 
   userData.fromJson(Map<String, dynamic> json) {
     uID = json['UID'];
@@ -84,6 +89,7 @@ class userData {
     socialLinks = json['socialLinks'] != null
         ? new SocialLinks.fromJson(json['socialLinks'])
         : null;
+    buyCourses = json['buyCourses'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
@@ -108,6 +114,7 @@ class userData {
     if (this.socialLinks != null) {
       data['socialLinks'] = this.socialLinks!.toJson();
     }
+    data['buyCourses'] = this.buyCourses;
     return data;
   }
 }

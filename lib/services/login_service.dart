@@ -43,6 +43,7 @@ class LoginService {
           clas: data["clas"],
           educationSector: data["educationSector"],
           socialLinks: data["socialLinks"],
+          buyCourses: data["buyCourses"],
         );
         message = "login successfully";
         return UserData;
@@ -59,17 +60,22 @@ class LoginService {
         await FirebaseFirestore.instance.collection("users").doc(id).get();
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     UserData = userData(
-        uID: data["UID"],
-        username: data["username"],
-        firstName: data["firstName"],
-        lastName: data["lastName"],
-        email: data["email"],
-        password: data["password"],
-        profile: data["profile"],
-        userType: data["userType"],
-        phoneNo: data["phoneNo"],
-        address: data["address"],
-        clas: data["clas"]);
+      uID: data["UID"],
+      username: data["username"],
+      firstName: data["firstName"],
+      lastName: data["lastName"],
+      email: data["email"],
+      password: data["password"],
+      profile: data["profile"],
+      userType: data["userType"],
+      gender: data["gender"],
+      phoneNo: data["phoneNo"],
+      address: data["address"],
+      clas: data["clas"],
+      educationSector: data["educationSector"],
+      socialLinks: data["socialLinks"],
+      buyCourses: data["buyCourses"],
+    );
   }
 
   profileComplete() {
