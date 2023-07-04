@@ -9,4 +9,8 @@ class CoursesService {
           return CoursesModel.fromJson(doc.data());
         }).toList());
   }
+
+  Stream publisherStream(uID) {
+    return FirebaseFirestore.instance.collection("users").doc(uID).snapshots();
+  }
 }

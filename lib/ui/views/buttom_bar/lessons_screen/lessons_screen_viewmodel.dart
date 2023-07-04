@@ -53,7 +53,7 @@ class LessonsScreenViewModel extends BaseViewModel {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Loading();
+          return Loading(100);
         }
         return GridView.builder(
           shrinkWrap: true,
