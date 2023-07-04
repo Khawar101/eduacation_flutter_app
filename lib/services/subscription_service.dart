@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/userData.dart';
@@ -13,10 +15,13 @@ class SubscriptionService {
 
   buyCourse(CoursesModel courseData) async {
     userData _userData = _loginService.UserData;
+    List courseList = _userData.buyCourses ?? [];
     try {
       String key = "${_userData.uID}${courseData.publishDate}";
-      await firestore.collection("users").doc(_userData.uID).set({
-        "buyCourses": {_userData.buyCourses ?? [].add(courseData.publishDate)},
+      courseList.add(courseData.publishDate);
+      log(courseList.toString());
+      await firestore.collection("users").doc(_userData.uID).update({
+        "buyCourses": courseList,
       });
       await firestore.collection("subscription").doc(key).set({
         "key": key,
@@ -24,6 +29,7 @@ class SubscriptionService {
         "userKey": _userData.uID,
         "progress": 0.0,
       });
+      _loginService.updateUserData(_userData.uID);
       // log(user.toString());
 
       message = "Course buy Successfully";

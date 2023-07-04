@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:education/app/app.router.dart';
+import 'package:education/services/login_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +24,18 @@ class LessonsScreenViewModel extends BaseViewModel {
   ];
   final _navigationService = locator<NavigationService>();
   final coursesService = locator<CoursesService>();
+  final _loginService = locator<LoginService>();
 
-  navigateMarketing(CoursesModel data, BuildContext context) {
-    _navigationService.navigateToMarketingView(data: data);
+  checkSubscripNavigate(CoursesModel courseData) {
+    log("------------${_loginService.UserData.buyCourses}");
+    _loginService.UserData.buyCourses?.map((e) {
+      log(e.toString());
+      if (e == courseData.publishDate) {
+        _navigationService.navigateToCoursedetailView(courseData: courseData);
+        return null;
+      }
+    });
+    // _navigationService.navigateToMarketingView(data: courseData);
   }
 
   navigateNotifications() {
@@ -55,7 +67,7 @@ class LessonsScreenViewModel extends BaseViewModel {
             var data = snapshot.data![index];
             return GestureDetector(
               onTap: () {
-                navigateMarketing(data, context);
+                checkSubscripNavigate(data);
               },
               child: Card(
                 child: Column(

@@ -471,7 +471,7 @@ class _MarketingViewState extends State<MarketingView> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              viewModel.navigateCoursedetail(widget.data);
+                              viewModel.buyCourse(widget.data);
                             },
                             child: Padding(
                               padding: EdgeInsets.symmetric(
