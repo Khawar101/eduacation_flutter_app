@@ -16,7 +16,7 @@ import '../../../../widgets/app_utils.dart';
 
 class MarketingViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
-  final rateingService = locator<RatingService>();
+  final ratingService = locator<RatingService>();
 
   navigateonBack(BuildContext context) {
     // log('====>not move');
@@ -35,7 +35,7 @@ class MarketingViewModel extends BaseViewModel {
 
   Widget ratingBuilder(CoursesModel courseData) {
     return StreamBuilder<List<RatingModel>>(
-      stream: rateingService.ratingStream(courseData.publishDate),
+      stream: ratingService.ratingStream(courseData.publishDate),
       builder:
           (BuildContext context, AsyncSnapshot<List<RatingModel>> snapshot) {
         if (snapshot.hasError) {

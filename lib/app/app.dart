@@ -52,6 +52,7 @@ import 'package:education/services/chats_service.dart';
 import 'package:education/services/forgetpassword_service.dart';
 import 'package:education/services/setting_service.dart';
 import 'package:education/services/rating_service.dart';
+import 'package:education/services/subscription_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -112,6 +113,7 @@ import 'package:education/services/rating_service.dart';
     LazySingleton(classType: SettingService),
     LazySingleton(classType: CoursesService),
     LazySingleton(classType: RatingService),
+    LazySingleton(classType: SubscriptionService),
 // @stacked-service
   ],
   bottomsheets: [

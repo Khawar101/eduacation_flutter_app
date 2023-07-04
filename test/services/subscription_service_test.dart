@@ -4,7 +4,7 @@ import 'package:education/app/app.locator.dart';
 import '../helpers/test_helpers.dart';
 
 void main() {
-  group('RatingServiceTest -', () {
+  group('SubscriptionServiceTest -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
   });
