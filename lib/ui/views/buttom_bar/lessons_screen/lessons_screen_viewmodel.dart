@@ -27,7 +27,8 @@ class LessonsScreenViewModel extends BaseViewModel {
   final _loginService = locator<LoginService>();
 
   checkSubscripNavigate(CoursesModel courseData) {
-    var buyCourses = _loginService.UserData.buyCourses!;
+    var buyCourses = _loginService.UserData.buyCourses ?? [];
+    log(buyCourses.toString());
     for (var i = 0; i < buyCourses.length; i++) {
       if (buyCourses[i] == courseData.publishDate) {
         log(buyCourses[i]);
