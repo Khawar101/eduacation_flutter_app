@@ -34,16 +34,8 @@
 //             "thumbnail": "",
 //             "fileUrl": ""
 //         }
-//     ],
-//     "publisherData": {
-//         "name": "",
-//         "email": "",
-//         "profile": ""
-//     }
+//     ]
 // }
-
-// ignore_for_file: file_names
-
 class CoursesModel {
   String? title;
   String? category;
@@ -60,7 +52,6 @@ class CoursesModel {
   String? duration;
   List<Lecture>? lecture;
   List<Assigment>? assigment;
-  PublisherData? publisherData;
 
   CoursesModel(
       {title,
@@ -77,8 +68,7 @@ class CoursesModel {
       price,
       duration,
       lecture,
-      assigment,
-      publisherData});
+      assigment});
 
   CoursesModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -111,9 +101,6 @@ class CoursesModel {
         assigment!.add(Assigment.fromJson(v));
       });
     }
-    publisherData = json['publisherData'] != null
-        ? PublisherData.fromJson(json['publisherData'])
-        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -138,9 +125,6 @@ class CoursesModel {
     }
     if (assigment != null) {
       data['assigment'] = assigment!.map((v) => v.toJson()).toList();
-    }
-    if (publisherData != null) {
-      data['publisherData'] = publisherData!.toJson();
     }
     return data;
   }
@@ -217,28 +201,6 @@ class Assigment {
     data['description'] = description;
     data['thumbnail'] = thumbnail;
     data['fileUrl'] = fileUrl;
-    return data;
-  }
-}
-
-class PublisherData {
-  String? name;
-  String? email;
-  String? profile;
-
-  PublisherData({name, email, profile});
-
-  PublisherData.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    email = json['email'];
-    profile = json['profile'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['name'] = name;
-    data['email'] = email;
-    data['profile'] = profile;
     return data;
   }
 }

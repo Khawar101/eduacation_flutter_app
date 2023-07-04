@@ -6,6 +6,7 @@ import 'package:stacked/stacked.dart';
 
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../widgets/app_utils.dart';
+import '../../../../widgets/introBuilder.dart';
 import 'marketing_viewmodel.dart';
 
 class MarketingView extends StatefulWidget {
@@ -174,68 +175,8 @@ class _MarketingViewState extends State<MarketingView> {
                                   SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.028),
-                                  Row(
-                                    children: [
-                                      CircleAvatar(
-                                          radius: 25,
-                                          backgroundImage: NetworkImage(widget
-                                              .data.publisherData!.profile!)),
-                                      SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.03),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            widget.data.publisherData!.name!,
-                                            style: GoogleFonts.ibmPlexSans(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          SizedBox(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.009),
-                                          Row(
-                                            children: [
-                                              const SmallText(
-                                                  text: 'Instructor',
-                                                  color: Colors.black),
-                                              SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.06),
-                                              const Icon(
-                                                Icons.star,
-                                                color: Color(0xff4873a6),
-                                                size: 12,
-                                              ),
-                                              SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.014),
-                                              const SmallText(
-                                                  text: '4.5(120 Reviews',
-                                                  color: Colors.black),
-                                            ],
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.025),
+                                              0.018),
+                                  introBuilder(widget.data),
                                 ],
                               ),
                             )

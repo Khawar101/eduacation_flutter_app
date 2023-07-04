@@ -10,6 +10,7 @@ import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../../services/Model/ratingModel.dart';
+import '../../../../../services/courses_service.dart';
 import '../../../../../services/rating_service.dart';
 import '../../../../../services/subscription_service.dart';
 import '../../../../../utils/loading.dart';
@@ -18,6 +19,8 @@ import '../../../../widgets/app_utils.dart';
 class MarketingViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final ratingService = locator<RatingService>();
+  final coursesService = locator<CoursesService>();
+
   final _subscriptionService = locator<SubscriptionService>();
   navigateonBack(BuildContext context) {
     // log('====>not move');
@@ -48,7 +51,7 @@ class MarketingViewModel extends BaseViewModel {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Loading();
+          return Loading(100);
         }
         if (snapshot.data!.isEmpty) {
           return const Center(child: Text("No rating yet..."));

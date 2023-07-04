@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-Widget Loading() {
+Widget Loading(double size) {
   return Center(
     child: LoadingAnimationWidget.threeArchedCircle(
       color: Colors.blueAccent,
-      size: 100,
+      size: size,
     ),
   );
 }

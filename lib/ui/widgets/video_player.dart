@@ -61,7 +61,7 @@ class _videoPlayerState extends State<videoPlayer> {
   @override
   void dispose() {
     super.dispose();
-    setAllOrientations();
+    // setAllOrientations();
   }
 
   @override

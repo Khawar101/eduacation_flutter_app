@@ -5,9 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../services/Model/CoursesModel.dart';
+import '../../../widgets/introBuilder.dart';
 import '../../../widgets/video_player.dart';
 import 'coursedetail_viewmodel.dart';
-import 'widgets/studentintro.dart';
 import 'widgets/tapBar/contantTab.dart';
 import 'widgets/tapBar/overviewdart.dart';
 
@@ -101,8 +101,7 @@ class _CoursedetailViewState extends State<CoursedetailView>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 16),
-                                  studentintro(context,
-                                      widget.courseData.publisherData!),
+                                  introBuilder(widget.courseData),
                                   courseintro(context, widget.courseData),
                                   const SizedBox(height: 40),
                                 ],
