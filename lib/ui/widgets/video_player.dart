@@ -1,5 +1,7 @@
 // ignore_for_file: camel_case_types
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
@@ -19,7 +21,7 @@ class _videoPlayerState extends State<videoPlayer> {
   bool isPlaying = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
-
+  var url = "";
   @override
   void initState() {
     super.initState();
@@ -61,11 +63,22 @@ class _videoPlayerState extends State<videoPlayer> {
   @override
   void dispose() {
     super.dispose();
-    // setAllOrientations();
+    setAllOrientations();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (url != widget.url) {
+      setAllOrientations();
+      controller = VideoPlayerController.network(widget.url)
+        ..addListener(() => setState(() {}))
+        ..setLooping(false)
+        ..initialize().then((value) => controller!.play());
+      setState(() {
+        url = widget.url;
+      });
+      log("${widget.url}");
+    }
     return SizedBox(
         height: MediaQuery.of(context).orientation == Orientation.landscape
             ? MediaQuery.of(context).size.height
