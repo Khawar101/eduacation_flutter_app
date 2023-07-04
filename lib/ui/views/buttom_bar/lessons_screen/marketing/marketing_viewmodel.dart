@@ -11,13 +11,14 @@ import 'package:timeago/timeago.dart' as timeago;
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../../services/Model/ratingModel.dart';
 import '../../../../../services/rating_service.dart';
+import '../../../../../services/subscription_service.dart';
 import '../../../../../utils/loading.dart';
 import '../../../../widgets/app_utils.dart';
 
 class MarketingViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final ratingService = locator<RatingService>();
-
+  final _subscriptionService = locator<SubscriptionService>();
   navigateonBack(BuildContext context) {
     // log('====>not move');
     MediaQuery.of(context).orientation == Orientation.portrait;
@@ -32,7 +33,9 @@ class MarketingViewModel extends BaseViewModel {
   navigateCoursedetail(courseData) {
     _navigationService.navigateToCoursedetailView(courseData: courseData);
   }
-
+buyCourse(courseData){
+  _subscriptionService.buyCourse( courseData);
+}
   Widget ratingBuilder(CoursesModel courseData) {
     return StreamBuilder<List<RatingModel>>(
       stream: ratingService.ratingStream(courseData.publishDate),
