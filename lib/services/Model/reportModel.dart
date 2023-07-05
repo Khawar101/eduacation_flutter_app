@@ -15,7 +15,7 @@
 class ReportModel {
   String? courseKey;
   String? key;
-  double? progress;
+  dynamic progress;
   String? courseName;
   double? rating;
   dynamic startDate;

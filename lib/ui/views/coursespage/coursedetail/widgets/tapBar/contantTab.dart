@@ -1,5 +1,4 @@
 // ignore_for_file: unnecessary_import
-
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/reportModel.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,15 +32,24 @@ Widget contant(
             }
             ReportModel _reportData =
                 ReportModel.fromJson(snapshot.data.data());
+
             return ListView.builder(
                 shrinkWrap: true,
                 itemCount: courseData.lecture!.length,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
                   Lecture lecture = courseData.lecture![index];
+                  bool _complete = false;
+                  for (var i = 0; i < _reportData.lecture!.length; i++) {
+                    if (lecture.videoUrl == _reportData.lecture![i]) {
+                      _complete = true;
+                    }
+                    print(_complete.toString());
+                  }
+
                   return InkWell(
                     onTap: () {
-                      viewModel.updateLession(courseData, _reportData,
+                      viewModel.updateLession(courseData, _reportData,_complete,
                           courseData.lecture![index].videoUrl);
                     },
                     child: Card(
@@ -60,12 +68,14 @@ Widget contant(
                                   ),
                                   // color: Colors.black,
                                   borderRadius: BorderRadius.circular(10)),
-                              child: const Center(
+                              child: Center(
                                 child: CircleAvatar(
                                   radius: 20,
                                   backgroundColor: Colors.white,
                                   child: Icon(
-                                    Icons.play_arrow,
+                                    _complete
+                                        ? Icons.check
+                                        : Icons.play_arrow,
                                     size: 30,
                                     color: Colors.lightBlueAccent,
                                   ),

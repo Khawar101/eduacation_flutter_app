@@ -61,7 +61,8 @@ class SubscriptionService {
       CoursesModel courseData, ReportModel reportData, String url) async {
     userData _userData = _loginService.UserData;
     List lectureList = reportData.lecture ?? [];
-    var _progress = lectureList.length * 100 / courseData.lecture!.length;
+    var _progress =
+        ((lectureList.length + 1) / courseData.lecture!.length) * 100;
     try {
       lectureList.add(url);
       log(url.toString());

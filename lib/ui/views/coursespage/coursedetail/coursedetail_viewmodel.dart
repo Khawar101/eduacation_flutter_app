@@ -24,9 +24,11 @@ class CoursedetailViewModel extends BaseViewModel {
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
-  updateLession(courseData, reportData,_videoUrl) {
+  updateLession(courseData, reportData, _complete, _videoUrl) {
     videoUrl = _videoUrl;
-    _subscriptionService.updateLecture(courseData, reportData, _videoUrl);
+    if (_complete == false) {
+      _subscriptionService.updateLecture(courseData, reportData, _videoUrl);
+    }
     notifyListeners();
   }
 
