@@ -106,6 +106,7 @@ class CoursedetailViewModel extends BaseViewModel {
                                     allowHalfRating: true,
                                     itemCount: 5,
                                     itemSize: 15,
+                                    ignoreGestures: true,
                                     itemBuilder: (context, _) => const Icon(
                                       Icons.star,
                                       color: Colors.yellow,

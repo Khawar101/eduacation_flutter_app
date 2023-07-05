@@ -26,13 +26,11 @@ Widget contant(
             if (snapshot.hasError) {
               return const Text('Something went wrong');
             }
-
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Loading(20);
             }
             ReportModel _reportData =
                 ReportModel.fromJson(snapshot.data.data());
-
             return ListView.builder(
                 shrinkWrap: true,
                 itemCount: courseData.lecture!.length,
@@ -46,11 +44,10 @@ Widget contant(
                     }
                     print(_complete.toString());
                   }
-
                   return InkWell(
                     onTap: () {
-                      viewModel.updateLession(courseData, _reportData,_complete,
-                          courseData.lecture![index].videoUrl);
+                      viewModel.updateLession(courseData, _reportData,
+                          _complete, courseData.lecture![index].videoUrl);
                     },
                     child: Card(
                       child: Row(
@@ -66,16 +63,13 @@ Widget contant(
                                         lecture.thumbnail.toString()),
                                     fit: BoxFit.cover,
                                   ),
-                                  // color: Colors.black,
                                   borderRadius: BorderRadius.circular(10)),
                               child: Center(
                                 child: CircleAvatar(
                                   radius: 20,
                                   backgroundColor: Colors.white,
                                   child: Icon(
-                                    _complete
-                                        ? Icons.check
-                                        : Icons.play_arrow,
+                                    _complete ? Icons.check : Icons.play_arrow,
                                     size: 30,
                                     color: Colors.lightBlueAccent,
                                   ),

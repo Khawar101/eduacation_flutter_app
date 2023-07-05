@@ -4,8 +4,6 @@ import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widge
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
-import 'widgets/project/project.dart';
-
 import 'package:flutter/cupertino.dart';
 
 Widget overview(context, CoursesModel courseData) {
@@ -38,26 +36,12 @@ Widget overview(context, CoursesModel courseData) {
             lessStyle: const TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          // const SizedBox(height: 30),
-          // Container(
-          //   height: 40,
-          //   width: double.infinity,
-          //   decoration: BoxDecoration(
-          //     borderRadius: BorderRadius.circular(10),
-          //     color: const Color(0xFF4873A6).withOpacity(0.7),
-          //   ),
-          //   child: const Center(
-          //       child: ButtonText(text: 'See more', color: Colors.white)),
-          // ),
           const SizedBox(height: 30),
           feedback(context, courseData),
-          const SizedBox(height: 30),
-          project(context),
           // const SizedBox(height: 30),
-          // comments(context)
+          // project(context),
         ],
       ),
     ),
   );
-  // Second ITEM of tabbarview
 }
