@@ -42,7 +42,7 @@ class LoginService {
           address: data["address"],
           clas: data["clas"],
           educationSector: data["educationSector"],
-          socialLinks: data["socialLinks"],
+          // socialLinks: data["socialLinks"],
           buyCourses: data["buyCourses"],
         );
         message = "login successfully";
@@ -73,7 +73,7 @@ class LoginService {
       address: data["address"],
       clas: data["clas"],
       educationSector: data["educationSector"],
-      socialLinks: data["socialLinks"],
+      // socialLinks: data["socialLinks"],
       buyCourses: data["buyCourses"],
     );
   }

@@ -74,8 +74,8 @@ Widget contant(
                               lecture.description.toString(),
                               trimLines: 2,
                               trimLength: 70,
-                              style:
-                                  TextStyle(color: Colors.black.withOpacity(0.7)),
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.7)),
                               colorClickableText: Colors.black,
                               trimMode: TrimMode.Length,
                               trimCollapsedText: 'Read more',
