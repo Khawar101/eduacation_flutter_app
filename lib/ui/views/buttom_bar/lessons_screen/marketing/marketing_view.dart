@@ -127,7 +127,7 @@ class _MarketingViewState extends State<MarketingView> {
                                           MediaQuery.of(context).size.height *
                                               0.017),
                                   ReadMoreText(
-                                    widget.data.description!,
+                                    widget.data.description ?? "",
                                     trimLines: 2,
                                     trimLength: 80,
                                     style:
@@ -152,9 +152,8 @@ class _MarketingViewState extends State<MarketingView> {
                                   Row(
                                     children: [
                                       CustomText(
-                                          text: widget.data.chapter! +
-                                              " " +
-                                              "Chapters",
+                                          text: widget.data.chapter ??
+                                              "0" + " " + "Chapters",
                                           size: 14,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
@@ -164,8 +163,7 @@ class _MarketingViewState extends State<MarketingView> {
                                                   .width *
                                               0.1),
                                       CustomText(
-                                          text: "Full" " " +
-                                              widget.data.duration!,
+                                          text: "Full " + widget.data.duration!,
                                           size: 14,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
