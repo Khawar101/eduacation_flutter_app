@@ -25,84 +25,70 @@ Widget contant(
                 onTap: () {
                   viewModel.updateLession(courseData.lecture![index].videoUrl);
                 },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  child: Column(
+                child: Card(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                              height: 80,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        lecture.thumbnail.toString()),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  // color: Colors.black,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: const Center(
-                                child: CircleAvatar(
-                                  radius: 20,
-                                  backgroundColor: Colors.white,
-                                  child: Icon(
-                                    Icons.play_arrow,
-                                    size: 30,
-                                    color: Colors.lightBlueAccent,
-                                  ),
-                                ),
-                              )),
-                          SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.025),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  lecture.title.toString(),
-                                  softWrap: true,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.ibmPlexSans(
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.02),
-                                Text(
-                                  "Lesson $index",
-                                  style: GoogleFonts.ibmPlexSans(
-                                      fontSize: 14,
-                                      color: Colors.black54,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
+                      Container(
+                          height: 80,
+                          width: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    NetworkImage(lecture.thumbnail.toString()),
+                                fit: BoxFit.cover,
+                              ),
+                              // color: Colors.black,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: const Center(
+                            child: CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.play_arrow,
+                                size: 30,
+                                color: Colors.lightBlueAccent,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          )),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02),
-                      ReadMoreText(
-                        lecture.description.toString(),
-                        trimLines: 2,
-                        trimLength: 70,
-                        style: TextStyle(color: Colors.black.withOpacity(0.7)),
-                        colorClickableText: Colors.black,
-                        trimMode: TrimMode.Length,
-                        trimCollapsedText: 'Read more',
-                        moreStyle: const TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                        trimExpandedText: '...Show Less',
-                        lessStyle: const TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                          width: MediaQuery.of(context).size.width * 0.025),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              lecture.title.toString(),
+                              softWrap: true,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.ibmPlexSans(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            const SizedBox(height: 10),
+                            ReadMoreText(
+                              lecture.description.toString(),
+                              trimLines: 2,
+                              trimLength: 70,
+                              style:
+                                  TextStyle(color: Colors.black.withOpacity(0.7)),
+                              colorClickableText: Colors.black,
+                              trimMode: TrimMode.Length,
+                              trimCollapsedText: 'Read more',
+                              moreStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                              trimExpandedText: '...Show Less',
+                              lessStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
