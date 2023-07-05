@@ -7,7 +7,6 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:flutter/material.dart';
 import '../../../../../app/app.locator.dart';
 import 'package:timeago/timeago.dart' as timeago;
-
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../../services/Model/ratingModel.dart';
 import '../../../../../services/courses_service.dart';
