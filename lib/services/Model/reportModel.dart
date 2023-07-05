@@ -1,7 +1,7 @@
 // {
 //     "courseKey": "",
 //     "key": "",
-//     "progress": 3,
+//     "progress": 4.3,
 //     "courseName": "",
 //     "rating": 4.3,
 //     "startDate": "",
@@ -15,24 +15,24 @@
 class ReportModel {
   String? courseKey;
   String? key;
-  int? progress;
+  double? progress;
   String? courseName;
   double? rating;
-  String? startDate;
-  String? endDate;
+  dynamic startDate;
+  dynamic endDate;
   String? userKey;
   List<String>? lecture;
 
   ReportModel(
-      {this.courseKey,
-      this.key,
-      this.progress,
-      this.courseName,
-      this.rating,
-      this.startDate,
-      this.endDate,
-      this.userKey,
-      this.lecture});
+      {courseKey,
+      key,
+      progress,
+      courseName,
+      rating,
+      startDate,
+      endDate,
+      userKey,
+      lecture});
 
   ReportModel.fromJson(Map<String, dynamic> json) {
     courseKey = json['courseKey'];
@@ -47,16 +47,16 @@ class ReportModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['courseKey'] = this.courseKey;
-    data['key'] = this.key;
-    data['progress'] = this.progress;
-    data['courseName'] = this.courseName;
-    data['rating'] = this.rating;
-    data['startDate'] = this.startDate;
-    data['endDate'] = this.endDate;
-    data['userKey'] = this.userKey;
-    data['lecture'] = this.lecture;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['courseKey'] = courseKey;
+    data['key'] = key;
+    data['progress'] = progress;
+    data['courseName'] = courseName;
+    data['rating'] = rating;
+    data['startDate'] = startDate;
+    data['endDate'] = endDate;
+    data['userKey'] = userKey;
+    data['lecture'] = lecture;
     return data;
   }
 }

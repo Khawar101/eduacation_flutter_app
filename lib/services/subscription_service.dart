@@ -38,7 +38,7 @@ class SubscriptionService {
         "courseName": courseData.title,
         "rating": 0.0,
         "startDate": DateTime.timestamp(),
-        "endDate": null,
+        "endDate": DateTime.timestamp(),
         "lecture": []
       });
       _loginService.updateUserData(_userData.uID);
@@ -48,6 +48,13 @@ class SubscriptionService {
     } catch (e) {
       message = e.toString();
     }
+  }
+
+  Stream reportStream(courseKey) {
+    return FirebaseFirestore.instance
+        .collection("subscription")
+        .doc("${_loginService.UserData.uID}$courseKey")
+        .snapshots();
   }
 
   updateLecture(
@@ -60,14 +67,14 @@ class SubscriptionService {
       log(url.toString());
       await firestore
           .collection("subscription")
-          .doc(courseData.publishDate)
+          .doc("${_loginService.UserData.uID}${courseData.publishDate}")
           .update({
         "lecture": lectureList,
         "progress": _progress,
       });
       _loginService.updateUserData(_userData.uID);
       // log(user.toString());
-      _navigationService.back();
+      // _navigationService.back();
     } catch (e) {
       log(e.toString());
     }
