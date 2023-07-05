@@ -124,6 +124,7 @@ class LearnersView extends StackedView<LearnersViewModel> {
                                   allowHalfRating: true,
                                   itemCount: 5,
                                   itemSize: 18,
+                                  ignoreGestures: true,
                                   itemPadding: const EdgeInsets.only(right: 6),
                                   itemBuilder: (context, _) => const Icon(
                                     Icons.star,

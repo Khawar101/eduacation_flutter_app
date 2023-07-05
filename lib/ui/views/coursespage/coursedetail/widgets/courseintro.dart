@@ -38,7 +38,7 @@ Widget courseintro(context, CoursesModel courseData) {
                     size: 16,
                   ),
                   const SizedBox(width: 7),
-                  Text("4.7 (753)",
+                  Text("${courseData.rating} (${courseData.students})",
                       style: GoogleFonts.ibmPlexSans(fontSize: 12)),
                 ],
               ),
@@ -74,7 +74,7 @@ Widget courseintro(context, CoursesModel courseData) {
                     size: 16,
                   ),
                   const SizedBox(width: 7),
-                  Text("2K students",
+                  Text("${courseData.students} students",
                       style: GoogleFonts.ibmPlexSans(fontSize: 12)),
                 ],
               )

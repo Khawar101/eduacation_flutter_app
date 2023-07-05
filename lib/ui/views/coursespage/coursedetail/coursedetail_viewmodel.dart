@@ -2,6 +2,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:education/services/Model/CoursesModel.dart';
+import 'package:education/services/subscription_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,12 +19,16 @@ import 'widgets/ratingNow.dart';
 class CoursedetailViewModel extends BaseViewModel {
   // final _loginService = locator<LoginService>();
   final ratingService = locator<RatingService>();
+  final _subscriptionService = locator<SubscriptionService>();
 
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
-  updateLession(_videoUrl) {
+  updateLession(courseData, reportData, _complete, _videoUrl) {
     videoUrl = _videoUrl;
+    if (_complete == false) {
+      _subscriptionService.updateLecture(courseData, reportData, _videoUrl);
+    }
     notifyListeners();
   }
 
@@ -101,6 +106,7 @@ class CoursedetailViewModel extends BaseViewModel {
                                     allowHalfRating: true,
                                     itemCount: 5,
                                     itemSize: 15,
+                                    ignoreGestures: true,
                                     itemBuilder: (context, _) => const Icon(
                                       Icons.star,
                                       color: Colors.yellow,

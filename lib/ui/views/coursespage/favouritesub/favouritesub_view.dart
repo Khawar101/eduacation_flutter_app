@@ -153,6 +153,7 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
                                         allowHalfRating: true,
                                         itemCount: 5,
                                         itemSize: 18,
+                                        ignoreGestures: true,
                                         itemPadding:
                                             const EdgeInsets.only(right: 6),
                                         itemBuilder: (context, _) => Icon(
