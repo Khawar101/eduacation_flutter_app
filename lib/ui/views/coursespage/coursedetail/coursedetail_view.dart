@@ -88,7 +88,6 @@ class _CoursedetailViewState extends State<CoursedetailView>
                         Expanded(
                           child: SingleChildScrollView(
                               child: Column(children: [
-                            Text(viewModel.videoUrl ?? ""),
                             videoPlayer(
                                 url: viewModel.videoUrl ??
                                     widget.courseData.lecture![0].videoUrl

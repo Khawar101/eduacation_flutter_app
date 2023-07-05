@@ -1,7 +1,4 @@
 // ignore_for_file: camel_case_types
-
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
@@ -77,7 +74,6 @@ class _videoPlayerState extends State<videoPlayer> {
       setState(() {
         url = widget.url;
       });
-      log("${widget.url}");
     }
     return SizedBox(
         height: MediaQuery.of(context).orientation == Orientation.landscape
