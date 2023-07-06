@@ -33,10 +33,6 @@ class _videoPlayerState extends State<videoPlayer> {
       ..addListener(() => setState(() {}))
       ..setLooping(false)
       ..initialize().then((value) => controller!.play());
-    Future.delayed(Duration(seconds: controller!.value.duration.inSeconds), () {
-      log("============> ${controller!.value.duration.inSeconds}");
-      // widget.completeVideo();
-    });
   }
 
   setLandScape() async {
