@@ -4,7 +4,6 @@ import 'package:education/services/Model/reportModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:readmore/readmore.dart';
 import '../../../../../../app/app.locator.dart';
 import '../../../../../../services/subscription_service.dart';
 import '../../../../../../utils/loading.dart';
@@ -42,7 +41,6 @@ Widget contant(
                     if (lecture.videoUrl == _reportData.lecture![i]) {
                       _complete = true;
                     }
-                    print(_complete.toString());
                   }
                   return InkWell(
                     onTap: () {
@@ -54,27 +52,48 @@ Widget contant(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                              height: 80,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        lecture.thumbnail.toString()),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(
-                                child: CircleAvatar(
-                                  radius: 20,
-                                  backgroundColor: Colors.white,
-                                  child: Icon(
-                                    _complete ? Icons.check : Icons.play_arrow,
-                                    size: 30,
-                                    color: Colors.lightBlueAccent,
+                          Stack(
+                            children: [
+                              Container(
+                                  height: 80,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            lecture.thumbnail.toString()),
+                                        fit: BoxFit.cover,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Center(
+                                    child: CircleAvatar(
+                                      radius: 15,
+                                      backgroundColor: Colors.white,
+                                      child: Icon(
+                                        _complete
+                                            ? Icons.check
+                                            : Icons.play_arrow,
+                                        size: 20,
+                                        color: Colors.lightBlueAccent,
+                                      ),
+                                    ),
+                                  )),
+                              Positioned(
+                                bottom: -5,
+                                right: -5,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(3.0),
+                                    child: Text(
+                                      lecture.duration.toString(),
+                                      style: GoogleFonts.ibmPlexSans(
+                                          fontSize: 10,
+                                          color: Colors.black),
+                                    ),
                                   ),
                                 ),
-                              )),
+                              ),
+                            ],
+                          ),
                           SizedBox(
                               width: MediaQuery.of(context).size.width * 0.025),
                           Expanded(
@@ -85,30 +104,21 @@ Widget contant(
                                 Text(
                                   lecture.title.toString(),
                                   softWrap: true,
-                                  maxLines: 2,
+                                  maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: GoogleFonts.ibmPlexSans(
                                       fontSize: 16,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w600),
                                 ),
-                                const SizedBox(height: 10),
-                                ReadMoreText(
+                                Text(
                                   lecture.description.toString(),
-                                  trimLines: 2,
-                                  trimLength: 70,
-                                  style: TextStyle(
-                                      color: Colors.black.withOpacity(0.7)),
-                                  colorClickableText: Colors.black,
-                                  trimMode: TrimMode.Length,
-                                  trimCollapsedText: 'Read more',
-                                  moreStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
-                                  trimExpandedText: '...Show Less',
-                                  lessStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
+                                  softWrap: true,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.ibmPlexSans(
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ],
                             ),
