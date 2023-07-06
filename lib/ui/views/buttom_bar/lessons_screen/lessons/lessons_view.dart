@@ -96,6 +96,7 @@ class _LessonsViewState extends State<LessonsView> {
                         url:
                             "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
                         orientation: orientation,
+                        completeVideo: () {},
                       ),
 
                       SizedBox(

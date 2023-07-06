@@ -1,4 +1,6 @@
 // ignore_for_file: camel_case_types
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
@@ -6,8 +8,13 @@ import 'package:video_player/video_player.dart';
 class videoPlayer extends StatefulWidget {
   final String url;
   final Orientation orientation;
+  final Function completeVideo;
 
-  const videoPlayer({super.key, required this.url, required this.orientation});
+  const videoPlayer(
+      {super.key,
+      required this.url,
+      required this.orientation,
+      required this.completeVideo});
 
   @override
   State<videoPlayer> createState() => _videoPlayerState();
@@ -26,6 +33,10 @@ class _videoPlayerState extends State<videoPlayer> {
       ..addListener(() => setState(() {}))
       ..setLooping(false)
       ..initialize().then((value) => controller!.play());
+    Future.delayed(Duration(seconds: controller!.value.duration.inSeconds), () {
+      log("============> ${controller!.value.duration.inSeconds}");
+      // widget.completeVideo();
+    });
   }
 
   setLandScape() async {
@@ -68,7 +79,7 @@ class _videoPlayerState extends State<videoPlayer> {
     if (url != widget.url) {
       setAllOrientations();
       controller = VideoPlayerController.network(widget.url)
-        ..addListener(() => setState(() {}))
+        // ..addListener(() => setState(() {}))
         ..setLooping(false)
         ..initialize().then((value) => controller!.play());
       setState(() {

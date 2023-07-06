@@ -4,132 +4,110 @@ import 'package:education/services/Model/reportModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../../../app/app.locator.dart';
-import '../../../../../../services/subscription_service.dart';
-import '../../../../../../utils/loading.dart';
 import '../../../../../widgets/app_utils.dart';
 import '../../coursedetail_viewmodel.dart';
 
-Widget contant(
-    context, CoursesModel courseData, CoursedetailViewModel viewModel) {
-  final _subscriptionService = locator<SubscriptionService>();
-
+Widget contant(context, CoursesModel courseData,
+    CoursedetailViewModel viewModel, ReportModel _reportData) {
   return SizedBox(
       child: Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
     child: Column(
       children: [
-        StreamBuilder(
-          stream: _subscriptionService.reportStream(courseData.publishDate),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasError) {
-              return const Text('Something went wrong');
-            }
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Loading(20);
-            }
-            ReportModel _reportData =
-                ReportModel.fromJson(snapshot.data.data());
-            return ListView.builder(
-                shrinkWrap: true,
-                itemCount: courseData.lecture!.length,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  Lecture lecture = courseData.lecture![index];
-                  bool _complete = false;
-                  for (var i = 0; i < _reportData.lecture!.length; i++) {
-                    if (lecture.videoUrl == _reportData.lecture![i]) {
-                      _complete = true;
-                    }
-                  }
-                  return InkWell(
-                    onTap: () {
-                      viewModel.updateLession(courseData, _reportData,
-                          _complete, courseData.lecture![index].videoUrl);
-                    },
-                    child: Card(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
+        ListView.builder(
+            shrinkWrap: true,
+            itemCount: courseData.lecture!.length,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+              Lecture lecture = courseData.lecture![index];
+              bool _complete = false;
+              for (var i = 0; i < _reportData.lecture!.length; i++) {
+                if (lecture.videoUrl == _reportData.lecture![i]) {
+                  _complete = true;
+                }
+              }
+              return InkWell(
+                onTap: () {
+                  viewModel.updateVideo(courseData.lecture![index].videoUrl);
+                },
+                child: Card(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Stack(
                         children: [
-                          Stack(
-                            children: [
-                              Container(
-                                  height: 80,
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                            lecture.thumbnail.toString()),
-                                        fit: BoxFit.cover,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Center(
-                                    child: CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor: Colors.white,
-                                      child: Icon(
-                                        _complete
-                                            ? Icons.check
-                                            : Icons.play_arrow,
-                                        size: 20,
-                                        color: Colors.lightBlueAccent,
-                                      ),
-                                    ),
-                                  )),
-                              Positioned(
-                                bottom: -5,
-                                right: -5,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(3.0),
-                                    child: Text(
-                                      lecture.duration.toString(),
-                                      style: GoogleFonts.ibmPlexSans(
-                                          fontSize: 10,
-                                          color: Colors.black),
-                                    ),
+                          Container(
+                              height: 80,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        lecture.thumbnail.toString()),
+                                    fit: BoxFit.cover,
                                   ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Center(
+                                child: CircleAvatar(
+                                  radius: 15,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    _complete ? Icons.check : Icons.play_arrow,
+                                    size: 20,
+                                    color: Colors.lightBlueAccent,
+                                  ),
+                                ),
+                              )),
+                          Positioned(
+                            bottom: -5,
+                            right: -5,
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text(
+                                  lecture.duration.toString(),
+                                  style: GoogleFonts.ibmPlexSans(
+                                      fontSize: 10, color: Colors.black),
                                 ),
                               ),
-                            ],
-                          ),
-                          SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.025),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  lecture.title.toString(),
-                                  softWrap: true,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.ibmPlexSans(
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                Text(
-                                  lecture.description.toString(),
-                                  softWrap: true,
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.ibmPlexSans(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  );
-                });
-          },
-        ),
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.025),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              lecture.title.toString(),
+                              softWrap: true,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.ibmPlexSans(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              lecture.description.toString(),
+                              softWrap: true,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.ibmPlexSans(
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }),
         SizedBox(height: MediaQuery.of(context).size.height * 0.06),
         Align(
           alignment: Alignment.topLeft,
@@ -192,11 +170,6 @@ Widget contant(
                         )
                       ],
                     ),
-                    // Image.asset(
-                    //   'assets/icons/download-cloud.png',
-                    //   width: 26,
-                    //   color: const Color(0xFF4873A6).withOpacity(0.7),
-                    // )
                   ],
                 ),
               );

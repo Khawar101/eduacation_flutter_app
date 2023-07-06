@@ -19,17 +19,20 @@ import 'widgets/ratingNow.dart';
 class CoursedetailViewModel extends BaseViewModel {
   // final _loginService = locator<LoginService>();
   final ratingService = locator<RatingService>();
-  final _subscriptionService = locator<SubscriptionService>();
+  final subscriptionService = locator<SubscriptionService>();
 
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
-  updateLession(courseData, reportData, _complete, _videoUrl) {
+  updateVideo(_videoUrl) {
     videoUrl = _videoUrl;
-    if (_complete == false) {
-      _subscriptionService.updateLecture(courseData, reportData, _videoUrl);
-    }
     notifyListeners();
+  }
+
+  updateLecture(courseData, reportData, _complete, _videoUrl) {
+    if (_complete == false) {
+      subscriptionService.updateLecture(courseData, reportData, _videoUrl);
+    }
   }
 
   rateNowAlert(context, courseData, viewModel) {

@@ -181,7 +181,7 @@ class _MarketingViewState extends State<MarketingView> {
                           ],
                           videoPlayer(
                               url: widget.data.lecture![0].videoUrl!,
-                              orientation: orientation),
+                              orientation: orientation, completeVideo: (){},),
                           SizedBox(
                               height:
                                   MediaQuery.of(context).size.height * 0.025),

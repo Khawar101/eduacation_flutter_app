@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../services/Model/CoursesModel.dart';
+import '../../../../services/Model/reportModel.dart';
+import '../../../../utils/loading.dart';
 import '../../../widgets/introBuilder.dart';
 import '../../../widgets/video_player.dart';
 import 'coursedetail_viewmodel.dart';
@@ -83,58 +85,86 @@ class _CoursedetailViewState extends State<CoursedetailView>
                         )
                       ]),
                   body: SafeArea(
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: SingleChildScrollView(
-                              child: Column(children: [
-                            videoPlayer(
-                                url: viewModel.videoUrl ??
-                                    widget.courseData.lecture![0].videoUrl
-                                        .toString(),
-                                orientation: orientation),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(height: 16),
-                                  introBuilder(widget.courseData),
-                                  courseintro(context, widget.courseData),
-                                  const SizedBox(height: 40),
-                                ],
-                              ),
-                            ),
-                            TabBar(
-                              indicatorWeight: 1,
-                              indicatorPadding:
-                                  const EdgeInsets.only(bottom: 4),
-                              indicatorColor:
-                                  const Color(0xff4873a6).withOpacity(0.7),
-                              controller: tabController,
-                              labelStyle: GoogleFonts.ibmPlexSans(
-                                  fontSize: 16.0, fontWeight: FontWeight.w600),
-                              onTap: (value) {},
-                              labelColor: Colors.black,
-                              unselectedLabelColor:
-                                  const Color(0xff4873a6).withOpacity(0.7),
-                              tabs: const [
-                                Tab(
-                                  text: 'Overview',
+                    child: StreamBuilder(
+                      stream: viewModel.subscriptionService
+                          .reportStream(widget.courseData.publishDate),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.hasError) {
+                          return const Text('Something went wrong');
+                        }
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Loading(50);
+                        }
+                        ReportModel _reportData =
+                            ReportModel.fromJson(snapshot.data.data());
+                        String _videoUrl = viewModel.videoUrl ??
+                            widget.courseData.lecture![0].videoUrl.toString();
+                        bool _complete = false;
+                        for (var i = 0; i < _reportData.lecture!.length; i++) {
+                          if (_videoUrl == _reportData.lecture![i]) {
+                            _complete = true;
+                          }
+                        }
+                        return Column(
+                          children: [
+                            Expanded(
+                              child: SingleChildScrollView(
+                                  child: Column(children: [
+                                videoPlayer(
+                                  url: _videoUrl,
+                                  orientation: orientation,
+                                  completeVideo: () {
+                                    viewModel.updateLecture(widget.courseData,
+                                        _reportData, _complete, _videoUrl);
+                                  },
                                 ),
-                                Tab(
-                                  text: 'Contant',
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(height: 16),
+                                      introBuilder(widget.courseData),
+                                      courseintro(context, widget.courseData),
+                                      const SizedBox(height: 40),
+                                    ],
+                                  ),
                                 ),
-                              ],
+                                TabBar(
+                                  indicatorWeight: 1,
+                                  indicatorPadding:
+                                      const EdgeInsets.only(bottom: 4),
+                                  indicatorColor:
+                                      const Color(0xff4873a6).withOpacity(0.7),
+                                  controller: tabController,
+                                  labelStyle: GoogleFonts.ibmPlexSans(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w600),
+                                  onTap: (value) {},
+                                  labelColor: Colors.black,
+                                  unselectedLabelColor:
+                                      const Color(0xff4873a6).withOpacity(0.7),
+                                  tabs: const [
+                                    Tab(
+                                      text: 'Overview',
+                                    ),
+                                    Tab(
+                                      text: 'Contant',
+                                    ),
+                                  ],
+                                ),
+                                tabController.index == 0
+                                    ? overview(context, widget.courseData)
+                                    : contant(context, widget.courseData,
+                                        viewModel, _reportData),
+                              ])),
                             ),
-                            tabController.index == 0
-                                ? overview(context, widget.courseData)
-                                : contant(
-                                    context, widget.courseData, viewModel),
-                          ])),
-                        ),
-                      ],
+                          ],
+                        );
+                      },
                     ),
                   ));
             },
