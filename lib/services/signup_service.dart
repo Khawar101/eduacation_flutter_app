@@ -10,7 +10,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 class SignupService {
   var message = "";
-  var profile;
+  var profile="";
   var userdata;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -43,10 +43,15 @@ class SignupService {
     return profile;
   }
 
-  sendOtpS(nameCTRL, emailCTRL, passwordCTRL) async {
-    String name = nameCTRL.text.trim();
-    String email = emailCTRL.text.trim();
-    String password = passwordCTRL.text.trim();
+  late String name;
+  late String email;
+  late String password;
+  late String userType;
+  sendOtpS(nameCTRL, emailCTRL, passwordCTRL, _userType) async {
+    name = nameCTRL.text.trim();
+    email = emailCTRL.text.trim();
+    password = passwordCTRL.text.trim();
+    userType = _userType;
     if (name == "" || email == "" || password == "") {
       message = "filled all filed";
     } else {
@@ -71,17 +76,14 @@ class SignupService {
   verify(otp) async {
     log('==>$otp');
     if (await myauth.verifyOTP(otp: otp) == true) {
-      message = "verify correct";
+      createAccount();
+      message = "Signup Successfuly";
     } else {
       message = 'incorrect otp';
     }
   }
 
-  createAccount(nameCTRL, emailCTRL, passwordCTRL, userType) async {
-    String name = nameCTRL.text.trim();
-    String email = emailCTRL.text.trim();
-    String password = passwordCTRL.text.trim();
-
+  createAccount() async {
     if (name == "" || email == "" || password == "") {
       message = "filled all filed";
     } else {

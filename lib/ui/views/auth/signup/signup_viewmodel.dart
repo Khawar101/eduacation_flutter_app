@@ -33,17 +33,17 @@ class SignupViewModel extends BaseViewModel {
   TextEditingController emailCTRL =
       TextEditingController(text: "khawarjutt101@gmail.com");
   TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
-  signUP() async {
-    await _signupService.createAccount(
-        nameCTRL, emailCTRL, passwordCTRL, userType);
-    if (_signupService.message == '') {
-      log("sign up now...");
-      // _navigationService.navigateToVerifyView();
-    } else {
-      log("try again...");
-    }
-    log("=====>${_signupService.message}");
-  }
+  // signUP() async {
+  //   await _signupService.createAccount(
+  //       nameCTRL, emailCTRL, passwordCTRL, userType);
+  //   if (_signupService.message == '') {
+  //     log("sign up now...");
+  //     // _navigationService.navigateToVerifyView();
+  //   } else {
+  //     log("try again...");
+  //   }
+  //   log("=====>${_signupService.message}");
+  // }
 
   uploadProfile() async {
     await _signupService.pickImage().whenComplete(() {
@@ -61,7 +61,7 @@ class SignupViewModel extends BaseViewModel {
   }
 
   sendOtp() async {
-    await _signupService.sendOtpS(nameCTRL, emailCTRL, passwordCTRL);
+    await _signupService.sendOtpS(nameCTRL, emailCTRL, passwordCTRL, userType);
     if (_signupService.message == 'OTP has been sent') {
       log("sign up now...");
       _navigationService.navigateToVerifyView();
