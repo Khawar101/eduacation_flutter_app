@@ -26,7 +26,7 @@ import 'package:education/ui/views/teacher/detail/detail_view.dart';
 import 'package:education/ui/views/teacher/booking/booking_view.dart';
 
 import '../ui/views/coursespage/coursedetail/coursedetail_view.dart';
-import '../ui/views/coursespage/my_courses_view.dart';
+import '../ui/views/coursespage/myCourses/my_courses_view.dart';
 import '../ui/views/teacher/popular_view.dart';
 import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:education/ui/views/acount/acount_view.dart';

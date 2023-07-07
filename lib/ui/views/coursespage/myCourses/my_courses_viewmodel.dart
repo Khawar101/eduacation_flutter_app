@@ -4,11 +4,11 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../../../app/app.locator.dart';
-import '../../../services/Model/CoursesModel.dart';
-import '../../../services/courses_service.dart';
-import '../../../utils/loading.dart';
-import '../../widgets/app_utils.dart';
+import '../../../../../app/app.locator.dart';
+import '../../../../services/Model/CoursesModel.dart';
+import '../../../../services/courses_service.dart';
+import '../../../../utils/loading.dart';
+import '../../../widgets/app_utils.dart';
 
 class MyCoursesViewModel extends BaseViewModel {
   bool isPressed = false;
