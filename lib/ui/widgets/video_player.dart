@@ -29,21 +29,9 @@ class _videoPlayerState extends State<videoPlayer> {
   void initState() {
     super.initState();
     controller = VideoPlayerController.network(widget.url)
-      ..addListener(() {
-        setState(() {
-          
-        });
-        // if (this.mounted) {
-        //   log("=====>>");
-        //   setState(() {
-        //     controller!.play();
-        //   });
-        // } else {
-        //   log("=====>");
-        // }
-      })
-      ..setLooping(false);
-    // ..initialize().then((value) => controller!.play());
+      ..addListener(() => setState(() {}))
+      ..setLooping(false)
+      ..initialize().then((value) => controller!.play());
   }
 
   setLandScape() async {
