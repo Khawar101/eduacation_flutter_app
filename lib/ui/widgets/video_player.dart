@@ -1,4 +1,5 @@
 // ignore_for_file: camel_case_types
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -30,9 +31,18 @@ class _videoPlayerState extends State<videoPlayer> {
   void initState() {
     super.initState();
     controller = VideoPlayerController.network(widget.url)
-      ..addListener(() => setState(() {}))
-      ..setLooping(false)
-      ..initialize().then((value) => controller!.play());
+      ..addListener(() {
+        if (this.mounted) {
+          log("=====>>");
+          setState(() {
+            controller!.play();
+          });
+        } else {
+          log("=====>");
+        }
+      })
+      ..setLooping(false);
+    // ..initialize().then((value) => controller!.play());
   }
 
   setLandScape() async {

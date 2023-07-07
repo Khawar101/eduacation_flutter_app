@@ -10,7 +10,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 class SignupService {
   var message = "";
-  var profile="";
+  var profile = "";
   var userdata;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
