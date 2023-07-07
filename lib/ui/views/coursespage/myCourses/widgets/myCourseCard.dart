@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
+import '../../../../widgets/networkImage.dart';
 import '../my_courses_viewmodel.dart';
 
 class MyCoursesCard extends StackedView<MyCoursesViewModel> {
@@ -22,19 +23,7 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Container(
-                height: 80,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(10)),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'assets/images/girl-images-4.jpg',
-                      fit: BoxFit.cover,
-                    )),
-              ),
+              networkImage(courseData.coverPic, 80, 100, false),
               SizedBox(width: MediaQuery.of(context).size.width * 0.025),
               Expanded(
                 child: Column(

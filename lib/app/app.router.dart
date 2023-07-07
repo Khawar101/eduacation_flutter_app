@@ -40,7 +40,8 @@ import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widge
     as _i36;
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/poster/poster_view.dart'
     as _i37;
-import 'package:education/ui/views/coursespage/myCourses/my_courses_view.dart' as _i16;
+import 'package:education/ui/views/coursespage/myCourses/my_courses_view.dart'
+    as _i16;
 import 'package:education/ui/views/coursespage/favouritesub/favouritesub_view.dart'
     as _i33;
 import 'package:education/ui/views/drawer/drawer_view.dart' as _i25;
