@@ -13,4 +13,14 @@ class CoursesService {
   Stream publisherStream(uID) {
     return FirebaseFirestore.instance.collection("users").doc(uID).snapshots();
   }
+
+  Stream<List<CoursesModel>> buyCoursesStream(courseKey) {
+    final stream = FirebaseFirestore.instance
+        .collection("courses")
+        .where("publishDate", isEqualTo: courseKey)
+        .snapshots();
+    return stream.map((event) => event.docs.map((doc) {
+          return CoursesModel.fromJson(doc.data());
+        }).toList());
+  }
 }

@@ -1,11 +1,11 @@
 import 'package:education/app/app.router.dart';
+import 'package:education/services/Model/CoursesModel.dart';
+import 'package:education/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../../../app/app.locator.dart';
-import '../../../../services/Model/CoursesModel.dart';
 import '../../../../services/courses_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
@@ -19,6 +19,7 @@ class MyCoursesViewModel extends BaseViewModel {
 
   final _navigationService = locator<NavigationService>();
   final coursesService = locator<CoursesService>();
+  final loginService = locator<LoginService>();
 
   navigatefavouritesubject() {
     _navigationService.navigateToFavouritesubView();
@@ -30,30 +31,21 @@ class MyCoursesViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  Widget coursesBuilder() {
+  Widget cousesBuilder(courseKey) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: StreamBuilder<List<CoursesModel>>(
-        stream: coursesService.coursesStream(),
-        builder:
-            (BuildContext context, AsyncSnapshot<List<CoursesModel>> snapshot) {
+        stream: coursesService.buyCoursesStream(courseKey),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasError) {
             return const Text('Something went wrong');
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Loading(100);
+            return Center(child: Loading(100));
           }
-          if (snapshot.hasData == true) {
-            return ListView.builder(
-                shrinkWrap: true,
-                itemCount: snapshot.data!.length,
-                // physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (BuildContext context, index) {
-                  var _courseData = snapshot.data![index];
-
-                  return MyCoursesCard(_courseData);
-                });
+          if (snapshot.hasData) {
+            return MyCoursesCard(snapshot.data[0]);
           }
 
           return GridView.builder(
