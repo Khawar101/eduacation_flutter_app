@@ -7,6 +7,6 @@ import '../../../../app/app.locator.dart';
 class PaymentdoneViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   navigateListOfCourses() {
-    _navigationService.navigateToCoursesView();
+    _navigationService.navigateToMyCoursesView();
   }
 }

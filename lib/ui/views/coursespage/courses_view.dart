@@ -5,13 +5,13 @@ import 'package:stacked/stacked.dart';
 
 import 'courses_viewmodel.dart';
 
-class CoursesView extends StackedView<CoursesViewModel> {
-  const CoursesView({Key? key}) : super(key: key);
+class MyCoursesView extends StackedView<MyCoursesViewModel> {
+  const MyCoursesView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    CoursesViewModel viewModel,
+    MyCoursesViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
@@ -206,8 +206,8 @@ class CoursesView extends StackedView<CoursesViewModel> {
   }
 
   @override
-  CoursesViewModel viewModelBuilder(
+  MyCoursesViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      CoursesViewModel();
+      MyCoursesViewModel();
 }

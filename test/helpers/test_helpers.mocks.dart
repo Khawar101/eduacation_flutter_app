@@ -12,6 +12,7 @@ import 'package:education/services/forgetpassword_service.dart' as _i14;
 import 'package:education/services/login_service.dart' as _i5;
 import 'package:education/services/Model/CoursesModel.dart' as _i18;
 import 'package:education/services/Model/ratingModel.dart' as _i17;
+import 'package:education/services/Model/reportModel.dart' as _i20;
 import 'package:education/services/Model/userData.dart' as _i4;
 import 'package:education/services/profile_service.dart' as _i12;
 import 'package:education/services/rating_service.dart' as _i16;
@@ -700,7 +701,13 @@ class MockSignupService extends _i1.Mock implements _i10.SignupService {
         returnValueForMissingStub: null,
       );
   @override
-  set profile(dynamic _profile) => super.noSuchMethod(
+  String get profile => (super.noSuchMethod(
+        Invocation.getter(#profile),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  set profile(String? _profile) => super.noSuchMethod(
         Invocation.setter(
           #profile,
           _profile,
@@ -760,6 +767,62 @@ class MockSignupService extends _i1.Mock implements _i10.SignupService {
         Invocation.setter(
           #image,
           _image,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  String get name => (super.noSuchMethod(
+        Invocation.getter(#name),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  set name(String? _name) => super.noSuchMethod(
+        Invocation.setter(
+          #name,
+          _name,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  String get email => (super.noSuchMethod(
+        Invocation.getter(#email),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  set email(String? _email) => super.noSuchMethod(
+        Invocation.setter(
+          #email,
+          _email,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  String get password => (super.noSuchMethod(
+        Invocation.getter(#password),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  set password(String? _password) => super.noSuchMethod(
+        Invocation.setter(
+          #password,
+          _password,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  String get userType => (super.noSuchMethod(
+        Invocation.getter(#userType),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  set userType(String? _userType) => super.noSuchMethod(
+        Invocation.setter(
+          #userType,
+          _userType,
         ),
         returnValueForMissingStub: null,
       );
@@ -953,4 +1016,73 @@ class MockRatingService extends _i1.Mock implements _i16.RatingService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSubscriptionService extends _i1.Mock
-    implements _i19.SubscriptionService {}
+    implements _i19.SubscriptionService {
+  @override
+  String get message => (super.noSuchMethod(
+        Invocation.getter(#message),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  set message(String? _message) => super.noSuchMethod(
+        Invocation.setter(
+          #message,
+          _message,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i2.FirebaseFirestore get firestore => (super.noSuchMethod(
+        Invocation.getter(#firestore),
+        returnValue: _FakeFirebaseFirestore_0(
+          this,
+          Invocation.getter(#firestore),
+        ),
+        returnValueForMissingStub: _FakeFirebaseFirestore_0(
+          this,
+          Invocation.getter(#firestore),
+        ),
+      ) as _i2.FirebaseFirestore);
+  @override
+  set firestore(_i2.FirebaseFirestore? _firestore) => super.noSuchMethod(
+        Invocation.setter(
+          #firestore,
+          _firestore,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  dynamic buyCourse(_i18.CoursesModel? courseData) => super.noSuchMethod(
+        Invocation.method(
+          #buyCourse,
+          [courseData],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i8.Stream<dynamic> reportStream(dynamic courseKey) => (super.noSuchMethod(
+        Invocation.method(
+          #reportStream,
+          [courseKey],
+        ),
+        returnValue: _i8.Stream<dynamic>.empty(),
+        returnValueForMissingStub: _i8.Stream<dynamic>.empty(),
+      ) as _i8.Stream<dynamic>);
+  @override
+  dynamic updateLecture(
+    _i18.CoursesModel? courseData,
+    _i20.ReportModel? reportData,
+    String? url,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #updateLecture,
+          [
+            courseData,
+            reportData,
+            url,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+}

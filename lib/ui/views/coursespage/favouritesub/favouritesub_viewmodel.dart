@@ -10,7 +10,7 @@ class FavouritesubViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   navigatecoursedetail() {
-    _navigationService.navigateToCoursesView();
+    _navigationService.navigateToMyCoursesView();
     notifyListeners();
   }
 }

@@ -103,7 +103,7 @@ class Routes {
 
   static const marketingView = '/marketing-view';
 
-  static const coursesView = '/courses-view';
+  static const myCoursesView = '/my-courses-view';
 
   static const learnersView = '/learners-view';
 
@@ -172,7 +172,7 @@ class Routes {
     editInfoView,
     lessonsScreenView,
     marketingView,
-    coursesView,
+    myCoursesView,
     learnersView,
     studentInformationView,
     notificationView,
@@ -261,8 +261,8 @@ class StackedRouter extends _i1.RouterBase {
       page: _i15.MarketingView,
     ),
     _i1.RouteDef(
-      Routes.coursesView,
-      page: _i16.CoursesView,
+      Routes.myCoursesView,
+      page: _i16.MyCoursesView,
     ),
     _i1.RouteDef(
       Routes.learnersView,
@@ -464,9 +464,9 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i16.CoursesView: (data) {
+    _i16.MyCoursesView: (data) {
       return _i43.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i16.CoursesView(),
+        builder: (context) => const _i16.MyCoursesView(),
         settings: data,
       );
     },
@@ -952,14 +952,14 @@ extension NavigatorStateExtension on _i45.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToCoursesView([
+  Future<dynamic> navigateToMyCoursesView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return navigateTo<dynamic>(Routes.coursesView,
+    return navigateTo<dynamic>(Routes.myCoursesView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1545,14 +1545,14 @@ extension NavigatorStateExtension on _i45.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithCoursesView([
+  Future<dynamic> replaceWithMyCoursesView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return replaceWith<dynamic>(Routes.coursesView,
+    return replaceWith<dynamic>(Routes.myCoursesView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

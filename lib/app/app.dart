@@ -71,7 +71,7 @@ import 'package:education/services/subscription_service.dart';
     MaterialRoute(page: EditInfoView),
     MaterialRoute(page: LessonsScreenView),
     MaterialRoute(page: MarketingView),
-    MaterialRoute(page: CoursesView),
+    MaterialRoute(page: MyCoursesView),
     MaterialRoute(page: LearnersView),
     MaterialRoute(page: StudentInformationView),
     MaterialRoute(page: NotificationView),
