@@ -3,7 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
-import 'courses_viewmodel.dart';
+import 'my_courses_viewmodel.dart';
 
 class MyCoursesView extends StackedView<MyCoursesViewModel> {
   const MyCoursesView({Key? key}) : super(key: key);
