@@ -17,7 +17,9 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
     Widget? child,
   ) {
     return GestureDetector(
-      onTap: viewModel.navigatecoursedetail,
+      onTap: () {
+        viewModel.navigatecoursedetail(courseData);
+      },
       child: Column(
         children: [
           Row(
@@ -56,6 +58,7 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
                     const SizedBox(height: 5),
 
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RatingBar.builder(
                           wrapAlignment: WrapAlignment.start,
