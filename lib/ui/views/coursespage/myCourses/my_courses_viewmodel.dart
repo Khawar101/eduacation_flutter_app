@@ -9,6 +9,7 @@ import '../../../../services/Model/CoursesModel.dart';
 import '../../../../services/courses_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
+import 'widgets/myCourseCard.dart';
 
 class MyCoursesViewModel extends BaseViewModel {
   bool isPressed = false;
@@ -43,6 +44,18 @@ class MyCoursesViewModel extends BaseViewModel {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Loading(100);
           }
+          if (snapshot.hasData == true) {
+            return ListView.builder(
+                shrinkWrap: true,
+                itemCount: snapshot.data!.length,
+                // physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, index) {
+                  var _courseData = snapshot.data![index];
+
+                  return MyCoursesCard(_courseData);
+                });
+          }
+
           return GridView.builder(
             shrinkWrap: true,
             itemCount: snapshot.data!.length,
@@ -54,6 +67,7 @@ class MyCoursesViewModel extends BaseViewModel {
             ),
             itemBuilder: (BuildContext context, int index) {
               var data = snapshot.data![index];
+
               return GestureDetector(
                 onTap: () {
                   // checkSubscripNavigate(data);
