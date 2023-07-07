@@ -12,7 +12,7 @@ Widget networkImage(url, height, width, shape) {
     imageBuilder: (context, imageProvider) => Container(
       decoration: BoxDecoration(
         shape: shape ? BoxShape.circle : BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: shape ? null : BorderRadius.circular(10),
         image: DecorationImage(
           image: imageProvider,
           fit: BoxFit.cover,

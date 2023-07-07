@@ -1,3 +1,4 @@
+import 'package:education/ui/widgets/networkImage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -24,50 +25,48 @@ class DrawerView extends StackedView<DrawerViewModel> {
       child: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.24,
-            child: DrawerHeader(
-              decoration: BoxDecoration(
-                  color: const Color(0xff4873a6).withOpacity(0.7),
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10))),
-              child: Column(
-                children: [
-                  const SizedBox(height: 10),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const CircleAvatar(
-                        radius: 20,
-                        backgroundImage:
-                            AssetImage('assets/images/download (1).jpeg'),
-                      ),
-                      const SizedBox(width: 8),
-                      Column(
-                        //  mainAxisAlignment:
-                        //      MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Rakibull hassan',
-                            style: GoogleFonts.ibmPlexSans(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'Student',
-                            style: GoogleFonts.ibmPlexSans(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+            height: 100,
+            child: Center(
+              child: DrawerHeader(
+                decoration: BoxDecoration(
+                    color: const Color(0xff4873a6).withOpacity(0.7),
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        networkImage(viewModel.UserData.profile, 40, 40, true),
+                        const SizedBox(width: 8),
+                        Column(
+                          //  mainAxisAlignment:
+                          //      MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              viewModel.UserData.username ?? "",
+                              style: GoogleFonts.ibmPlexSans(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              viewModel.UserData.userType ?? "",
+                              style: GoogleFonts.ibmPlexSans(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -118,6 +117,15 @@ class DrawerView extends StackedView<DrawerViewModel> {
                     title: const Text('Courses'),
                     minLeadingWidth: 0.009,
                     onTap: viewModel.navigateListOfCourses,
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.book_outlined,
+                      color: const Color(0xff4873a6).withOpacity(0.7),
+                    ),
+                    title: const Text('Favourit'),
+                    minLeadingWidth: 0.009,
+                    onTap: viewModel.navigateFavourit,
                   ),
                   ListTile(
                     leading: Icon(
