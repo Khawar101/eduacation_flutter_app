@@ -1,7 +1,5 @@
 // ignore_for_file: camel_case_types
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
@@ -32,14 +30,17 @@ class _videoPlayerState extends State<videoPlayer> {
     super.initState();
     controller = VideoPlayerController.network(widget.url)
       ..addListener(() {
-        if (this.mounted) {
-          log("=====>>");
-          setState(() {
-            controller!.play();
-          });
-        } else {
-          log("=====>");
-        }
+        setState(() {
+          
+        });
+        // if (this.mounted) {
+        //   log("=====>>");
+        //   setState(() {
+        //     controller!.play();
+        //   });
+        // } else {
+        //   log("=====>");
+        // }
       })
       ..setLooping(false);
     // ..initialize().then((value) => controller!.play());
