@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../../widgets/app_utils.dart';
 import '../../../../widgets/custom_text_form_field.dart';
 import '../../../drawer/drawer_view.dart';
@@ -68,7 +67,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10, // Replace with your actual item count
                   itemBuilder: (context, index) {
-                    return Padding(
+                    return const Padding(
                       padding: EdgeInsets.only(right: 16),
                       child: Column(
                         children: [
@@ -108,7 +107,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                       onTap: () {
                         viewModel.navigateinbox();
                       },
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
