@@ -1,4 +1,3 @@
-import 'package:education/ui/widgets/common/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
@@ -6,6 +5,7 @@ import 'package:stacked/stacked.dart';
 
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../widgets/app_utils.dart';
+import '../../../../widgets/common/video_player/video_player.dart';
 import '../../../../widgets/introBuilder.dart';
 import 'marketing_viewmodel.dart';
 

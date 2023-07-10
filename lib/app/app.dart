@@ -53,6 +53,7 @@ import 'package:education/services/forgetpassword_service.dart';
 import 'package:education/services/setting_service.dart';
 import 'package:education/services/rating_service.dart';
 import 'package:education/services/subscription_service.dart';
+
 // @stacked-import
 
 @StackedApp(
@@ -99,6 +100,8 @@ import 'package:education/services/subscription_service.dart';
     MaterialRoute(page: CategoriesView),
     MaterialRoute(page: EBookView),
     MaterialRoute(page: BookDetailView),
+    // MaterialRoute(page: VideosPlayer),
+
 // @stacked-route
   ],
   dependencies: [

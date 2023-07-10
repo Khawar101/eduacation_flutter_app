@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../widgets/app_utils.dart';
-import '../../../../widgets/common/video_player.dart';
+import '../../../../widgets/common/video_player/video_player.dart';
 import 'lessons_viewmodel.dart';
 
 class LessonsView extends StatefulWidget {
