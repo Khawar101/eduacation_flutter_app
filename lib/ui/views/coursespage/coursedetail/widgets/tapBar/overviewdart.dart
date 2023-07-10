@@ -21,17 +21,15 @@ Widget overview(context, CoursesModel courseData) {
         trimLines: 3,
         trimLength: 100,
         style: TextStyle(
-            color: Colors.black.withOpacity(0.7),
-            height: 1.3,
-            wordSpacing: 2),
+            color: Colors.black.withOpacity(0.7), height: 1.3, wordSpacing: 2),
         colorClickableText: Colors.black,
         trimMode: TrimMode.Length,
         trimCollapsedText: 'Read more',
-        moreStyle: const TextStyle(
-            color: Colors.black, fontWeight: FontWeight.bold),
+        moreStyle:
+            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         trimExpandedText: '...Show Less',
-        lessStyle: const TextStyle(
-            color: Colors.black, fontWeight: FontWeight.bold),
+        lessStyle:
+            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
       const SizedBox(height: 30),
       feedback(context, courseData),

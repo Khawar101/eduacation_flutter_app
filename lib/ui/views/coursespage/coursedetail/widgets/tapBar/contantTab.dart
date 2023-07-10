@@ -1,7 +1,7 @@
-// ignore_for_file: unnecessary_import
+// ignore_for_file: file_names
+
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/reportModel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../widgets/app_utils.dart';
@@ -71,8 +71,7 @@ Widget contant(context, CoursesModel courseData,
                         ),
                       ],
                     ),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.025),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.025),
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -149,21 +148,24 @@ Widget contant(context, CoursesModel courseData,
                         )),
                       ),
                       const SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ButtonText(
-                            text: assigment.title!,
-                            color: Colors.black,
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            assigment.description!,
-                            style: GoogleFonts.ibmPlexSans(
-                                color: Colors.black.withOpacity(0.7)),
-                          ),
-                        ],
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 100,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ButtonText(
+                              text: assigment.title!,
+                              color: Colors.black,
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              assigment.description!,
+                              style: GoogleFonts.ibmPlexSans(
+                                  color: Colors.black.withOpacity(0.7)),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
