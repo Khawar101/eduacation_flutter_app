@@ -66,15 +66,18 @@ class _videoPlayerState extends State<videoPlayer> {
   @override
   void dispose() {
     super.dispose();
+    controller!.dispose();
     setAllOrientations();
   }
 
   @override
   Widget build(BuildContext context) {
     if (url != widget.url) {
+      controller!.dispose();
+
       setAllOrientations();
       controller = VideoPlayerController.network(widget.url)
-        // ..addListener(() => setState(() {}))
+        ..addListener(() => setState(() {}))
         ..setLooping(false)
         ..initialize().then((value) => controller!.play());
       setState(() {

@@ -39,7 +39,7 @@ class ReportModel {
     key = json['key'];
     progress = json['progress'];
     courseName = json['courseName'];
-    rating = json['rating'];
+    rating = json['rating']*0.0;
     startDate = json['startDate'];
     endDate = json['endDate'];
     userKey = json['userKey'];
