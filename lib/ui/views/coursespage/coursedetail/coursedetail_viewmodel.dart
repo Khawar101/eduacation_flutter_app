@@ -14,18 +14,21 @@ import '../../../../services/Model/ratingModel.dart';
 import '../../../../services/rating_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
+import '../../../widgets/common/video_player/video_player_model.dart';
 import 'widgets/ratingNow.dart';
 
 class CoursedetailViewModel extends BaseViewModel {
   // final _loginService = locator<LoginService>();
   final ratingService = locator<RatingService>();
   final subscriptionService = locator<SubscriptionService>();
+  final coursesL = VideoPlayerModel();
 
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
-  updateVideo(_videoUrl) {
+  updateVideo(_videoUrl) async {
     videoUrl = _videoUrl;
+    coursesL.nextVideoPlay(_videoUrl);
     notifyListeners();
   }
 
