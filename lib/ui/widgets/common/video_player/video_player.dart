@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
@@ -17,6 +19,7 @@ class videoPlayer extends StackedView<VideoPlayerModel> {
 
   @override
   void onViewModelReady(VideoPlayerModel viewModel) {
+    log("=================>message");
     viewModel.initState(url);
     super.onViewModelReady(viewModel);
   }
