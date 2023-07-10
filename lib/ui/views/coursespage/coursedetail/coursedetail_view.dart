@@ -8,7 +8,7 @@ import '../../../../services/Model/CoursesModel.dart';
 import '../../../../services/Model/reportModel.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/introBuilder.dart';
-import '../../../widgets/video_player.dart';
+import '../../../widgets/common/video_player.dart';
 import 'coursedetail_viewmodel.dart';
 import 'widgets/tapBar/contantTab.dart';
 import 'widgets/tapBar/overviewdart.dart';

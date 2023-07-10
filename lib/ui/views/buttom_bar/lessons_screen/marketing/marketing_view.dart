@@ -1,4 +1,4 @@
-import 'package:education/ui/widgets/video_player.dart';
+import 'package:education/ui/widgets/common/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
