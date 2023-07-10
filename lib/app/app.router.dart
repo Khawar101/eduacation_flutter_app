@@ -583,7 +583,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<CoursedetailViewArguments>(nullOk: false);
       return _i43.MaterialPageRoute<dynamic>(
         builder: (context) =>
-            _i35.CoursedetailView(key: args.key, courseData: args.courseData),
+            _i35.CoursedetailView(args.courseData, key: args.key),
         settings: data,
       );
     },
@@ -715,28 +715,28 @@ class MarketingViewArguments {
 
 class CoursedetailViewArguments {
   const CoursedetailViewArguments({
-    this.key,
     required this.courseData,
+    this.key,
   });
-
-  final _i43.Key? key;
 
   final _i44.CoursesModel courseData;
 
+  final _i43.Key? key;
+
   @override
   String toString() {
-    return '{"key": "$key", "courseData": "$courseData"}';
+    return '{"courseData": "$courseData", "key": "$key"}';
   }
 
   @override
   bool operator ==(covariant CoursedetailViewArguments other) {
     if (identical(this, other)) return true;
-    return other.key == key && other.courseData == courseData;
+    return other.courseData == courseData && other.key == key;
   }
 
   @override
   int get hashCode {
-    return key.hashCode ^ courseData.hashCode;
+    return courseData.hashCode ^ key.hashCode;
   }
 }
 
@@ -1220,8 +1220,8 @@ extension NavigatorStateExtension on _i45.NavigationService {
   }
 
   Future<dynamic> navigateToCoursedetailView({
-    _i43.Key? key,
     required _i44.CoursesModel courseData,
+    _i43.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1229,7 +1229,7 @@ extension NavigatorStateExtension on _i45.NavigationService {
         transition,
   }) async {
     return navigateTo<dynamic>(Routes.coursedetailView,
-        arguments: CoursedetailViewArguments(key: key, courseData: courseData),
+        arguments: CoursedetailViewArguments(courseData: courseData, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1813,8 +1813,8 @@ extension NavigatorStateExtension on _i45.NavigationService {
   }
 
   Future<dynamic> replaceWithCoursedetailView({
-    _i43.Key? key,
     required _i44.CoursesModel courseData,
+    _i43.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1822,7 +1822,7 @@ extension NavigatorStateExtension on _i45.NavigationService {
         transition,
   }) async {
     return replaceWith<dynamic>(Routes.coursedetailView,
-        arguments: CoursedetailViewArguments(key: key, courseData: courseData),
+        arguments: CoursedetailViewArguments(courseData: courseData, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
