@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/app.locator.dart';
 import '../../../../services/Model/CoursesModel.dart';
+import '../../../../services/Model/userData.dart';
 import '../../../../services/courses_service.dart';
+import '../../../../services/favorite_courses_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -22,9 +24,16 @@ class LessonsScreenViewModel extends BaseViewModel {
     'Lesson Content(50)',
     '120 Reviews'
   ];
+  final _favoriteCourseService = locator<FavoriteCoursesService>();
   final _navigationService = locator<NavigationService>();
   final coursesService = locator<CoursesService>();
   final _loginService = locator<LoginService>();
+ var  favoriteCourses = [];
+  viewModelReady(){
+      userData _userData = _loginService.UserData;
+      favoriteCourses = _userData.favoriteCourses ?? [];
+  }
+ 
 
   checkSubscripNavigate(CoursesModel courseData) {
     var buyCourses = _loginService.UserData.buyCourses ?? [];
@@ -49,7 +58,7 @@ class LessonsScreenViewModel extends BaseViewModel {
       builder:
           (BuildContext context, AsyncSnapshot<List<CoursesModel>> snapshot) {
         if (snapshot.hasError) {
-          return const Text('Something went wrong');
+          return Text(snapshot.error.toString());
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -74,11 +83,33 @@ class LessonsScreenViewModel extends BaseViewModel {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      data.coverPic.toString(),
-                      fit: BoxFit.cover,
-                      height: 130,
-                      width: 300,
+                    Stack(
+                      alignment: AlignmentDirectional.topEnd,
+                      children: [
+                        Image.network(
+                          data.coverPic.toString(),
+                          fit: BoxFit.cover,
+                          height: 130,
+                          width: 300,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: InkWell(
+                            onTap: () {
+                              checkCourseStatus(data);
+                              
+                            },
+                            child:  Icon(
+                              Icons.favorite,
+                              size: 20,
+                              color:
+                              favoriteCourses.contains(data.publishDate)?
+                              //favoriteCourses[i] ==  ?
+                               Colors.red: Colors.white
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,5 +182,20 @@ class LessonsScreenViewModel extends BaseViewModel {
         );
       },
     );
+  }
+
+  checkCourseStatus(CoursesModel courseData) async {
+  
+    
+    bool counter = false;
+    print("=========================" + favoriteCourses.toString());
+    print(favoriteCourses.contains(courseData.publishDate).toString());
+    if (!favoriteCourses.contains(courseData.publishDate)) {
+      _favoriteCourseService.addfavoriteCourse(courseData);
+    } else {
+      _favoriteCourseService.removefavoriteCourse(courseData);
+    }
+    viewModelReady();
+    notifyListeners();
   }
 }
