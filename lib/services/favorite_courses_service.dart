@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../app/app.locator.dart';
