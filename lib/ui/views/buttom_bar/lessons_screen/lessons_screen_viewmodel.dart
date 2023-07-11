@@ -28,23 +28,20 @@ class LessonsScreenViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final coursesService = locator<CoursesService>();
   final _loginService = locator<LoginService>();
- var  favoriteCourses = [];
-  viewModelReady(){
-      userData _userData = _loginService.UserData;
-      favoriteCourses = _userData.favoriteCourses ?? [];
+  var favoriteCourses = [];
+  viewModelReady() {
+    userData _userData = _loginService.UserData;
+    favoriteCourses = _userData.favoriteCourses ?? [];
   }
- 
 
   checkSubscripNavigate(CoursesModel courseData) {
     var buyCourses = _loginService.UserData.buyCourses ?? [];
     log(buyCourses.toString());
-    for (var i = 0; i < buyCourses.length; i++) {
-      if (buyCourses[i] == courseData.publishDate) {
-        log(buyCourses[i]);
-        _navigationService.navigateToCoursedetailView(courseData: courseData);
-        return null;
-      }
+
+    if (buyCourses.contains(courseData.publishDate)) {
+      _navigationService.navigateToCoursedetailView(courseData: courseData);
     }
+
     _navigationService.navigateToMarketingView(data: courseData);
   }
 
@@ -97,16 +94,15 @@ class LessonsScreenViewModel extends BaseViewModel {
                           child: InkWell(
                             onTap: () {
                               checkCourseStatus(data);
-                              
                             },
-                            child:  Icon(
-                              Icons.favorite,
-                              size: 20,
-                              color:
-                              favoriteCourses.contains(data.publishDate)?
-                              //favoriteCourses[i] ==  ?
-                               Colors.red: Colors.white
-                            ),
+                            child: Icon(Icons.favorite,
+                                size: 20,
+                                color:
+                                    favoriteCourses.contains(data.publishDate)
+                                        ?
+                                        //favoriteCourses[i] ==  ?
+                                        Colors.red
+                                        : Colors.white),
                           ),
                         ),
                       ],
@@ -185,11 +181,6 @@ class LessonsScreenViewModel extends BaseViewModel {
   }
 
   checkCourseStatus(CoursesModel courseData) async {
-  
-    
-    bool counter = false;
-    print("=========================" + favoriteCourses.toString());
-    print(favoriteCourses.contains(courseData.publishDate).toString());
     if (!favoriteCourses.contains(courseData.publishDate)) {
       _favoriteCourseService.addfavoriteCourse(courseData);
     } else {
