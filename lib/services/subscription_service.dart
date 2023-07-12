@@ -42,6 +42,7 @@ class SubscriptionService {
         "lecture": []
       });
       _loginService.updateUserData(_userData.uID);
+      
       // log(user.toString());
       _navigationService.back();
       message = "Course buy Successfully";

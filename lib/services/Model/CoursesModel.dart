@@ -77,7 +77,7 @@ class CoursesModel {
     coverPic = json['coverPic'];
     description = json['description'];
     publishDate = json['publishDate'];
-    rating = json['rating'];
+    rating = json['rating']* 0.0;
     students = json['students'];
     publish = json['publish'];
     uID = json['UID'];
