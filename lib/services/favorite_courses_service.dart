@@ -43,5 +43,13 @@ class FavoriteCoursesService {
       message = e.toString();
     }
   }
-  
+  Stream<List<CoursesModel>> favoriteCoursesStream(courseKey) {
+    final stream = FirebaseFirestore.instance
+        .collection("courses")
+        .where("publishDate", isEqualTo: courseKey)
+        .snapshots();
+    return stream.map((event) => event.docs.map((doc) {
+          return CoursesModel.fromJson(doc.data());
+        }).toList());
+  }
 }
