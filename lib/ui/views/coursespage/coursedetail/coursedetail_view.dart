@@ -1,3 +1,4 @@
+import 'package:education/ui/views/coursespage/coursedetail/video_player.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/courseintro.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,15 +6,28 @@ import 'package:stacked/stacked.dart';
 import '../../../../services/Model/CoursesModel.dart';
 import '../../../../services/Model/reportModel.dart';
 import '../../../../utils/loading.dart';
-import '../../../widgets/common/video_player/video_player.dart';
 import '../../../widgets/introBuilder.dart';
 import 'coursedetail_viewmodel.dart';
+import 'widgets/tapBar/contantTab.dart';
+import 'widgets/tapBar/overviewdart.dart';
 import 'widgets/tapBar/tabBarWidget.dart';
 
 class CoursedetailView extends StackedView<CoursedetailViewModel> {
   final CoursesModel courseData;
 
   const CoursedetailView(this.courseData, {Key? key}) : super(key: key);
+  @override
+  void onViewModelReady(CoursedetailViewModel viewModel) {
+    viewModel.initializePlay(courseData.lecture![0].videoUrl);
+    super.onViewModelReady(viewModel);
+  }
+
+  @override
+  void onDispose(CoursedetailViewModel viewModel) {
+    viewModel.controller!.dispose();
+    viewModel.setAllOrientations();
+    super.onDispose(viewModel);
+  }
 
   @override
   Widget builder(
@@ -101,7 +115,10 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                 const SizedBox(height: 40),
                                 TabBarWidget(
                                     courseData: courseData,
-                                    reportData: _reportData)
+                                    reportData: _reportData),
+                                viewModel.tabPage == 0
+                                    ? overview(context, courseData)
+                                    : contant(courseData, _reportData)
                               ],
                             ),
                           ),

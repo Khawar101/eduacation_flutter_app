@@ -5,8 +5,7 @@ import 'package:stacked/stacked.dart';
 import '../../../../../../services/Model/CoursesModel.dart';
 import '../../../../../../services/Model/reportModel.dart';
 import '../../coursedetail_viewmodel.dart';
-import 'contantTab.dart';
-import 'overviewdart.dart';
+
 
 class TabBarWidget extends StatefulWidget {
   final CoursesModel courseData;
@@ -50,7 +49,9 @@ class _TabBarWidgetState extends State<TabBarWidget>
                 controller: tabController,
                 labelStyle: GoogleFonts.ibmPlexSans(
                     fontSize: 16.0, fontWeight: FontWeight.w600),
-                onTap: (value) {},
+                onTap: (value) {
+                  viewModel.tabPageChange(value);
+                },
                 labelColor: Colors.black,
                 unselectedLabelColor: const Color(0xff4873a6).withOpacity(0.7),
                 tabs: const [
@@ -62,21 +63,6 @@ class _TabBarWidgetState extends State<TabBarWidget>
                   ),
                 ],
               ),
-              tabController.index == 0
-                  ? overview(context, widget.courseData)
-                  : contant(
-                      context, widget.courseData, viewModel, widget.reportData)
-              // SizedBox(
-              //   height: 500,
-              //   child: TabBarWidget(
-              //       controller: tabController,
-              //       physics: const ScrollPhysics(),
-              //       children: [
-              //         overview(context, widget.courseData),
-              //         contant(context, widget.courseData,
-              //             viewModel, _reportData)
-              //       ]),
-              // ),
             ],
           );
         });

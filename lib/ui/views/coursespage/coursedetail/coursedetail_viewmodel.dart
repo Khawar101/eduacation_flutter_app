@@ -1,34 +1,37 @@
 // import 'package:education/services/login_service.dart';
 // ignore_for_file: prefer_typing_uninitialized_variables
-
+import 'dart:async';
+import 'dart:developer';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/subscription_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:stacked/stacked.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:video_player/video_player.dart';
 import '../../../../app/app.locator.dart';
 import '../../../../services/Model/ratingModel.dart';
 import '../../../../services/rating_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
-import '../../../widgets/common/video_player/video_player_model.dart';
 import 'widgets/ratingNow.dart';
 
 class CoursedetailViewModel extends BaseViewModel {
   // final _loginService = locator<LoginService>();
   final ratingService = locator<RatingService>();
   final subscriptionService = locator<SubscriptionService>();
-  final coursesL = VideoPlayerModel();
+  // final coursesL = VideoPlayerModel();
 
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
   updateVideo(_videoUrl) async {
     videoUrl = _videoUrl;
-    coursesL.nextVideoPlay(_videoUrl);
+    print('=========>');
+    startVideoPlayer(_videoUrl);
     notifyListeners();
   }
 
@@ -158,5 +161,115 @@ class CoursedetailViewModel extends BaseViewModel {
             });
       },
     );
+  }
+
+  StreamController<bool> streamController = StreamController();
+  bool replyVideo = true;
+  VideoPlayerController? controller;
+  bool isPlaying = false;
+  Duration duration = Duration.zero;
+  Duration position = Duration.zero;
+  void initializePlay(url) {
+    log("initializePlay");
+    controller = VideoPlayerController.network(url)
+      ..addListener(() => notifyListeners())
+      ..setLooping(false);
+    // ..initialize().then((value) => controller!.play());
+    startVideoPlayer(url);
+  }
+
+  // void startVideoPlayer(url) {
+  //   streamController.add(true);
+  //   notifyListeners();
+  //   print('~=============>$url');
+  //   controller?.pause();
+  //   controller?.dispose();
+  //   Future.delayed(const Duration(milliseconds: 500), () {
+  //     controller = VideoPlayerController.network(url)
+  //       ..addListener(() => notifyListeners())
+  //       ..setLooping(false)
+  //       ..initialize().then((value) => controller!.play());
+  //     notifyListeners();
+  //   });
+  //   streamController.add(false);
+  //   notifyListeners();
+  // }
+
+  play() {
+    controller!.value.isPlaying ? controller!.pause() : controller!.play();
+    notifyListeners();
+  }
+
+  var tabPage = 1;
+  tabPageChange(value) {
+    tabPage = value;
+    notifyListeners();
+  }
+
+  Future<void> startVideoPlayer(url) async {
+    print('~=============>$url');
+    // streamController.add(true);
+    replyVideo = false;
+    notifyListeners();
+    log("===Flase");
+    Future.delayed(const Duration(milliseconds: 1500), () async {
+      final VideoPlayerController _controller =
+          VideoPlayerController.network(url);
+
+      _controller.addListener(_listener);
+
+      await _controller.setLooping(true);
+
+      await _controller.initialize();
+
+      final VideoPlayerController oldController =
+          controller ?? VideoPlayerController.network(url);
+
+      controller = _controller;
+      // notifyListeners();
+      await _controller.play();
+      await oldController.dispose();
+      // streamController.add(false);
+      replyVideo = true;
+      notifyListeners();
+      log("===True");
+    });
+  }
+
+  get _listener => () {
+        if (controller != null && controller?.value.size != null) {
+          // if (mounted) setState(() {});
+          // notifyListeners();
+          controller?.removeListener(_listener);
+        }
+      };
+
+  setLandScape(context) async {
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+      await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    } else {
+      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+      await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
+    }
+  }
+
+  String videoDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final hours = twoDigits(duration.inHours);
+    final minutes = twoDigits(duration.inMinutes.remainder(60));
+    final seconds = twoDigits(duration.inSeconds.remainder(60));
+    return [if (duration.inHours > 0) hours, minutes, seconds].join(':');
+  }
+
+  Future setAllOrientations() async {
+    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    await SystemChrome.setPreferredOrientations(DeviceOrientation.values);
   }
 }
