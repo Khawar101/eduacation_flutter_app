@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
@@ -9,7 +11,17 @@ class VideoPlayerModel extends BaseViewModel {
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
   var url = "";
-  void initState(url) {
+  void initializePlay(url) {
+    controller = VideoPlayerController.network(url)
+      ..addListener(() => notifyListeners())
+      ..setLooping(false)
+      ..initialize().then((value) => controller!.play());
+  }
+
+  void nextVideoPlay(url) {
+    log('~=============>$url');
+    controller?.pause();
+    controller?.dispose();
     controller = VideoPlayerController.network(url)
       ..addListener(() => notifyListeners())
       ..setLooping(false)

@@ -1,7 +1,9 @@
+// ignore_for_file: camel_case_types
+
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
-
 import 'video_player_model.dart';
 
 class videoPlayer extends StackedView<VideoPlayerModel> {
@@ -17,7 +19,8 @@ class videoPlayer extends StackedView<VideoPlayerModel> {
 
   @override
   void onViewModelReady(VideoPlayerModel viewModel) {
-    viewModel.initState(url);
+    log("=================>message");
+    viewModel.initializePlay(url);
     super.onViewModelReady(viewModel);
   }
 
