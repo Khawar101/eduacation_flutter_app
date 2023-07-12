@@ -49,8 +49,6 @@ class LessonsScreenViewModel extends BaseViewModel {
     }else{
       _navigationService.navigateToMarketingView(data: courseData);
     }
-    
-    
       }
 
   navigateNotifications() {
