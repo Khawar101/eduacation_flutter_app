@@ -61,7 +61,8 @@ class LessonsScreenViewModel extends BaseViewModel {
       builder:
           (BuildContext context, AsyncSnapshot<List<CoursesModel>> snapshot) {
         if (snapshot.hasError) {
-          return Text(snapshot.error.toString());
+
+          return Center(child: Text(snapshot.error.toString()));
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
