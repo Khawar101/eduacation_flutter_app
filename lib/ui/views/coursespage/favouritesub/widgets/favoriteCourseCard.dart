@@ -3,21 +3,22 @@ import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:stacked/stacked.dart';
-import '../my_courses_viewmodel.dart';
 
-class MyCoursesCard extends StackedView<MyCoursesViewModel> {
+import '../favouritesub_viewmodel.dart';
+
+class FavoriteCourseCard extends StackedView<FavouritesubViewModel> {
   final CoursesModel courseData;
-  const MyCoursesCard(this.courseData, {Key? key}) : super(key: key);
+  const FavoriteCourseCard(this.courseData, {Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    MyCoursesViewModel viewModel,
+    FavouritesubViewModel viewModel,
     Widget? child,
   ) {
     return GestureDetector(
       onTap: () {
-        viewModel.navigatecoursedetail(courseData);
+        viewModel.navigatefavoritecoursedetail(courseData);
       },
       child: Column(
         children: [
@@ -152,8 +153,8 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
   }
 
   @override
-  MyCoursesViewModel viewModelBuilder(
+  FavouritesubViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      MyCoursesViewModel();
+      FavouritesubViewModel();
 }
