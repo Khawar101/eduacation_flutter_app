@@ -8,6 +8,7 @@ import 'dart:ui' as _i9;
 
 import 'package:cloud_firestore/cloud_firestore.dart' as _i2;
 import 'package:education/services/chats_service.dart' as _i13;
+import 'package:education/services/favorite_courses_service.dart' as _i21;
 import 'package:education/services/forgetpassword_service.dart' as _i14;
 import 'package:education/services/login_service.dart' as _i5;
 import 'package:education/services/Model/CoursesModel.dart' as _i18;
@@ -1086,3 +1087,9 @@ class MockSubscriptionService extends _i1.Mock
         returnValueForMissingStub: null,
       );
 }
+
+/// A class which mocks [FavoriteCoursesService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFavoriteCoursesService extends _i1.Mock
+    implements _i21.FavoriteCoursesService {}

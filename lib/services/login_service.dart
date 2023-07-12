@@ -6,7 +6,7 @@ import 'Model/userData.dart';
 
 class LoginService {
   var message = "";
-  late userData UserData;
+  late userData UserData = userData();
 
 // bool looding=true;
   // String number = numberCTRL.text.trim();
@@ -44,6 +44,7 @@ class LoginService {
           educationSector: data["educationSector"],
           // socialLinks: data["socialLinks"],
           buyCourses: data["buyCourses"],
+          favoriteCourses: data["favoriteCourses"],
         );
         message = "login successfully";
         return UserData;
@@ -75,6 +76,7 @@ class LoginService {
       educationSector: data["educationSector"],
       // socialLinks: data["socialLinks"],
       buyCourses: data["buyCourses"],
+      favoriteCourses: data["favoriteCourses"],
     );
   }
 

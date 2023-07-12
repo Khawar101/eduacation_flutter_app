@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/app.locator.dart';
 import '../../../../services/Model/CoursesModel.dart';
+import '../../../../services/Model/userData.dart';
 import '../../../../services/courses_service.dart';
+import '../../../../services/favorite_courses_service.dart';
 import '../../../../utils/loading.dart';
 import '../../../widgets/app_utils.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -22,22 +24,32 @@ class LessonsScreenViewModel extends BaseViewModel {
     'Lesson Content(50)',
     '120 Reviews'
   ];
+  final _favoriteCourseService = locator<FavoriteCoursesService>();
   final _navigationService = locator<NavigationService>();
   final coursesService = locator<CoursesService>();
   final _loginService = locator<LoginService>();
+  var favoriteCourses = [];
+  var buyCourses = [];
+  
+  viewModelReady() {
+    userData _userData = _loginService.UserData;
+    favoriteCourses = _userData.favoriteCourses ?? [];
+    buyCourses = _userData.buyCourses ?? [];
+  }
 
   checkSubscripNavigate(CoursesModel courseData) {
-    var buyCourses = _loginService.UserData.buyCourses ?? [];
+    //buyCourses = _loginService.UserData.buyCourses ?? [];
+    
+    viewModelReady();
+    notifyListeners();
     log(buyCourses.toString());
-    for (var i = 0; i < buyCourses.length; i++) {
-      if (buyCourses[i] == courseData.publishDate) {
-        log(buyCourses[i]);
-        _navigationService.navigateToCoursedetailView(courseData: courseData);
-        return null;
-      }
+    if (buyCourses.contains(courseData.publishDate)) {
+      log("bury course");
+      _navigationService.navigateToCoursedetailView(courseData: courseData);
+    }else{
+      _navigationService.navigateToMarketingView(data: courseData);
     }
-    _navigationService.navigateToMarketingView(data: courseData);
-  }
+      }
 
   navigateNotifications() {
     _navigationService.navigateToNotificationView();
@@ -49,7 +61,7 @@ class LessonsScreenViewModel extends BaseViewModel {
       builder:
           (BuildContext context, AsyncSnapshot<List<CoursesModel>> snapshot) {
         if (snapshot.hasError) {
-          return Center(child: Text(snapshot.error.toString()));
+          return Text(snapshot.error.toString());
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -74,11 +86,32 @@ class LessonsScreenViewModel extends BaseViewModel {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      data.coverPic.toString(),
-                      fit: BoxFit.cover,
-                      height: 130,
-                      width: 300,
+                    Stack(
+                      alignment: AlignmentDirectional.topEnd,
+                      children: [
+                        Image.network(
+                          data.coverPic.toString(),
+                          fit: BoxFit.cover,
+                          height: 130,
+                          width: 300,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: InkWell(
+                            onTap: () {
+                              checkCourseStatus(data);
+                            },
+                            child: Icon(Icons.favorite,
+                                size: 20,
+                                color:
+                                    favoriteCourses.contains(data.publishDate)
+                                        ?
+                                        
+                                        Colors.red
+                                        : Colors.white),
+                          ),
+                        ),
+                      ],
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,5 +184,15 @@ class LessonsScreenViewModel extends BaseViewModel {
         );
       },
     );
+  }
+
+  checkCourseStatus(CoursesModel courseData) async {
+    if (!favoriteCourses.contains(courseData.publishDate)) {
+      _favoriteCourseService.addfavoriteCourse(courseData);
+    } else {
+      _favoriteCourseService.removefavoriteCourse(courseData);
+    }
+    viewModelReady();
+    notifyListeners();
   }
 }
