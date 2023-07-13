@@ -61,7 +61,14 @@ class videoPlayer extends ViewModelWidget<CoursedetailViewModel> {
                               valueListenable: viewModel.controller!,
                               builder:
                                   (context, VideoPlayerValue value, child) {
-                                log(value.position.inMinutes.toString());
+                                    log( viewModel.videoComplete.toString());
+                                if (value.position.inSeconds >=
+                                        viewModel.controller!.value.duration
+                                                .inSeconds -
+                                            2 &&
+                                    viewModel.videoComplete == true) {
+                                  log(value.position.inSeconds.toString());
+                                }
                                 return Text(
                                   viewModel.videoDuration(value.position),
                                   style: const TextStyle(

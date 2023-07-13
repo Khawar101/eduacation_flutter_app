@@ -28,10 +28,15 @@ class CoursedetailViewModel extends BaseViewModel {
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
+  var videoComplete = false;
   updateVideo(_videoUrl) async {
     videoUrl = _videoUrl;
-    print('=========>');
     startVideoPlayer(_videoUrl);
+    notifyListeners();
+  }
+
+ void setVideeComplete(value) {
+    videoComplete = value;
     notifyListeners();
   }
 
@@ -177,7 +182,6 @@ class CoursedetailViewModel extends BaseViewModel {
     // ..initialize().then((value) => controller!.play());
     startVideoPlayer(url);
   }
-
 
   play() {
     controller!.value.isPlaying ? controller!.pause() : controller!.play();
