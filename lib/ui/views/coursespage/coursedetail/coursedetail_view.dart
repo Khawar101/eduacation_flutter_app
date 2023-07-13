@@ -100,8 +100,9 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                               child: Column(children: [
                             videoPlayer(
                               url: _videoUrl,
+                              videoComplete: true,
                               orientation: orientation,
-                              completeVideo: () {
+                              runOnComplete: () {
                                 viewModel.updateLecture(courseData, _reportData,
                                     _complete, _videoUrl);
                               },

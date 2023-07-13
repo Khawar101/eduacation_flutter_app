@@ -29,15 +29,16 @@ class CoursedetailViewModel extends BaseViewModel {
   var rating;
   var videoUrl;
   var videoComplete = false;
-  updateVideo(_videoUrl) async {
+  updateVideo(_videoUrl, _complete) async {
     videoUrl = _videoUrl;
     startVideoPlayer(_videoUrl);
+    setVideeComplete(_complete);
     notifyListeners();
   }
 
- void setVideeComplete(value) {
+  void setVideeComplete(value) {
     videoComplete = value;
-    notifyListeners();
+    // notifyListeners();
   }
 
   updateLecture(courseData, reportData, _complete, _videoUrl) {

@@ -8,20 +8,25 @@ import 'coursedetail_viewmodel.dart';
 
 class videoPlayer extends ViewModelWidget<CoursedetailViewModel> {
   final String url;
+  final bool videoComplete;
   final Orientation orientation;
-  final Function completeVideo;
+  final Function runOnComplete;
 
   const videoPlayer(
       {super.key,
       required this.url,
+      required this.videoComplete,
       required this.orientation,
-      required this.completeVideo});
+      required this.runOnComplete});
 
   @override
   Widget build(
     BuildContext context,
     CoursedetailViewModel viewModel,
   ) {
+    if (viewModel.videoComplete != videoComplete) {
+      viewModel.setVideeComplete(videoComplete);
+    }
     return viewModel.replyVideo
         ? SizedBox(
             height: MediaQuery.of(context).orientation == Orientation.landscape
@@ -61,12 +66,13 @@ class videoPlayer extends ViewModelWidget<CoursedetailViewModel> {
                               valueListenable: viewModel.controller!,
                               builder:
                                   (context, VideoPlayerValue value, child) {
-                                    log( viewModel.videoComplete.toString());
+                                log(viewModel.videoComplete.toString());
                                 if (value.position.inSeconds >=
                                         viewModel.controller!.value.duration
                                                 .inSeconds -
-                                            2 &&
-                                    viewModel.videoComplete == true) {
+                                            5 &&
+                                    viewModel.videoComplete == false) {
+                                  viewModel.setVideeComplete(true);
                                   log(value.position.inSeconds.toString());
                                 }
                                 return Text(
