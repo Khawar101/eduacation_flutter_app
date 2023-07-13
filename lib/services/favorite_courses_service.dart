@@ -22,7 +22,7 @@ class FavoriteCoursesService {
         "favoriteCourses": courseList,
       });
       _loginService.updateUserData(_userData.uID);
-      _navigationService.back();
+      //_navigationService.back();
       message = "Added To Favorite Successfully";
     } catch (e) {
       message = e.toString();

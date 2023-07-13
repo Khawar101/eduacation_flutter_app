@@ -101,14 +101,12 @@ class LessonsScreenViewModel extends BaseViewModel {
                             onTap: () {
                               checkCourseStatus(data);
                             },
-                            child: Icon(Icons.favorite,
-                                size: 20,
-                                color:
-                                    favoriteCourses.contains(data.publishDate)
-                                        ?
-                                        
-                                        Colors.red
-                                        : Colors.white),
+                            child: Icon(
+                              favoriteCourses.contains(data.publishDate)
+                                  ? Icons.favorite
+                                  : Icons.favorite_border_outlined,
+                              size: 20,
+                              color: Colors.red),
                           ),
                         ),
                       ],
