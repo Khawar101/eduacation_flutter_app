@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../widgets/app_utils.dart';
 import 'favouritesub_viewmodel.dart';
 
@@ -70,7 +69,7 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
                 ),
               ),
               title: Text(
-                "My save list",
+                "My Favorites",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.ibmPlexSans(
                     fontSize: 18,
@@ -80,13 +79,15 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
               centerTitle: true,
             ),
             body: ListView.builder(
-          shrinkWrap: true,
-          itemCount: viewModel.loginService.UserData.favoriteCourses!.length,
-          // physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (BuildContext context, index) {
-            var courseKey = viewModel.loginService.UserData.favoriteCourses![index];
-            return viewModel.favoritecousesBuilder(courseKey);
-          }),
+                shrinkWrap: true,
+                itemCount:
+                    viewModel.loginService.UserData.favoriteCourses!.length,
+                // physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, index) {
+                  var courseKey =
+                      viewModel.loginService.UserData.favoriteCourses![index];
+                  return viewModel.favoritecousesBuilder(courseKey);
+                }),
           );
   }
 

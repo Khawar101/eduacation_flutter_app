@@ -6,6 +6,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../../app/app.locator.dart';
+import '../../../../services/Model/userData.dart';
 import '../../../../services/favorite_courses_service.dart';
 import '../../../../services/login_service.dart';
 import '../../../../utils/loading.dart';
@@ -14,11 +15,22 @@ class FavouritesubViewModel extends BaseViewModel {
   bool data = false;
 
   final _navigationService = locator<NavigationService>();
-final favoritecoursesService = locator<FavoriteCoursesService>();
+  final favoritecoursesService = locator<FavoriteCoursesService>();
   final loginService = locator<LoginService>();
   navigatefavoritecoursedetail(CoursesModel courseData) {
     _navigationService.navigateToCoursedetailView(courseData: courseData);
     notifyListeners();
+  }
+
+  final _favoriteCourseService = locator<FavoriteCoursesService>();
+  final _loginService = locator<LoginService>();
+  var favoriteCourses = [];
+  var buyCourses = [];
+
+  viewModelReady() {
+    userData _userData = _loginService.UserData;
+    favoriteCourses = _userData.favoriteCourses ?? [];
+    buyCourses = _userData.buyCourses ?? [];
   }
 
   Widget favoritecousesBuilder(courseKey) {
@@ -38,10 +50,19 @@ final favoritecoursesService = locator<FavoriteCoursesService>();
             return FavoriteCourseCard(snapshot.data[0]);
           }
 
-        return Text("No Data Available");
+          return Text("No Data Available");
         },
       ),
     );
   }
 
+  checkCourseStatuspage(CoursesModel courseData) async {
+    if (!favoriteCourses.contains(courseData.publishDate)) {
+      _favoriteCourseService.addfavoriteCourse(courseData);
+    } else {
+      _favoriteCourseService.removefavoriteCourse(courseData);
+    }
+    viewModelReady();
+    notifyListeners();
+  }
 }

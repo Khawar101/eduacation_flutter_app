@@ -8,6 +8,7 @@ import 'dart:ui' as _i9;
 
 import 'package:cloud_firestore/cloud_firestore.dart' as _i2;
 import 'package:education/services/chats_service.dart' as _i13;
+import 'package:education/services/ebook_service.dart' as _i22;
 import 'package:education/services/favorite_courses_service.dart' as _i21;
 import 'package:education/services/forgetpassword_service.dart' as _i14;
 import 'package:education/services/login_service.dart' as _i5;
@@ -1092,4 +1093,73 @@ class MockSubscriptionService extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFavoriteCoursesService extends _i1.Mock
-    implements _i21.FavoriteCoursesService {}
+    implements _i21.FavoriteCoursesService {
+  @override
+  String get message => (super.noSuchMethod(
+        Invocation.getter(#message),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  set message(String? _message) => super.noSuchMethod(
+        Invocation.setter(
+          #message,
+          _message,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i2.FirebaseFirestore get firestore => (super.noSuchMethod(
+        Invocation.getter(#firestore),
+        returnValue: _FakeFirebaseFirestore_0(
+          this,
+          Invocation.getter(#firestore),
+        ),
+        returnValueForMissingStub: _FakeFirebaseFirestore_0(
+          this,
+          Invocation.getter(#firestore),
+        ),
+      ) as _i2.FirebaseFirestore);
+  @override
+  set firestore(_i2.FirebaseFirestore? _firestore) => super.noSuchMethod(
+        Invocation.setter(
+          #firestore,
+          _firestore,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  dynamic addfavoriteCourse(_i18.CoursesModel? courseData) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #addfavoriteCourse,
+          [courseData],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  dynamic removefavoriteCourse(_i18.CoursesModel? courseData) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #removefavoriteCourse,
+          [courseData],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i8.Stream<List<_i18.CoursesModel>> favoriteCoursesStream(
+          dynamic courseKey) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #favoriteCoursesStream,
+          [courseKey],
+        ),
+        returnValue: _i8.Stream<List<_i18.CoursesModel>>.empty(),
+        returnValueForMissingStub: _i8.Stream<List<_i18.CoursesModel>>.empty(),
+      ) as _i8.Stream<List<_i18.CoursesModel>>);
+}
+
+/// A class which mocks [EbookService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockEbookService extends _i1.Mock implements _i22.EbookService {}

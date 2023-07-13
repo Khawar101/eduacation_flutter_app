@@ -3,12 +3,16 @@ import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:stacked/stacked.dart';
-
 import '../favouritesub_viewmodel.dart';
 
 class FavoriteCourseCard extends StackedView<FavouritesubViewModel> {
   final CoursesModel courseData;
   const FavoriteCourseCard(this.courseData, {Key? key}) : super(key: key);
+  @override
+  void onViewModelReady(FavouritesubViewModel viewModel) {
+    // TODO: implement onViewModelReady
+    viewModel.viewModelReady();
+  }
 
   @override
   Widget builder(
@@ -27,11 +31,11 @@ class FavoriteCourseCard extends StackedView<FavouritesubViewModel> {
             children: [
               //networkImage(courseData.coverPic, 80, 100, false),
               Image.network(
-                          courseData.coverPic.toString(),
-                          fit: BoxFit.cover,
-                          height: 80,
-                          width: 100,
-                        ),
+                courseData.coverPic.toString(),
+                fit: BoxFit.cover,
+                height: 80,
+                width: 100,
+              ),
               SizedBox(width: MediaQuery.of(context).size.width * 0.025),
               Expanded(
                 child: Column(
@@ -48,17 +52,18 @@ class FavoriteCourseCard extends StackedView<FavouritesubViewModel> {
                               fontWeight: FontWeight.bold),
                           maxLines: 1,
                         ),
-                        // GestureDetector(
-                        //   onTap: viewModel.update(context),
-                        //   child: Icon(
-                        //     viewModel.isPressed
-                        //         ? Icons.favorite
-                        //         : Icons.favorite_border,
-                        //     color: viewModel.isPressed
-                        //         ? const Color(0xff4873a6).withOpacity(0.7)
-                        //         : Colors.grey,
-                        //   ),
-                        // ),
+                        InkWell(
+                          onTap: () {
+                            viewModel.checkCourseStatuspage(courseData);
+                          },
+                          child: Icon(
+                              viewModel.favoriteCourses
+                                      .contains(courseData.publishDate)
+                                  ? Icons.favorite
+                                  : Icons.favorite_border_outlined,
+                              size: 20,
+                              color: Colors.red),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 5),

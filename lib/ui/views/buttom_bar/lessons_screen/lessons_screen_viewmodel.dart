@@ -30,7 +30,7 @@ class LessonsScreenViewModel extends BaseViewModel {
   final _loginService = locator<LoginService>();
   var favoriteCourses = [];
   var buyCourses = [];
-  
+
   viewModelReady() {
     userData _userData = _loginService.UserData;
     favoriteCourses = _userData.favoriteCourses ?? [];
@@ -39,17 +39,17 @@ class LessonsScreenViewModel extends BaseViewModel {
 
   checkSubscripNavigate(CoursesModel courseData) {
     //buyCourses = _loginService.UserData.buyCourses ?? [];
-    
+
     viewModelReady();
     notifyListeners();
     log(buyCourses.toString());
     if (buyCourses.contains(courseData.publishDate)) {
       log("bury course");
       _navigationService.navigateToCoursedetailView(courseData: courseData);
-    }else{
+    } else {
       _navigationService.navigateToMarketingView(data: courseData);
     }
-      }
+  }
 
   navigateNotifications() {
     _navigationService.navigateToNotificationView();
@@ -101,14 +101,12 @@ class LessonsScreenViewModel extends BaseViewModel {
                             onTap: () {
                               checkCourseStatus(data);
                             },
-                            child: Icon(Icons.favorite,
+                            child: Icon(
+                                favoriteCourses.contains(data.publishDate)
+                                    ? Icons.favorite
+                                    : Icons.favorite_border_outlined,
                                 size: 20,
-                                color:
-                                    favoriteCourses.contains(data.publishDate)
-                                        ?
-                                        
-                                        Colors.red
-                                        : Colors.white),
+                                color: Colors.red),
                           ),
                         ),
                       ],
