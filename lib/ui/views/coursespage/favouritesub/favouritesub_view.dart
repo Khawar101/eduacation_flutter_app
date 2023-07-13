@@ -70,7 +70,7 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
                 ),
               ),
               title: Text(
-                "My save list",
+                "My Favorites",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.ibmPlexSans(
                     fontSize: 18,
