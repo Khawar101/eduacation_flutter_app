@@ -26,11 +26,11 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
             children: [
               //networkImage(courseData.coverPic, 80, 100, false),
               Image.network(
-                          courseData.coverPic.toString(),
-                          fit: BoxFit.cover,
-                          height: 80,
-                          width: 100,
-                        ),
+                courseData.coverPic.toString(),
+                fit: BoxFit.cover,
+                height: 80,
+                width: 100,
+              ),
               SizedBox(width: MediaQuery.of(context).size.width * 0.025),
               Expanded(
                 child: Column(

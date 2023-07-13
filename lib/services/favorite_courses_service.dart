@@ -43,6 +43,7 @@ class FavoriteCoursesService {
       message = e.toString();
     }
   }
+
   Stream<List<CoursesModel>> favoriteCoursesStream(courseKey) {
     final stream = FirebaseFirestore.instance
         .collection("courses")

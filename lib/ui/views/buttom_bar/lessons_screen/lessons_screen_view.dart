@@ -164,11 +164,13 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
       ),
     );
   }
+
   @override
-  onViewModelReady(LessonsScreenViewModel viewModel){
+  onViewModelReady(LessonsScreenViewModel viewModel) {
     viewModel.viewModelReady();
     super.onViewModelReady(viewModel);
   }
+
   @override
   LessonsScreenViewModel viewModelBuilder(
     BuildContext context,

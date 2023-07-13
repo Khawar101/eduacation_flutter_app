@@ -13,6 +13,7 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/chats_service.dart';
 import '../services/courses_service.dart';
+import '../services/ebook_service.dart';
 import '../services/favorite_courses_service.dart';
 import '../services/forgetpassword_service.dart';
 import '../services/login_service.dart';
@@ -46,4 +47,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => RatingService());
   locator.registerLazySingleton(() => SubscriptionService());
   locator.registerLazySingleton(() => FavoriteCoursesService());
+  locator.registerLazySingleton(() => EbookService());
 }

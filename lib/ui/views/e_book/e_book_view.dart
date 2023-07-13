@@ -1,3 +1,4 @@
+import 'package:education/ui/views/e_book/book_detail/all_booksCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -84,7 +85,7 @@ class EBookView extends StackedView<EBookViewModel> {
 
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
               const ButtonText(
-                text: "Featured Books ",
+                text: "All Books",
                 color: Colors.black,
               ),
 
@@ -96,32 +97,13 @@ class EBookView extends StackedView<EBookViewModel> {
                   itemCount: 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: viewModel.navigateBookDetail,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            right: MediaQuery.of(context).size.width * 0.04,
-                            top: MediaQuery.of(context).size.height * 0.01),
-                        child: Container(
-                          width: 160.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                'assets/images/images.jpg',
-                                fit: BoxFit.fill,
-                              )),
-                        ),
-                      ),
-                    );
+                    return AllEBooks();
                   },
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
               const ButtonText(
-                text: "Trending Books ",
+                text: "My Books",
                 color: Colors.black,
               ),
 

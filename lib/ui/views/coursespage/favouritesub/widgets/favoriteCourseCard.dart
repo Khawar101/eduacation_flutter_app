@@ -13,6 +13,7 @@ class FavoriteCourseCard extends StackedView<FavouritesubViewModel> {
     // TODO: implement onViewModelReady
     viewModel.viewModelReady();
   }
+
   @override
   Widget builder(
     BuildContext context,
@@ -56,12 +57,12 @@ class FavoriteCourseCard extends StackedView<FavouritesubViewModel> {
                             viewModel.checkCourseStatuspage(courseData);
                           },
                           child: Icon(
-                              viewModel.favoriteCourses.contains(courseData.publishDate)
+                              viewModel.favoriteCourses
+                                      .contains(courseData.publishDate)
                                   ? Icons.favorite
                                   : Icons.favorite_border_outlined,
                               size: 20,
-                              color: Colors.red
-                              ),
+                              color: Colors.red),
                         ),
                       ],
                     ),

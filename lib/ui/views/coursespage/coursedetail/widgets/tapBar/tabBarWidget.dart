@@ -6,7 +6,6 @@ import '../../../../../../services/Model/CoursesModel.dart';
 import '../../../../../../services/Model/reportModel.dart';
 import '../../coursedetail_viewmodel.dart';
 
-
 class TabBarWidget extends StatefulWidget {
   final CoursesModel courseData;
   final ReportModel reportData;
