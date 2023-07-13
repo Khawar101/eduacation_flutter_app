@@ -178,22 +178,6 @@ class CoursedetailViewModel extends BaseViewModel {
     startVideoPlayer(url);
   }
 
-  // void startVideoPlayer(url) {
-  //   streamController.add(true);
-  //   notifyListeners();
-  //   print('~=============>$url');
-  //   controller?.pause();
-  //   controller?.dispose();
-  //   Future.delayed(const Duration(milliseconds: 500), () {
-  //     controller = VideoPlayerController.network(url)
-  //       ..addListener(() => notifyListeners())
-  //       ..setLooping(false)
-  //       ..initialize().then((value) => controller!.play());
-  //     notifyListeners();
-  //   });
-  //   streamController.add(false);
-  //   notifyListeners();
-  // }
 
   play() {
     controller!.value.isPlaying ? controller!.pause() : controller!.play();
@@ -238,8 +222,6 @@ class CoursedetailViewModel extends BaseViewModel {
 
   get _listener => () {
         if (controller != null && controller?.value.size != null) {
-          // if (mounted) setState(() {});
-          // notifyListeners();
           controller?.removeListener(_listener);
         }
       };

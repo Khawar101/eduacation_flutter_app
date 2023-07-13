@@ -76,7 +76,7 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                     .reportStream(courseData.publishDate),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasError) {
-                    return const Text('Something went wrong');
+                    return Center(child: Text(snapshot.error.toString()));
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Loading(50);
