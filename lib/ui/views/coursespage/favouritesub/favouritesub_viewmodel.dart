@@ -15,22 +15,24 @@ class FavouritesubViewModel extends BaseViewModel {
   bool data = false;
 
   final _navigationService = locator<NavigationService>();
-final favoritecoursesService = locator<FavoriteCoursesService>();
+  final favoritecoursesService = locator<FavoriteCoursesService>();
   final loginService = locator<LoginService>();
   navigatefavoritecoursedetail(CoursesModel courseData) {
     _navigationService.navigateToCoursedetailView(courseData: courseData);
     notifyListeners();
   }
-final _favoriteCourseService = locator<FavoriteCoursesService>();
-final _loginService = locator<LoginService>();
-var favoriteCourses = [];
-var buyCourses = [];
 
-viewModelReady() {
+  final _favoriteCourseService = locator<FavoriteCoursesService>();
+  final _loginService = locator<LoginService>();
+  var favoriteCourses = [];
+  var buyCourses = [];
+
+  viewModelReady() {
     userData _userData = _loginService.UserData;
     favoriteCourses = _userData.favoriteCourses ?? [];
     buyCourses = _userData.buyCourses ?? [];
   }
+
   Widget favoritecousesBuilder(courseKey) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -48,7 +50,7 @@ viewModelReady() {
             return FavoriteCourseCard(snapshot.data[0]);
           }
 
-        return Text("No Data Available");
+          return Text("No Data Available");
         },
       ),
     );
@@ -63,5 +65,4 @@ viewModelReady() {
     viewModelReady();
     notifyListeners();
   }
-
 }

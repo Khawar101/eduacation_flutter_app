@@ -45,7 +45,7 @@ class MyCoursesViewModel extends BaseViewModel {
           if (snapshot.hasData) {
             return MyCoursesCard(snapshot.data[0]);
           }
-        return Text("No Data Available");
+          return Text("No Data Available");
         },
       ),
     );

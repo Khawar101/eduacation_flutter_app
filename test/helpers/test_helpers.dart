@@ -11,6 +11,7 @@ import 'package:education/services/setting_service.dart';
 import 'package:education/services/rating_service.dart';
 import 'package:education/services/subscription_service.dart';
 import 'package:education/services/favorite_courses_service.dart';
+import 'package:education/services/ebook_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -28,6 +29,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<RatingService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SubscriptionService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<FavoriteCoursesService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<EbookService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -43,6 +45,7 @@ void registerServices() {
   getAndRegisterRatingService();
   getAndRegisterSubscriptionService();
   getAndRegisterFavoriteCoursesService();
+  getAndRegisterEbookService();
 // @stacked-mock-register
 }
 
@@ -156,6 +159,13 @@ MockFavoriteCoursesService getAndRegisterFavoriteCoursesService() {
   _removeRegistrationIfExists<FavoriteCoursesService>();
   final service = MockFavoriteCoursesService();
   locator.registerSingleton<FavoriteCoursesService>(service);
+  return service;
+}
+
+MockEbookService getAndRegisterEbookService() {
+  _removeRegistrationIfExists<EbookService>();
+  final service = MockEbookService();
+  locator.registerSingleton<EbookService>(service);
   return service;
 }
 // @stacked-mock-create

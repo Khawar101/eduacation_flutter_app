@@ -79,13 +79,15 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
               centerTitle: true,
             ),
             body: ListView.builder(
-          shrinkWrap: true,
-          itemCount: viewModel.loginService.UserData.favoriteCourses!.length,
-          // physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (BuildContext context, index) {
-            var courseKey = viewModel.loginService.UserData.favoriteCourses![index];
-            return viewModel.favoritecousesBuilder(courseKey);
-          }),
+                shrinkWrap: true,
+                itemCount:
+                    viewModel.loginService.UserData.favoriteCourses!.length,
+                // physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, index) {
+                  var courseKey =
+                      viewModel.loginService.UserData.favoriteCourses![index];
+                  return viewModel.favoritecousesBuilder(courseKey);
+                }),
           );
   }
 
