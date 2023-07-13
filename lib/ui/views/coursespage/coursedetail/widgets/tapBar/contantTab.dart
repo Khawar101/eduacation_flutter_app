@@ -41,7 +41,7 @@ class contant extends ViewModelWidget<CoursedetailViewModel> {
               }
               return InkWell(
                 onTap: () {
-                  viewModel.updateVideo(courseData.lecture![index].videoUrl);
+                  viewModel.updateVideo(courseData.lecture![index].videoUrl,_complete);
                 },
                 child: Card(
                   child: Row(

@@ -76,56 +76,62 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                     .reportStream(courseData.publishDate),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasError) {
-                    return const Text('Something went wrong');
+                    return Center(child: Text(snapshot.error.toString()));
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Loading(50);
                   }
-                  ReportModel _reportData =
-                      ReportModel.fromJson(snapshot.data.data());
-                  String _videoUrl = viewModel.videoUrl ??
-                      courseData.lecture![0].videoUrl.toString();
-                  bool _complete = false;
-                  for (var i = 0; i < _reportData.lecture!.length; i++) {
-                    if (_videoUrl == _reportData.lecture![i]) {
-                      _complete = true;
+                  if (snapshot.hasData) {
+                    ReportModel _reportData =
+                        ReportModel.fromJson(snapshot.data.data());
+                    String _videoUrl = viewModel.videoUrl ??
+                        courseData.lecture![0].videoUrl.toString();
+                    bool _complete = false;
+
+                    for (var i = 0; i < _reportData.lecture!.length; i++) {
+                      if (_videoUrl == _reportData.lecture![i]) {
+                        _complete = true;
+                      }
                     }
-                  }
-                  return Column(
-                    children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                            child: Column(children: [
-                          videoPlayer(
-                            url: _videoUrl,
-                            orientation: orientation,
-                            completeVideo: () {
-                              viewModel.updateLecture(courseData, _reportData,
-                                  _complete, _videoUrl);
-                            },
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SizedBox(height: 16),
-                                introBuilder(courseData),
-                                courseintro(context, courseData),
-                                const SizedBox(height: 40),
-                                TabBarWidget(
-                                    courseData: courseData,
-                                    reportData: _reportData),
-                                viewModel.tabPage == 0
-                                    ? overview(context, courseData)
-                                    : contant(courseData, _reportData)
-                              ],
+                    return Column(
+                      children: [
+                        Expanded(
+                          child: SingleChildScrollView(
+                              child: Column(children: [
+                            videoPlayer(
+                              url: _videoUrl,
+                              videoComplete: true,
+                              orientation: orientation,
+                              runOnComplete: () {
+                                viewModel.updateLecture(courseData, _reportData,
+                                    _complete, _videoUrl);
+                              },
                             ),
-                          ),
-                        ])),
-                      ),
-                    ],
-                  );
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 16),
+                                  introBuilder(courseData),
+                                  courseintro(context, courseData),
+                                  const SizedBox(height: 40),
+                                  TabBarWidget(
+                                      courseData: courseData,
+                                      reportData: _reportData),
+                                  viewModel.tabPage == 0
+                                      ? overview(context, courseData)
+                                      : contant(courseData, _reportData)
+                                ],
+                              ),
+                            ),
+                          ])),
+                        ),
+                      ],
+                    );
+                  }
+                  return Loading(50);
                 },
               ),
             ));

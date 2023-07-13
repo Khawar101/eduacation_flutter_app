@@ -28,11 +28,17 @@ class CoursedetailViewModel extends BaseViewModel {
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
-  updateVideo(_videoUrl) async {
+  var videoComplete = false;
+  updateVideo(_videoUrl, _complete) async {
     videoUrl = _videoUrl;
-    print('=========>');
     startVideoPlayer(_videoUrl);
+    setVideeComplete(_complete);
     notifyListeners();
+  }
+
+  void setVideeComplete(value) {
+    videoComplete = value;
+    // notifyListeners();
   }
 
   updateLecture(courseData, reportData, _complete, _videoUrl) {
@@ -178,23 +184,6 @@ class CoursedetailViewModel extends BaseViewModel {
     startVideoPlayer(url);
   }
 
-  // void startVideoPlayer(url) {
-  //   streamController.add(true);
-  //   notifyListeners();
-  //   print('~=============>$url');
-  //   controller?.pause();
-  //   controller?.dispose();
-  //   Future.delayed(const Duration(milliseconds: 500), () {
-  //     controller = VideoPlayerController.network(url)
-  //       ..addListener(() => notifyListeners())
-  //       ..setLooping(false)
-  //       ..initialize().then((value) => controller!.play());
-  //     notifyListeners();
-  //   });
-  //   streamController.add(false);
-  //   notifyListeners();
-  // }
-
   play() {
     controller!.value.isPlaying ? controller!.pause() : controller!.play();
     notifyListeners();
@@ -238,8 +227,6 @@ class CoursedetailViewModel extends BaseViewModel {
 
   get _listener => () {
         if (controller != null && controller?.value.size != null) {
-          // if (mounted) setState(() {});
-          // notifyListeners();
           controller?.removeListener(_listener);
         }
       };
