@@ -53,6 +53,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   timeago: ^3.3.0
   cached_network_image: ^3.2.3
+  syncfusion_flutter_pdfviewer: ^20.4.54
 
 dev_dependencies:
   flutter_test:
