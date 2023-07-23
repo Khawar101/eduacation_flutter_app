@@ -2,7 +2,6 @@ import 'package:education/ui/views/payment_method/carddata/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../widgets/app_utils.dart';
 import 'carddata_viewmodel.dart';
 
