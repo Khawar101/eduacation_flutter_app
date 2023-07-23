@@ -1,11 +1,9 @@
 import 'dart:developer';
-
 import 'package:education/app/app.router.dart';
 import 'package:education/services/login_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../app/app.locator.dart';
 import '../../../../services/Model/CoursesModel.dart';
 import '../../../../services/Model/userData.dart';
@@ -39,7 +37,6 @@ class LessonsScreenViewModel extends BaseViewModel {
 
   checkSubscripNavigate(CoursesModel courseData) {
     //buyCourses = _loginService.UserData.buyCourses ?? [];
-
     viewModelReady();
     notifyListeners();
     log(buyCourses.toString());
