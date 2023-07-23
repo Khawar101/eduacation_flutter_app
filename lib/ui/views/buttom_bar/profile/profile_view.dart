@@ -58,7 +58,6 @@ class ProfileView extends StackedView<ProfileViewModel> {
               ),
             )
           ]),
-      // backgroundColor: const Color(0xffe4f1f8),
       body: SingleChildScrollView(
         child: Column(
           children: [
