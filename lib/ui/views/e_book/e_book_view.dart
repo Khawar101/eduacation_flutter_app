@@ -1,10 +1,10 @@
-import 'package:education/ui/views/e_book/book_detail/all_booksCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_utils.dart';
 import '../../widgets/custom_text_form_field.dart';
+import 'book_detail/all_booksCard.dart';
 import 'e_book_viewmodel.dart';
 
 class EBookView extends StackedView<EBookViewModel> {
@@ -93,13 +93,7 @@ class EBookView extends StackedView<EBookViewModel> {
                 height: 230.0,
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return AllEBooks();
-                  },
-                ),
+                child: AllEBooks(),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
               const ButtonText(
