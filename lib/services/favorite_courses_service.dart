@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:stacked_services/stacked_services.dart';
 import '../app/app.locator.dart';
 import 'Model/CoursesModel.dart';
 import 'Model/userData.dart';
 import 'login_service.dart';
 
 class FavoriteCoursesService {
-  final _navigationService = locator<NavigationService>();
   final _loginService = locator<LoginService>();
 
   var message = "";
