@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../widgets/app_utils.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import 'change_doneView.dart';
@@ -16,13 +15,10 @@ class ChangePasswordView extends StackedView<ForgetViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
-      //  backgroundColor: const Color(0xffe4f1f8),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-              // ignore: prefer_const_literals_to_create_immutables
+          child: Column(       
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.14),
                 Center(
