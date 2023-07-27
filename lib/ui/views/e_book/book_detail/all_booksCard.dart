@@ -35,7 +35,9 @@ class AllEBooks extends StackedView<EBookViewModel> {
           itemBuilder: (context, index) {
             var data = snapshot.data![index];
             return GestureDetector(
-              onTap: viewModel.navigateBookDetail,
+              onTap: (){
+                viewModel.navigateBookDetail(data);
+              },
               child: Padding(
                 padding: EdgeInsets.only(
                     right: MediaQuery.of(context).size.width * 0.04,

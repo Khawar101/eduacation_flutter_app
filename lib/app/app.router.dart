@@ -6,6 +6,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:education/services/Model/CoursesModel.dart' as _i44;
+import 'package:education/services/Model/EbookModel.dart' as _i45;
 import 'package:education/ui/views/acount/acount_view.dart' as _i26;
 import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
 import 'package:education/ui/views/auth/login/login_view.dart' as _i4;
@@ -73,7 +74,7 @@ import 'package:education/ui/views/teacher/sdatetime/sdatetime_view.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as _i43;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i45;
+import 'package:stacked_services/stacked_services.dart' as _i46;
 
 class Routes {
   static const startupView = '/startup-view';
@@ -624,8 +625,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i42.BookDetailView: (data) {
+      final args = data.getArgs<BookDetailViewArguments>(nullOk: false);
       return _i43.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i42.BookDetailView(),
+        builder: (context) =>
+            _i42.BookDetailView(key: args.key, eBookModel: args.eBookModel),
         settings: data,
       );
     },
@@ -740,7 +743,34 @@ class CoursedetailViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i45.NavigationService {
+class BookDetailViewArguments {
+  const BookDetailViewArguments({
+    this.key,
+    required this.eBookModel,
+  });
+
+  final _i43.Key? key;
+
+  final _i45.EbookModel eBookModel;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "eBookModel": "$eBookModel"}';
+  }
+
+  @override
+  bool operator ==(covariant BookDetailViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.eBookModel == eBookModel;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ eBookModel.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i46.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -1320,14 +1350,17 @@ extension NavigatorStateExtension on _i45.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToBookDetailView([
+  Future<dynamic> navigateToBookDetailView({
+    _i43.Key? key,
+    required _i45.EbookModel eBookModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.bookDetailView,
+        arguments: BookDetailViewArguments(key: key, eBookModel: eBookModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1913,14 +1946,17 @@ extension NavigatorStateExtension on _i45.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithBookDetailView([
+  Future<dynamic> replaceWithBookDetailView({
+    _i43.Key? key,
+    required _i45.EbookModel eBookModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.bookDetailView,
+        arguments: BookDetailViewArguments(key: key, eBookModel: eBookModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
