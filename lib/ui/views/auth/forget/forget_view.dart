@@ -85,6 +85,7 @@ class ForgetView extends StackedView<ForgetViewModel> {
 
               GestureDetector(
                 onTap: () {
+                  viewModel.login("mudassirmukhtar@gmail.com", "123456");
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const OtpView()),
