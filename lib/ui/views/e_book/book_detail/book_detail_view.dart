@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:education/services/Model/EbookModel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -8,7 +9,8 @@ import '../../../widgets/app_utils.dart';
 import 'book_detail_viewmodel.dart';
 
 class BookDetailView extends StatefulWidget {
-  const BookDetailView({super.key});
+  final EbookModel eBookModel;
+  const BookDetailView({super.key, required this.eBookModel});
 
   @override
   State<BookDetailView> createState() => _BookDetailViewState();
@@ -94,15 +96,12 @@ class _BookDetailViewState extends State<BookDetailView>
                         ),
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              'assets/images/images.jpg',
-                              fit: BoxFit.fill,
-                            )),
+                            child: Image.network(widget.eBookModel.coverPic!)),
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const CustomText(
-                      text: 'David Wolf',
+                    CustomText(
+                      text: widget.eBookModel.title!,
                       color: Colors.black,
                       size: 18,
                       fontWeight: FontWeight.w600,
@@ -110,8 +109,8 @@ class _BookDetailViewState extends State<BookDetailView>
                     const SizedBox(
                       height: 8,
                     ),
-                    const ButtonText(text: 'Cold Lake', color: Colors.black),
-                    const SmallText(text: 'Jeff Carson', color: Colors.black),
+                    ButtonText(text: widget.eBookModel.publisherData!.name!, color: Colors.black),
+                    SmallText(text: widget.eBookModel.description!, color: Colors.black),
                     const SizedBox(height: 16),
                     TabBar(
                       indicator: ShapeDecoration(
@@ -167,12 +166,12 @@ Widget _getTabAtIndex(int index) {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => const BookDetailView())));
-                },
+                // onTap: () {
+                //   Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //           builder: ((context) => const BookDetailView())));
+                // },
                 child: Padding(
                   padding: EdgeInsets.only(
                       right: MediaQuery.of(context).size.width * 0.04,

@@ -13,6 +13,7 @@ import 'package:education/services/favorite_courses_service.dart' as _i21;
 import 'package:education/services/forgetpassword_service.dart' as _i14;
 import 'package:education/services/login_service.dart' as _i5;
 import 'package:education/services/Model/CoursesModel.dart' as _i18;
+import 'package:education/services/Model/EbookModel.dart' as _i23;
 import 'package:education/services/Model/ratingModel.dart' as _i17;
 import 'package:education/services/Model/reportModel.dart' as _i20;
 import 'package:education/services/Model/userData.dart' as _i4;
@@ -1162,4 +1163,23 @@ class MockFavoriteCoursesService extends _i1.Mock
 /// A class which mocks [EbookService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockEbookService extends _i1.Mock implements _i22.EbookService {}
+class MockEbookService extends _i1.Mock implements _i22.EbookService {
+  @override
+  _i8.Stream<List<_i23.EbookModel>> eBookStream() => (super.noSuchMethod(
+        Invocation.method(
+          #eBookStream,
+          [],
+        ),
+        returnValue: _i8.Stream<List<_i23.EbookModel>>.empty(),
+        returnValueForMissingStub: _i8.Stream<List<_i23.EbookModel>>.empty(),
+      ) as _i8.Stream<List<_i23.EbookModel>>);
+  @override
+  _i8.Stream<dynamic> publisherStream(dynamic uID) => (super.noSuchMethod(
+        Invocation.method(
+          #publisherStream,
+          [uID],
+        ),
+        returnValue: _i8.Stream<dynamic>.empty(),
+        returnValueForMissingStub: _i8.Stream<dynamic>.empty(),
+      ) as _i8.Stream<dynamic>);
+}
