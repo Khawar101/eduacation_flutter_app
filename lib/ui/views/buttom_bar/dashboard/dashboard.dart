@@ -2,7 +2,6 @@ import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import 'LineChart.dart';
 import 'dashboard_model.dart';
 

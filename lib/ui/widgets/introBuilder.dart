@@ -1,6 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../app/app.locator.dart';
 import '../../services/Model/CoursesModel.dart';
 import '../../services/Model/userData.dart';
