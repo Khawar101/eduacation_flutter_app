@@ -2,11 +2,16 @@ import 'dart:developer';
 
 import 'package:education/services/Model/EbookModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../../app/app.locator.dart';
+import '../../../../services/subscription_service.dart';
 import '../../../widgets/app_utils.dart';
 import 'book_detail_viewmodel.dart';
+
+final _subscriptionService = locator<SubscriptionService>();
 
 class BookDetailView extends StatefulWidget {
   final EbookModel eBookModel;
@@ -109,8 +114,59 @@ class _BookDetailViewState extends State<BookDetailView>
                     const SizedBox(
                       height: 8,
                     ),
-                    ButtonText(text: widget.eBookModel.publisherData!.name!, color: Colors.black),
-                    SmallText(text: widget.eBookModel.description!, color: Colors.black),
+                    ButtonText(
+                        text: widget.eBookModel.publisherData!.name!,
+                        color: Colors.black),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    RatingBar.builder(
+                      wrapAlignment: WrapAlignment.start,
+                      initialRating: widget.eBookModel.rating!,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemSize: 15,
+                      ignoreGestures: true,
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      onRatingUpdate: (rating) {
+                        //print(rating);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const CustomText(
+                          text: "Description: ",
+                          color: Colors.black,
+                          size: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        CustomText(
+                          text: "\$" +
+                              (double.parse(widget.eBookModel.price!))
+                                  .toStringAsFixed(2),
+                          color: Colors.black,
+                          size: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      widget.eBookModel.description!,
+                      textAlign: TextAlign.justify,
+                      style: GoogleFonts.ibmPlexSans(
+                          color: Colors.black54, fontSize: 14),
+                    ),
                     const SizedBox(height: 16),
                     TabBar(
                       indicator: ShapeDecoration(
@@ -141,6 +197,42 @@ class _BookDetailViewState extends State<BookDetailView>
                     _getTabAtIndex(tabController.index),
                   ],
                 ),
+              ),
+            ),
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: null,
+                    child: const CustomText(
+                      text: "Buy Audio",
+                      size: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                      const Color(0xff4873a6).withOpacity(0.7),
+                    )),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      _subscriptionService.buyEbook(widget.eBookModel);
+                    },
+                    child: const CustomText(
+                      text: "Buy Ebooks",
+                      size: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                      const Color(0xff4873a6).withOpacity(0.7),
+                    )),
+                  ),
+                ],
               ),
             ),
           );
