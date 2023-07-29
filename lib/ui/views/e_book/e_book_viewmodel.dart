@@ -19,4 +19,7 @@ class EBookViewModel extends BaseViewModel {
   navigateBack() {
     _navigationService.back();
   }
+  buyEbookpdf(){
+    
+  }
 }

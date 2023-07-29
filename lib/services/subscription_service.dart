@@ -7,6 +7,7 @@ import 'package:education/services/Model/userData.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../app/app.locator.dart';
+import 'Model/EbookModel.dart';
 import 'login_service.dart';
 
 class SubscriptionService {
@@ -46,6 +47,42 @@ class SubscriptionService {
       // log(user.toString());
       _navigationService.back();
       message = "Course buy Successfully";
+    } catch (e) {
+      message = e.toString();
+    }
+  }
+
+buyEbook(EbookModel eBookData) async {
+    userData _userData = _loginService.UserData;
+    List eBookList = _userData.buyEBooks ?? [];
+    try {
+      String key = "${_userData.uID}${eBookData.publishDate}";
+      eBookList.add(eBookData.publishDate);
+      log(eBookList.toString());
+      var eBookStudents = eBookData.students!+1;
+      await firestore.collection("users").doc(_userData.uID).update({
+        "buyEBooks": eBookList,
+      });
+      await firestore.collection("E Books").doc(eBookData.publishDate).update({
+        "students": eBookStudents,
+      });
+      await firestore.collection("subscription").doc(key).set({
+        "key": key,
+        "eBookKey": eBookData.publishDate,
+        "publishKey": eBookData.uID,
+        "userKey": _userData.uID,
+        "progress": 0.0,
+        "eBookName": eBookData.title,
+        "rating": 0.0,
+        "startDate": DateTime.timestamp(),
+        "endDate": DateTime.timestamp(),
+        "lecture": []
+      });
+      _loginService.updateUserData(_userData.uID);
+
+      // log(user.toString());
+      _navigationService.back();
+      message = "Ebook buy Successfully";
     } catch (e) {
       message = e.toString();
     }

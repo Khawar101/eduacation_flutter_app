@@ -24,6 +24,9 @@
 //     "buyCourses": [
 //         ""
 //     ],
+//     "buyEBooks": [
+//         ""
+//     ],
 //     "favoriteCourses": [
 //         ""
 //     ]
@@ -49,6 +52,7 @@ class userData {
   String? educationSector;
   SocialLinks? socialLinks;
   List<dynamic>? buyCourses;
+  List<dynamic>? buyEBooks;
   List<dynamic>? favoriteCourses;
 
   userData(
@@ -71,6 +75,7 @@ class userData {
       this.educationSector,
       this.socialLinks,
       this.buyCourses,
+      this.buyEBooks,
       this.favoriteCourses});
 
   userData.fromJson(Map<String, dynamic> json) {
@@ -95,6 +100,7 @@ class userData {
         ? new SocialLinks.fromJson(json['socialLinks'])
         : null;
     buyCourses = json['buyCourses'].cast<String>();
+    buyEBooks = json['buyEBooks'].cast<String>();
     favoriteCourses = json['favoriteCourses'].cast<String>();
   }
 
@@ -121,6 +127,7 @@ class userData {
       data['socialLinks'] = this.socialLinks!.toJson();
     }
     data['buyCourses'] = this.buyCourses;
+    data['buyEBooks'] = this.buyEBooks;
     data['favoriteCourses'] = this.favoriteCourses;
     return data;
   }

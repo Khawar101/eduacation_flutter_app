@@ -44,6 +44,7 @@ class LoginService {
           educationSector: data["educationSector"],
           // socialLinks: data["socialLinks"],
           buyCourses: data["buyCourses"],
+          buyEBooks: data["buyEBooks"],
           favoriteCourses: data["favoriteCourses"],
         );
         message = "login successfully";
@@ -76,6 +77,7 @@ class LoginService {
       educationSector: data["educationSector"],
       // socialLinks: data["socialLinks"],
       buyCourses: data["buyCourses"],
+      buyEBooks: data["buyEBooks"],
       favoriteCourses: data["favoriteCourses"],
     );
   }

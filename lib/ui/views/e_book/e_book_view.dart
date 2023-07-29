@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import '../../widgets/app_utils.dart';
 import '../../widgets/custom_text_form_field.dart';
 import 'book_detail/all_booksCard.dart';
+import 'book_detail/pagination.dart';
 import 'book_detail/trending_newest.dart';
 import 'e_book_viewmodel.dart';
 
@@ -127,14 +128,10 @@ class EBookView extends StackedView<EBookViewModel> {
                         ),
                       ],
                     ),
-                    body: TabBarView(
+                    body: const TabBarView(
                       children: [
-                        const TrendingNew(),
-                        Container(
-                          height: 200,
-                          width: 70,
-                          color: Colors.red,
-                        ),
+                        TrendingNew(),
+                        Paginations()
                       ],
                     ),
                   ),

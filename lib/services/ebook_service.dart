@@ -13,4 +13,13 @@ class EbookService {
   Stream publisherStream(uID) {
     return FirebaseFirestore.instance.collection("users").doc(uID).snapshots();
   }
+  Stream<List<EbookModel>> buyEbookStream(eBookKey) {
+    final stream = FirebaseFirestore.instance
+        .collection("E Books")
+        .where("publishDate", isEqualTo: eBookKey)
+        .snapshots();
+    return stream.map((event) => event.docs.map((doc) {
+          return EbookModel.fromJson(doc.data());
+        }).toList());
+  }
 }
