@@ -1,3 +1,4 @@
+// ignore_for_file: unused_field
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,7 @@ class StudentInformationView extends StatefulWidget {
 class _StudentInformationViewState extends State<StudentInformationView>
     with TickerProviderStateMixin {
   late TabController tabController;
-  // ignore: unused_field
+ 
   int _currentIndex = 0;
   @override
   void initState() {
