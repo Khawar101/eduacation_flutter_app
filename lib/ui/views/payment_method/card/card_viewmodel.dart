@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import '../cardbottomsheet/cardbottomsheet_view.dart';
 
 class CardViewModel extends BaseViewModel {
@@ -16,10 +15,8 @@ class CardViewModel extends BaseViewModel {
       isScrollControlled: true,
     );
   }
-
   //  StreamController<ErrorAnimationType> errorController = StreamController<ErrorAnimationType>();
   String text = '';
-
   String cardNumber = '';
   String expiryDate = '';
   String cardHolderName = '';
