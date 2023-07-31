@@ -2,7 +2,6 @@ import 'package:education/ui/widgets/networkImage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import 'drawer_viewmodel.dart';
 
 class DrawerView extends StackedView<DrawerViewModel> {
@@ -14,18 +13,20 @@ class DrawerView extends StackedView<DrawerViewModel> {
     DrawerViewModel viewModel,
     Widget? child,
   ) {
+    final width = MediaQuery.of(context).size.width;
+     final height = MediaQuery.of(context).size.height;
     return Drawer(
       elevation: 0,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(20), bottomRight: Radius.circular(20)),
       ),
-      width: MediaQuery.of(context).size.width * 0.55,
+      width: width * 0.55,
       backgroundColor: Colors.white,
       child: Column(
         children: [
           SizedBox(
-            height: 100,
+            height: height *0.15,
             child: Center(
               child: DrawerHeader(
                 decoration: BoxDecoration(
