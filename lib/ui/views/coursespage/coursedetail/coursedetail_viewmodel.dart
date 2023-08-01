@@ -113,23 +113,23 @@ class CoursedetailViewModel extends BaseViewModel {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  RatingBar.builder(
-                                    wrapAlignment: WrapAlignment.start,
-                                    initialRating: data.rating!,
-                                    minRating: 1,
-                                    direction: Axis.horizontal,
-                                    allowHalfRating: true,
-                                    itemCount: 5,
-                                    itemSize: 15,
-                                    ignoreGestures: true,
-                                    itemBuilder: (context, _) => const Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                    ),
-                                    onRatingUpdate: (rating) {
-                                      //print(rating);
-                                    },
-                                  ),
+                                  // RatingBar.builder(
+                                  //   wrapAlignment: WrapAlignment.start,
+                                  //   initialRating: data.rating!,
+                                  //   minRating: 1,
+                                  //   direction: Axis.horizontal,
+                                  //   allowHalfRating: true,
+                                  //   itemCount: 5,
+                                  //   itemSize: 15,
+                                  //   ignoreGestures: true,
+                                  //   itemBuilder: (context, _) => const Icon(
+                                  //     Icons.star,
+                                  //     color: Colors.yellow,
+                                  //   ),
+                                  //   onRatingUpdate: (rating) {
+                                  //     //print(rating);
+                                  //   },
+                                  // ),
                                   Text(
                                     timeago
                                         .format(data.date!.toDate())

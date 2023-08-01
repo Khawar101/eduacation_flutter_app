@@ -66,6 +66,7 @@ class LessonsScreenViewModel extends BaseViewModel {
         }
         return GridView.builder(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: snapshot.data?.length ?? 0,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 300,

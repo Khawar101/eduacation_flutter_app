@@ -54,7 +54,6 @@ class MyCoursesView extends StackedView<MyCoursesViewModel> {
       body: ListView.builder(
           shrinkWrap: true,
           itemCount: viewModel.loginService.UserData.buyCourses!.length,
-          // physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, index) {
             var courseKey = viewModel.loginService.UserData.buyCourses![index];
             return viewModel.cousesBuilder(courseKey);
