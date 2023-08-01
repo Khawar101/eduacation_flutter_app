@@ -2,7 +2,6 @@ import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import 'addproject_viewmodel.dart';
 
 class AddprojectView extends StackedView<AddprojectViewModel> {
