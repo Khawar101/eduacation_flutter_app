@@ -1,5 +1,5 @@
 // import 'package:education/services/login_service.dart';
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, recursive_getters
 import 'dart:async';
 import 'dart:developer';
 import 'package:education/services/Model/CoursesModel.dart';
