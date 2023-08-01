@@ -107,23 +107,45 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                     _complete, _videoUrl);
                               },
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(height: 16),
-                                  introBuilder(courseData),
-                                  courseintro(context, courseData),
-                                  const SizedBox(height: 40),
-                                  TabBarWidget(
-                                      courseData: courseData,
-                                      reportData: _reportData),
-                                  viewModel.tabPage == 0
-                                      ? overview(context, courseData)
-                                      : contant(courseData, _reportData)
-                                ],
+                            DefaultTabController(
+                              length: 2,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(height: 16),
+                                    introBuilder(courseData),
+                                    courseintro(context, courseData),
+                                    const SizedBox(height: 40),
+                                    TabBar(
+                                      indicatorWeight: 1,
+                                      indicatorPadding:
+                                          const EdgeInsets.only(bottom: 4),
+                                      indicatorColor: const Color(0xff4873a6)
+                                          .withOpacity(0.7),
+                                      // controller: tabController,
+                                      labelStyle: GoogleFonts.ibmPlexSans(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w600),
+                                      onTap: (value) {
+                                        viewModel.tabPageChange(value);
+                                      },
+                                      labelColor: Colors.black,
+                                      unselectedLabelColor:
+                                          const Color(0xff4873a6)
+                                              .withOpacity(0.7),
+                                      tabs: const [
+                                        Tab(text: 'Overview'),
+                                        Tab(text: 'Contant'),
+                                      ],
+                                    ),
+                                    viewModel.tabPage == 0
+                                        ? overview(context, courseData)
+                                        : contant(courseData, _reportData)
+                                  ],
+                                ),
                               ),
                             ),
                           ])),

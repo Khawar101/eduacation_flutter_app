@@ -26,7 +26,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
       child: Column(
         children: [
           SizedBox(
-            height: height *0.15,
+            height: height *0.25,
             child: Center(
               child: DrawerHeader(
                 decoration: BoxDecoration(
