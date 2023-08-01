@@ -24,7 +24,7 @@ class CoursedetailViewModel extends BaseViewModel {
   final ratingService = locator<RatingService>();
   final subscriptionService = locator<SubscriptionService>();
   // final coursesL = VideoPlayerModel();
-
+  //  TabController tabController=TabController();
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;

@@ -10,7 +10,6 @@ import '../../../widgets/introBuilder.dart';
 import 'coursedetail_viewmodel.dart';
 import 'widgets/tapBar/contantTab.dart';
 import 'widgets/tapBar/overviewdart.dart';
-import 'widgets/tapBar/tabBarWidget.dart';
 
 class CoursedetailView extends StackedView<CoursedetailViewModel> {
   final CoursesModel courseData;
@@ -125,7 +124,6 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                           const EdgeInsets.only(bottom: 4),
                                       indicatorColor: const Color(0xff4873a6)
                                           .withOpacity(0.7),
-                                      // controller: tabController,
                                       labelStyle: GoogleFonts.ibmPlexSans(
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.w600),
