@@ -195,57 +195,6 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                   viewModel.tabPage == 0
                                       ? overview(context, courseData)
                                       : contant(courseData, _reportData)
-
-                                  //                 DefaultTabController(
-                                  //                 length: 2,
-                                  //                       child: Builder(
-                                  //                         builder: (context) {
-                                  //                           return Column(
-                                  //                             children: [
-
-                                  //                               TabBar(
-                                  //                                 indicatorWeight: 1,
-                                  //                                 indicatorPadding:
-                                  //                                     const EdgeInsets.only(bottom: 4),
-                                  //                                     indicatorColor: viewModel.indicatorColor,
-                                  //                                 // indicatorColor: const Color(0xff4873a6)
-                                  //                                 //     .withOpacity(0.7),
-                                  //                                 labelStyle: GoogleFonts.ibmPlexSans(
-                                  //                                     fontSize: 16.0,
-                                  //                                     fontWeight: FontWeight.w600),
-                                  //                                 onTap: (value) {
-                                  //                                      // You can update the colors here based on the tab index
-                                  // if (value == 0) {
-                                  //   viewModel.changeTabColors(
-                                  //     Colors.red, // Replace with your desired color
-                                  //     Colors.blue, // Replace with your desired color
-                                  //   );
-                                  // } else if (value == 1) {
-                                  //   viewModel.changeTabColors(
-                                  //     Colors.black, // Replace with your desired color
-                                  //     Colors.yellow, // Replace with your desired color
-                                  //   );
-                                  // }
-                                  //                                   viewModel.tabPageChange(value);
-                                  //                                 },
-                                  //                                 labelColor: viewModel.tabPage == 0?Colors.black:const Color(0xff4873a6)
-                                  //                                         .withOpacity(0.7),
-                                  //                                 unselectedLabelColor: viewModel.tabPage == 0?
-                                  //                                     const Color(0xff4873a6)
-                                  //                                         .withOpacity(0.7):Colors.black,
-                                  //                                 tabs: const [
-                                  //                                   Tab(text: 'Overview'),
-                                  //                                   Tab(text: 'Contant'),
-                                  //                                 ],
-                                  //                               ),
-                                  //                                     viewModel.tabPage == 0
-                                  //                         ? overview(context, courseData)
-                                  //                         : contant(courseData, _reportData)
-                                  //                             ],
-                                  //                           );
-                                  //                         }
-                                  //                       ),
-                                  //                     ),
                                 ],
                               ),
                             ),
