@@ -5,12 +5,13 @@ import '../../../../widgets/app_utils.dart';
 
 Widget courseintro(context, CoursesModel courseData) {
   return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       BigText(
         text: courseData.title.toString(),
         color: Colors.black,
       ),
-      const SizedBox(height: 25),
+      const SizedBox(height: 10),
       Row(
         children: [
           Column(

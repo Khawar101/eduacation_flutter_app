@@ -34,6 +34,7 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
     CoursedetailViewModel viewModel,
     Widget? child,
   ) {
+    final width = MediaQuery.of(context).size.width;
     return OrientationBuilder(
       builder: (context, orientation) {
         return Scaffold(
@@ -114,8 +115,9 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                 children: [
                                   const SizedBox(height: 16),
                                   introBuilder(courseData),
+                                  const SizedBox(height: 5),
                                   courseintro(context, courseData),
-                                  const SizedBox(height: 40),
+                                  const SizedBox(height: 20),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
@@ -126,12 +128,21 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                         },
                                         child: Column(
                                           children: [
-                                            const Text( 'Overview'),
+                                            Text(
+                                              'Overview',
+                                              style: GoogleFonts.ibmPlexSans(
+                                                  fontSize: 16.0,
+                                                  color:viewModel.tabPage == 0?Colors.black:const Color(0xff4873a6)
+                                                                          .withOpacity(0.7) ,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
                                             viewModel.tabPage == 0
                                                 ? Container(
-                                                    color: Colors.green,
+                                                    color:
+                                                        const Color(0xff4873a6)
+                                                            .withOpacity(0.7),
                                                     height: 2,
-                                                    width: 50)
+                                                    width: width*0.35)
                                                 : Container()
                                           ],
                                         ),
@@ -142,12 +153,21 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                         },
                                         child: Column(
                                           children: [
-                                            const Text('Contant'),
+                                            Text(
+                                              'Contant',
+                                              style: GoogleFonts.ibmPlexSans(
+                                                  fontSize: 16.0,
+                                                   color:viewModel.tabPage == 0?const Color(0xff4873a6)
+                                                                          .withOpacity(0.7): Colors.black,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
                                             viewModel.tabPage == 1
                                                 ? Container(
-                                                    color: Colors.green,
+                                                    color:
+                                                        const Color(0xff4873a6)
+                                                            .withOpacity(0.7),
                                                     height: 2,
-                                                    width: 50)
+                                                    width: width*0.35)
                                                 : Container()
                                           ],
                                         ),
