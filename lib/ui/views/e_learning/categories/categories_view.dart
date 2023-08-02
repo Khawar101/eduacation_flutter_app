@@ -180,7 +180,7 @@ class CategoriesView extends StackedView<CategoriesViewModel> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.009),
-                                  Row(
+                                  const Row(
                                     children: [
                                       ButtonText(
                                         text: "\$190",
