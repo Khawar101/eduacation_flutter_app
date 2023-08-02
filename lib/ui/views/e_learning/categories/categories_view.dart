@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../widgets/app_utils.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import 'categories_viewmodel.dart';
@@ -54,7 +53,6 @@ class CategoriesView extends StackedView<CategoriesViewModel> {
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * 0.04,
-          // vertical: MediaQuery.of(context).size.height * 0.03
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +65,6 @@ class CategoriesView extends StackedView<CategoriesViewModel> {
               ),
               suffix: IconButton(
                 onPressed: () {
-                  // print('add button pressed');
                 },
                 icon: const Icon(Icons.highlight_off),
               ),
