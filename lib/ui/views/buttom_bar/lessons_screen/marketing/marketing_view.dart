@@ -1,8 +1,9 @@
+// ignore_for_file: prefer_adjacent_string_concatenation
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../widgets/app_utils.dart';
 import '../../../../widgets/common/video_player/video_player.dart';
@@ -30,7 +31,6 @@ class _MarketingViewState extends State<MarketingView> {
               onWillPop: () async =>
                   orientation == Orientation.portrait ? true : false,
               child: Scaffold(
-                // backgroundColor: const Color(0xffe4f1f8),
                 appBar: orientation == Orientation.portrait
                     ? AppBar(
                         elevation: 0,
