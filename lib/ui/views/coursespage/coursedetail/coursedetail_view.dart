@@ -132,18 +132,27 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                               'Overview',
                                               style: GoogleFonts.ibmPlexSans(
                                                   fontSize: 16.0,
-                                                  color:viewModel.tabPage == 0?Colors.black:const Color(0xff4873a6)
-                                                                          .withOpacity(0.7) ,
+                                                  color: viewModel.tabPage == 0
+                                                      ? Colors.black
+                                                      : const Color(0xff4873a6)
+                                                          .withOpacity(0.7),
                                                   fontWeight: FontWeight.w600),
                                             ),
                                             viewModel.tabPage == 0
                                                 ? Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            top: 5),
                                                     color:
                                                         const Color(0xff4873a6)
                                                             .withOpacity(0.7),
                                                     height: 2,
-                                                    width: width*0.35)
-                                                : Container()
+                                                    width: width * 0.35)
+                                                : Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            top: 5),
+                                                  )
                                           ],
                                         ),
                                       ),
@@ -157,18 +166,27 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                               'Contant',
                                               style: GoogleFonts.ibmPlexSans(
                                                   fontSize: 16.0,
-                                                   color:viewModel.tabPage == 0?const Color(0xff4873a6)
-                                                                          .withOpacity(0.7): Colors.black,
+                                                  color: viewModel.tabPage == 0
+                                                      ? const Color(0xff4873a6)
+                                                          .withOpacity(0.7)
+                                                      : Colors.black,
                                                   fontWeight: FontWeight.w600),
                                             ),
                                             viewModel.tabPage == 1
                                                 ? Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            top: 5),
                                                     color:
                                                         const Color(0xff4873a6)
                                                             .withOpacity(0.7),
                                                     height: 2,
-                                                    width: width*0.35)
-                                                : Container()
+                                                    width: width * 0.35)
+                                                : Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            top: 5),
+                                                  )
                                           ],
                                         ),
                                       ),

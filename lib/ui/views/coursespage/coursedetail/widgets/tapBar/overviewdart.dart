@@ -10,6 +10,7 @@ Widget overview(context, CoursesModel courseData) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
+      const SizedBox(height: 10),
       Text(
         "Introduction",
         style: GoogleFonts.ibmPlexSans(

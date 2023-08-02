@@ -27,6 +27,7 @@ class contant extends ViewModelWidget<CoursedetailViewModel> {
 //     CoursedetailViewModel viewModel, ReportModel _reportData) {
     return Column(
       children: [
+         const SizedBox(height: 10),
         ListView.builder(
             shrinkWrap: true,
             itemCount: courseData.lecture!.length,
