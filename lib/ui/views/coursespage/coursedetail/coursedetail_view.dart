@@ -106,44 +106,109 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                     _complete, _videoUrl);
                               },
                             ),
-                            DefaultTabController(
-                              length: 2,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(height: 16),
-                                    introBuilder(courseData),
-                                    courseintro(context, courseData),
-                                    const SizedBox(height: 40),
-                                    TabBar(
-                                      indicatorWeight: 1,
-                                      indicatorPadding:
-                                          const EdgeInsets.only(bottom: 4),
-                                      indicatorColor: const Color(0xff4873a6)
-                                          .withOpacity(0.7),
-                                      labelStyle: GoogleFonts.ibmPlexSans(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.w600),
-                                      onTap: (value) {
-                                        viewModel.tabPageChange(value);
-                                      },
-                                      labelColor: Colors.black,
-                                      unselectedLabelColor:
-                                          const Color(0xff4873a6)
-                                              .withOpacity(0.7),
-                                      tabs: const [
-                                        Tab(text: 'Overview'),
-                                        Tab(text: 'Contant'),
-                                      ],
-                                    ),
-                                    viewModel.tabPage == 0
-                                        ? overview(context, courseData)
-                                        : contant(courseData, _reportData)
-                                  ],
-                                ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 16),
+                                  introBuilder(courseData),
+                                  courseintro(context, courseData),
+                                  const SizedBox(height: 40),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          viewModel.tabPageChange(0);
+                                        },
+                                        child: Column(
+                                          children: [
+                                            const Text( 'Overview'),
+                                            viewModel.tabPage == 0
+                                                ? Container(
+                                                    color: Colors.green,
+                                                    height: 2,
+                                                    width: 50)
+                                                : Container()
+                                          ],
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          viewModel.tabPageChange(1);
+                                        },
+                                        child: Column(
+                                          children: [
+                                            const Text('Contant'),
+                                            viewModel.tabPage == 1
+                                                ? Container(
+                                                    color: Colors.green,
+                                                    height: 2,
+                                                    width: 50)
+                                                : Container()
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  viewModel.tabPage == 0
+                                      ? overview(context, courseData)
+                                      : contant(courseData, _reportData)
+
+                                  //                 DefaultTabController(
+                                  //                 length: 2,
+                                  //                       child: Builder(
+                                  //                         builder: (context) {
+                                  //                           return Column(
+                                  //                             children: [
+
+                                  //                               TabBar(
+                                  //                                 indicatorWeight: 1,
+                                  //                                 indicatorPadding:
+                                  //                                     const EdgeInsets.only(bottom: 4),
+                                  //                                     indicatorColor: viewModel.indicatorColor,
+                                  //                                 // indicatorColor: const Color(0xff4873a6)
+                                  //                                 //     .withOpacity(0.7),
+                                  //                                 labelStyle: GoogleFonts.ibmPlexSans(
+                                  //                                     fontSize: 16.0,
+                                  //                                     fontWeight: FontWeight.w600),
+                                  //                                 onTap: (value) {
+                                  //                                      // You can update the colors here based on the tab index
+                                  // if (value == 0) {
+                                  //   viewModel.changeTabColors(
+                                  //     Colors.red, // Replace with your desired color
+                                  //     Colors.blue, // Replace with your desired color
+                                  //   );
+                                  // } else if (value == 1) {
+                                  //   viewModel.changeTabColors(
+                                  //     Colors.black, // Replace with your desired color
+                                  //     Colors.yellow, // Replace with your desired color
+                                  //   );
+                                  // }
+                                  //                                   viewModel.tabPageChange(value);
+                                  //                                 },
+                                  //                                 labelColor: viewModel.tabPage == 0?Colors.black:const Color(0xff4873a6)
+                                  //                                         .withOpacity(0.7),
+                                  //                                 unselectedLabelColor: viewModel.tabPage == 0?
+                                  //                                     const Color(0xff4873a6)
+                                  //                                         .withOpacity(0.7):Colors.black,
+                                  //                                 tabs: const [
+                                  //                                   Tab(text: 'Overview'),
+                                  //                                   Tab(text: 'Contant'),
+                                  //                                 ],
+                                  //                               ),
+                                  //                                     viewModel.tabPage == 0
+                                  //                         ? overview(context, courseData)
+                                  //                         : contant(courseData, _reportData)
+                                  //                             ],
+                                  //                           );
+                                  //                         }
+                                  //                       ),
+                                  //                     ),
+                                ],
                               ),
                             ),
                           ])),

@@ -195,6 +195,18 @@ class CoursedetailViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  Color _indicatorColor = const Color(0xff4873a6).withOpacity(0.7);
+  Color _labelColor = Colors.black;
+
+  Color get indicatorColor => _indicatorColor;
+  Color get labelColor => _labelColor;
+
+  void changeTabColors(Color indicatorColor, Color labelColor) {
+    _indicatorColor = indicatorColor;
+    _labelColor = labelColor;
+    notifyListeners(); // Notify the view that data has changed and rebuild the widget
+  }
+
   Future<void> startVideoPlayer(url) async {
     print('~=============>$url');
     // streamController.add(true);
