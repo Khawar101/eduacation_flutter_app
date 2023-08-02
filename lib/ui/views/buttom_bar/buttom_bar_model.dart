@@ -1,5 +1,4 @@
 // ignore_for_file: non_constant_identifier_names
-
 import 'package:education/ui/views/buttom_bar/lessons_screen/lessons_screen_view.dart';
 import 'package:education/ui/views/buttom_bar/student_information/student_information_view.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +11,12 @@ import 'profile/profile_view.dart';
 class ButtomBarViewModel extends BaseViewModel {
   List<Widget> views = [
     const DashboardView(),
-    const LessonsScreenView(), // const HomeScreen1(),
+    const LessonsScreenView(), 
     const ChatsView(),
-    const StudentInformationView(), // const StudentProfile(),
+    const StudentInformationView(), 
     const ProfileView(),
   ];
-// h?
+
   ShapeBorder? bottomBarShape = const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(10)),
   );
