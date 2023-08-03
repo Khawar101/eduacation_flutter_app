@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
