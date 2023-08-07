@@ -118,23 +118,24 @@ class CustomText extends StatelessWidget {
   final Color color;
   int? maxLines;
   TextOverflow? textOverflow;
-  
-   CustomText({
-    super.key,
-    required this.text,
-    required this.size,
-    required this.fontWeight,
-    required this.color,
-    this.maxLines,
-    this.textOverflow
-  });
+
+  CustomText(
+      {super.key,
+      required this.text,
+      required this.size,
+      required this.fontWeight,
+      required this.color,
+      this.maxLines,
+      this.textOverflow});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: GoogleFonts.ibmPlexSans(
-          color: color, fontSize: size, fontWeight: fontWeight),maxLines: maxLines,overflow:textOverflow ,
+          color: color, fontSize: size, fontWeight: fontWeight),
+      maxLines: maxLines,
+      overflow: textOverflow,
     );
   }
 }

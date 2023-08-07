@@ -68,7 +68,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10, // Replace with your actual item count
                   itemBuilder: (context, index) {
-                    return  Padding(
+                    return Padding(
                       padding: const EdgeInsets.only(right: 16),
                       child: Column(
                         children: [
@@ -146,42 +146,59 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           SizedBox(
-                                            width: MediaQuery.of(context).size.width*0.5,
-                                           
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.5,
                                             child: CustomText(
-                                                text: data["username"].toString(),
+                                                text:
+                                                    data["username"].toString(),
                                                 size: 14,
-                                                 maxLines: 1,
-                                  textOverflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                                textOverflow:
+                                                    TextOverflow.ellipsis,
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.black),
                                           ),
                                           const SizedBox(height: 4),
-                                            StreamBuilder<QuerySnapshot>(
-                          stream: viewModel.getLastMessageStream(viewModel.chatId(data["UID"])),
-                          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> messageSnapshot) {
-                            if (messageSnapshot.hasError || messageSnapshot.connectionState == ConnectionState.waiting) {
-                              return const SizedBox();
-                            }
-                            var messages = messageSnapshot.data!.docs;
-                            if (messages.isNotEmpty) {
-                              var lastMessage = messages.last;
-                              return SizedBox(
-                                width: MediaQuery.of(context).size.width*0.5,
-                                child: CustomText(
-                                  text: lastMessage["SMS"].toString(),
-                                  size: 12,
-                                  maxLines: 1,
-                                  textOverflow: TextOverflow.ellipsis,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black54,
-                                ),
-                              );
-                            } else {
-                              return const SizedBox();
-                            }
-                          },
-                        ),
+                                          StreamBuilder<QuerySnapshot>(
+                                            stream: viewModel
+                                                .getLastMessageStream(viewModel
+                                                    .chatId(data["UID"])),
+                                            builder: (BuildContext context,
+                                                AsyncSnapshot<QuerySnapshot>
+                                                    messageSnapshot) {
+                                              if (messageSnapshot.hasError ||
+                                                  messageSnapshot
+                                                          .connectionState ==
+                                                      ConnectionState.waiting) {
+                                                return const SizedBox();
+                                              }
+                                              var messages =
+                                                  messageSnapshot.data!.docs;
+                                              if (messages.isNotEmpty) {
+                                                var lastMessage = messages.last;
+                                                return SizedBox(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.5,
+                                                  child: CustomText(
+                                                    text: lastMessage["SMS"]
+                                                        .toString(),
+                                                    size: 12,
+                                                    maxLines: 1,
+                                                    textOverflow:
+                                                        TextOverflow.ellipsis,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black54,
+                                                  ),
+                                                );
+                                              } else {
+                                                return const SizedBox();
+                                              }
+                                            },
+                                          ),
                                           // const CustomText(
                                           //     text: 'Subject name',
                                           //     size: 12,
@@ -191,7 +208,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                       ),
                                     ],
                                   ),
-                                   Row(
+                                  Row(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       CustomText(
