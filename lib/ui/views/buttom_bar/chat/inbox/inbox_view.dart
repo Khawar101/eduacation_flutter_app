@@ -114,7 +114,9 @@ class InboxView extends StackedView<InboxViewModel> {
                 IconButton(
                   icon: Icon(
                     Icons.send,
-                    color: viewModel.isTextEmpty ? Colors.grey : const Color(0xff4873a6).withOpacity(0.7),
+                    color: viewModel.isTextEmpty
+                        ? Colors.grey
+                        : const Color(0xff4873a6).withOpacity(0.7),
                   ),
                   onPressed: () {
                     if (!viewModel.isTextEmpty) {
