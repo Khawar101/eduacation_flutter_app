@@ -80,8 +80,6 @@ class InboxView extends StackedView<InboxViewModel> {
                     itemBuilder: (context, index) {
                       var messageData = snapshot.data!.docs[index].data();
 
-                      log('Message at index $index: $messageData');
-
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: MessageBubble(
