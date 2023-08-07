@@ -125,11 +125,11 @@ class ChatsView extends StackedView<ChatsViewModel> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Row(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       CircleAvatar(
                                         radius: 22,
@@ -141,7 +141,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                       const SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                            CrossAxisAlignment.center,
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
@@ -150,7 +150,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                               size: 14,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.black),
-                                          const SizedBox(height: 6),
+                                          const SizedBox(height: 4),
                                           const CustomText(
                                               text: 'Subject name',
                                               size: 12,
