@@ -119,14 +119,14 @@ class DetailView extends StackedView<DetailViewModel> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const CustomText(
+                   CustomText(
                       text: 'Sheikh All Ralhan',
                       size: 17,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                   Row(
                     children: [
-                      const CustomText(
+                       CustomText(
                           text: '5.0',
                           size: 13,
                           fontWeight: FontWeight.w500,
@@ -154,7 +154,7 @@ class DetailView extends StackedView<DetailViewModel> {
               const SizedBox(height: 10),
               const ButtonText(text: 'About', color: Colors.black),
               const SizedBox(height: 10),
-              const CustomText(
+               CustomText(
                   text:
                       'When COVID-19 hit the world back in March, many areas of our lives were affected. To survive through these unpredictable days at home, people were desperate to get their hands a few things like toilet papers, Nintendo Switch, water, and baking or cooking tools. For the parents of young children, there was one addition to the list: a teacher. As the children stayed home, parents realized the amount of work, energy, and knowledge is required to teach, play, feed, and stay with the little ones. “I don’t know how you did it every day, Ms. Chloe” one parent texted me.',
                   size: 14,

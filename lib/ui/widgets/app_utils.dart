@@ -1,7 +1,8 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:education/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'custom_text_form_field.dart';
 
 class AppUtils {
 // const Color(0xff4873a6).withOpacity(0.7),

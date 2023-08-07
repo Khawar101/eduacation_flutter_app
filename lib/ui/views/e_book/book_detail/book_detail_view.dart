@@ -144,7 +144,7 @@ class _BookDetailViewState extends State<BookDetailView>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const CustomText(
+                         CustomText(
                           text: "Description: ",
                           color: Colors.black,
                           size: 18,
@@ -206,7 +206,7 @@ class _BookDetailViewState extends State<BookDetailView>
                 children: [
                   ElevatedButton(
                     onPressed: null,
-                    child: const CustomText(
+                    child:  CustomText(
                       text: "Buy Audio",
                       size: 16,
                       fontWeight: FontWeight.bold,
@@ -221,7 +221,7 @@ class _BookDetailViewState extends State<BookDetailView>
                     onPressed: () {
                       _subscriptionService.buyEbook(widget.eBookModel);
                     },
-                    child: const CustomText(
+                    child:  CustomText(
                       text: "Buy Ebooks",
                       size: 16,
                       fontWeight: FontWeight.bold,
