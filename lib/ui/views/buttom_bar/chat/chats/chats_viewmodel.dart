@@ -10,12 +10,15 @@ class ChatsViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final loginService = locator<LoginService>();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  chatId(otherId) {
+    var currentuID = loginService.UserData.uID.toString();
+    List<String> chatID = [currentuID, otherId]..sort();
+    return chatID.join('_');
+  }
 
   navigateinbox(otherData) {
-    var currentuID = loginService.UserData.uID.toString();
-    List<String> chatID = [currentuID, otherData['UID']]..sort();
     _navigationService.navigateToInboxView(
-        chatId: chatID.join('_'), otherData: otherData);
+        chatId: chatId(otherData['UID']), otherData: otherData);
   }
 
   navigateEditProfile(userData data) async {
@@ -28,6 +31,16 @@ class ChatsViewModel extends BaseViewModel {
     );
 
     rebuildUi();
+  }
+
+  Stream<QuerySnapshot> getLastMessageStream(String chatId) {
+    CollectionReference chatCollection = firestore.collection('chats');
+
+    return chatCollection
+        .where("chatId", isEqualTo: chatId)
+        .orderBy('Date', descending: true)
+        .limit(1)
+        .snapshots() as Stream<QuerySnapshot<Map<String, dynamic>>>;
   }
 
   Stream collectionStream =

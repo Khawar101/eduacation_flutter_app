@@ -53,8 +53,8 @@ class AcountView extends StackedView<AcountViewModel> {
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xFF4873A6).withOpacity(0.7),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                child:  Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Align(
                       alignment: Alignment.centerLeft,
                       child: CustomText(
@@ -100,8 +100,8 @@ class AcountView extends StackedView<AcountViewModel> {
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xFF4873A6).withOpacity(0.7),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                child:  Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Align(
                       alignment: Alignment.centerLeft,
                       child: CustomText(

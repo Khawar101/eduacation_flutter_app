@@ -68,23 +68,23 @@ class ChatsView extends StackedView<ChatsViewModel> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10, // Replace with your actual item count
                   itemBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.only(right: 16),
+                    return  Padding(
+                      padding: const EdgeInsets.only(right: 16),
                       child: Column(
                         children: [
-                          CircleAvatar(
+                          const CircleAvatar(
                             radius: 20,
                             backgroundColor: Colors.red,
                             backgroundImage:
                                 AssetImage('assets/images/tree.jpg'),
                           ),
-                          SizedBox(height: 3),
+                          const SizedBox(height: 3),
                           CustomText(
                               text: 'Group Name',
                               size: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.black),
-                          SizedBox(height: 3),
+                          const SizedBox(height: 3),
                           CustomText(
                               text: 'Description',
                               size: 12,
@@ -141,26 +141,53 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                       const SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                            CrossAxisAlignment.start,
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          CustomText(
-                                              text: data["username"].toString(),
-                                              size: 14,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.black),
+                                          Container(
+                                            color: Colors.red,
+                                            child: CustomText(
+                                                text: data["username"].toString(),
+                                                size: 14,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black),
+                                          ),
                                           const SizedBox(height: 4),
-                                          const CustomText(
-                                              text: 'Subject name',
-                                              size: 12,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black54)
+                                            StreamBuilder<QuerySnapshot>(
+                          stream: viewModel.getLastMessageStream(viewModel.chatId(data["UID"])),
+                          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> messageSnapshot) {
+                            if (messageSnapshot.hasError || messageSnapshot.connectionState == ConnectionState.waiting) {
+                              return const SizedBox();
+                            }
+                            var messages = messageSnapshot.data!.docs;
+                            if (messages.isNotEmpty) {
+                              var lastMessage = messages.last;
+                              return SizedBox(
+                                width: MediaQuery.of(context).size.width*0.4,
+                                child: CustomText(
+                                  text: lastMessage["SMS"].toString(),
+                                  size: 12,
+                                  maxLines: 1,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black54,
+                                ),
+                              );
+                            } else {
+                              return const SizedBox();
+                            }
+                          },
+                        ),
+                                          // const CustomText(
+                                          //     text: 'Subject name',
+                                          //     size: 12,
+                                          //     fontWeight: FontWeight.w500,
+                                          //     color: Colors.black54)
                                         ],
                                       ),
                                     ],
                                   ),
-                                  const Row(
+                                   Row(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       CustomText(
