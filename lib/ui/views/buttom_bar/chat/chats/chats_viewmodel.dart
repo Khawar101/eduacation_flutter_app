@@ -26,7 +26,7 @@ class ChatsViewModel extends BaseViewModel {
       address: data.address ?? "",
       clas: data.clas ?? "",
     );
-    
+
     rebuildUi();
   }
 
