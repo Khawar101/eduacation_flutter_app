@@ -117,13 +117,16 @@ class CustomText extends StatelessWidget {
   final FontWeight fontWeight;
   final Color color;
   int? maxLines;
+  TextOverflow? textOverflow;
+  
    CustomText({
     super.key,
     required this.text,
     required this.size,
     required this.fontWeight,
     required this.color,
-    this.maxLines
+    this.maxLines,
+    this.textOverflow
   });
 
   @override
@@ -131,7 +134,7 @@ class CustomText extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.ibmPlexSans(
-          color: color, fontSize: size, fontWeight: fontWeight),maxLines: maxLines,
+          color: color, fontSize: size, fontWeight: fontWeight),maxLines: maxLines,overflow:textOverflow ,
     );
   }
 }

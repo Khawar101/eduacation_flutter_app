@@ -145,11 +145,14 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Container(
-                                            color: Colors.red,
+                                          SizedBox(
+                                            width: MediaQuery.of(context).size.width*0.5,
+                                           
                                             child: CustomText(
                                                 text: data["username"].toString(),
                                                 size: 14,
+                                                 maxLines: 1,
+                                  textOverflow: TextOverflow.ellipsis,
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.black),
                                           ),
@@ -164,11 +167,12 @@ class ChatsView extends StackedView<ChatsViewModel> {
                             if (messages.isNotEmpty) {
                               var lastMessage = messages.last;
                               return SizedBox(
-                                width: MediaQuery.of(context).size.width*0.4,
+                                width: MediaQuery.of(context).size.width*0.5,
                                 child: CustomText(
                                   text: lastMessage["SMS"].toString(),
                                   size: 12,
                                   maxLines: 1,
+                                  textOverflow: TextOverflow.ellipsis,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black54,
                                 ),
