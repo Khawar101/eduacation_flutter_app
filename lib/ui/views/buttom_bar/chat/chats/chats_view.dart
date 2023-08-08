@@ -115,17 +115,12 @@ class ChatsView extends StackedView<ChatsViewModel> {
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (BuildContext context, int index) {
                           var data = snapshot.data!.docs[index];
-                          String currentuID =
-                              viewModel.loginService.UserData.uID.toString();
-
-                          String otheruID = data['UID']
-                              .toString(); // Replace with the user ID of the chat partner
-                          List<String> chatIDs = [currentuID, otheruID]..sort();
-                          String mergedChatID = chatIDs.join('_');
+                         
 
                           return GestureDetector(
                             onTap: () {
-                              viewModel.navigateinbox(mergedChatID, context);
+                              viewModel.navigateinbox(data['UID']
+                              .toString());
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(bottom: 10),

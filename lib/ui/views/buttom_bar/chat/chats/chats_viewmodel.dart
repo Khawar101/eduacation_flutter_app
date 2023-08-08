@@ -12,19 +12,12 @@ class ChatsViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final loginService = locator<LoginService>();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  
-  // navigateinbox(String chatId, BuildContext context) {
-    // _navigationService.navigateToInboxView();
-    void navigateinbox(String chatId, BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => InboxView(chatId: chatId), // Replace InboxPage with your actual inbox page
-      ),
-    );
-  }
-  // }
 
+  navigateinbox(String otheruID) {
+    var currentuID = loginService.UserData.uID.toString();
+    List<String> chatIDs = [currentuID, otheruID]..sort();
+    _navigationService.navigateToInboxView(chatId: chatIDs.join('_'));
+  }
 
   navigateEditProfile(userData data) async {
     await _navigationService.navigateToEditInfoView(
@@ -44,18 +37,8 @@ class ChatsViewModel extends BaseViewModel {
   //       "password": passwordCNTR.text
   //     });
 
-
-   Stream collectionStream =
+  Stream collectionStream =
       FirebaseFirestore.instance.collection('users').snapshots();
   final Stream<QuerySnapshot> usersStream =
       FirebaseFirestore.instance.collection('users').snapshots();
-
-
-      
- 
-
-  
-
-
-
 }
