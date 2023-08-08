@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -100,63 +101,77 @@ class ChatsView extends StackedView<ChatsViewModel> {
             const ButtonText(text: 'All Chats', color: Colors.black),
             const SizedBox(height: 14),
             Expanded(
-              child: ListView.builder(
-                  itemCount: 20,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        viewModel.navigateinbox();
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: viewModel.usersStream,
+                builder:  (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot)  {
+                            if (snapshot.hasError) {
+                        return const Text('Something went wrong');
+                      }
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Text("Loading");
+                      }
+                  return ListView.builder(
+                      itemCount:snapshot.data!.docs.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        var data = snapshot.data!.docs[index];
+                        return GestureDetector(
+                          onTap: () {
+                            viewModel.navigateinbox();
+                          },
+                          child:  Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CircleAvatar(
-                                  radius: 22,
-                                  backgroundColor: Colors.red,
-                                  backgroundImage:
-                                      AssetImage('assets/images/tree.jpg'),
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 22,
+                                      backgroundColor: Colors.red,
+                                      backgroundImage:NetworkImage(
+                                      data["profile"].toString()),
+                                          // AssetImage('assets/images/tree.jpg'),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        CustomText(
+                                            text: data["username"].toString(),
+                                            size: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black),
+                                        const SizedBox(height: 3),
+                                        const CustomText(
+                                            text: 'Subject name',
+                                            size: 12,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black54)
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(width: 10),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                const Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     CustomText(
-                                        text: 'Contact Name',
-                                        size: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black),
-                                    SizedBox(height: 3),
-                                    CustomText(
-                                        text: 'Subject name',
-                                        size: 12,
+                                        text: '23/9/2023',
+                                        size: 10,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.black54)
                                   ],
                                 ),
                               ],
                             ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                CustomText(
-                                    text: '23/9/2023',
-                                    size: 10,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black54)
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
+                          ),
+                        );
+                      });
+                }
+              ),
             ),
           ],
         ),

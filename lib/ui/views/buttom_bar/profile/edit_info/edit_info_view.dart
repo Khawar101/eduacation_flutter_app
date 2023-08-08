@@ -28,7 +28,6 @@ class EditInfoView extends StatefulWidget {
 class _EditInfoViewState extends State<EditInfoView> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
