@@ -1,4 +1,3 @@
-
 // ignore_for_file: must_be_immutable
 
 import 'dart:developer';
@@ -10,7 +9,7 @@ import 'inbox_viewmodel.dart';
 
 class InboxView extends StackedView<InboxViewModel> {
   String chatId;
-   InboxView({Key? key, required this.chatId }) : super(key: key);
+  InboxView({Key? key, required this.chatId}) : super(key: key);
 
   @override
   Widget builder(
@@ -66,9 +65,10 @@ class InboxView extends StackedView<InboxViewModel> {
             color: Colors.grey[200],
             child: Row(
               children: [
-                const Expanded(
+                 Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller:viewModel.SMScontroller,
+                    decoration: const InputDecoration(
                       hintText: 'Type your message...',
                       border: InputBorder.none,
                     ),
@@ -76,7 +76,9 @@ class InboxView extends StackedView<InboxViewModel> {
                 ),
                 IconButton(
                   icon: const Icon(Icons.send),
-                  onPressed: () {},
+                  onPressed: () {
+                    viewModel.SentSMS(chatId, context);
+                  },
                 ),
               ],
             ),

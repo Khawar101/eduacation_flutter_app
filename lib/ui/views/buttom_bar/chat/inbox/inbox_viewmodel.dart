@@ -1,48 +1,39 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class InboxViewModel extends BaseViewModel {
- 
   final TextEditingController SMScontroller = TextEditingController();
 
-  // void SentSMS() async {
+  void SentSMS(chatId, context) async {
     // String mergeuid = uid_merge(widget.UserData['UID'], widget.UID).toString();
     // print("objectobjectobjectobjectobjectobjectobjectobjectobject");
-    // String SMS = SMScontroller.text;
-    // try {
-    //   if (SMS != "") {
-    //     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    //     CollectionReference users =
-    //         FirebaseFirestore.instance.collection('users');
-    //     await firestore
-    //         .collection('chats')
-    //         .doc(mergeuid)
-    //         .collection(mergeuid)
-    //         .doc()
-    //         .set({
-    //       "username": widget.UserData['username'],
-    //       "email": widget.Email,
-    //       "SMS": SMS,
-    //       "Date": "${DateTime.now().millisecondsSinceEpoch}",
-    //       "status": "seen",
-    //       "type": "text"
-    //     });
-    //     SMScontroller.clear();
+    String SMS = SMScontroller.text;
+    try {
+      if (SMS != "") {
+        SMScontroller.clear();
+        FirebaseFirestore firestore = FirebaseFirestore.instance;
+        await firestore.collection('chats').doc().set({
+          "chatId": chatId,
+          "SMS": SMS,
+          "Date": "${DateTime.now().millisecondsSinceEpoch}",
+          "status": "seen",
+          "type": "text"
+        });
 
-    //     // ScaffoldMessenger.of(context).showSnackBar(
-    //     //   const SnackBar(
-    //     //     content: Text('Sending....'),
-    //     //   ),
-    //     // );
-    //   }
-    // } catch (e) {
-    //   // ScaffoldMessenger.of(context).showSnackBar(
-    //   //   Bar(
-    //   //     content: Text(e.toString()),
-    //   //   ),
-    //   // );
-    // }
-    // print([username, useremail, userpassword]);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Sending....'),
+          ),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+        ),
+      );
+    }
   }
 
   // final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
@@ -55,9 +46,9 @@ class InboxViewModel extends BaseViewModel {
   //     .snapshots();
 
   // dateFormate() {
-  //   var now = new DateTime.now();
-  //   var format = new DateFormat('HH:mm a');
-  //   var Dateformat = new DateFormat('yyyy-MM-dd');
+  //   var now = DateTime.now();
+  //   var format = DateFormat('HH:mm a');
+  //   var Dateformat = DateFormat('yyyy-MM-dd');
   //   var date =
   //       new DateTime.fromMicrosecondsSinceEpoch(int.parse(data["Date"]) * 1000);
   //   var diff = date.difference(now).abs();
@@ -75,4 +66,4 @@ class InboxViewModel extends BaseViewModel {
   //     }
   //   }
   // }
-
+}
