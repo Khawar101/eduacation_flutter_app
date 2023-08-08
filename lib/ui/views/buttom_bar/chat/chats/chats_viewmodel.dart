@@ -26,12 +26,13 @@ class ChatsViewModel extends BaseViewModel {
       address: data.address ?? "",
       clas: data.clas ?? "",
     );
+    
     rebuildUi();
   }
 
   Stream collectionStream =
       FirebaseFirestore.instance.collection('users').snapshots();
-      
+
   final Stream<QuerySnapshot> usersStream =
       FirebaseFirestore.instance.collection('users').snapshots();
 }
