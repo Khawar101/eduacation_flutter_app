@@ -102,76 +102,85 @@ class ChatsView extends StackedView<ChatsViewModel> {
             const SizedBox(height: 14),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: viewModel.usersStream,
-                builder:  (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> snapshot)  {
-                            if (snapshot.hasError) {
-                        return const Text('Something went wrong');
-                      }
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Text("Loading");
-                      }
-                  return ListView.builder(
-                      itemCount:snapshot.data!.docs.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        var data = snapshot.data!.docs[index];
-                        return GestureDetector(
-                          onTap: () {
-                            viewModel.navigateinbox();
-                          },
-                          child:  Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              // crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 22,
-                                      backgroundColor: Colors.red,
-                                      backgroundImage:NetworkImage(
-                                      data["profile"].toString()),
-                                          // AssetImage('assets/images/tree.jpg'),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        CustomText(
-                                            text: data["username"].toString(),
-                                            size: 14,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.black),
-                                        const SizedBox(height: 3),
-                                        const CustomText(
-                                            text: 'Subject name',
-                                            size: 12,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black54)
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                const Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    CustomText(
-                                        text: '23/9/2023',
-                                        size: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.black54)
-                                  ],
-                                ),
-                              ],
+                  stream: viewModel.usersStream,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return const Text('Something went wrong');
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Text("Loading");
+                    }
+                    return ListView.builder(
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          var data = snapshot.data!.docs[index];
+                          String currentuID =
+                              viewModel.loginService.UserData.uID.toString();
+
+                          String otheruID = data['UID']
+                              .toString(); // Replace with the user ID of the chat partner
+                          List<String> chatIDs = [currentuID, otheruID]..sort();
+                          String mergedChatID = chatIDs.join('_');
+
+                          return GestureDetector(
+                            onTap: () {
+                              viewModel.navigateinbox(mergedChatID, context);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                // crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 22,
+                                        backgroundColor: Colors.red,
+                                        backgroundImage: NetworkImage(
+                                            data["profile"].toString()),
+                                        // AssetImage('assets/images/tree.jpg'),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          CustomText(
+                                              text: data["username"].toString(),
+                                              size: 14,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.black),
+                                          const SizedBox(height: 3),
+                                          const CustomText(
+                                              text: 'Subject name',
+                                              size: 12,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black54)
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  const Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      CustomText(
+                                          text: '23/9/2023',
+                                          size: 10,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black54)
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      });
-                }
-              ),
+                          );
+                        });
+                  }),
             ),
           ],
         ),

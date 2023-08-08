@@ -8,14 +8,14 @@ import 'dart:ui' as _i9;
 
 import 'package:cloud_firestore/cloud_firestore.dart' as _i2;
 import 'package:education/services/chats_service.dart' as _i13;
-import 'package:education/services/ebook_service.dart' as _i22;
-import 'package:education/services/favorite_courses_service.dart' as _i21;
+import 'package:education/services/ebook_service.dart' as _i23;
+import 'package:education/services/favorite_courses_service.dart' as _i22;
 import 'package:education/services/forgetpassword_service.dart' as _i14;
 import 'package:education/services/login_service.dart' as _i5;
 import 'package:education/services/Model/CoursesModel.dart' as _i18;
-import 'package:education/services/Model/EbookModel.dart' as _i23;
+import 'package:education/services/Model/EbookModel.dart' as _i20;
 import 'package:education/services/Model/ratingModel.dart' as _i17;
-import 'package:education/services/Model/reportModel.dart' as _i20;
+import 'package:education/services/Model/reportModel.dart' as _i21;
 import 'package:education/services/Model/userData.dart' as _i4;
 import 'package:education/services/profile_service.dart' as _i12;
 import 'package:education/services/rating_service.dart' as _i16;
@@ -1063,6 +1063,14 @@ class MockSubscriptionService extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  dynamic buyEbook(_i20.EbookModel? eBookData) => super.noSuchMethod(
+        Invocation.method(
+          #buyEbook,
+          [eBookData],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i8.Stream<dynamic> reportStream(dynamic courseKey) => (super.noSuchMethod(
         Invocation.method(
           #reportStream,
@@ -1074,7 +1082,7 @@ class MockSubscriptionService extends _i1.Mock
   @override
   dynamic updateLecture(
     _i18.CoursesModel? courseData,
-    _i20.ReportModel? reportData,
+    _i21.ReportModel? reportData,
     String? url,
   ) =>
       super.noSuchMethod(
@@ -1094,7 +1102,7 @@ class MockSubscriptionService extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFavoriteCoursesService extends _i1.Mock
-    implements _i21.FavoriteCoursesService {
+    implements _i22.FavoriteCoursesService {
   @override
   String get message => (super.noSuchMethod(
         Invocation.getter(#message),
@@ -1163,16 +1171,16 @@ class MockFavoriteCoursesService extends _i1.Mock
 /// A class which mocks [EbookService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockEbookService extends _i1.Mock implements _i22.EbookService {
+class MockEbookService extends _i1.Mock implements _i23.EbookService {
   @override
-  _i8.Stream<List<_i23.EbookModel>> eBookStream() => (super.noSuchMethod(
+  _i8.Stream<List<_i20.EbookModel>> eBookStream() => (super.noSuchMethod(
         Invocation.method(
           #eBookStream,
           [],
         ),
-        returnValue: _i8.Stream<List<_i23.EbookModel>>.empty(),
-        returnValueForMissingStub: _i8.Stream<List<_i23.EbookModel>>.empty(),
-      ) as _i8.Stream<List<_i23.EbookModel>>);
+        returnValue: _i8.Stream<List<_i20.EbookModel>>.empty(),
+        returnValueForMissingStub: _i8.Stream<List<_i20.EbookModel>>.empty(),
+      ) as _i8.Stream<List<_i20.EbookModel>>);
   @override
   _i8.Stream<dynamic> publisherStream(dynamic uID) => (super.noSuchMethod(
         Invocation.method(
@@ -1182,4 +1190,14 @@ class MockEbookService extends _i1.Mock implements _i22.EbookService {
         returnValue: _i8.Stream<dynamic>.empty(),
         returnValueForMissingStub: _i8.Stream<dynamic>.empty(),
       ) as _i8.Stream<dynamic>);
+  @override
+  _i8.Stream<List<_i20.EbookModel>> buyEbookStream(dynamic eBookKey) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #buyEbookStream,
+          [eBookKey],
+        ),
+        returnValue: _i8.Stream<List<_i20.EbookModel>>.empty(),
+        returnValueForMissingStub: _i8.Stream<List<_i20.EbookModel>>.empty(),
+      ) as _i8.Stream<List<_i20.EbookModel>>);
 }

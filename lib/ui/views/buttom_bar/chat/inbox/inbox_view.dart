@@ -1,3 +1,6 @@
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -6,7 +9,8 @@ import 'MessageBubble.dart';
 import 'inbox_viewmodel.dart';
 
 class InboxView extends StackedView<InboxViewModel> {
-  const InboxView({Key? key}) : super(key: key);
+  String chatId;
+   InboxView({Key? key, required this.chatId }) : super(key: key);
 
   @override
   Widget builder(
@@ -21,6 +25,7 @@ class InboxView extends StackedView<InboxViewModel> {
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
+            log(chatId.toString());
           },
           child: const Icon(
             Icons.arrow_back_ios,

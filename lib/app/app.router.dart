@@ -428,8 +428,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i11.InboxView: (data) {
+      final args = data.getArgs<InboxViewArguments>(nullOk: false);
       return _i43.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i11.InboxView(),
+        builder: (context) =>
+            _i11.InboxView(key: args.key, chatId: args.chatId),
         settings: data,
       );
     },
@@ -638,6 +640,33 @@ class StackedRouter extends _i1.RouterBase {
   List<_i1.RouteDef> get routes => _routes;
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class InboxViewArguments {
+  const InboxViewArguments({
+    this.key,
+    required this.chatId,
+  });
+
+  final _i43.Key? key;
+
+  final String chatId;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "chatId": "$chatId"}';
+  }
+
+  @override
+  bool operator ==(covariant InboxViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.chatId == chatId;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ chatId.hashCode;
+  }
 }
 
 class EditInfoViewArguments {
@@ -897,14 +926,17 @@ extension NavigatorStateExtension on _i46.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToInboxView([
+  Future<dynamic> navigateToInboxView({
+    _i43.Key? key,
+    required String chatId,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.inboxView,
+        arguments: InboxViewArguments(key: key, chatId: chatId),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1493,14 +1525,17 @@ extension NavigatorStateExtension on _i46.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithInboxView([
+  Future<dynamic> replaceWithInboxView({
+    _i43.Key? key,
+    required String chatId,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.inboxView,
+        arguments: InboxViewArguments(key: key, chatId: chatId),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
