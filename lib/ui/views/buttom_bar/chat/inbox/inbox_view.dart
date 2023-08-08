@@ -1,10 +1,10 @@
 
-import 'dart:developer';
+// ignore_for_file: must_be_immutable
 
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import 'MessageBubble.dart';
 import 'inbox_viewmodel.dart';
 
