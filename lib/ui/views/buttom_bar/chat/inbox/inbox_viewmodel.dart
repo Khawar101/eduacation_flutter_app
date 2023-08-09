@@ -12,7 +12,7 @@ class InboxViewModel extends BaseViewModel {
 
     return chatCollection
         .where("chatId", isEqualTo: chatId)
-        .orderBy('Date', descending: false)
+        .orderBy('Date', descending: true)
         .snapshots() as Stream<QuerySnapshot<Map<String, dynamic>>>;
   }
 

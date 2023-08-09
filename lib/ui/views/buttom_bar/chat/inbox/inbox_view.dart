@@ -60,7 +60,7 @@ class InboxView extends StackedView<InboxViewModel> {
                   }
                   return ListView.builder(
                     itemCount: snapshot.data?.docs.length, // Replace with your actual message count
-                  // reverse: true, // To show the latest messages at the bottom
+                   reverse: true, // To show the latest messages at the bottom
                     itemBuilder: (context, index) {
                       var messageData = snapshot.data!.docs[index].data();
 
