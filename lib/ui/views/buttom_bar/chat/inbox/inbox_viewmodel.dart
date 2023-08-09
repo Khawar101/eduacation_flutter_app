@@ -5,15 +5,15 @@ import 'package:stacked/stacked.dart';
 import '../../../../../app/app.locator.dart';
 
 class InboxViewModel extends BaseViewModel {
-  final TextEditingController SMScontroller = TextEditingController();
+  final TextEditingController smsController = TextEditingController();
   bool isTextEmpty = true;
   void initState() {
-    SMScontroller.addListener(updateTextStatus);
+    smsController.addListener(updateTextStatus);
     notifyListeners();
   }
 
   void updateTextStatus() {
-    isTextEmpty = SMScontroller.text.isEmpty;
+    isTextEmpty = smsController.text.isEmpty;
     notifyListeners();
   }
 
@@ -34,17 +34,17 @@ class InboxViewModel extends BaseViewModel {
     return userDoc.data()?['name'] ?? '';
   }
 
-  void SentSMS(chatId, context) async {
+  void sentSMS(chatId, context) async {
     // String mergeuid = uid_merge(widget.UserData['UID'], widget.UID).toString();
     // print("objectobjectobjectobjectobjectobjectobjectobjectobject");
-    String SMS = SMScontroller.text;
+    String sms = smsController.text;
     try {
-      if (SMS != "") {
-        SMScontroller.clear();
+      if (sms != "") {
+        smsController.clear();
         FirebaseFirestore firestore = FirebaseFirestore.instance;
         await firestore.collection('chats').doc().set({
           "chatId": chatId,
-          "SMS": SMS,
+          "SMS": sms,
           "Date": "${DateTime.now().microsecondsSinceEpoch}",
           "status": "seen",
           "type": "text",

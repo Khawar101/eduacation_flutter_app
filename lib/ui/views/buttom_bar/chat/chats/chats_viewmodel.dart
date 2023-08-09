@@ -11,11 +11,11 @@ class ChatsViewModel extends BaseViewModel {
   final loginService = locator<LoginService>();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-
-  navigateinbox( otherData) {
+  navigateinbox(otherData) {
     var currentuID = loginService.UserData.uID.toString();
     List<String> chatID = [currentuID, otherData['UID']]..sort();
-    _navigationService.navigateToInboxView(chatId: chatID.join('_'), otherData: otherData);
+    _navigationService.navigateToInboxView(
+        chatId: chatID.join('_'), otherData: otherData);
   }
 
   navigateEditProfile(userData data) async {
@@ -28,13 +28,6 @@ class ChatsViewModel extends BaseViewModel {
     );
     rebuildUi();
   }
-
-  // if (UserData == null) {
-  //     await firestore.collection("users").doc().set({
-  //       "profile": profile,
-  //       "email": emailCNTR.text,
-  //       "password": passwordCNTR.text
-  //     });
 
   Stream collectionStream =
       FirebaseFirestore.instance.collection('users').snapshots();

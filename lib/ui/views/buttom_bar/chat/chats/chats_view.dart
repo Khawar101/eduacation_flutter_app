@@ -115,11 +115,10 @@ class ChatsView extends StackedView<ChatsViewModel> {
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (BuildContext context, int index) {
                           var data = snapshot.data!.docs[index];
-                         
 
                           return GestureDetector(
                             onTap: () {
-                              viewModel.navigateinbox(data);                          
+                              viewModel.navigateinbox(data);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(bottom: 10),
@@ -129,7 +128,8 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       CircleAvatar(
                                         radius: 22,

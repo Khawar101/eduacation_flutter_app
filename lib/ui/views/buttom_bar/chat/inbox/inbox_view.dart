@@ -1,4 +1,5 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
+
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class InboxView extends StackedView<InboxViewModel> {
 
   @override
   void onDispose(InboxViewModel viewModel) {
-    viewModel.SMScontroller.dispose();
+    viewModel.smsController.dispose();
     super.onDispose(viewModel);
   }
 
@@ -100,7 +101,7 @@ class InboxView extends StackedView<InboxViewModel> {
               children: [
                 Expanded(
                   child: TextField(
-                    controller: viewModel.SMScontroller,
+                    controller: viewModel.smsController,
                     onChanged: (text) {
                       viewModel.updateTextStatus(); // Update the text status
                     },
@@ -118,7 +119,7 @@ class InboxView extends StackedView<InboxViewModel> {
                   onPressed: () {
                     if (!viewModel.isTextEmpty) {
                       // Perform action when there is text
-                      viewModel.SentSMS(chatId, context);
+                      viewModel.sentSMS(chatId, context);
                     }
                   },
                 )
