@@ -10,7 +10,23 @@ import 'inbox_viewmodel.dart';
 class InboxView extends StackedView<InboxViewModel> {
   String chatId;
   final otherData;
-  InboxView( {Key? key, required this.chatId,required this.otherData,}) : super(key: key);
+  InboxView({
+    Key? key,
+    required this.chatId,
+    required this.otherData,
+  }) : super(key: key);
+
+  @override
+  void onViewModelReady(InboxViewModel viewModel) {
+    viewModel.initState();
+    super.onViewModelReady(viewModel);
+  }
+
+  @override
+  void onDispose(InboxViewModel viewModel) {
+    viewModel.SMScontroller.dispose();
+    super.onDispose(viewModel);
+  }
 
   @override
   Widget builder(
@@ -18,7 +34,6 @@ class InboxView extends StackedView<InboxViewModel> {
     InboxViewModel viewModel,
     Widget? child,
   ) {
-   
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -35,12 +50,11 @@ class InboxView extends StackedView<InboxViewModel> {
           ),
         ),
         title: Text(
-               otherData["username"].toString(),
-               style: GoogleFonts.ibmPlexSans(
+          otherData["username"].toString(),
+          style: GoogleFonts.ibmPlexSans(
               fontSize: 18,
               color: const Color(0xff4873a6).withOpacity(0.7),
               fontWeight: FontWeight.w600),
-            
         ),
         centerTitle: true,
       ),
@@ -52,15 +66,16 @@ class InboxView extends StackedView<InboxViewModel> {
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     log(snapshot.error.toString());
-                    return  const Text('Error fetching messages');
+                    return const Text('Error fetching messages');
                   }
 
                   if (!snapshot.hasData) {
                     return const Text('No messages yet');
                   }
                   return ListView.builder(
-                    itemCount: snapshot.data?.docs.length, // Replace with your actual message count
-                   reverse: true, // To show the latest messages at the bottom
+                    itemCount: snapshot.data?.docs
+                        .length, // Replace with your actual message count
+                    reverse: true, // To show the latest messages at the bottom
                     itemBuilder: (context, index) {
                       var messageData = snapshot.data!.docs[index].data();
 
@@ -86,6 +101,9 @@ class InboxView extends StackedView<InboxViewModel> {
                 Expanded(
                   child: TextField(
                     controller: viewModel.SMScontroller,
+                    onChanged: (text) {
+                      viewModel.updateTextStatus(); // Update the text status
+                    },
                     decoration: const InputDecoration(
                       hintText: 'Type your message...',
                       border: InputBorder.none,
@@ -93,11 +111,17 @@ class InboxView extends StackedView<InboxViewModel> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.send),
+                  icon: Icon(
+                    Icons.send,
+                    color: viewModel.isTextEmpty ? Colors.grey : Colors.blue,
+                  ),
                   onPressed: () {
-                    viewModel.SentSMS(chatId, context);
+                    if (!viewModel.isTextEmpty) {
+                      // Perform action when there is text
+                      viewModel.SentSMS(chatId, context);
+                    }
                   },
-                ),
+                )
               ],
             ),
           ),

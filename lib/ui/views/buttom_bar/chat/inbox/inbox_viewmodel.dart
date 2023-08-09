@@ -5,6 +5,18 @@ import 'package:stacked/stacked.dart';
 import '../../../../../app/app.locator.dart';
 
 class InboxViewModel extends BaseViewModel {
+  final TextEditingController SMScontroller = TextEditingController();
+  bool isTextEmpty = true;
+  void initState() {
+    SMScontroller.addListener(updateTextStatus);
+    notifyListeners();
+  }
+
+  void updateTextStatus() {
+    isTextEmpty = SMScontroller.text.isEmpty;
+    notifyListeners();
+  }
+
   final loginService = locator<LoginService>();
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   Stream<QuerySnapshot<Map<String, dynamic>>> getMessagesStream(String chatId) {
@@ -21,8 +33,6 @@ class InboxViewModel extends BaseViewModel {
         await firestore.collection('users').doc(userId).get();
     return userDoc.data()?['name'] ?? '';
   }
-
-  final TextEditingController SMScontroller = TextEditingController();
 
   void SentSMS(chatId, context) async {
     // String mergeuid = uid_merge(widget.UserData['UID'], widget.UID).toString();
