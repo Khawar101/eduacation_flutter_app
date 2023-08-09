@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
@@ -9,7 +11,6 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      // mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
         Container(

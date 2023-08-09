@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.router.dart';
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../../app/app.locator.dart';
 import '../../../../../services/Model/userData.dart';
 import '../../../../../services/login_service.dart';
-import '../inbox/inbox_view.dart';
 
 class ChatsViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
