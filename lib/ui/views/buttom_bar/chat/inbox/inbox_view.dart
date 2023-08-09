@@ -46,7 +46,7 @@ class InboxView extends StackedView<InboxViewModel> {
             }
             return Text(
               snapshot.data!,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             );
           },
         ),
@@ -68,7 +68,7 @@ class InboxView extends StackedView<InboxViewModel> {
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     log(snapshot.error.toString());
-                    return  Text('Error fetching messages');
+                    return  const Text('Error fetching messages');
                   }
 
                   if (!snapshot.hasData) {
@@ -76,7 +76,7 @@ class InboxView extends StackedView<InboxViewModel> {
                   }
                   return ListView.builder(
                     itemCount: snapshot.data?.docs.length, // Replace with your actual message count
-                 // reverse: true, // To show the latest messages at the bottom
+                  // reverse: true, // To show the latest messages at the bottom
                     itemBuilder: (context, index) {
                       var messageData = snapshot.data!.docs[index].data();
 
