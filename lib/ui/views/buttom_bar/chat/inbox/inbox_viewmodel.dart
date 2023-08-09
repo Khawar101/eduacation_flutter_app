@@ -1,8 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class InboxViewModel extends BaseViewModel {
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  Stream<QuerySnapshot<Map<String, dynamic>>> getMessagesStream(String chatId) {
+    CollectionReference chatCollection = firestore.collection('chats');
+
+    return chatCollection.orderBy('Date').snapshots()
+        as Stream<QuerySnapshot<Map<String, dynamic>>>;
+  }
+
+  Future<String> fetchUserName(String userId) async {
+    DocumentSnapshot<Map<String, dynamic>> userDoc =
+        await firestore.collection('users').doc(userId).get();
+    return userDoc.data()?['name'] ?? '';
+  }
+   
   final TextEditingController SMScontroller = TextEditingController();
 
   void SentSMS(chatId, context) async {
@@ -16,9 +31,11 @@ class InboxViewModel extends BaseViewModel {
         await firestore.collection('chats').doc().set({
           "chatId": chatId,
           "SMS": SMS,
-          "Date": "${DateTime.now().millisecondsSinceEpoch}",
+          "Date": "${DateTime.now().minute}",
           "status": "seen",
-          "type": "text"
+          "type": "text",
+                    "UID":firestore.collection("uID").doc("uID").toString()
+
         });
 
         ScaffoldMessenger.of(context).showSnackBar(

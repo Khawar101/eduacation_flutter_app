@@ -7,6 +7,7 @@ class MessageBubble extends StatelessWidget {
   const MessageBubble({super.key, required this.isMe, required this.message});
 
   @override
+  
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
