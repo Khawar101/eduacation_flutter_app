@@ -67,30 +67,26 @@ class InboxView extends StackedView<InboxViewModel> {
                 stream: viewModel.getMessagesStream(chatId),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
-                    return const Text('Error fetching messages');
+                    log(snapshot.error.toString());
+                    return  Text('Error fetching messages');
                   }
 
                   if (!snapshot.hasData) {
                     return const Text('No messages yet');
                   }
                   return ListView.builder(
-                    itemCount: snapshot.data?.docs
-                        .length, // Replace with your actual message count
-
-                    // reverse: true, // To show the latest messages at the bottom
+                    itemCount: snapshot.data?.docs.length, // Replace with your actual message count
+                 // reverse: true, // To show the latest messages at the bottom
                     itemBuilder: (context, index) {
-                      var messageData = snapshot.data!.docs[index].data()
-                          as Map<String, dynamic>;
+                      var messageData = snapshot.data!.docs[index].data();
 
                       log('Message at index $index: $messageData');
-                      // Debug statement
-                      // bool isMe = /* Determine if the message is from the current user */;
 
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: MessageBubble(
-                          isMe: index % 2 ==
-                              0, // Just for demo, you can modify this logic
+                          isMe: messageData['UID'] ==
+                              viewModel.loginService.UserData.uID,
                           message: messageData['SMS'],
                         ),
                       );

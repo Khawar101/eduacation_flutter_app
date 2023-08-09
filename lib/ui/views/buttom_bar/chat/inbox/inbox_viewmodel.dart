@@ -2,13 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import '../../../../../app/app.locator.dart';
 
 class InboxViewModel extends BaseViewModel {
+  final loginService = locator<LoginService>();
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   Stream<QuerySnapshot<Map<String, dynamic>>> getMessagesStream(String chatId) {
     CollectionReference chatCollection = firestore.collection('chats');
 
-    return chatCollection.orderBy('Date').snapshots()
+    return chatCollection.where("chatId",isEqualTo: chatId).orderBy('Date',descending: false).snapshots()
         as Stream<QuerySnapshot<Map<String, dynamic>>>;
   }
 
@@ -17,7 +19,7 @@ class InboxViewModel extends BaseViewModel {
         await firestore.collection('users').doc(userId).get();
     return userDoc.data()?['name'] ?? '';
   }
-   
+
   final TextEditingController SMScontroller = TextEditingController();
 
   void SentSMS(chatId, context) async {
@@ -31,18 +33,17 @@ class InboxViewModel extends BaseViewModel {
         await firestore.collection('chats').doc().set({
           "chatId": chatId,
           "SMS": SMS,
-          "Date": "${DateTime.now().minute}",
+          "Date": "${DateTime.now().microsecondsSinceEpoch}",
           "status": "seen",
           "type": "text",
-                    "UID":firestore.collection("uID").doc("uID").toString()
-
+          "UID": loginService.UserData.uID,
         });
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Sending....'),
-          ),
-        );
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   const SnackBar(
+        //     content: Text('Sending....'),
+        //   ),
+        // );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
