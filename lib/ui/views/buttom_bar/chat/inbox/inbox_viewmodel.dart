@@ -10,8 +10,10 @@ class InboxViewModel extends BaseViewModel {
   Stream<QuerySnapshot<Map<String, dynamic>>> getMessagesStream(String chatId) {
     CollectionReference chatCollection = firestore.collection('chats');
 
-    return chatCollection.where("chatId",isEqualTo: chatId).orderBy('Date',descending: false).snapshots()
-        as Stream<QuerySnapshot<Map<String, dynamic>>>;
+    return chatCollection
+        .where("chatId", isEqualTo: chatId)
+        .orderBy('Date', descending: false)
+        .snapshots() as Stream<QuerySnapshot<Map<String, dynamic>>>;
   }
 
   Future<String> fetchUserName(String userId) async {

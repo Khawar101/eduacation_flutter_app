@@ -119,8 +119,7 @@ class ChatsView extends StackedView<ChatsViewModel> {
 
                           return GestureDetector(
                             onTap: () {
-                              viewModel.navigateinbox(data['UID']
-                              .toString());
+                              viewModel.navigateinbox(data);                          
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(bottom: 10),

@@ -1,5 +1,4 @@
 // ignore_for_file: must_be_immutable
-
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,8 @@ import 'inbox_viewmodel.dart';
 
 class InboxView extends StackedView<InboxViewModel> {
   String chatId;
-  InboxView({Key? key, required this.chatId}) : super(key: key);
+  final otherData;
+  InboxView( {Key? key, required this.chatId,required this.otherData,}) : super(key: key);
 
   @override
   Widget builder(
@@ -18,6 +18,7 @@ class InboxView extends StackedView<InboxViewModel> {
     InboxViewModel viewModel,
     Widget? child,
   ) {
+   
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -33,31 +34,14 @@ class InboxView extends StackedView<InboxViewModel> {
             size: 18,
           ),
         ),
-        title: FutureBuilder<String>(
-          future: viewModel.fetchUserName(
-              chatId), // Replace userId with the actual user's ID
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator(); // Show loading indicator while fetching name
-            } else if (snapshot.hasError) {
-              return const Text('Error fetching user name');
-            } else if (!snapshot.hasData) {
-              return const Text('No user name available');
-            }
-            return Text(
-              snapshot.data!,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-            );
-          },
+        title: Text(
+               otherData["username"].toString(),
+               style: GoogleFonts.ibmPlexSans(
+              fontSize: 18,
+              color: const Color(0xff4873a6).withOpacity(0.7),
+              fontWeight: FontWeight.w600),
+            
         ),
-        // Text(
-        //   viewModel.,
-        //   textAlign: TextAlign.center,
-        //   style: GoogleFonts.ibmPlexSans(
-        //       fontSize: 18,
-        //       color: const Color(0xff4873a6).withOpacity(0.7),
-        //       fontWeight: FontWeight.w600),
-        // ),
         centerTitle: true,
       ),
       body: Column(

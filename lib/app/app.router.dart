@@ -430,8 +430,8 @@ class StackedRouter extends _i1.RouterBase {
     _i11.InboxView: (data) {
       final args = data.getArgs<InboxViewArguments>(nullOk: false);
       return _i43.MaterialPageRoute<dynamic>(
-        builder: (context) =>
-            _i11.InboxView(key: args.key, chatId: args.chatId),
+        builder: (context) => _i11.InboxView(
+            key: args.key, chatId: args.chatId, otherData: args.otherData),
         settings: data,
       );
     },
@@ -646,26 +646,31 @@ class InboxViewArguments {
   const InboxViewArguments({
     this.key,
     required this.chatId,
+    required this.otherData,
   });
 
   final _i43.Key? key;
 
   final String chatId;
 
+  final dynamic otherData;
+
   @override
   String toString() {
-    return '{"key": "$key", "chatId": "$chatId"}';
+    return '{"key": "$key", "chatId": "$chatId", "otherData": "$otherData"}';
   }
 
   @override
   bool operator ==(covariant InboxViewArguments other) {
     if (identical(this, other)) return true;
-    return other.key == key && other.chatId == chatId;
+    return other.key == key &&
+        other.chatId == chatId &&
+        other.otherData == otherData;
   }
 
   @override
   int get hashCode {
-    return key.hashCode ^ chatId.hashCode;
+    return key.hashCode ^ chatId.hashCode ^ otherData.hashCode;
   }
 }
 
@@ -929,6 +934,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
   Future<dynamic> navigateToInboxView({
     _i43.Key? key,
     required String chatId,
+    required dynamic otherData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -936,7 +942,8 @@ extension NavigatorStateExtension on _i46.NavigationService {
         transition,
   }) async {
     return navigateTo<dynamic>(Routes.inboxView,
-        arguments: InboxViewArguments(key: key, chatId: chatId),
+        arguments:
+            InboxViewArguments(key: key, chatId: chatId, otherData: otherData),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1528,6 +1535,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
   Future<dynamic> replaceWithInboxView({
     _i43.Key? key,
     required String chatId,
+    required dynamic otherData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1535,7 +1543,8 @@ extension NavigatorStateExtension on _i46.NavigationService {
         transition,
   }) async {
     return replaceWith<dynamic>(Routes.inboxView,
-        arguments: InboxViewArguments(key: key, chatId: chatId),
+        arguments:
+            InboxViewArguments(key: key, chatId: chatId, otherData: otherData),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

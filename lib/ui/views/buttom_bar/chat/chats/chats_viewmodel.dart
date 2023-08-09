@@ -14,10 +14,10 @@ class ChatsViewModel extends BaseViewModel {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 
-  navigateinbox(String otheruID) {
+  navigateinbox( otherData) {
     var currentuID = loginService.UserData.uID.toString();
-    List<String> chatID = [currentuID, otheruID]..sort();
-    _navigationService.navigateToInboxView(chatId: chatID.join('_'));
+    List<String> chatID = [currentuID, otherData['UID']]..sort();
+    _navigationService.navigateToInboxView(chatId: chatID.join('_'), otherData: otherData);
   }
 
   navigateEditProfile(userData data) async {
