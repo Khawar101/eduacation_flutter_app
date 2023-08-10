@@ -5,7 +5,6 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../../../../app/app.locator.dart';
 import '../../../../../services/Model/userData.dart';
 import '../../../../../services/login_service.dart';
-import 'package:intl/intl.dart';
 
 
 class ChatsViewModel extends BaseViewModel {

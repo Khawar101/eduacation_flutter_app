@@ -195,11 +195,6 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                                     color: Colors.black54,
                                                   ),
                                                 ),
-                                                // const CustomText(
-                                                //     text: 'Subject name',
-                                                //     size: 12,
-                                                //     fontWeight: FontWeight.w500,
-                                                //     color: Colors.black54)
                                               ],
                                             ),
                                           ],
@@ -213,7 +208,6 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                                     .fromMicrosecondsSinceEpoch(
                                                         int.parse(lastMessage[
                                                             "Date"]))),
-                                                //  '23/9/2023',
                                                 size: 10,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black54)
