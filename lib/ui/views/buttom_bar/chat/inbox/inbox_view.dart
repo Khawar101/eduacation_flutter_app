@@ -107,6 +107,8 @@ class InboxView extends StackedView<InboxViewModel> {
                       hintText: 'Type your message...',
                       border: InputBorder.none,
                     ),
+                    maxLines: 5,
+                    minLines: 1,
                   ),
                 ),
                 IconButton(
