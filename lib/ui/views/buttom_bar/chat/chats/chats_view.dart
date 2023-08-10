@@ -6,6 +6,7 @@ import '../../../../widgets/app_utils.dart';
 import '../../../../widgets/custom_text_form_field.dart';
 import '../../../drawer/drawer_view.dart';
 import 'chats_viewmodel.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class ChatsView extends StackedView<ChatsViewModel> {
   const ChatsView({Key? key}) : super(key: key);
@@ -120,65 +121,65 @@ class ChatsView extends StackedView<ChatsViewModel> {
                             onTap: () {
                               viewModel.navigateinbox(data);
                             },
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 22,
-                                        backgroundColor: Colors.red,
-                                        backgroundImage: NetworkImage(
-                                            data["profile"].toString()),
-                                        // AssetImage('assets/images/tree.jpg'),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.5,
-                                            child: CustomText(
-                                                text:
-                                                    data["username"].toString(),
-                                                size: 14,
-                                                maxLines: 1,
-                                                textOverflow:
-                                                    TextOverflow.ellipsis,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.black),
-                                          ),
-                                          const SizedBox(height: 4),
-                                          StreamBuilder<QuerySnapshot>(
-                                            stream: viewModel
-                                                .getLastMessageStream(viewModel
-                                                    .chatId(data["UID"])),
-                                            builder: (BuildContext context,
-                                                AsyncSnapshot<QuerySnapshot>
-                                                    messageSnapshot) {
-                                              if (messageSnapshot.hasError ||
-                                                  messageSnapshot
-                                                          .connectionState ==
-                                                      ConnectionState.waiting) {
-                                                return const SizedBox();
-                                              }
-                                              var messages =
-                                                  messageSnapshot.data!.docs;
-                                              if (messages.isNotEmpty) {
-                                                var lastMessage = messages.last;
-                                                return SizedBox(
+                            child: StreamBuilder<QuerySnapshot>(
+                              stream: viewModel.getLastMessageStream(
+                                  viewModel.chatId(data["UID"])),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<QuerySnapshot>
+                                      messageSnapshot) {
+                                if (messageSnapshot.hasError ||
+                                    messageSnapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                  return const SizedBox();
+                                }
+                                var messages = messageSnapshot.data!.docs;
+                                if (messages.isNotEmpty) {
+                                  var lastMessage = messages.last;
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 22,
+                                              backgroundColor: Colors.red,
+                                              backgroundImage: NetworkImage(
+                                                  data["profile"].toString()),
+                                              // AssetImage('assets/images/tree.jpg'),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                SizedBox(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.5,
+                                                  child: CustomText(
+                                                      text: data["username"]
+                                                          .toString(),
+                                                      size: 14,
+                                                      maxLines: 1,
+                                                      textOverflow:
+                                                          TextOverflow.ellipsis,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.black),
+                                                ),
+                                                const SizedBox(height: 4),
+                                                SizedBox(
                                                   width: MediaQuery.of(context)
                                                           .size
                                                           .width *
@@ -193,33 +194,38 @@ class ChatsView extends StackedView<ChatsViewModel> {
                                                     fontWeight: FontWeight.w500,
                                                     color: Colors.black54,
                                                   ),
-                                                );
-                                              } else {
-                                                return const SizedBox();
-                                              }
-                                            },
-                                          ),
-                                          // const CustomText(
-                                          //     text: 'Subject name',
-                                          //     size: 12,
-                                          //     fontWeight: FontWeight.w500,
-                                          //     color: Colors.black54)
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      CustomText(
-                                          text: '23/9/2023',
-                                          size: 10,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black54)
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                                ),
+                                                // const CustomText(
+                                                //     text: 'Subject name',
+                                                //     size: 12,
+                                                //     fontWeight: FontWeight.w500,
+                                                //     color: Colors.black54)
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            CustomText(
+                                                text: timeago.format(DateTime
+                                                    .fromMicrosecondsSinceEpoch(
+                                                        int.parse(lastMessage[
+                                                            "Date"]))),
+                                                //  '23/9/2023',
+                                                size: 10,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black54)
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } else {
+                                  return const SizedBox();
+                                }
+                              },
                             ),
                           );
                         });
