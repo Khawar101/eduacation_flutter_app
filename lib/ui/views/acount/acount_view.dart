@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../widgets/app_utils.dart';
 import 'acount_viewmodel.dart';
 
@@ -15,7 +14,6 @@ class AcountView extends StackedView<AcountViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      // backgroundColor: const Color(0xffe5f1f8),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -95,7 +93,6 @@ class AcountView extends StackedView<AcountViewModel> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
               Container(
                 height: 40,
-                //     width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xFF4873A6).withOpacity(0.7),
