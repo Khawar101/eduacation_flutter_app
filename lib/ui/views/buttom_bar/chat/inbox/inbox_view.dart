@@ -1,5 +1,4 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
-
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
