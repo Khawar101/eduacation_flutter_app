@@ -8,11 +8,11 @@ import 'package:stacked/stacked.dart';
 import '../../../../../widgets/app_utils.dart';
 import '../../coursedetail_viewmodel.dart';
 
-class contant extends ViewModelWidget<CoursedetailViewModel> {
+class Contant extends ViewModelWidget<CoursedetailViewModel> {
   final CoursesModel courseData;
   final ReportModel _reportData;
 
-  const contant(
+  const Contant(
     this.courseData,
     this._reportData, {
     super.key,
