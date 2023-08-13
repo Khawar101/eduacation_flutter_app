@@ -3,7 +3,6 @@ import 'package:education/ui/views/coursespage/coursedetail/coursedetail_viewmod
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../../../../widgets/app_utils.dart';
 
 Widget feedback(context, CoursesModel courseData) {

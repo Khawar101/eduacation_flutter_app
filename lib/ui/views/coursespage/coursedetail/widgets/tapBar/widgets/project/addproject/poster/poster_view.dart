@@ -56,7 +56,6 @@ class PosterView extends StackedView<PosterViewModel> {
                 children: [
                   const CircleAvatar(
                     radius: 20,
-                    //  backgroundColor: Colors.black,
                     backgroundImage:
                         AssetImage('assets/images/profile-pic.jpg'),
                   ),
