@@ -2,7 +2,6 @@ import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-
 import 'addcomment_viewmodel.dart';
 
 class AddcommentView extends StackedView<AddcommentViewModel> {
@@ -74,7 +73,6 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                           children: [
                             const CircleAvatar(
                               radius: 20,
-                              //  backgroundColor: Colors.black,
                               backgroundImage:
                                   AssetImage('assets/images/profile-pic.jpg'),
                             ),
@@ -117,7 +115,6 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                             ),
                           ],
                         ),
-                        //   SizedBox(height: MediaQuery.of(context).size.height*0.02),
                         Padding(
                           padding: EdgeInsets.only(
                               left: MediaQuery.of(context).size.width * 0.17,

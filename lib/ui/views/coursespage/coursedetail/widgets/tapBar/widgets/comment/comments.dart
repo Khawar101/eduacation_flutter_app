@@ -4,7 +4,6 @@ import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widge
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../../../../../widgets/app_utils.dart';
 
 Widget comments(context) {
