@@ -193,6 +193,6 @@ class Contant extends ViewModelWidget<CoursedetailViewModel> {
               );
             })
       ],
-    ); // SECOND ITEM
+    ); 
   }
 }
