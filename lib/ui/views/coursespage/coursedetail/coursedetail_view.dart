@@ -194,7 +194,7 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                   ),
                                   viewModel.tabPage == 0
                                       ? overview(context, courseData)
-                                      : contant(courseData, _reportData)
+                                      : Contant(courseData, _reportData)
                                 ],
                               ),
                             ),
