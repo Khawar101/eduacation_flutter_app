@@ -1,14 +1,19 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../../app/app.locator.dart';
 
-class InboxViewModel extends BaseViewModel {
+class InboxViewModel extends BaseViewModel  with WidgetsBindingObserver{
   final TextEditingController smsController = TextEditingController();
   bool isTextEmpty = true;
   void initState() {
     smsController.addListener(updateTextStatus);
+    WidgetsBinding.instance.addObserver(this);
+    setOnlineStatus("online");
+  
     notifyListeners();
   }
 
@@ -96,4 +101,44 @@ class InboxViewModel extends BaseViewModel {
   //     }
   //   }
   // }
+
+  
+
+  void setOnlineStatus(String status)async{
+  // final userDoc = firestore.collection('chats').doc(loginService.UserData.uID);
+  await  firestore.collection('users').doc(loginService.UserData.uID).update({
+  "status":status
+  }
+);notifyListeners();}
+
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        log('On Resume');
+        setOnlineStatus("online");
+        break;
+      case AppLifecycleState.inactive:
+        log('On inactive');
+         setOnlineStatus("offline");
+        break;
+      case AppLifecycleState.paused:
+        log('On paused');
+           setOnlineStatus("offline");
+        break;
+      case AppLifecycleState.detached:
+        log('On detached');
+           setOnlineStatus("offline");
+        break;
+      case AppLifecycleState.hidden:
+        log('On hidden');   setOnlineStatus("offline");
+        break;
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 }
