@@ -129,10 +129,7 @@ class EBookView extends StackedView<EBookViewModel> {
                       ],
                     ),
                     body: const TabBarView(
-                      children: [
-                        TrendingNew(),
-                        Paginations()
-                      ],
+                      children: [TrendingNew(), Paginations()],
                     ),
                   ),
                 ),

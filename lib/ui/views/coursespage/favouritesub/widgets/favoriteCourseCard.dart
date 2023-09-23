@@ -11,7 +11,6 @@ class FavoriteCourseCard extends StackedView<FavouritesubViewModel> {
   const FavoriteCourseCard(this.courseData, {Key? key}) : super(key: key);
   @override
   void onViewModelReady(FavouritesubViewModel viewModel) {
-   
     viewModel.viewModelReady();
   }
 
@@ -29,7 +28,7 @@ class FavoriteCourseCard extends StackedView<FavouritesubViewModel> {
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: [           
+            children: [
               Image.network(
                 courseData.coverPic.toString(),
                 fit: BoxFit.cover,

@@ -124,7 +124,6 @@ class AddcommentView extends StackedView<AddcommentViewModel> {
                             style: GoogleFonts.ibmPlexSans(),
                           ),
                         ),
-
                         Padding(
                           padding: EdgeInsets.only(
                               left: MediaQuery.of(context).size.width * 0.17,

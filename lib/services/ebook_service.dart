@@ -13,6 +13,7 @@ class EbookService {
   Stream publisherStream(uID) {
     return FirebaseFirestore.instance.collection("users").doc(uID).snapshots();
   }
+
   Stream<List<EbookModel>> buyEbookStream(eBookKey) {
     final stream = FirebaseFirestore.instance
         .collection("E Books")

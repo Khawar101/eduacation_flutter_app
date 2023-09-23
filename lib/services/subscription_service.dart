@@ -52,14 +52,14 @@ class SubscriptionService {
     }
   }
 
-buyEbook(EbookModel eBookData) async {
+  buyEbook(EbookModel eBookData) async {
     userData _userData = _loginService.UserData;
     List eBookList = _userData.buyEBooks ?? [];
     try {
       String key = "${_userData.uID}${eBookData.publishDate}";
       eBookList.add(eBookData.publishDate);
       log(eBookList.toString());
-      var eBookStudents = eBookData.students!+1;
+      var eBookStudents = eBookData.students! + 1;
       await firestore.collection("users").doc(_userData.uID).update({
         "buyEBooks": eBookList,
       });

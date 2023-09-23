@@ -64,8 +64,7 @@ class CategoriesView extends StackedView<CategoriesViewModel> {
                 size: 18,
               ),
               suffix: IconButton(
-                onPressed: () {
-                },
+                onPressed: () {},
                 icon: const Icon(Icons.highlight_off),
               ),
             ),

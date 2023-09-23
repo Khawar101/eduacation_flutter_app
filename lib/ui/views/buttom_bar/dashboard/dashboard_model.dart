@@ -22,7 +22,6 @@ class DashboardViewModel extends BaseViewModel {
         minY: 0,
       );
 
-
   LineChartData get sampleData2 => LineChartData(
         lineTouchData: lineTouchData2,
         gridData: gridData,

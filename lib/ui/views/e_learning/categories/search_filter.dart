@@ -45,7 +45,7 @@ class SearchFilter extends StackedView<CategoriesViewModel> {
                           },
                           child: Image.asset('assets/icons/multiply-48.png',
                               width: 16)),
-                       Expanded(
+                      Expanded(
                         child: Center(
                             child: CustomText(
                                 text: 'Search Filter',

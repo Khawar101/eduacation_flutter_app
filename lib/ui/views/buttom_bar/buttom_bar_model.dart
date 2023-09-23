@@ -11,9 +11,9 @@ import 'profile/profile_view.dart';
 class ButtomBarViewModel extends BaseViewModel {
   List<Widget> views = [
     const DashboardView(),
-    const LessonsScreenView(), 
+    const LessonsScreenView(),
     const ChatsView(),
-    const StudentInformationView(), 
+    const StudentInformationView(),
     const ProfileView(),
   ];
 

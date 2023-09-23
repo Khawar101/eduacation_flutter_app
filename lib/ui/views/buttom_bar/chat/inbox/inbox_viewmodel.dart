@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../../app/app.locator.dart';
 
-class InboxViewModel extends BaseViewModel  with WidgetsBindingObserver{
+class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   final TextEditingController smsController = TextEditingController();
   bool isTextEmpty = true;
   void initState() {
     smsController.addListener(updateTextStatus);
     WidgetsBinding.instance.addObserver(this);
     setOnlineStatus("online");
-  
+
     notifyListeners();
   }
 
@@ -102,14 +102,14 @@ class InboxViewModel extends BaseViewModel  with WidgetsBindingObserver{
   //   }
   // }
 
-  
-
-  void setOnlineStatus(String status)async{
-  // final userDoc = firestore.collection('chats').doc(loginService.UserData.uID);
-  await  firestore.collection('users').doc(loginService.UserData.uID).update({
-  "status":status
+  void setOnlineStatus(String status) async {
+    // final userDoc = firestore.collection('chats').doc(loginService.UserData.uID);
+    await firestore
+        .collection('users')
+        .doc(loginService.UserData.uID)
+        .update({"status": status});
+    notifyListeners();
   }
-);notifyListeners();}
 
   @override
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
@@ -120,18 +120,19 @@ class InboxViewModel extends BaseViewModel  with WidgetsBindingObserver{
         break;
       case AppLifecycleState.inactive:
         log('On inactive');
-         setOnlineStatus("offline");
+        setOnlineStatus("offline");
         break;
       case AppLifecycleState.paused:
         log('On paused');
-           setOnlineStatus("offline");
+        setOnlineStatus("offline");
         break;
       case AppLifecycleState.detached:
         log('On detached');
-           setOnlineStatus("offline");
+        setOnlineStatus("offline");
         break;
       case AppLifecycleState.hidden:
-        log('On hidden');   setOnlineStatus("offline");
+        log('On hidden');
+        setOnlineStatus("offline");
         break;
     }
   }

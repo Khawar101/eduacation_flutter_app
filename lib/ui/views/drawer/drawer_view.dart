@@ -14,7 +14,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
     Widget? child,
   ) {
     final width = MediaQuery.of(context).size.width;
-     final height = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
     return Drawer(
       elevation: 0,
       shape: const RoundedRectangleBorder(
@@ -26,7 +26,7 @@ class DrawerView extends StackedView<DrawerViewModel> {
       child: Column(
         children: [
           SizedBox(
-            height: height *0.25,
+            height: height * 0.25,
             child: Center(
               child: DrawerHeader(
                 decoration: BoxDecoration(

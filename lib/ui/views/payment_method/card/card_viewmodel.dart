@@ -15,6 +15,7 @@ class CardViewModel extends BaseViewModel {
       isScrollControlled: true,
     );
   }
+
   //  StreamController<ErrorAnimationType> errorController = StreamController<ErrorAnimationType>();
   String text = '';
   String cardNumber = '';

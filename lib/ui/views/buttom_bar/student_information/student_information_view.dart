@@ -16,7 +16,7 @@ class StudentInformationView extends StatefulWidget {
 class _StudentInformationViewState extends State<StudentInformationView>
     with TickerProviderStateMixin {
   late TabController tabController;
- 
+
   int _currentIndex = 0;
   @override
   void initState() {

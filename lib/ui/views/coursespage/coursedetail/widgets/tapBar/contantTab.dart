@@ -27,7 +27,7 @@ class Contant extends ViewModelWidget<CoursedetailViewModel> {
 //     CoursedetailViewModel viewModel, ReportModel _reportData) {
     return Column(
       children: [
-         const SizedBox(height: 10),
+        const SizedBox(height: 10),
         ListView.builder(
             shrinkWrap: true,
             itemCount: courseData.lecture!.length,
@@ -193,6 +193,6 @@ class Contant extends ViewModelWidget<CoursedetailViewModel> {
               );
             })
       ],
-    ); 
+    );
   }
 }
