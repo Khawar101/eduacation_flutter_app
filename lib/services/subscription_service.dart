@@ -1,11 +1,9 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/reportModel.dart';
 import 'package:education/services/Model/userData.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../app/app.locator.dart';
 import 'Model/EbookModel.dart';
 import 'login_service.dart';
