@@ -40,7 +40,7 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => SignupService());
   locator.registerLazySingleton(() => LoginService());
   locator.registerLazySingleton(() => ProfileService());
-  locator.registerLazySingleton(() => ChatsService());
+  locator.registerLazySingleton(() => ChatService());
   locator.registerLazySingleton(() => ForgetpasswordService());
   locator.registerLazySingleton(() => SettingService());
   locator.registerLazySingleton(() => CoursesService());

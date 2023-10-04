@@ -113,7 +113,7 @@ import 'package:education/services/ebook_service.dart';
     LazySingleton(classType: SignupService),
     LazySingleton(classType: LoginService),
     LazySingleton(classType: ProfileService),
-    LazySingleton(classType: ChatsService),
+    LazySingleton(classType: ChatService),
     LazySingleton(classType: ForgetpasswordService),
     LazySingleton(classType: SettingService),
     LazySingleton(classType: CoursesService),

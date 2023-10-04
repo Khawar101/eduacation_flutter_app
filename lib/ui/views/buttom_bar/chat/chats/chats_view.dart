@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/services/Model/chat_member.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -9,7 +10,8 @@ import 'chats_viewmodel.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class ChatsView extends StackedView<ChatsViewModel> {
-  const ChatsView({Key? key}) : super(key: key);
+  final List<ChatMember> data;
+   const ChatsView( {Key? key,required this.data}) : super(key: key);
 
   @override
   Widget builder(
