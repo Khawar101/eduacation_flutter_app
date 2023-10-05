@@ -1,5 +1,4 @@
 // ignore_for_file: unused_local_variable, prefer_typing_uninitialized_variables, non_constant_identifier_names, unrelated_type_equality_checks
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'Model/userData.dart';
@@ -12,11 +11,11 @@ class LoginService {
   // String number = numberCTRL.text.trim();
 
   // FlutterSecureStorage storage = const FlutterSecureStorage();
-
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   logins(emailCTRL, passwordCTRL) async {
     final UserCredential user;
-    FirebaseAuth auth = FirebaseAuth.instance;
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
     final String useremail = emailCTRL.text.trim();
     final String userpassword = passwordCTRL.text;
     try {
@@ -41,6 +40,7 @@ class LoginService {
           phoneNo: data["phoneNo"],
           address: data["address"],
           clas: data["clas"],
+          status: data["status"],
           educationSector: data["educationSector"],
           // socialLinks: data["socialLinks"],
           buyCourses: data["buyCourses"],
@@ -74,6 +74,7 @@ class LoginService {
       phoneNo: data["phoneNo"],
       address: data["address"],
       clas: data["clas"],
+      status: data["status"],
       educationSector: data["educationSector"],
       // socialLinks: data["socialLinks"],
       buyCourses: data["buyCourses"],
@@ -117,5 +118,13 @@ class LoginService {
     }
 
     return profile_complete;
+  }
+
+  void setOnlineStatus(bool status) async {
+    // final userDoc = firestore.collection('chats').doc(loginService.UserData.uID);
+    await firestore
+        .collection('users')
+        .doc(UserData.uID)
+        .update({"status": status});
   }
 }

@@ -1,20 +1,37 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/services/Model/chat.dart';
+import 'package:education/services/chats_service.dart';
 import 'package:education/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../../app/app.locator.dart';
+import '../../../../../services/Model/chat_member.dart';
 
 class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   final TextEditingController smsController = TextEditingController();
   bool isTextEmpty = true;
+  List<ChatMember> chatMembers = [];
+  final _chatService = locator<ChatService>();
+  final _loginService = locator<LoginService>();
+
   void initState() {
     smsController.addListener(updateTextStatus);
     WidgetsBinding.instance.addObserver(this);
-    setOnlineStatus("online");
+    _loginService.setOnlineStatus(true);
+    _startChatRoomsStream();
 
     notifyListeners();
+  }
+
+  void _startChatRoomsStream() {
+    setBusy(true);
+    _chatService.getChatRoomsStream().listen((List<ChatMember> event) {
+      chatMembers = event;
+      setBusy(false);
+      notifyListeners();
+    });
   }
 
   void updateTextStatus() {
@@ -24,91 +41,26 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
 
   final loginService = locator<LoginService>();
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  Stream<QuerySnapshot<Map<String, dynamic>>> getMessagesStream(String chatId) {
-    CollectionReference chatCollection = firestore.collection('chats');
 
-    return chatCollection
-        .where("chatId", isEqualTo: chatId)
-        .orderBy('Date', descending: true)
-        .snapshots() as Stream<QuerySnapshot<Map<String, dynamic>>>;
-  }
-
-  Future<String> fetchUserName(String userId) async {
-    DocumentSnapshot<Map<String, dynamic>> userDoc =
-        await firestore.collection('users').doc(userId).get();
-    return userDoc.data()?['name'] ?? '';
-  }
-
-  void sentSMS(chatId, context) async {
-    // String mergeuid = uid_merge(widget.UserData['UID'], widget.UID).toString();
-    // print("objectobjectobjectobjectobjectobjectobjectobjectobject");
-    String sms = smsController.text;
-    try {
-      if (sms != "") {
-        smsController.clear();
-        FirebaseFirestore firestore = FirebaseFirestore.instance;
-        await firestore.collection('chats').doc().set({
-          "chatId": chatId,
-          "SMS": sms,
-          "Date": "${DateTime.now().microsecondsSinceEpoch}",
-          "status": "seen",
-          "type": "text",
-          "UID": loginService.UserData.uID,
-        });
-
-        // ScaffoldMessenger.of(context).showSnackBar(
-        //   const SnackBar(
-        //     content: Text('Sending....'),
-        //   ),
-        // );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(e.toString()),
-        ),
-      );
-    }
-  }
-
-  // final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
-  //     .collection('chats')
-  //     .doc(mergeuid)
-  //     .collection(mergeuid)
-  //     .orderBy('Date', descending: true)
-  //     // .where('index', isGreaterThan: '3')
-  //     // .limitToLast(2)
-  //     .snapshots();
-
-  // dateFormate() {
-  //   var now = DateTime.now();
-  //   var format = DateFormat('HH:mm a');
-  //   var Dateformat = DateFormat('yyyy-MM-dd');
-  //   var date =
-  //       new DateTime.fromMicrosecondsSinceEpoch(int.parse(data["Date"]) * 1000);
-  //   var diff = date.difference(now).abs();
-  //   var time = '';
-  //   if (diff.inSeconds <= 0 ||
-  //       diff.inSeconds > 0 && diff.inMinutes == 0 ||
-  //       diff.inMinutes > 0 && diff.inHours == 0 ||
-  //       diff.inHours > 0 && diff.inDays == 0) {
-  //     time = format.format(date);
-  //   } else {
-  //     if (diff.inDays < 10) {
-  //       time = diff.inDays.toString() + ' Day Ago';
-  //     } else {
-  //       time = Dateformat.format(date);
-  //     }
-  //   }
-  // }
-
-  void setOnlineStatus(String status) async {
-    // final userDoc = firestore.collection('chats').doc(loginService.UserData.uID);
-    await firestore
-        .collection('users')
-        .doc(loginService.UserData.uID)
-        .update({"status": status});
+  Stream<List<Chat>> chatStream(chatId) {
     notifyListeners();
+    return _chatService.chatStream(chatId);
+  }
+
+  void sendSMS(chatId, name, profile, otherUID) {
+    log(chatId);
+    log(name);
+    log(profile);
+    log(otherUID);
+    log(smsController.text);
+
+    _chatService.sendSMS(chatId, name, profile, otherUID, smsController);
+    notifyListeners();
+  }
+
+  Stream publisherStream(uID) {
+    log("abv========>${uID}");
+    return _chatService.publisherStream(uID);
   }
 
   @override
@@ -116,25 +68,26 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     switch (state) {
       case AppLifecycleState.resumed:
         log('On Resume');
-        setOnlineStatus("online");
+        _loginService.setOnlineStatus(true);
         break;
       case AppLifecycleState.inactive:
         log('On inactive');
-        setOnlineStatus("offline");
+        _loginService.setOnlineStatus(false);
         break;
       case AppLifecycleState.paused:
         log('On paused');
-        setOnlineStatus("offline");
+        _loginService.setOnlineStatus(false);
         break;
       case AppLifecycleState.detached:
         log('On detached');
-        setOnlineStatus("offline");
+        _loginService.setOnlineStatus(false);
         break;
       case AppLifecycleState.hidden:
         log('On hidden');
-        setOnlineStatus("offline");
+        _loginService.setOnlineStatus(false);
         break;
     }
+    notifyListeners();
   }
 
   @override

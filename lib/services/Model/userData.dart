@@ -15,6 +15,7 @@
 //     "postalCode": "",
 //     "bio": "",
 //     "clas": "",
+//     "status": true,
 //     "educationSector": "",
 //     "socialLinks": {
 //         "facebook": "",
@@ -49,6 +50,7 @@ class userData {
   String? postalCode;
   String? bio;
   String? clas;
+  bool? status;
   String? educationSector;
   SocialLinks? socialLinks;
   List<dynamic>? buyCourses;
@@ -72,6 +74,7 @@ class userData {
       this.postalCode,
       this.bio,
       this.clas,
+      this.status,
       this.educationSector,
       this.socialLinks,
       this.buyCourses,
@@ -95,6 +98,7 @@ class userData {
     postalCode = json['postalCode'];
     bio = json['bio'];
     clas = json['clas'];
+    status = json['status'];
     educationSector = json['educationSector'];
     socialLinks = json['socialLinks'] != null
         ? new SocialLinks.fromJson(json['socialLinks'])
@@ -122,6 +126,7 @@ class userData {
     data['postalCode'] = this.postalCode;
     data['bio'] = this.bio;
     data['clas'] = this.clas;
+    data['status'] = this.status;
     data['educationSector'] = this.educationSector;
     if (this.socialLinks != null) {
       data['socialLinks'] = this.socialLinks!.toJson();

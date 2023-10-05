@@ -31,6 +31,7 @@ class CustomTextFormField extends StatelessWidget {
     this.inputFormaters,
     this.initialValue,
     this.textAlign,
+    this.onChanged,
   });
 
   TextAlign? textAlign;
@@ -44,6 +45,8 @@ class CustomTextFormField extends StatelessWidget {
   // WidgetFontStyle? fontStyle;
 
   Alignment? alignment;
+
+  void Function(String)? onChanged;
 
   double? width;
 
@@ -104,6 +107,7 @@ class CustomTextFormField extends StatelessWidget {
       margin: margin,
       child: TextFormField(
         onTap: onTap,
+        onChanged: onChanged,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: controller,
         focusNode: focusNode,

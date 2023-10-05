@@ -51,6 +51,7 @@ class DrawerViewModel extends BaseViewModel {
   removeDataFromSpAndGoToLogin() async {
     _navigationService.back();
     await Store.removeValueAgainstKey('userId');
+    _loginService.setOnlineStatus(false);
     _navigationService.navigateToLoginView();
   }
 

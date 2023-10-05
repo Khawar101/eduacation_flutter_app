@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/userData.dart';
 import 'package:education/services/login_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -37,7 +36,7 @@ class LoginViewModel extends BaseViewModel {
     await Store.saveBool('firstRun', false);
   }
 //  String email = emailCTRL.text.trim();
-//     // String number = numberCTRL.text.trim();
+// String number = numberCTRL.text.trim();
 //     String password = passwordCTRL.text.trim();
 
   TextEditingController emailCTRL =

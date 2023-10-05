@@ -431,7 +431,12 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<InboxViewArguments>(nullOk: false);
       return _i43.MaterialPageRoute<dynamic>(
         builder: (context) => _i11.InboxView(
-            key: args.key, chatId: args.chatId, otherData: args.otherData),
+            key: args.key,
+            chatId: args.chatId,
+            uID: args.uID,
+            name: args.name,
+            profile: args.profile,
+            otherUID: args.otherUID),
         settings: data,
       );
     },
@@ -638,6 +643,7 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   List<_i1.RouteDef> get routes => _routes;
+
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
@@ -646,18 +652,27 @@ class InboxViewArguments {
   const InboxViewArguments({
     this.key,
     required this.chatId,
-    required this.otherData,
+    required this.uID,
+    required this.name,
+    required this.profile,
+    required this.otherUID,
   });
 
   final _i43.Key? key;
 
   final String chatId;
 
-  final dynamic otherData;
+  final String uID;
+
+  final String name;
+
+  final String profile;
+
+  final String otherUID;
 
   @override
   String toString() {
-    return '{"key": "$key", "chatId": "$chatId", "otherData": "$otherData"}';
+    return '{"key": "$key", "chatId": "$chatId", "uID": "$uID", "name": "$name", "profile": "$profile", "otherUID": "$otherUID"}';
   }
 
   @override
@@ -665,12 +680,20 @@ class InboxViewArguments {
     if (identical(this, other)) return true;
     return other.key == key &&
         other.chatId == chatId &&
-        other.otherData == otherData;
+        other.uID == uID &&
+        other.name == name &&
+        other.profile == profile &&
+        other.otherUID == otherUID;
   }
 
   @override
   int get hashCode {
-    return key.hashCode ^ chatId.hashCode ^ otherData.hashCode;
+    return key.hashCode ^
+        chatId.hashCode ^
+        uID.hashCode ^
+        name.hashCode ^
+        profile.hashCode ^
+        otherUID.hashCode;
   }
 }
 
@@ -934,7 +957,10 @@ extension NavigatorStateExtension on _i46.NavigationService {
   Future<dynamic> navigateToInboxView({
     _i43.Key? key,
     required String chatId,
-    required dynamic otherData,
+    required String uID,
+    required String name,
+    required String profile,
+    required String otherUID,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -942,8 +968,13 @@ extension NavigatorStateExtension on _i46.NavigationService {
         transition,
   }) async {
     return navigateTo<dynamic>(Routes.inboxView,
-        arguments:
-            InboxViewArguments(key: key, chatId: chatId, otherData: otherData),
+        arguments: InboxViewArguments(
+            key: key,
+            chatId: chatId,
+            uID: uID,
+            name: name,
+            profile: profile,
+            otherUID: otherUID),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1535,7 +1566,10 @@ extension NavigatorStateExtension on _i46.NavigationService {
   Future<dynamic> replaceWithInboxView({
     _i43.Key? key,
     required String chatId,
-    required dynamic otherData,
+    required String uID,
+    required String name,
+    required String profile,
+    required String otherUID,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1543,8 +1577,13 @@ extension NavigatorStateExtension on _i46.NavigationService {
         transition,
   }) async {
     return replaceWith<dynamic>(Routes.inboxView,
-        arguments:
-            InboxViewArguments(key: key, chatId: chatId, otherData: otherData),
+        arguments: InboxViewArguments(
+            key: key,
+            chatId: chatId,
+            uID: uID,
+            name: name,
+            profile: profile,
+            otherUID: otherUID),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
