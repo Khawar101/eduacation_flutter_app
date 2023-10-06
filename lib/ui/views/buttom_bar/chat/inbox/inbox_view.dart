@@ -1,6 +1,5 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
 import 'dart:developer';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/chat.dart';
 import 'package:education/services/Model/userData.dart';
 import 'package:education/ui/widgets/app_utils.dart';
@@ -16,6 +15,7 @@ class InboxView extends StackedView<InboxViewModel> {
   final String name;
   final String profile;
   final String otherUID;
+  final bool isGroup;
 
   const InboxView(
       {Key? key,
@@ -23,6 +23,7 @@ class InboxView extends StackedView<InboxViewModel> {
       required this.uID,
       required this.name,
       required this.profile,
+      required this.isGroup,
       required this.otherUID})
       : super(key: key);
 
@@ -89,43 +90,94 @@ class InboxView extends StackedView<InboxViewModel> {
                         color: const Color(0xff4873a6).withOpacity(0.7),
                         fontWeight: FontWeight.w600),
                   ),
-                  StreamBuilder<dynamic>(
-                    stream: viewModel.publisherStream(otherUID),
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (snapshot.hasError) {
-                        return const Text('Something went wrong');
-                      }
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container();
-                      }
-                      userData _userData =
-                          userData.fromJson(snapshot.data.data());
-                      return Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: _userData.status ?? false
-                                ? Colors.green
-                                : Colors.grey,
-                            size: 11,
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            // _userData.firstName??"",
-                            _userData.status ?? false
-                                ? "Active now"
-                                : "Offline",
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: const Color(0xff4873a6).withOpacity(0.7),
-                            ),
-                          )
-                        ],
-                      );
-                    },
-                  ),
+                  !isGroup
+                      ? SizedBox(
+                          width: 100,
+                          height: 15,
+                          child: viewModel.memberList.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount: viewModel.memberList.length,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (ctx, index) {
+                                    return InkWell(
+                                      onTap: () {
+                                        viewModel.openNewChat(
+                                            viewModel.memberList[index]);
+                                      },
+                                      child: Text(
+                                          "${viewModel.memberList[index].name}",
+                                          style: GoogleFonts.ibmPlexSans(
+                                              fontSize: 15,
+                                              color: const Color(0xff4873a6)
+                                                  .withOpacity(0.7),
+                                              fontWeight: FontWeight.w600)),
+                                    );
+                                  },
+                                )
+                              : Text(
+                                  "No One Member In This Group Right Know",
+                                  style: GoogleFonts.ibmPlexSans(
+                                      fontSize: 15,
+                                      color: const Color(0xff4873a6)
+                                          .withOpacity(0.7),
+                                      fontWeight: FontWeight.w600),
+                                ),
+                        )
+                      :
+                      // Text(otherUID,style: TextStyle(
+                      //               fontSize: 10,
+                      //               color: const Color(0xff4873a6)
+                      //                   .withOpacity(0.7),
+                      //             ),)
+                      StreamBuilder(
+                          stream: viewModel.publisherStream(otherUID),
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                          log(snapshot.data);
+                            if (snapshot.hasError) {
+                              return const Text('Something went wrong');
+                            }
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Container();
+                            }
+                          log("=======>${snapshot.data}");
+                            userData _userData =
+                                userData.fromJson(snapshot.data.data());
+                            return 
+                             Text(_userData.firstName.toString(),style: TextStyle(
+                                    fontSize: 10,
+                                    color: const Color(0xff4873a6)
+                                        .withOpacity(0.7),
+                                  ),);
+                            //  Row(
+                            //   children: [
+                            //     // Icon(
+                            //     //   Icons.circle,
+                            //     //   color: _userData.status ?? false
+                            //     //       ? Colors.green
+                            //     //       : Colors.grey,
+                            //     //   size: 11,
+                            //     // ),
+                            //     const SizedBox(
+                            //       width: 8,
+                            //     ),
+                            //     Text(
+                            //       _userData.email ?? "",
+                            //       // _userData.status ?? false
+                            //       //     ? "Active now"
+                            //       //     : "Offline",
+                            //       style: TextStyle(
+                            //         fontSize: 10,
+                            //         color: const Color(0xff4873a6)
+                            //             .withOpacity(0.7),
+                            //       ),
+                            //     )
+                            //   ],
+                            // );
+                          },
+                        ),
                 ],
               ),
             ],

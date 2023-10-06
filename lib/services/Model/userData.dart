@@ -23,13 +23,13 @@
 //         "twitter": ""
 //     },
 //     "buyCourses": [
-//         ""
+//     ""
 //     ],
 //     "buyEBooks": [
-//         ""
+// ""
 //     ],
 //     "favoriteCourses": [
-//         ""
+// ""
 //     ]
 // }
 
@@ -101,11 +101,15 @@ class userData {
     status = json['status'];
     educationSector = json['educationSector'];
     socialLinks = json['socialLinks'] != null
-        ? new SocialLinks.fromJson(json['socialLinks'])
+        ?  SocialLinks.fromJson(json['socialLinks'])
         : null;
-    buyCourses = json['buyCourses'].cast<String>();
-    buyEBooks = json['buyEBooks'].cast<String>();
-    favoriteCourses = json['favoriteCourses'].cast<String>();
+    buyCourses =
+        json['buyCourses'] != null ? json['buyCourses'].cast<dynamic>() : null;
+    buyEBooks =
+        json['buyEBooks'] != null ? json['buyEBooks'].cast<dynamic>() : null;
+    favoriteCourses = json['favoriteCourses'] != null
+        ? json['favoriteCourses'].cast<dynamic>()
+        : null;
   }
 
   Map<String, dynamic> toJson() {

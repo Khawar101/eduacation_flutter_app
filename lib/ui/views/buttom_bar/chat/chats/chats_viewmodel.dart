@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../../app/app.locator.dart';
-import '../../../../../services/Model/userData.dart';
 import '../../../../../services/login_service.dart';
 
 class ChatsViewModel extends BaseViewModel {
@@ -66,7 +65,7 @@ class ChatsViewModel extends BaseViewModel {
     navigateinbox();
   }
 
-  Stream<List<Chat>> chatStream() {
+  Stream<List<Chat>> chatStream(chatId) {
     notifyListeners();
     return _chatService.chatStream(chatId);
   }
@@ -108,9 +107,9 @@ class ChatsViewModel extends BaseViewModel {
     return _member;
   }
 
-  Stream publisherStream(uID) {
-    return _chatService.publisherStream(uID);
-  }
+  // Stream publisherStream(uID) {
+  //   return _chatService.publisherStream(uID);
+  // }
 
   cruntUserName(chatMember) {
     Member _member = cruntUserData(chatMember);
@@ -129,7 +128,8 @@ class ChatsViewModel extends BaseViewModel {
         uID: loginService.UserData.uID.toString(),
         name: name,
         profile: profile,
-        otherUID: otherUID);
+        otherUID: otherUID,
+        isGroup: isGroup);
   }
 
   List<ChatMember> _filteredChatMembers = [];

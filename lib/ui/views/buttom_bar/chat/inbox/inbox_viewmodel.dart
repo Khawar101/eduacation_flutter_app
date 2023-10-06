@@ -12,16 +12,24 @@ import '../../../../../services/Model/chat_member.dart';
 class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   final TextEditingController smsController = TextEditingController();
   bool isTextEmpty = true;
+  bool isGroup = false;
+  String chatId = "";
+  String otherUID = "";
+  String name = "";
+  String profile = "";
   List<ChatMember> chatMembers = [];
+  List<Member> memberList = [];
   final _chatService = locator<ChatService>();
   final _loginService = locator<LoginService>();
+  final loginService = locator<LoginService>();
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   void initState() {
     smsController.addListener(updateTextStatus);
     WidgetsBinding.instance.addObserver(this);
     _loginService.setOnlineStatus(true);
     _startChatRoomsStream();
-
+    isGroup=true;
     notifyListeners();
   }
 
@@ -34,16 +42,49 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     });
   }
 
+   openNewChat(Member member) {
+    otherUID = member.uID!.toString();
+    name = member.name ?? "";
+    profile = member.profile ?? "";
+    String currentuID = loginService.UserData.uID.toString();
+    List<String> _chatID = [currentuID, otherUID]..sort();
+    chatId = _chatID.join('_');
+    memberList = [];
+    notifyListeners();
+  }
+  void setChatId(ChatMember chatMember) {
+    String currentuID = loginService.UserData.uID.toString();
+
+    if (chatMember.group == null) {
+      if (chatMember.member![0].uID != currentuID) {
+        openNewChat(chatMember.member![0]);
+      } else {
+        openNewChat(chatMember.member![1]);
+      }
+      isGroup = true;
+    } else {
+      isGroup = false;
+      otherUID = chatMember.group!.key ?? "";
+      chatId = chatMember.group!.key ?? "";
+      name = chatMember.group!.name ?? "";
+      profile = chatMember.group!.profile ?? "";
+      memberList = chatMember.member!
+          .where((member) => member.uID != currentuID)
+          .toList();
+    }
+    notifyListeners();
+  }
+
+  
+
   void updateTextStatus() {
     isTextEmpty = smsController.text.isEmpty;
     notifyListeners();
   }
 
-  final loginService = locator<LoginService>();
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Stream<List<Chat>> chatStream(chatId) {
-    notifyListeners();
+    // notifyListeners();
     return _chatService.chatStream(chatId);
   }
 

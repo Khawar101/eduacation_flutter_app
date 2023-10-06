@@ -436,6 +436,7 @@ class StackedRouter extends _i1.RouterBase {
             uID: args.uID,
             name: args.name,
             profile: args.profile,
+            isGroup: args.isGroup,
             otherUID: args.otherUID),
         settings: data,
       );
@@ -655,6 +656,7 @@ class InboxViewArguments {
     required this.uID,
     required this.name,
     required this.profile,
+    required this.isGroup,
     required this.otherUID,
   });
 
@@ -668,11 +670,13 @@ class InboxViewArguments {
 
   final String profile;
 
+  final bool isGroup;
+
   final String otherUID;
 
   @override
   String toString() {
-    return '{"key": "$key", "chatId": "$chatId", "uID": "$uID", "name": "$name", "profile": "$profile", "otherUID": "$otherUID"}';
+    return '{"key": "$key", "chatId": "$chatId", "uID": "$uID", "name": "$name", "profile": "$profile", "isGroup": "$isGroup", "otherUID": "$otherUID"}';
   }
 
   @override
@@ -683,6 +687,7 @@ class InboxViewArguments {
         other.uID == uID &&
         other.name == name &&
         other.profile == profile &&
+        other.isGroup == isGroup &&
         other.otherUID == otherUID;
   }
 
@@ -693,6 +698,7 @@ class InboxViewArguments {
         uID.hashCode ^
         name.hashCode ^
         profile.hashCode ^
+        isGroup.hashCode ^
         otherUID.hashCode;
   }
 }
@@ -960,6 +966,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
     required String uID,
     required String name,
     required String profile,
+    required bool isGroup,
     required String otherUID,
     int? routerId,
     bool preventDuplicates = true,
@@ -974,6 +981,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
             uID: uID,
             name: name,
             profile: profile,
+            isGroup: isGroup,
             otherUID: otherUID),
         id: routerId,
         preventDuplicates: preventDuplicates,
@@ -1569,6 +1577,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
     required String uID,
     required String name,
     required String profile,
+    required bool isGroup,
     required String otherUID,
     int? routerId,
     bool preventDuplicates = true,
@@ -1583,6 +1592,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
             uID: uID,
             name: name,
             profile: profile,
+            isGroup: isGroup,
             otherUID: otherUID),
         id: routerId,
         preventDuplicates: preventDuplicates,
