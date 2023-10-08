@@ -74,52 +74,8 @@ class ChatsView extends StackedView<ChatsViewModel> {
               },
             ),
             const SizedBox(height: 14),
-            // const ButtonText(text: 'My Groups', color: Colors.black),
-            // const SizedBox(height: 14),
-            // SizedBox(
-            //   child: SizedBox(
-            //     height: 80,
-            //     width: double.infinity,
-            //     child: ListView.builder(
-            //       scrollDirection: Axis.horizontal,
-            //       itemCount: 10, // Replace with your actual item count
-            //       itemBuilder: (context, index) {
-            //         return Padding(
-            //           padding: const EdgeInsets.only(right: 16),
-            //           child: Column(
-            //             children: [
-            //               const CircleAvatar(
-            //                 radius: 20,
-            //                 backgroundColor: Colors.red,
-            //                 backgroundImage:
-            //                     AssetImage('assets/images/tree.jpg'),
-            //               ),
-            //               const SizedBox(height: 3),
-            //               CustomText(
-            //                   text: 'Group Name',
-            //                   size: 12,
-            //                   fontWeight: FontWeight.w600,
-            //                   color: Colors.black),
-            //               const SizedBox(height: 3),
-            //               CustomText(
-            //                   text: 'Description',
-            //                   size: 12,
-            //                   fontWeight: FontWeight.w500,
-            //                   color: Colors.black54)
-            //             ],
-            //           ),
-            //         );
-            //       },
-            //     ),
-            //   ),
-            // ),
-            // const SizedBox(height: 14),
             const ButtonText(text: 'All Chats', color: Colors.black),
             const SizedBox(height: 14),
-
-
-
-
             viewModel.chatMembers.isNotEmpty
                 ? Expanded(
                     child: ListView.builder(

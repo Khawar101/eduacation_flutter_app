@@ -5,8 +5,9 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:education/services/Model/CoursesModel.dart' as _i44;
-import 'package:education/services/Model/EbookModel.dart' as _i45;
+import 'package:education/services/Model/chat_member.dart' as _i44;
+import 'package:education/services/Model/CoursesModel.dart' as _i45;
+import 'package:education/services/Model/EbookModel.dart' as _i46;
 import 'package:education/ui/views/acount/acount_view.dart' as _i26;
 import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
 import 'package:education/ui/views/auth/login/login_view.dart' as _i4;
@@ -71,10 +72,10 @@ import 'package:education/ui/views/teacher/detail/detail_view.dart' as _i23;
 import 'package:education/ui/views/teacher/popular_view.dart' as _i22;
 import 'package:education/ui/views/teacher/sdatetime/sdatetime_view.dart'
     as _i27;
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as _i43;
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i46;
+import 'package:stacked_services/stacked_services.dart' as _i47;
 
 class Routes {
   static const startupView = '/startup-view';
@@ -437,7 +438,8 @@ class StackedRouter extends _i1.RouterBase {
             name: args.name,
             profile: args.profile,
             isGroup: args.isGroup,
-            otherUID: args.otherUID),
+            otherUID: args.otherUID,
+            memberList: args.memberList),
         settings: data,
       );
     },
@@ -658,6 +660,7 @@ class InboxViewArguments {
     required this.profile,
     required this.isGroup,
     required this.otherUID,
+    required this.memberList,
   });
 
   final _i43.Key? key;
@@ -674,9 +677,11 @@ class InboxViewArguments {
 
   final String otherUID;
 
+  final List<_i44.Member> memberList;
+
   @override
   String toString() {
-    return '{"key": "$key", "chatId": "$chatId", "uID": "$uID", "name": "$name", "profile": "$profile", "isGroup": "$isGroup", "otherUID": "$otherUID"}';
+    return '{"key": "$key", "chatId": "$chatId", "uID": "$uID", "name": "$name", "profile": "$profile", "isGroup": "$isGroup", "otherUID": "$otherUID", "memberList": "$memberList"}';
   }
 
   @override
@@ -688,7 +693,8 @@ class InboxViewArguments {
         other.name == name &&
         other.profile == profile &&
         other.isGroup == isGroup &&
-        other.otherUID == otherUID;
+        other.otherUID == otherUID &&
+        other.memberList == memberList;
   }
 
   @override
@@ -699,7 +705,8 @@ class InboxViewArguments {
         name.hashCode ^
         profile.hashCode ^
         isGroup.hashCode ^
-        otherUID.hashCode;
+        otherUID.hashCode ^
+        memberList.hashCode;
   }
 }
 
@@ -760,7 +767,7 @@ class MarketingViewArguments {
 
   final _i43.Key? key;
 
-  final _i44.CoursesModel data;
+  final _i45.CoursesModel data;
 
   @override
   String toString() {
@@ -785,7 +792,7 @@ class CoursedetailViewArguments {
     this.key,
   });
 
-  final _i44.CoursesModel courseData;
+  final _i45.CoursesModel courseData;
 
   final _i43.Key? key;
 
@@ -814,7 +821,7 @@ class BookDetailViewArguments {
 
   final _i43.Key? key;
 
-  final _i45.EbookModel eBookModel;
+  final _i46.EbookModel eBookModel;
 
   @override
   String toString() {
@@ -833,7 +840,7 @@ class BookDetailViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i46.NavigationService {
+extension NavigatorStateExtension on _i47.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -968,6 +975,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
     required String profile,
     required bool isGroup,
     required String otherUID,
+    required List<_i44.Member> memberList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -982,7 +990,8 @@ extension NavigatorStateExtension on _i46.NavigationService {
             name: name,
             profile: profile,
             isGroup: isGroup,
-            otherUID: otherUID),
+            otherUID: otherUID,
+            memberList: memberList),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1046,7 +1055,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
 
   Future<dynamic> navigateToMarketingView({
     _i43.Key? key,
-    required _i44.CoursesModel data,
+    required _i45.CoursesModel data,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1328,7 +1337,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
   }
 
   Future<dynamic> navigateToCoursedetailView({
-    required _i44.CoursesModel courseData,
+    required _i45.CoursesModel courseData,
     _i43.Key? key,
     int? routerId,
     bool preventDuplicates = true,
@@ -1430,7 +1439,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
 
   Future<dynamic> navigateToBookDetailView({
     _i43.Key? key,
-    required _i45.EbookModel eBookModel,
+    required _i46.EbookModel eBookModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1579,6 +1588,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
     required String profile,
     required bool isGroup,
     required String otherUID,
+    required List<_i44.Member> memberList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1593,7 +1603,8 @@ extension NavigatorStateExtension on _i46.NavigationService {
             name: name,
             profile: profile,
             isGroup: isGroup,
-            otherUID: otherUID),
+            otherUID: otherUID,
+            memberList: memberList),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1657,7 +1668,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
 
   Future<dynamic> replaceWithMarketingView({
     _i43.Key? key,
-    required _i44.CoursesModel data,
+    required _i45.CoursesModel data,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1939,7 +1950,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
   }
 
   Future<dynamic> replaceWithCoursedetailView({
-    required _i44.CoursesModel courseData,
+    required _i45.CoursesModel courseData,
     _i43.Key? key,
     int? routerId,
     bool preventDuplicates = true,
@@ -2041,7 +2052,7 @@ extension NavigatorStateExtension on _i46.NavigationService {
 
   Future<dynamic> replaceWithBookDetailView({
     _i43.Key? key,
-    required _i45.EbookModel eBookModel,
+    required _i46.EbookModel eBookModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,

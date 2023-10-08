@@ -62,7 +62,7 @@ class ChatsViewModel extends BaseViewModel {
           .toList();
     }
     notifyListeners();
-    navigateinbox();
+    navigateinbox(chatMember);
   }
 
   Stream<List<Chat>> chatStream(chatId) {
@@ -103,7 +103,7 @@ class ChatsViewModel extends BaseViewModel {
     //   memberList.removeWhere((member) => member.uID == currentuID);
     // }
 
-    notifyListeners();
+    // notifyListeners();
     return _member;
   }
 
@@ -122,14 +122,19 @@ class ChatsViewModel extends BaseViewModel {
     return _member.profile;
   }
 
-  navigateinbox() {
+  navigateinbox(chatMember) {
+     String currentuID = loginService.UserData.uID.toString();
     _navigationService.navigateToInboxView(
         chatId: chatId,
         uID: loginService.UserData.uID.toString(),
         name: name,
         profile: profile,
         otherUID: otherUID,
-        isGroup: isGroup);
+        isGroup: isGroup,
+         memberList:chatMember.member!
+          .where((member) => member.uID != currentuID)
+          .toList(),
+        );
   }
 
   List<ChatMember> _filteredChatMembers = [];

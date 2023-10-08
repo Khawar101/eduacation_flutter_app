@@ -6,6 +6,7 @@ import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
+import '../../../../../services/Model/chat_member.dart';
 import 'MessageBubble.dart';
 import 'inbox_viewmodel.dart';
 
@@ -16,21 +17,24 @@ class InboxView extends StackedView<InboxViewModel> {
   final String profile;
   final String otherUID;
   final bool isGroup;
+  List<Member> memberList;
 
-  const InboxView(
+  InboxView(
       {Key? key,
       required this.chatId,
       required this.uID,
       required this.name,
       required this.profile,
       required this.isGroup,
-      required this.otherUID})
+      required this.otherUID,
+      required this.memberList})
       : super(key: key);
 
   @override
   void onViewModelReady(InboxViewModel viewModel) {
     viewModel.initState();
     super.onViewModelReady(viewModel);
+    viewModel.memberList = memberList;
   }
 
   @override
@@ -92,7 +96,7 @@ class InboxView extends StackedView<InboxViewModel> {
                   ),
                   !isGroup
                       ? SizedBox(
-                          width: 100,
+                          width: 200,
                           height: 15,
                           child: viewModel.memberList.isNotEmpty
                               ? ListView.builder(
@@ -103,7 +107,8 @@ class InboxView extends StackedView<InboxViewModel> {
                                     return InkWell(
                                       onTap: () {
                                         viewModel.openNewChat(
-                                            viewModel.memberList[index]);
+                                            viewModel.memberList[index],
+                                            viewModel.chatMembers[index]);
                                       },
                                       child: Text(
                                           "${viewModel.memberList[index].name}",
@@ -124,17 +129,10 @@ class InboxView extends StackedView<InboxViewModel> {
                                       fontWeight: FontWeight.w600),
                                 ),
                         )
-                      :
-                      // Text(otherUID,style: TextStyle(
-                      //               fontSize: 10,
-                      //               color: const Color(0xff4873a6)
-                      //                   .withOpacity(0.7),
-                      //             ),)
-                      StreamBuilder(
+                      : StreamBuilder(
                           stream: viewModel.publisherStream(otherUID),
                           builder:
                               (BuildContext context, AsyncSnapshot snapshot) {
-                          log(snapshot.data);
                             if (snapshot.hasError) {
                               return const Text('Something went wrong');
                             }
@@ -142,40 +140,39 @@ class InboxView extends StackedView<InboxViewModel> {
                                 ConnectionState.waiting) {
                               return Container();
                             }
-                          log("=======>${snapshot.data}");
-                            userData _userData =
-                                userData.fromJson(snapshot.data.data());
-                            return 
-                             Text(_userData.firstName.toString(),style: TextStyle(
-                                    fontSize: 10,
-                                    color: const Color(0xff4873a6)
-                                        .withOpacity(0.7),
-                                  ),);
-                            //  Row(
-                            //   children: [
-                            //     // Icon(
-                            //     //   Icons.circle,
-                            //     //   color: _userData.status ?? false
-                            //     //       ? Colors.green
-                            //     //       : Colors.grey,
-                            //     //   size: 11,
-                            //     // ),
-                            //     const SizedBox(
-                            //       width: 8,
-                            //     ),
-                            //     Text(
-                            //       _userData.email ?? "",
-                            //       // _userData.status ?? false
-                            //       //     ? "Active now"
-                            //       //     : "Offline",
-                            //       style: TextStyle(
-                            //         fontSize: 10,
-                            //         color: const Color(0xff4873a6)
-                            //             .withOpacity(0.7),
-                            //       ),
-                            //     )
-                            //   ],
-                            // );
+
+                            // Check if snapshot data is not null before using it
+                            if (snapshot.data != null) {
+                              final userData _userData =
+                                  userData.fromJson(snapshot.data.data());
+                              return Row(
+                                children: [
+                                  Icon(
+                                    Icons.circle,
+                                    color: _userData.status ?? false
+                                        ? Colors.green
+                                        : Colors.grey,
+                                    size: 11,
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  Text(
+                                    // _userData.email ?? "",
+                                    _userData.status ?? false
+                                        ? "Active now"
+                                        : "Offline",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: const Color(0xff4873a6)
+                                          .withOpacity(0.7),
+                                    ),
+                                  )
+                                ],
+                              );
+                            } else {
+                              return const Text('No data available');
+                            }
                           },
                         ),
                 ],

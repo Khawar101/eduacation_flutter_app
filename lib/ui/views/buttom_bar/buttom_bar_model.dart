@@ -1,5 +1,4 @@
 // ignore_for_file: non_constant_identifier_names
-import 'package:education/services/Model/chat_member.dart';
 import 'package:education/ui/views/buttom_bar/lessons_screen/lessons_screen_view.dart';
 import 'package:education/ui/views/buttom_bar/student_information/student_information_view.dart';
 import 'package:flutter/material.dart';

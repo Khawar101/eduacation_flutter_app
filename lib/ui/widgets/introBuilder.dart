@@ -7,6 +7,7 @@ import '../../services/Model/CoursesModel.dart';
 import '../../services/Model/userData.dart';
 import '../../services/courses_service.dart';
 import '../../utils/loading.dart';
+import '../common/ui_helpers.dart';
 import 'app_utils.dart';
 
 Widget introBuilder(CoursesModel coursesModel) {
@@ -24,25 +25,42 @@ Widget introBuilder(CoursesModel coursesModel) {
       }
       userData _userData = userData.fromJson(snapshot.data.data());
       return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CircleAvatar(
-            radius: 25,
-            backgroundImage: NetworkImage(_userData.profile.toString()),
-          ),
-          const SizedBox(width: 15),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(_userData.username.toString(),
-                  style: GoogleFonts.ibmPlexSans(
-                      color: Colors.black,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold)),
-              ButtonText(text: _userData.userType!, color: Colors.black45)
+              CircleAvatar(
+                radius: 25,
+                backgroundImage: NetworkImage(_userData.profile.toString()),
+              ),
+              const SizedBox(width: 15),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(_userData.username.toString(),
+                      style: GoogleFonts.ibmPlexSans(
+                          color: Colors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold)),
+                  ButtonText(text: _userData.userType!, color: Colors.black45)
+                ],
+              ),
             ],
           ),
+
+           InkWell(
+                // onTap: coursesModel.joinGroup,
+                child:  Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ButtonText(text: "Join Group", color: Colors.black),
+                    verticalSpaceTiny,
+                    Icon(Icons.chat_outlined, size: 14)
+                  ],
+                ),
+              ),
         ],
       );
     },

@@ -1,16 +1,20 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
 import 'package:education/services/chats_service.dart';
 import 'package:education/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import '../../../../../app/app.locator.dart';
 import '../../../../../services/Model/chat_member.dart';
 
 class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   final TextEditingController smsController = TextEditingController();
+  final navigationService = locator<NavigationService>();
+  final _navigationService = locator<NavigationService>();
   bool isTextEmpty = true;
   bool isGroup = false;
   String chatId = "";
@@ -29,7 +33,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     _loginService.setOnlineStatus(true);
     _startChatRoomsStream();
-    isGroup=true;
+    isGroup = true;
     notifyListeners();
   }
 
@@ -42,7 +46,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     });
   }
 
-   openNewChat(Member member) {
+  openNewChat(Member member,chatMember) {
     otherUID = member.uID!.toString();
     name = member.name ?? "";
     profile = member.profile ?? "";
@@ -50,38 +54,36 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     List<String> _chatID = [currentuID, otherUID]..sort();
     chatId = _chatID.join('_');
     memberList = [];
+
     notifyListeners();
+    navgateBack(chatMember);
   }
-  void setChatId(ChatMember chatMember) {
+
+  navgateBack(chatMember) {
+    _navigationService.back();
+    navigateinbox(chatMember);
+  }
+
+  navigateinbox(chatMember) {
     String currentuID = loginService.UserData.uID.toString();
 
-    if (chatMember.group == null) {
-      if (chatMember.member![0].uID != currentuID) {
-        openNewChat(chatMember.member![0]);
-      } else {
-        openNewChat(chatMember.member![1]);
-      }
-      isGroup = true;
-    } else {
-      isGroup = false;
-      otherUID = chatMember.group!.key ?? "";
-      chatId = chatMember.group!.key ?? "";
-      name = chatMember.group!.name ?? "";
-      profile = chatMember.group!.profile ?? "";
-      memberList = chatMember.member!
+    _navigationService.navigateToInboxView(
+      chatId: chatId,
+      uID: loginService.UserData.uID.toString(),
+      name: name,
+      profile: profile,
+      otherUID: otherUID,
+      isGroup: isGroup,
+      memberList: chatMember.member!
           .where((member) => member.uID != currentuID)
-          .toList();
-    }
-    notifyListeners();
+          .toList(),
+    );
   }
-
-  
 
   void updateTextStatus() {
     isTextEmpty = smsController.text.isEmpty;
     notifyListeners();
   }
-
 
   Stream<List<Chat>> chatStream(chatId) {
     // notifyListeners();
