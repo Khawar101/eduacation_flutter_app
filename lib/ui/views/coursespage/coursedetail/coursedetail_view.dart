@@ -1,3 +1,4 @@
+import 'package:education/ui/common/ui_helpers.dart';
 import 'package:education/ui/views/coursespage/coursedetail/video_player.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/courseintro.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:stacked/stacked.dart';
 import '../../../../services/Model/CoursesModel.dart';
 import '../../../../services/Model/reportModel.dart';
 import '../../../../utils/loading.dart';
+import '../../../widgets/app_utils.dart';
 import '../../../widgets/introBuilder.dart';
 import 'coursedetail_viewmodel.dart';
 import 'widgets/tapBar/contantTab.dart';
@@ -114,9 +116,29 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 16),
-                                  introBuilder(courseData),
+                                  introBuilder(
+                                    courseData,
+                                  ),
                                   const SizedBox(height: 5),
                                   courseintro(context, courseData),
+                                  verticalSpace(6),
+                                  InkWell(
+                                    onTap: () {
+                                      viewModel
+                                          .joinGroup(courseData);
+                                    },
+                                    child: const Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        ButtonText(
+                                            text: "Join Group",
+                                            color: Colors.black),
+                                        horizontalSpaceTiny,
+                                        Icon(Icons.chat_outlined, size: 14)
+                                      ],
+                                    ),
+                                  ),
                                   const SizedBox(height: 20),
                                   Row(
                                     mainAxisAlignment:

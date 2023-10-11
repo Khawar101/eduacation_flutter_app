@@ -36,6 +36,9 @@
 //         }
 //     ]
 // }
+// ignore_for_file: prefer_collection_literals
+
+import 'package:education/services/Model/EbookModel.dart';
 class CoursesModel {
   String? title;
   String? category;
@@ -52,6 +55,7 @@ class CoursesModel {
   String? duration;
   List<Lecture>? lecture;
   List<Assigment>? assigment;
+  PublisherData? publisherData;
 
   CoursesModel(
       {title,
@@ -68,7 +72,11 @@ class CoursesModel {
       price,
       duration,
       lecture,
-      assigment});
+      assigmen,
+      publisherData});
+
+
+
 
   CoursesModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -101,6 +109,9 @@ class CoursesModel {
         assigment!.add(Assigment.fromJson(v));
       });
     }
+    publisherData = json['publisherData'] != null
+        ?  PublisherData.fromJson(json['publisherData'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -126,8 +137,15 @@ class CoursesModel {
     if (assigment != null) {
       data['assigment'] = assigment!.map((v) => v.toJson()).toList();
     }
+    if (publisherData != null) {
+      data['publisherData'] = publisherData!.toJson();
+    }
     return data;
   }
+
+
+  
+
 }
 
 class FAQ {

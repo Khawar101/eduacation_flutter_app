@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
     // home: (FirebaseAuth.instance.currentUser != null) ? HomePage() :LogInScreen(),
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: Theme.of(context).copyWith(
         primaryColor: kcBackgroundColor,

@@ -5,6 +5,7 @@ import 'package:education/services/Model/userData.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../../services/Model/chat_member.dart';
 import 'MessageBubble.dart';
@@ -49,6 +50,7 @@ class InboxView extends StackedView<InboxViewModel> {
     InboxViewModel viewModel,
     Widget? child,
   ) {
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -87,16 +89,20 @@ class InboxView extends StackedView<InboxViewModel> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: GoogleFonts.ibmPlexSans(
-                        fontSize: 15,
-                        color: const Color(0xff4873a6).withOpacity(0.7),
-                        fontWeight: FontWeight.w600),
+                  SizedBox(
+                    width: width * 0.67,
+                    child: Text(
+                      name,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.ibmPlexSans(
+                          fontSize: 15,
+                          color: const Color(0xff4873a6).withOpacity(0.7),
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
                   !isGroup
                       ? SizedBox(
-                          width: 200,
+                          width: width * 0.67,
                           height: 15,
                           child: viewModel.memberList.isNotEmpty
                               ? ListView.builder(
@@ -235,6 +241,42 @@ class InboxView extends StackedView<InboxViewModel> {
                     minLines: 1,
                   ),
                 ),
+                PopupMenuButton<String>(
+                  onSelected: (value) {},
+                  itemBuilder: (BuildContext context) {
+                    return <PopupMenuEntry<String>>[
+                      PopupMenuItem<String>(
+                        value: 'Item 1',
+                        child: const Text('Camera'),
+                        onTap: () {
+                          viewModel.sendImage(chatId, ImageSource.camera);
+                        },
+                      ),
+                      PopupMenuItem<String>(
+                        value: 'Item 2',
+                        child: const Text('Gallery'),
+                        onTap: () {
+                          viewModel.sendImage(chatId, ImageSource.gallery);
+                        },
+                      ),
+                      PopupMenuItem<String>(
+                        value: 'Item 3',
+                        child: const Text('Pdf'),
+                        onTap: () {},
+                      ),
+                      PopupMenuItem<String>(
+                        value: 'Item 4',
+                        child: const Text('Video'),
+                        onTap: () {},
+                      ),
+                    ];
+                  },
+                  child: const IconButton(
+                    onPressed: null,
+                    icon: Icon(Icons.attachment_outlined),
+                  ),
+                ),
+                // const SizedBox(width: 5),
                 IconButton(
                   icon: Icon(
                     Icons.send,

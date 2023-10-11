@@ -2,7 +2,11 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, recursive_getters
 import 'dart:async';
 import 'dart:developer';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/CoursesModel.dart';
+import 'package:education/services/Model/chat_member.dart';
+import 'package:education/services/courses_service.dart';
+import 'package:education/services/login_service.dart';
 import 'package:education/services/subscription_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -270,5 +274,60 @@ class CoursedetailViewModel extends BaseViewModel {
   Future setAllOrientations() async {
     await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     await SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+  }
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final _loginService = locator<LoginService>();
+  joinGroup(CoursesModel courseData) async {
+    try {
+      final DocumentSnapshot<Map<String, dynamic>?> snapshot = await firestore
+          .collection("chatRoom")
+          .doc(courseData.publishDate)
+          .get();
+
+       ChatMember _chatMember =
+          ChatMember.fromJson(snapshot.data() as Map<String, dynamic>);
+      var contain = _chatMember.member!
+          .where((element) => element.uID == _loginService.UserData.uID);
+      if (contain.isEmpty) {
+        Member cruntUser = Member(
+            name: _loginService.UserData.username,
+            uID: _loginService.UserData.uID,
+            profile: _loginService.UserData.profile);
+        _chatMember.member!.add(cruntUser);
+        Map<String, dynamic> messageData = {
+          "SMS": "${_loginService.UserData.username} joined group",
+          "Date": "${DateTime.now().microsecondsSinceEpoch}",
+          "type": "notification",
+          "UID": _loginService.UserData.uID,
+        };
+        _chatMember.membersUid?.add(_loginService.UserData.uID.toString());
+
+        FirebaseFirestore firestore = FirebaseFirestore.instance;
+        await firestore
+            .collection("chatRoom")
+            .doc(courseData.publishDate)
+            .update({
+          "member": _chatMember.member!.map((e) => e.toJson()),
+          "membersUid": _chatMember.membersUid,
+          "lastMessage": messageData
+        });
+
+        await firestore
+            .collection("chatRoom")
+            .doc(courseData.publishDate)
+            .collection('chats')
+            .doc()
+            .set(messageData);
+        notifyListeners();
+      } else {
+        log("Already Joined");
+      }
+   
+    } catch (e) {
+      log("Error: ${e.toString()}");
+    }
+
+
   }
 }

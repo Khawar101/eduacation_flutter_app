@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
@@ -123,18 +122,18 @@ class ChatsViewModel extends BaseViewModel {
   }
 
   navigateinbox(chatMember) {
-     String currentuID = loginService.UserData.uID.toString();
+    String currentuID = loginService.UserData.uID.toString();
     _navigationService.navigateToInboxView(
-        chatId: chatId,
-        uID: loginService.UserData.uID.toString(),
-        name: name,
-        profile: profile,
-        otherUID: otherUID,
-        isGroup: isGroup,
-         memberList:chatMember.member!
+      chatId: chatId,
+      uID: loginService.UserData.uID.toString(),
+      name: name,
+      profile: profile,
+      otherUID: otherUID,
+      isGroup: isGroup,
+      memberList: chatMember.member!
           .where((member) => member.uID != currentuID)
           .toList(),
-        );
+    );
   }
 
   List<ChatMember> _filteredChatMembers = [];

@@ -1,5 +1,10 @@
 // ignore_for_file: file_names
 
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/services/Model/chat_member.dart';
+import 'package:education/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../app/app.locator.dart';
@@ -12,6 +17,7 @@ import 'app_utils.dart';
 
 Widget introBuilder(CoursesModel coursesModel) {
   final coursesService = locator<CoursesService>();
+
 
   return StreamBuilder(
     stream: coursesService.publisherStream(coursesModel.uID),
@@ -50,17 +56,7 @@ Widget introBuilder(CoursesModel coursesModel) {
             ],
           ),
 
-           InkWell(
-                // onTap: coursesModel.joinGroup,
-                child:  Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ButtonText(text: "Join Group", color: Colors.black),
-                    verticalSpaceTiny,
-                    Icon(Icons.chat_outlined, size: 14)
-                  ],
-                ),
-              ),
+         
         ],
       );
     },
