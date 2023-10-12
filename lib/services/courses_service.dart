@@ -27,7 +27,7 @@ class CoursesService {
         }).toList());
   }
 
-    late CoursesModel courseData = CoursesModel(
+  late CoursesModel courseData = CoursesModel(
       uID: _loginService.UserData.uID ?? "UaRZTAS3CYOE79s79cYeSNoANPa2",
       publisherData: PublisherData(
         name: _loginService.UserData.username ?? "Mudassir",

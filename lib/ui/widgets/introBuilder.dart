@@ -18,7 +18,6 @@ import 'app_utils.dart';
 Widget introBuilder(CoursesModel coursesModel) {
   final coursesService = locator<CoursesService>();
 
-
   return StreamBuilder(
     stream: coursesService.publisherStream(coursesModel.uID),
     builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -55,8 +54,6 @@ Widget introBuilder(CoursesModel coursesModel) {
               ),
             ],
           ),
-
-         
         ],
       );
     },

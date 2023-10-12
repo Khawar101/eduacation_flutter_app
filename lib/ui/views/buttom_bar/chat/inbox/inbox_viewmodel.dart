@@ -1,5 +1,5 @@
 // ignore_for_file: body_might_complete_normally_catch_error
-
+import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,14 +7,15 @@ import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
 import 'package:education/services/chats_service.dart';
 import 'package:education/services/login_service.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:video_player/video_player.dart';
+// import 'package:video_player/video_player.dart';
 import '../../../../../app/app.locator.dart';
 import '../../../../../services/Model/chat_member.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
 class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   final TextEditingController smsController = TextEditingController();
@@ -26,7 +27,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   String otherUID = "";
   String name = "";
   String profile = "";
-  
+
   List<ChatMember> chatMembers = [];
   List<Member> memberList = [];
   final _chatService = locator<ChatService>();
@@ -145,57 +146,93 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     super.dispose();
   }
 
-  XFile? image;
-  Future sendImage(chatId, ImageSource source) async {
-    image = await ImagePicker().pickImage(source: source, imageQuality: 35);
-    Reference ref = FirebaseStorage.instance
-        .ref()
-        .child("profile/${DateTime.now().microsecondsSinceEpoch}");
-    UploadTask uploadTask = ref.putFile(File(image!.path));
-    // uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
-    //   double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    //     progressshow = progress;
-    // });
-    uploadTask.whenComplete(() async {
-    String  uRL = await ref.getDownloadURL();
-      Map<String, dynamic> messageData = {
-        "SMS": uRL,
-        "Date": "${DateTime.now().microsecondsSinceEpoch}",
-        "type": "image",
-        "UID": loginService.UserData.uID,
-      };
-      var docRef = firestore.collection("chatRoom").doc(chatId);
-      docRef.get().then((doc) => {
-            if (doc.exists)
-              {
-                docRef.update({"lastMessage": messageData})
-              }
-            else
-              {
-                docRef.set({
-                  "Date": "${DateTime.now().microsecondsSinceEpoch}",
-                  "member": [
-                    {
-                      "name": loginService.UserData.username,
-                      "profile": loginService.UserData.profile,
-                      "UID": loginService.UserData.uID
-                    },
-                    {"name": name, "profile": profile, "UID": otherUID},
-                  ],
-                  "membersUid": [loginService.UserData.uID, otherUID],
-                  "lastMessage": messageData
-                })
-              }
-          });
-      await firestore
-          .collection("chatRoom")
-          .doc(chatId)
-          .collection('chats')
-          .doc()
-          .set(messageData);
-    }).catchError((onError) {
-      log(onError);
-      // snackBar(context, onError.toString());
-    });
+  sendImageWithCamera(source, chatId, name, profile, otherUID) {
+    _chatService.sendImage(chatId, name, profile, otherUID, ImageSource.camera);
+    notifyListeners();
+  }
+
+  sendImageWithGallery(source, chatId, name, profile, otherUID) {
+    _chatService.sendImage(
+        chatId, name, profile, otherUID, ImageSource.gallery);
+    notifyListeners();
+  }
+
+  showPdfFile(chatId, name, profile, otherUID) {
+    _chatService.sendPdf(chatId, name, profile, otherUID);
+    notifyListeners();
+  }
+
+  // XFile? image;
+  // Future sendImage(chatId, ImageSource source) async {
+  //   image = await ImagePicker().pickImage(source: source, imageQuality: 35);
+  //   Reference ref = FirebaseStorage.instance
+  //       .ref()
+  //       .child("profile/${DateTime.now().microsecondsSinceEpoch}");
+  //   UploadTask uploadTask = ref.putFile(File(image!.path));
+  //   // uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
+  //   //   double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //   //     progressshow = progress;
+  //   // });
+  //   uploadTask.whenComplete(() async {
+  //   String  uRL = await ref.getDownloadURL();
+  //     Map<String, dynamic> messageData = {
+  //       "SMS": uRL,
+  //       "Date": "${DateTime.now().microsecondsSinceEpoch}",
+  //       "type": "image",
+  //       "UID": loginService.UserData.uID,
+  //     };
+  //     var docRef = firestore.collection("chatRoom").doc(chatId);
+  //     docRef.get().then((doc) => {
+  //           if (doc.exists)
+  //             {
+  //               docRef.update({"lastMessage": messageData})
+  //             }
+  //           else
+  //             {
+  //               docRef.set({
+  //                 "Date": "${DateTime.now().microsecondsSinceEpoch}",
+  //                 "member": [
+  //                   {
+  //                     "name": loginService.UserData.username,
+  //                     "profile": loginService.UserData.profile,
+  //                     "UID": loginService.UserData.uID
+  //                   },
+  //                   {"name": name, "profile": profile, "UID": otherUID},
+  //                 ],
+  //                 "membersUid": [loginService.UserData.uID, otherUID],
+  //                 "lastMessage": messageData
+  //               })
+  //             }
+  //         });
+  //     await firestore
+  //         .collection("chatRoom")
+  //         .doc(chatId)
+  //         .collection('chats')
+  //         .doc()
+  //         .set(messageData);
+  //   }).catchError((onError) {
+  //     log(onError);
+  //     // snackBar(context, onError.toString());
+  //   });
+  // }
+
+  // final sampleUrl = 'http://www.africau.edu/images/default/sample.pdf';
+
+  String? pdfFlePath;
+
+  Future<String> downloadAndSavePdf(sampleUrl) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/sample.pdf');
+    if (await file.exists()) {
+      return file.path;
+    }
+    final response = await http.get(Uri.parse(sampleUrl));
+    await file.writeAsBytes(response.bodyBytes);
+    return file.path;
+  }
+
+  void loadPdf(sampleUrl) async {
+    pdfFlePath = await downloadAndSavePdf(sampleUrl);
+    notifyListeners();
   }
 }

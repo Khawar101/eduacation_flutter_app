@@ -54,6 +54,8 @@ dependencies:
   timeago: ^3.3.0
   cached_network_image: ^3.2.3
   syncfusion_flutter_pdfviewer: ^20.4.54
+  file_picker: ^5.5.0
+  pdf_viewer_plugin: ^2.0.1
 
 dev_dependencies:
   flutter_test:

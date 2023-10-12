@@ -124,8 +124,7 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                   verticalSpace(6),
                                   InkWell(
                                     onTap: () {
-                                      viewModel
-                                          .joinGroup(courseData);
+                                      viewModel.joinGroup(courseData);
                                     },
                                     child: const Row(
                                       crossAxisAlignment:

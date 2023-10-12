@@ -285,7 +285,7 @@ class CoursedetailViewModel extends BaseViewModel {
           .doc(courseData.publishDate)
           .get();
 
-       ChatMember _chatMember =
+      ChatMember _chatMember =
           ChatMember.fromJson(snapshot.data() as Map<String, dynamic>);
       var contain = _chatMember.member!
           .where((element) => element.uID == _loginService.UserData.uID);
@@ -323,11 +323,8 @@ class CoursedetailViewModel extends BaseViewModel {
       } else {
         log("Already Joined");
       }
-   
     } catch (e) {
       log("Error: ${e.toString()}");
     }
-
-
   }
 }

@@ -101,7 +101,7 @@ class userData {
     status = json['status'];
     educationSector = json['educationSector'];
     socialLinks = json['socialLinks'] != null
-        ?  SocialLinks.fromJson(json['socialLinks'])
+        ? SocialLinks.fromJson(json['socialLinks'])
         : null;
     buyCourses =
         json['buyCourses'] != null ? json['buyCourses'].cast<dynamic>() : null;

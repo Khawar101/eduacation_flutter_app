@@ -90,7 +90,7 @@ class InboxView extends StackedView<InboxViewModel> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: width * 0.67,
+                    width: width * 0.62,
                     child: Text(
                       name,
                       overflow: TextOverflow.ellipsis,
@@ -102,7 +102,7 @@ class InboxView extends StackedView<InboxViewModel> {
                   ),
                   !isGroup
                       ? SizedBox(
-                          width: width * 0.67,
+                          width: width * 0.62,
                           height: 15,
                           child: viewModel.memberList.isNotEmpty
                               ? ListView.builder(
@@ -216,6 +216,7 @@ class InboxView extends StackedView<InboxViewModel> {
                           isMe: messageData.uID ==
                               viewModel.loginService.UserData.uID,
                           messageData: messageData,
+                        
                         ),
                       );
                     },
@@ -242,27 +243,32 @@ class InboxView extends StackedView<InboxViewModel> {
                   ),
                 ),
                 PopupMenuButton<String>(
-                  onSelected: (value) {},
+                  // onSelected: (value) {},
                   itemBuilder: (BuildContext context) {
                     return <PopupMenuEntry<String>>[
                       PopupMenuItem<String>(
-                        value: 'Item 1',
+                        // value: 'Item 1',
                         child: const Text('Camera'),
                         onTap: () {
-                          viewModel.sendImage(chatId, ImageSource.camera);
+                          viewModel.sendImageWithCamera(
+                              chatId, otherUID, name, profile, otherUID);
                         },
                       ),
                       PopupMenuItem<String>(
-                        value: 'Item 2',
+                        // value: 'Item 2',
                         child: const Text('Gallery'),
                         onTap: () {
-                          viewModel.sendImage(chatId, ImageSource.gallery);
+                          viewModel.sendImageWithGallery(
+                              chatId, otherUID, name, profile, otherUID);
                         },
                       ),
                       PopupMenuItem<String>(
-                        value: 'Item 3',
+                        // value: 'Item 3',
                         child: const Text('Pdf'),
-                        onTap: () {},
+                        onTap: () {
+                          viewModel.showPdfFile(
+                              chatId, name, profile, otherUID);
+                        },
                       ),
                       PopupMenuItem<String>(
                         value: 'Item 4',

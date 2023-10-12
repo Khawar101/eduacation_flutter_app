@@ -39,6 +39,7 @@
 // ignore_for_file: prefer_collection_literals
 
 import 'package:education/services/Model/EbookModel.dart';
+
 class CoursesModel {
   String? title;
   String? category;
@@ -75,9 +76,6 @@ class CoursesModel {
       assigmen,
       publisherData});
 
-
-
-
   CoursesModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     category = json['category'];
@@ -110,7 +108,7 @@ class CoursesModel {
       });
     }
     publisherData = json['publisherData'] != null
-        ?  PublisherData.fromJson(json['publisherData'])
+        ? PublisherData.fromJson(json['publisherData'])
         : null;
   }
 
@@ -142,10 +140,6 @@ class CoursesModel {
     }
     return data;
   }
-
-
-  
-
 }
 
 class FAQ {

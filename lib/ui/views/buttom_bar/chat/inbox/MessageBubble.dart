@@ -1,17 +1,26 @@
 // ignore_for_file: file_names
+import 'dart:developer';
+
 import 'package:education/app/app.locator.dart';
+import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
+import 'package:education/ui/views/buttom_bar/chat/inbox/pdfview_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:pdf_viewer_plugin/pdf_viewer_plugin.dart';
 
 final _navigationService = locator<NavigationService>();
 
 class MessageBubble extends StatelessWidget {
   final bool isMe;
   final Chat messageData;
-  const MessageBubble(
-      {super.key, required this.isMe, required this.messageData});
+
+  const MessageBubble({
+    super.key,
+    required this.isMe,
+    required this.messageData,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +86,12 @@ class MessageBubble extends StatelessWidget {
                     messageData.type == "pdf"
                         ? InkWell(
                             onTap: () {
-                              // _navigationService.navigateToPdfViewer(
-                              //     pdfData:
-                              //         PdfFile(pdfUrl: messageData.sMS ?? ""));
+                              if (messageData.sMS != null) {
+                                _navigationService.navigateToPdfViewShow(sampleUrl: messageData.sMS!);
+                                log("message"); // Use the PDF URL
+                              } else {
+                                log("pfdfasdfghjkjhgfds========>");
+                              }
                             },
                             child: Image.asset(
                               "assets/icons/addPDF.png",
