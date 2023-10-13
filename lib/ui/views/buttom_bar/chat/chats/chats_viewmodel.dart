@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
@@ -143,34 +144,44 @@ class ChatsViewModel extends BaseViewModel {
 
   // Method to filter chat members based on search text
   void filterChatMembers(String searchText) {
-    if (searchText.isEmpty) {
-      // If search text is empty, show all chat members
-      _filteredChatMembers = chatMembers;
-    } else {
-      // If search text is not empty, filter chat members by name or other criteria
-      _filteredChatMembers = chatMembers.where((_chatMember) {
-        // Replace this condition with your filtering criteria
-        if (_chatMember.group == null) {
-          if (_chatMember.member![0].uID != loginService.UserData.uID) {
-            return _chatMember.member![0].name!
-                .toLowerCase()
-                .contains(searchText.toLowerCase());
+    try {
+      if (searchText.isEmpty) {
+        // If search text is empty, show all chat members
+        _filteredChatMembers = chatMembers;
+      } else {
+        // If search text is not empty, filter chat members by name or other criteria
+        _filteredChatMembers = chatMembers.where((_chatMember) {
+          // Replace this condition with your filtering criteria
+          if (_chatMember.group != null) {
+            if (_chatMember.member![0].uID != loginService.UserData.uID) {
+              return _chatMember.member![0].name!
+                  .toLowerCase()
+                  .contains(searchText.toLowerCase());
+            } else {
+              return _chatMember.member![1].name!
+                  .toLowerCase()
+                  .contains(searchText.toLowerCase());
+            }
           } else {
-            return _chatMember.member![1].name!
+            return _chatMember.group!.name!
                 .toLowerCase()
                 .contains(searchText.toLowerCase());
           }
-        } else {
-          return _chatMember.group!.name!
-              .toLowerCase()
-              .contains(searchText.toLowerCase());
-        }
-      }).toList();
+        }).toList();
+      }
+    } catch (e) {
+      log("=======>${e}");
     }
     // Notify listeners that the filtered data has changed
     notifyListeners();
   }
 
+
+
+
+
+
+}
   //  chatId1(otherId) {
   //   var currentuID = loginService.UserData.uID.toString();
   //   List<String> chatID = [currentuID, otherId]..sort();
@@ -204,4 +215,3 @@ class ChatsViewModel extends BaseViewModel {
 
   // final Stream<QuerySnapshot> usersStream =
   //     FirebaseFirestore.instance.collection('users').snapshots();
-}

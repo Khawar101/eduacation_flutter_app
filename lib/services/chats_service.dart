@@ -1,5 +1,5 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
-// ignore_for_file: avoid_web_libraries_in_flutter
+// ignore_for_file: avoid_web_libraries_in_flutter, unnecessary_brace_in_string_interps, body_might_complete_normally_catch_error
 import 'dart:async';
 import 'dart:io';
 import 'dart:developer';
@@ -17,10 +17,6 @@ class ChatService {
   List<Member> memberList = [];
   var progressshow = 0;
   var imageLoading = false;
-  // String chatId = "";
-  // String otherUID = "";
-  // String name = "";
-  // String profile = "";
   final loginService = locator<LoginService>();
   String get uID => loginService.UserData.uID.toString();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -51,7 +47,6 @@ class ChatService {
     final result = firestore
         .collection('chatRoom')
         .where('membersUid', arrayContains: uID)
-        // .orderBy('lastMessage.Date', descending: true)
         .snapshots();
     await for (final event in result) {
       final List<ChatMember> chatRooms = List.empty(growable: true);
@@ -68,8 +63,6 @@ class ChatService {
   }
 
   void sendSMS(chatId, name, profile, otherUID, smsController) async {
-    // String mergeuid = uid_merge(widget.UserData['UID'], widget.UID).toString();
-    // print("objectobjectobjectobjectobjectobjectobjectobjectobject");
     String sms = smsController.text;
     try {
       if (sms != "") {
@@ -104,10 +97,6 @@ class ChatService {
                   })
                 }
             });
-        // var data = await firestore
-        //     .collection("chatRoom")
-        //     .doc(chatId)
-        //     .update({"lastMessage": messageData});
         await firestore
             .collection("chatRoom")
             .doc(chatId)
@@ -132,10 +121,6 @@ class ChatService {
         .ref()
         .child("profile/${DateTime.now().microsecondsSinceEpoch}");
     UploadTask uploadTask = ref.putFile(File(image!.path));
-    // uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
-    //   double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    //     progressshow = progress;
-    // });
     uploadTask.whenComplete(() async {
       String uRL = await ref.getDownloadURL();
       Map<String, dynamic> messageData = {
@@ -185,186 +170,60 @@ class ChatService {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['pdf'],
-      );  log(result.toString());
+      );
+      log(result.toString());
 
       if (result != null) {
-  // PlatformFile file = result.files.first;
-   File file = File(result.files.single.path!);
+        File file = File(result.files.single.path!);
 
-    Reference ref = FirebaseStorage.instance
-          .ref()
-          .child("pdfs/${DateTime.now().microsecondsSinceEpoch}.pdf");
-      UploadTask uploadTask = ref.putFile(file);
+        Reference ref = FirebaseStorage.instance
+            .ref()
+            .child("pdfs/${DateTime.now().microsecondsSinceEpoch}.pdf");
+        UploadTask uploadTask = ref.putFile(file);
 
-      uploadTask.whenComplete(() async {
-        String uRL = await ref.getDownloadURL();
-        Map<String, dynamic> messageData = {
-          "SMS": uRL,
-          "Date": "${DateTime.now().microsecondsSinceEpoch}",
-          "type": "pdf",
-          "UID": loginService.UserData.uID,
-        };
-        var docRef = firestore.collection("chatRoom").doc(chatId);
-        docRef.get().then((doc) => {
-              if (doc.exists)
-                {
-                  docRef.update({"lastMessage": messageData})
-                }
-              else
-                {
-                  docRef.set({
-                    "Date": "${DateTime.now().microsecondsSinceEpoch}",
-                    "member": [
-                      {
-                        "name": loginService.UserData.username,
-                        "profile": loginService.UserData.profile,
-                        "UID": loginService.UserData.uID
-                      },
-                      {"name": name, "profile": profile, "UID": otherUID},
-                    ],
-                    "membersUid": [loginService.UserData.uID, otherUID],
-                    "lastMessage": messageData,
-                  })
-                }
-            });
-        await firestore
-            .collection("chatRoom")
-            .doc(chatId)
-            .collection('chats')
-            .doc()
-            .set(messageData);
-      }).catchError((onError) {
-        log("=======>pdf error${onError}");
-        // Handle the error as needed.
-      });
-    
-
-  // log(file.name);
-  // print(file.bytes);
-  // print(file.size);
-  // print(file.extension);
-  // print(file.path);
-} else {
-  // User canceled the picker
-}
+        uploadTask.whenComplete(() async {
+          String uRL = await ref.getDownloadURL();
+          Map<String, dynamic> messageData = {
+            "SMS": uRL,
+            "Date": "${DateTime.now().microsecondsSinceEpoch}",
+            "type": "pdf",
+            "UID": loginService.UserData.uID,
+          };
+          var docRef = firestore.collection("chatRoom").doc(chatId);
+          docRef.get().then((doc) => {
+                if (doc.exists)
+                  {
+                    docRef.update({"lastMessage": messageData})
+                  }
+                else
+                  {
+                    docRef.set({
+                      "Date": "${DateTime.now().microsecondsSinceEpoch}",
+                      "member": [
+                        {
+                          "name": loginService.UserData.username,
+                          "profile": loginService.UserData.profile,
+                          "UID": loginService.UserData.uID
+                        },
+                        {"name": name, "profile": profile, "UID": otherUID},
+                      ],
+                      "membersUid": [loginService.UserData.uID, otherUID],
+                      "lastMessage": messageData,
+                    })
+                  }
+              });
+          await firestore
+              .collection("chatRoom")
+              .doc(chatId)
+              .collection('chats')
+              .doc()
+              .set(messageData);
+        }).catchError((onError) {
+          log("=======>pdf error${onError}");
+        });
+      } else {}
     } catch (e) {
       log(e.toString());
-    
     }
   }
-
-  // Future sendPdf(chatId, name, profile, otherUID) async {
-
-  //   FilePickerResult? result = await FilePicker.platform.pickFiles(
-  //     type: FileType.custom,
-  //     allowedExtensions: ['pdf'],
-  //   );
-  //   log(result.toString());
-
-  //   if (result != null) {
-  //     File file = File(result.files.single.path!);
-
-  //     Reference ref = FirebaseStorage.instance
-  //         .ref()
-  //         .child("pdfs/${DateTime.now().microsecondsSinceEpoch}.pdf");
-  //     UploadTask uploadTask = ref.putFile(file);
-
-  //     uploadTask.whenComplete(() async {
-  //       String uRL = await ref.getDownloadURL();
-  //       Map<String, dynamic> messageData = {
-  //         "SMS": uRL,
-  //         "Date": "${DateTime.now().microsecondsSinceEpoch}",
-  //         "type": "pdf",
-  //         "UID": loginService.UserData.uID,
-  //       };
-  //       var docRef = firestore.collection("chatRoom").doc(chatId);
-  //       docRef.get().then((doc) => {
-  //             if (doc.exists)
-  //               {
-  //                 docRef.update({"lastMessage": messageData})
-  //               }
-  //             else
-  //               {
-  //                 docRef.set({
-  //                   "Date": "${DateTime.now().microsecondsSinceEpoch}",
-  //                   "member": [
-  //                     {
-  //                       "name": loginService.UserData.username,
-  //                       "profile": loginService.UserData.profile,
-  //                       "UID": loginService.UserData.uID
-  //                     },
-  //                     {"name": name, "profile": profile, "UID": otherUID},
-  //                   ],
-  //                   "membersUid": [loginService.UserData.uID, otherUID],
-  //                   "lastMessage": messageData,
-  //                 })
-  //               }
-  //           });
-  //       await firestore
-  //           .collection("chatRoom")
-  //           .doc(chatId)
-  //           .collection('chats')
-  //           .doc()
-  //           .set(messageData);
-  //     }).catchError((onError) {
-  //       log("=======>pdf error${onError}");
-  //       // Handle the error as needed.
-  //     });
-  //   } else {
-  //     log("================================================>");
-  //   }
-  // }
-
-//   Future sendPdf(chatId,name,profile,otherUID, ImageSource source) async {
-//   FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-// if (result != null) {
-//   File file = File(result.files.single.path);
-// } else {
-//   // User canceled the picker
-// }
-
-//     uploadTask.whenComplete(() async {
-//       String uRL = await ref.getDownloadURL();
-//       Map<String, dynamic> messageData = {
-//         "SMS": uRL,
-//         "Date": "${DateTime.now().microsecondsSinceEpoch}",
-//         "type": "image",
-//         "UID": loginService.UserData.uID,
-//       };
-//       var docRef = firestore.collection("chatRoom").doc(chatId);
-//       docRef.get().then((doc) => {
-//             if (doc.exists)
-//               {
-//                 docRef.update({"lastMessage": messageData})
-//               }
-//             else
-//               {
-//                 docRef.set({
-//                   "Date": "${DateTime.now().microsecondsSinceEpoch}",
-//                   "member": [
-//                     {
-//                       "name": loginService.UserData.username,
-//                       "profile": loginService.UserData.profile,
-//                       "UID": loginService.UserData.uID
-//                     },
-//                     {"name": name, "profile": profile, "UID": otherUID},
-//                   ],
-//                   "membersUid": [loginService.UserData.uID, otherUID],
-//                   "lastMessage": messageData
-//                 })
-//               }
-//           });
-//       await firestore
-//           .collection("chatRoom")
-//           .doc(chatId)
-//           .collection('chats')
-//           .doc()
-//           .set(messageData);
-//     }).catchError((onError) {
-//       log("=======>image error${onError}");
-//       // snackBar(context, onError.toString());
-//       throw onError;
-//     });
-//   }
 }

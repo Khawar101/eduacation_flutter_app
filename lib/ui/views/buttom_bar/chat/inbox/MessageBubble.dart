@@ -1,26 +1,38 @@
 // ignore_for_file: file_names
 import 'dart:developer';
-
 import 'package:education/app/app.locator.dart';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
-import 'package:education/ui/views/buttom_bar/chat/inbox/pdfview_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:pdf_viewer_plugin/pdf_viewer_plugin.dart';
+
+import '../../../../../services/Model/chat_member.dart';
 
 final _navigationService = locator<NavigationService>();
 
 class MessageBubble extends StatelessWidget {
   final bool isMe;
   final Chat messageData;
+  final String chatId;
+  final String uID;
+  final String name;
+  final String profile;
+  final String otherUID;
+  final bool isGroup;
+  final List<Member> memberList;
 
-  const MessageBubble({
-    super.key,
-    required this.isMe,
-    required this.messageData,
-  });
+  const MessageBubble(
+      {super.key,
+      required this.isMe,
+      required this.messageData,
+      required this.chatId,
+      required this.uID,
+      required this.name,
+      required this.profile,
+      required this.isGroup,
+      required this.otherUID,
+      required this.memberList});
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +99,16 @@ class MessageBubble extends StatelessWidget {
                         ? InkWell(
                             onTap: () {
                               if (messageData.sMS != null) {
-                                _navigationService.navigateToPdfViewShow(sampleUrl: messageData.sMS!);
+                                _navigationService.navigateToPdfViewShow(
+                                  sampleUrl: messageData.sMS!,
+                                  chatId: chatId,
+                                  uID: uID,
+                                  name: name,
+                                  profile: profile,
+                                  isGroup: isGroup,
+                                  otherUID: otherUID,
+                                  memberList: memberList,
+                                );
                                 log("message"); // Use the PDF URL
                               } else {
                                 log("pfdfasdfghjkjhgfds========>");

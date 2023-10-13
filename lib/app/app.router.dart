@@ -654,8 +654,16 @@ class StackedRouter extends _i1.RouterBase {
     _i43.PdfViewShow: (data) {
       final args = data.getArgs<PdfViewShowArguments>(nullOk: false);
       return _i44.MaterialPageRoute<dynamic>(
-        builder: (context) =>
-            _i43.PdfViewShow(key: args.key, sampleUrl: args.sampleUrl),
+        builder: (context) => _i43.PdfViewShow(
+            key: args.key,
+            sampleUrl: args.sampleUrl,
+            chatId: args.chatId,
+            uID: args.uID,
+            name: args.name,
+            profile: args.profile,
+            isGroup: args.isGroup,
+            otherUID: args.otherUID,
+            memberList: args.memberList),
         settings: data,
       );
     },
@@ -861,26 +869,63 @@ class PdfViewShowArguments {
   const PdfViewShowArguments({
     this.key,
     required this.sampleUrl,
+    required this.chatId,
+    required this.uID,
+    required this.name,
+    required this.profile,
+    required this.isGroup,
+    required this.otherUID,
+    required this.memberList,
   });
 
   final _i44.Key? key;
 
   final String sampleUrl;
 
+  final String chatId;
+
+  final String uID;
+
+  final String name;
+
+  final String profile;
+
+  final bool isGroup;
+
+  final String otherUID;
+
+  final List<_i45.Member> memberList;
+
   @override
   String toString() {
-    return '{"key": "$key", "sampleUrl": "$sampleUrl"}';
+    return '{"key": "$key", "sampleUrl": "$sampleUrl", "chatId": "$chatId", "uID": "$uID", "name": "$name", "profile": "$profile", "isGroup": "$isGroup", "otherUID": "$otherUID", "memberList": "$memberList"}';
   }
 
   @override
   bool operator ==(covariant PdfViewShowArguments other) {
     if (identical(this, other)) return true;
-    return other.key == key && other.sampleUrl == sampleUrl;
+    return other.key == key &&
+        other.sampleUrl == sampleUrl &&
+        other.chatId == chatId &&
+        other.uID == uID &&
+        other.name == name &&
+        other.profile == profile &&
+        other.isGroup == isGroup &&
+        other.otherUID == otherUID &&
+        other.memberList == memberList;
   }
 
   @override
   int get hashCode {
-    return key.hashCode ^ sampleUrl.hashCode;
+    return key.hashCode ^
+        sampleUrl.hashCode ^
+        chatId.hashCode ^
+        uID.hashCode ^
+        name.hashCode ^
+        profile.hashCode ^
+        isGroup.hashCode ^
+        otherUID.hashCode ^
+        memberList.hashCode;
   }
 }
 
@@ -1501,6 +1546,13 @@ extension NavigatorStateExtension on _i48.NavigationService {
   Future<dynamic> navigateToPdfViewShow({
     _i44.Key? key,
     required String sampleUrl,
+    required String chatId,
+    required String uID,
+    required String name,
+    required String profile,
+    required bool isGroup,
+    required String otherUID,
+    required List<_i45.Member> memberList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1508,7 +1560,16 @@ extension NavigatorStateExtension on _i48.NavigationService {
         transition,
   }) async {
     return navigateTo<dynamic>(Routes.pdfViewShow,
-        arguments: PdfViewShowArguments(key: key, sampleUrl: sampleUrl),
+        arguments: PdfViewShowArguments(
+            key: key,
+            sampleUrl: sampleUrl,
+            chatId: chatId,
+            uID: uID,
+            name: name,
+            profile: profile,
+            isGroup: isGroup,
+            otherUID: otherUID,
+            memberList: memberList),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -2131,6 +2192,13 @@ extension NavigatorStateExtension on _i48.NavigationService {
   Future<dynamic> replaceWithPdfViewShow({
     _i44.Key? key,
     required String sampleUrl,
+    required String chatId,
+    required String uID,
+    required String name,
+    required String profile,
+    required bool isGroup,
+    required String otherUID,
+    required List<_i45.Member> memberList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -2138,7 +2206,16 @@ extension NavigatorStateExtension on _i48.NavigationService {
         transition,
   }) async {
     return replaceWith<dynamic>(Routes.pdfViewShow,
-        arguments: PdfViewShowArguments(key: key, sampleUrl: sampleUrl),
+        arguments: PdfViewShowArguments(
+            key: key,
+            sampleUrl: sampleUrl,
+            chatId: chatId,
+            uID: uID,
+            name: name,
+            profile: profile,
+            isGroup: isGroup,
+            otherUID: otherUID,
+            memberList: memberList),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

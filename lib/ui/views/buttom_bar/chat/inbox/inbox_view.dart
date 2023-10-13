@@ -5,7 +5,6 @@ import 'package:education/services/Model/userData.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../../services/Model/chat_member.dart';
 import 'MessageBubble.dart';
@@ -216,7 +215,13 @@ class InboxView extends StackedView<InboxViewModel> {
                           isMe: messageData.uID ==
                               viewModel.loginService.UserData.uID,
                           messageData: messageData,
-                        
+                          chatId: chatId,
+                          uID: uID,
+                          name: name,
+                          profile: profile,
+                          isGroup: isGroup,
+                          otherUID: otherUID,
+                          memberList: memberList,
                         ),
                       );
                     },
