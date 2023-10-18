@@ -203,8 +203,6 @@ import '../../../../widgets/app_utils.dart';
 import '../../../../widgets/custom_text_form_field.dart';
 import '../../../drawer/drawer_view.dart';
 import 'chats_viewmodel.dart';
-import 'package:timeago/timeago.dart' as timeago;
-
 import 'listview_widget.dart';
 
 class ChatsView extends StackedView<ChatsViewModel> {

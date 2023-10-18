@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
@@ -17,6 +16,7 @@ class ChatsViewModel extends BaseViewModel {
   String name = "";
   String profile = "";
   bool isGroup = false;
+  String id = "";
   List<Member> memberList = [];
   TextEditingController searchCTRL = TextEditingController();
   List<ChatMember> chatMembers = [];
@@ -107,9 +107,9 @@ class ChatsViewModel extends BaseViewModel {
     return _member;
   }
 
-  // Stream publisherStream(uID) {
-  //   return _chatService.publisherStream(uID);
-  // }
+  Stream publisherStream(uID) {
+    return _chatService.publisherStream(uID);
+  }
 
   cruntUserName(chatMember) {
     Member _member = cruntUserData(chatMember);
@@ -137,81 +137,83 @@ class ChatsViewModel extends BaseViewModel {
     );
   }
 
-  List<ChatMember> _filteredChatMembers = [];
+   List<ChatMember> _filteredChatMembers = [];
 
   // Getter to access the filtered chat members
   List<ChatMember> get filteredChatMembers => _filteredChatMembers;
 
   // Method to filter chat members based on search text
   void filterChatMembers(String searchText) {
-    try {
-      if (searchText.isEmpty) {
-        // If search text is empty, show all chat members
-        _filteredChatMembers = chatMembers;
-      } else {
-        // If search text is not empty, filter chat members by name or other criteria
-        _filteredChatMembers = chatMembers.where((_chatMember) {
-          // Replace this condition with your filtering criteria
-          if (_chatMember.group != null) {
-            if (_chatMember.member![0].uID != loginService.UserData.uID) {
-              return _chatMember.member![0].name!
-                  .toLowerCase()
-                  .contains(searchText.toLowerCase());
-            } else {
-              return _chatMember.member![1].name!
-                  .toLowerCase()
-                  .contains(searchText.toLowerCase());
-            }
+      try {
+    if (searchText.isEmpty) {
+      // If search text is empty, show all chat members
+      _filteredChatMembers = chatMembers;
+    } else {
+      // If search text is not empty, filter chat members by name or other criteria
+      _filteredChatMembers = chatMembers.where((_chatMember) {
+        // Replace this condition with your filtering criteria
+        if (_chatMember.group == null) {
+          if (_chatMember.member![0].uID != loginService.UserData.uID) {
+            return _chatMember.member![0].name!
+                .toLowerCase()
+                .contains(searchText.toLowerCase());
           } else {
-            return _chatMember.group!.name!
+            return _chatMember.member![1].name!
                 .toLowerCase()
                 .contains(searchText.toLowerCase());
           }
-        }).toList();
-      }
-    } catch (e) {
-      log("=======>${e}");
+        } else {
+          return _chatMember.group!.name!
+              .toLowerCase()
+              .contains(searchText.toLowerCase());
+        }
+      }).toList();
+    }
+       } catch (e) {
+      log("Error occurred: $e");
+      _filteredChatMembers = []; // Set filtered list to empty in case of error
     }
     // Notify listeners that the filtered data has changed
     notifyListeners();
   }
 
-
-
-
-
-
+  // void filterChatMembers(String searchText) {
+  //   try {
+  //     if (searchText.isEmpty) {
+  //       // If search text is empty, show all chat members
+  //       _filteredChatMembers = List.from(chatMembers);
+  //     } else {
+  //       // If search text is not empty, filter chat members by name or other criteria
+  //       _filteredChatMembers = chatMembers.where((chatMember) {
+  //         if (chatMember.group != null) {
+  //           if (chatMember.member != null) {
+  //             return (chatMember.member![0].name != null &&
+  //                     chatMember.member![0].uID != null &&
+  //                     chatMember.member![1].name != null)
+  //                 ? (chatMember.member![0].name!
+  //                         .toLowerCase()
+  //                         .contains(searchText.toLowerCase()) ||
+  //                     chatMember.member![1].name!
+  //                         .toLowerCase()
+  //                         .contains(searchText.toLowerCase()))
+  //                 : false;
+  //           } else {
+  //             return false;
+  //           }
+  //         } else {
+  //           return (chatMember.group != null &&
+  //               chatMember.group!.name != null &&
+  //               chatMember.group!.name!
+  //                   .toLowerCase()
+  //                   .contains(searchText.toLowerCase()));
+  //         }
+  //       }).toList();
+  //     }
+  //   } catch (e) {
+  //     log("Error occurred: $e");
+  //     _filteredChatMembers = []; // Set filtered list to empty in case of error
+  //   }
+  //   // Notify listeners that the filtered data has changed
+  //   notifyListeners();
+  // }
 }
-  //  chatId1(otherId) {
-  //   var currentuID = loginService.UserData.uID.toString();
-  //   List<String> chatID = [currentuID, otherId]..sort();
-  //   return chatID.join('_');
-  // }
-
-  // navigateEditProfile(userData data) async {
-  //   await _navigationService.navigateToEditInfoView(
-  //     firstName: data.firstName ?? "",
-  //     lastName: data.lastName ?? "",
-  //     phoneNo: data.phoneNo ?? "",
-  //     address: data.address ?? "",
-  //     clas: data.clas ?? "",
-  //   );
-
-  //   rebuildUi();
-  // }
-
-  // Stream<QuerySnapshot> getLastMessageStream(String chatId) {
-  //   CollectionReference chatCollection = firestore.collection('chats');
-
-  //   return chatCollection
-  //       .where("chatId", isEqualTo: chatId)
-  //       .orderBy('Date', descending: true)
-  //       .limit(1)
-  //       .snapshots() as Stream<QuerySnapshot<Map<String, dynamic>>>;
-  // }
-
-  // Stream collectionStream =
-  //     FirebaseFirestore.instance.collection('users').snapshots();
-
-  // final Stream<QuerySnapshot> usersStream =
-  //     FirebaseFirestore.instance.collection('users').snapshots();

@@ -19,16 +19,16 @@ class InboxView extends StackedView<InboxViewModel> {
   final bool isGroup;
   List<Member> memberList;
 
-  InboxView(
-      {Key? key,
-      required this.chatId,
-      required this.uID,
-      required this.name,
-      required this.profile,
-      required this.isGroup,
-      required this.otherUID,
-      required this.memberList})
-      : super(key: key);
+  InboxView({
+    Key? key,
+    required this.chatId,
+    required this.uID,
+    required this.name,
+    required this.profile,
+    required this.isGroup,
+    required this.otherUID,
+    required this.memberList,
+  }) : super(key: key);
 
   @override
   void onViewModelReady(InboxViewModel viewModel) {
@@ -211,17 +211,52 @@ class InboxView extends StackedView<InboxViewModel> {
 
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: MessageBubble(
-                          isMe: messageData.uID ==
-                              viewModel.loginService.UserData.uID,
-                          messageData: messageData,
-                          chatId: chatId,
-                          uID: uID,
-                          name: name,
-                          profile: profile,
-                          isGroup: isGroup,
-                          otherUID: otherUID,
-                          memberList: memberList,
+                        child: InkWell(
+                          onLongPress: () {
+                            // viewModel.deleteMessage(chatId, messageData.id);
+                            // log(messageData.id.toString());
+
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Delete Message'),
+                                  content: const Text(
+                                      'Are you sure you want to delete this message?'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop(); // Close the dialog
+                                      },
+                                      child: const Text('Cancel'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        viewModel.deleteMessage(
+                                            chatId, messageData.id);
+                                        Navigator.of(context)
+                                            .pop(); // Close the dialog
+                                      },
+                                      child: const Text('Delete'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: MessageBubble(
+                            isMe: messageData.uID ==
+                                viewModel.loginService.UserData.uID,
+                            messageData: messageData,
+                            chatId: chatId,
+                            uID: uID,
+                            name: name,
+                            profile: profile,
+                            isGroup: isGroup,
+                            otherUID: otherUID,
+                            memberList: memberList,
+                          ),
                         ),
                       );
                     },

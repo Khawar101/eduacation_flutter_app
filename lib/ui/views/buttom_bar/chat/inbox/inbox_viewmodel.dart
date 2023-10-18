@@ -84,6 +84,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
       memberList: chatMember.member!
           .where((member) => member.uID != currentuID)
           .toList(),
+     
     );
   }
 
@@ -93,7 +94,6 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   }
 
   Stream<List<Chat>> chatStream(chatId) {
-    // notifyListeners();
     return _chatService.chatStream(chatId);
   }
 
@@ -105,6 +105,11 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     log(smsController.text);
 
     _chatService.sendSMS(chatId, name, profile, otherUID, smsController);
+    notifyListeners();
+  }
+
+  void deleteMessage(chatId, id) {
+    _chatService.deleteMessage(chatId, id);
     notifyListeners();
   }
 
