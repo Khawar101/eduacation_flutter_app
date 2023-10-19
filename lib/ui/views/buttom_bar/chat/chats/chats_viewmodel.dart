@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
@@ -137,14 +136,13 @@ class ChatsViewModel extends BaseViewModel {
     );
   }
 
-   List<ChatMember> _filteredChatMembers = [];
+  List<ChatMember> _filteredChatMembers = [];
 
   // Getter to access the filtered chat members
   List<ChatMember> get filteredChatMembers => _filteredChatMembers;
 
   // Method to filter chat members based on search text
   void filterChatMembers(String searchText) {
-      try {
     if (searchText.isEmpty) {
       // If search text is empty, show all chat members
       _filteredChatMembers = chatMembers;
@@ -162,6 +160,7 @@ class ChatsViewModel extends BaseViewModel {
                 .toLowerCase()
                 .contains(searchText.toLowerCase());
           }
+          // return true;
         } else {
           return _chatMember.group!.name!
               .toLowerCase()
@@ -169,51 +168,9 @@ class ChatsViewModel extends BaseViewModel {
         }
       }).toList();
     }
-       } catch (e) {
-      log("Error occurred: $e");
-      _filteredChatMembers = []; // Set filtered list to empty in case of error
-    }
     // Notify listeners that the filtered data has changed
     notifyListeners();
   }
 
-  // void filterChatMembers(String searchText) {
-  //   try {
-  //     if (searchText.isEmpty) {
-  //       // If search text is empty, show all chat members
-  //       _filteredChatMembers = List.from(chatMembers);
-  //     } else {
-  //       // If search text is not empty, filter chat members by name or other criteria
-  //       _filteredChatMembers = chatMembers.where((chatMember) {
-  //         if (chatMember.group != null) {
-  //           if (chatMember.member != null) {
-  //             return (chatMember.member![0].name != null &&
-  //                     chatMember.member![0].uID != null &&
-  //                     chatMember.member![1].name != null)
-  //                 ? (chatMember.member![0].name!
-  //                         .toLowerCase()
-  //                         .contains(searchText.toLowerCase()) ||
-  //                     chatMember.member![1].name!
-  //                         .toLowerCase()
-  //                         .contains(searchText.toLowerCase()))
-  //                 : false;
-  //           } else {
-  //             return false;
-  //           }
-  //         } else {
-  //           return (chatMember.group != null &&
-  //               chatMember.group!.name != null &&
-  //               chatMember.group!.name!
-  //                   .toLowerCase()
-  //                   .contains(searchText.toLowerCase()));
-  //         }
-  //       }).toList();
-  //     }
-  //   } catch (e) {
-  //     log("Error occurred: $e");
-  //     _filteredChatMembers = []; // Set filtered list to empty in case of error
-  //   }
-  //   // Notify listeners that the filtered data has changed
-  //   notifyListeners();
-  // }
+
 }
