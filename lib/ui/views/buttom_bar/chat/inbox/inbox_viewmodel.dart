@@ -84,7 +84,6 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
       memberList: chatMember.member!
           .where((member) => member.uID != currentuID)
           .toList(),
-     
     );
   }
 

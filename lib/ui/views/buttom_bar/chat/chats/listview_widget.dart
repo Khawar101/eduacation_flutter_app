@@ -7,10 +7,10 @@ import 'package:timeago/timeago.dart' as timeago;
 
 class ListViewData extends StackedView<ChatsViewModel> {
   final ChatMember chatMember;
-  final LastMessage lastMessage ;
-  const ListViewData( {
-    Key? key,required this.lastMessage,required this.chatMember
-  }) : super(key: key);
+  final LastMessage lastMessage;
+  const ListViewData(
+      {Key? key, required this.lastMessage, required this.chatMember})
+      : super(key: key);
   @override
   void onViewModelReady(ChatsViewModel viewModel) {
     viewModel.initState();

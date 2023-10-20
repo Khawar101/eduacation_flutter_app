@@ -101,7 +101,8 @@ class ChatsView extends StackedView<ChatsViewModel> {
 
                               return ListViewData(
                                   lastMessage: chatMember.lastMessage!,
-                                  chatMember: viewModel.filteredChatMembers[index]);
+                                  chatMember:
+                                      viewModel.filteredChatMembers[index]);
                             }),
                       )
                     : const Text("No User Found ")

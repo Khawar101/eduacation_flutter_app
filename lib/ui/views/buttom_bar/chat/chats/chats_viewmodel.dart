@@ -171,6 +171,4 @@ class ChatsViewModel extends BaseViewModel {
     // Notify listeners that the filtered data has changed
     notifyListeners();
   }
-
-
 }
