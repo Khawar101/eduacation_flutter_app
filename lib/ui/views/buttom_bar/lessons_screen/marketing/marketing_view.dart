@@ -147,8 +147,6 @@ class _MarketingViewState extends State<MarketingView> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.02),
-                                  // ButtonText(text: '10 chapter', color: Colors.black),
-                                  // SmallText(text: '10 chapter', color: Colors.black),
                                   Row(
                                     children: [
                                       CustomText(

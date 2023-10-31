@@ -6,7 +6,6 @@ import 'package:education/services/Model/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../../../services/Model/chat_member.dart';
 
 final _navigationService = locator<NavigationService>();
