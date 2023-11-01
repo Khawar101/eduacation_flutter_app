@@ -35,7 +35,7 @@ class RatingModel {
     profile = json['profile'];
     review = json['review'];
     date = json['date'];
-    rating = json['rating'];
+    rating = json['rating'] ?? 1.0;
   }
 
   Map<String, dynamic> toJson() {

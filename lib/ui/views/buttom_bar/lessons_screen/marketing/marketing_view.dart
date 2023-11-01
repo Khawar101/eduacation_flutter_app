@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_adjacent_string_concatenation
-
+import 'package:education/ui/views/buttom_bar/lessons_screen/marketing/marketing_widgets/ratingBuilder.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
@@ -22,6 +22,8 @@ class MarketingView extends StatefulWidget {
 class _MarketingViewState extends State<MarketingView> {
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return ViewModelBuilder<MarketingViewModel>.reactive(
       viewModelBuilder: () => MarketingViewModel(),
       builder: (BuildContext context, viewModel, Widget? child) {
@@ -112,20 +114,15 @@ class _MarketingViewState extends State<MarketingView> {
                           ] else ...[
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      MediaQuery.of(context).size.width * 0.04,
-                                  vertical: MediaQuery.of(context).size.height *
-                                      0.02),
+                                  horizontal: width * 0.04,
+                                  vertical: height * 0.02),
                               child: Column(
                                 children: [
                                   BigText(
                                     text: widget.data.title ?? "",
                                     color: Colors.black,
                                   ),
-                                  SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.017),
+                                  SizedBox(height: height * 0.017),
                                   ReadMoreText(
                                     widget.data.description ?? "",
                                     trimLines: 2,
@@ -143,10 +140,7 @@ class _MarketingViewState extends State<MarketingView> {
                                         color: Color(0xff4873a6),
                                         fontWeight: FontWeight.w500),
                                   ),
-                                  SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.02),
+                                  SizedBox(height: height * 0.02),
                                   Row(
                                     children: [
                                       CustomText(
@@ -167,11 +161,7 @@ class _MarketingViewState extends State<MarketingView> {
                                           color: Colors.black),
                                     ],
                                   ),
-
-                                  SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.018),
+                                  SizedBox(height: height * 0.018),
                                   introBuilder(widget.data),
                                 ],
                               ),
@@ -182,13 +172,10 @@ class _MarketingViewState extends State<MarketingView> {
                             orientation: orientation,
                             completeVideo: () {},
                           ),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.025),
+                          SizedBox(height: height * 0.025),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.04),
+                            padding:
+                                EdgeInsets.symmetric(horizontal: width * 0.04),
                             child: Column(
                               children: [
                                 const SmallText(
@@ -216,9 +203,8 @@ class _MarketingViewState extends State<MarketingView> {
                           ),
                           const SizedBox(height: 20),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.04),
+                            padding:
+                                EdgeInsets.symmetric(horizontal: width * 0.04),
                             child: Column(
                               children: [
                                 Container(
@@ -232,12 +218,8 @@ class _MarketingViewState extends State<MarketingView> {
                                       )),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            MediaQuery.of(context).size.width *
-                                                0.025,
-                                        vertical:
-                                            MediaQuery.of(context).size.height *
-                                                0.025),
+                                        horizontal: width * 0.025,
+                                        vertical: height * 0.025),
                                     child: Column(
                                       children: [
                                         Row(
@@ -321,11 +303,7 @@ class _MarketingViewState extends State<MarketingView> {
                                                           const SizedBox(
                                                               width: 16),
                                                           SizedBox(
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width *
-                                                                .5,
+                                                            width: width * .5,
                                                             child: Text(
                                                               lecture.title!,
                                                               overflow:
@@ -401,7 +379,7 @@ class _MarketingViewState extends State<MarketingView> {
                                             color: Colors.black),
                                       ),
                                       const SizedBox(height: 8),
-                                      viewModel.ratingBuilder(widget.data),
+                                      ratingBuilder(widget.data),
                                     ],
                                   ),
                                 )
@@ -414,10 +392,8 @@ class _MarketingViewState extends State<MarketingView> {
                             },
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      MediaQuery.of(context).size.width * 0.04,
-                                  vertical: MediaQuery.of(context).size.height *
-                                      0.02),
+                                  horizontal: width * 0.04,
+                                  vertical: height * 0.02),
                               child: Container(
                                 height: 40,
                                 width: double.infinity,

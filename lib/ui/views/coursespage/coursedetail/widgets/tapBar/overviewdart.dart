@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_import
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/feedback.dart';
+import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/project.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
@@ -34,8 +35,9 @@ Widget overview(context, CoursesModel courseData) {
       ),
       const SizedBox(height: 30),
       feedback(context, courseData),
-      // const SizedBox(height: 30),
+      const SizedBox(height: 30),
       // project(context),
+      // const SizedBox(height: 30),
     ],
   );
 }

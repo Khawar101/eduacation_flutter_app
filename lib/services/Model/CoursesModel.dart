@@ -47,8 +47,8 @@ class CoursesModel {
   String? coverPic;
   String? description;
   String? publishDate;
-  double? rating;
-  int? students;
+  dynamic rating;
+  dynamic students;
   bool? publish;
   String? uID;
   List<FAQ>? fAQ;
@@ -83,7 +83,7 @@ class CoursesModel {
     coverPic = json['coverPic'];
     description = json['description'];
     publishDate = json['publishDate'];
-    rating = json['rating'] * 0.0;
+    rating = json['rating'] * 1.0;
     students = json['students'];
     publish = json['publish'];
     uID = json['UID'];

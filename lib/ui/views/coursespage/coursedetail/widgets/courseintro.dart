@@ -39,7 +39,7 @@ Widget courseintro(context, CoursesModel courseData) {
                     size: 16,
                   ),
                   const SizedBox(width: 7),
-                  Text("${courseData.rating} (${courseData.students})",
+                  Text("${courseData.rating??0.0} (${courseData.students??0.0})",
                       style: GoogleFonts.ibmPlexSans(fontSize: 12)),
                 ],
               ),

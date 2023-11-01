@@ -1,4 +1,5 @@
 import 'package:education/services/Model/CoursesModel.dart';
+import 'package:education/ui/views/buttom_bar/lessons_screen/marketing/marketing_widgets/ratingBuilder.dart';
 import 'package:education/ui/views/coursespage/coursedetail/coursedetail_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -120,18 +121,18 @@ Widget feedback(context, CoursesModel courseData) {
                     icon: const Icon(Icons.edit))
               ],
             ),
-            viewModel.ratingBuilder(courseData),
+            ratingBuilder(courseData),
             const SizedBox(height: 30),
-            Container(
-              height: 40,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: const Color(0xFF4873A6).withOpacity(0.7),
-              ),
-              child: const Center(
-                  child: ButtonText(text: 'Load more', color: Colors.white)),
-            ),
+            // Container(
+            //   height: 40,
+            //   width: double.infinity,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(10),
+            //     color: const Color(0xFF4873A6).withOpacity(0.7),
+            //   ),
+            //   child: const Center(
+            //       child: ButtonText(text: 'Load more', color: Colors.white)),
+            // ),
           ],
         );
       });
