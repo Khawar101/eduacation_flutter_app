@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 import 'dart:developer';
 
+import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
@@ -102,12 +103,11 @@ class videoPlayer extends ViewModelWidget<CoursedetailViewModel> {
                         Positioned(
                           bottom: 17,
                           right: 50,
-                          child: Text(
-                            viewModel.videoDuration(
-                                viewModel.controller!.value.duration),
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 18),
-                          ),
+                          child: CustomText(
+                              text: viewModel.videoDuration(
+                                  viewModel.controller!.value.duration),
+                              color: Colors.black,
+                              fontSize: 18),
                         ),
                         Positioned(
                           bottom: 0,

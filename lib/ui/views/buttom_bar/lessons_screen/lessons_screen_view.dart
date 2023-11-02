@@ -50,14 +50,12 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
                     color: const Color(0xff4873a6).withOpacity(0.7),
                   ),
                   const SizedBox(width: 3),
-                  Text(
-                    "English",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.ibmPlexSans(
-                        fontSize: 15,
-                        color: const Color(0xff4873a6).withOpacity(0.7),
-                        fontWeight: FontWeight.w600),
-                  ),
+                  CustomText(
+                      text: "English",
+                      textAlign: TextAlign.center,
+                      fontSize: 15,
+                      color: const Color(0xff4873a6).withOpacity(0.7),
+                      fontWeight: FontWeight.w600),
                   Icon(
                     Icons.keyboard_arrow_down_outlined,
                     color: const Color(0xff4873a6).withOpacity(0.7),
@@ -110,7 +108,7 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
                                 child: CustomText(
                               text: LessonsScreenViewModel.itemsnames[index],
                               color: Colors.white,
-                              size: 13,
+                              fontSize: 13,
                               fontWeight: FontWeight.w500,
                             )),
                           ),
@@ -144,7 +142,7 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
                                 child: CustomText(
                               text: LessonsScreenViewModel.itemsnames[index],
                               color: Colors.white,
-                              size: 13,
+                              fontSize: 13,
                               fontWeight: FontWeight.w500,
                             )),
                           ),

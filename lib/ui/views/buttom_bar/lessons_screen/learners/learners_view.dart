@@ -45,14 +45,12 @@ class LearnersView extends StackedView<LearnersViewModel> {
                     color: const Color(0xff4873a6).withOpacity(0.7),
                   ),
                   const SizedBox(width: 3),
-                  Text(
-                    "English",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.ibmPlexSans(
-                        fontSize: 15,
-                        color: const Color(0xff4873a6).withOpacity(0.7),
-                        fontWeight: FontWeight.w600),
-                  ),
+                  CustomText(
+                      text: "English",
+                      textAlign: TextAlign.center,
+                      fontSize: 15,
+                      color: const Color(0xff4873a6).withOpacity(0.7),
+                      fontWeight: FontWeight.w600),
                   Icon(
                     Icons.keyboard_arrow_down_outlined,
                     color: const Color(0xff4873a6).withOpacity(0.7),
@@ -134,13 +132,11 @@ class LearnersView extends StackedView<LearnersViewModel> {
                                   },
                                 ),
                                 const SizedBox(height: 8),
-                                Text(
-                                  'Best Course and benefits',
-                                  style: GoogleFonts.ibmPlexSans(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white),
-                                ),
+                                CustomText(
+                                    text: 'Best Course and benefits',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white),
                                 const Spacer(),
                                 Row(
                                   children: [
@@ -156,20 +152,16 @@ class LearnersView extends StackedView<LearnersViewModel> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          'Rakibull hassan',
-                                          style: GoogleFonts.ibmPlexSans(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white),
-                                        ),
-                                        Text(
-                                          '2 hours ago',
-                                          style: GoogleFonts.ibmPlexSans(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white),
-                                        ),
+                                        CustomText(
+                                            text: 'Rakibull hassan',
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white),
+                                        CustomText(
+                                            text: '2 hours ago',
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white),
                                       ],
                                     ),
                                   ],

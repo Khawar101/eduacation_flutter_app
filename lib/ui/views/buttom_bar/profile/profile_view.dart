@@ -36,14 +36,12 @@ class ProfileView extends StackedView<ProfileViewModel> {
               );
             },
           ),
-          title: Text(
-            "Profile",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.ibmPlexSans(
-                fontSize: 18,
-                color: const Color(0xff4873a6).withOpacity(0.7),
-                fontWeight: FontWeight.w600),
-          ),
+          title: CustomText(
+              text: "Profile",
+              textAlign: TextAlign.center,
+              fontSize: 18,
+              color: const Color(0xff4873a6).withOpacity(0.7),
+              fontWeight: FontWeight.w600),
           centerTitle: true,
           actions: [
             Padding(
@@ -102,54 +100,49 @@ class ProfileView extends StackedView<ProfileViewModel> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.06),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical:
-                                    MediaQuery.of(context).size.height * 0.014),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Billed every year",
-                                  style: GoogleFonts.ibmPlexSans(
-                                      color: Colors.white, fontSize: 14),
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.06),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical:
+                                        MediaQuery.of(context).size.height *
+                                            0.014),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(
+                                        text: "Billed every year",
+                                        color: Colors.white,
+                                        fontSize: 14),
+                                    const SizedBox(height: 13),
+                                    CustomText(
+                                        text: "12 months at \$8.00/month",
+                                        color: Colors.white,
+                                        fontSize: 14),
+                                  ],
                                 ),
-                                const SizedBox(height: 13),
-                                Text(
-                                  "12 months at \$8.00/month",
-                                  style: GoogleFonts.ibmPlexSans(
-                                      color: Colors.white, fontSize: 14),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Center(
-                            child: Container(
-                              height: 35,
-                              width: MediaQuery.of(context).size.width * 0.22,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Center(
-                                  child: Text(
-                                "Upgrade",
-                                style: GoogleFonts.ibmPlexSans(
-                                    fontSize: 15,
-                                    color: const Color(0xFF4873A6)
-                                        .withOpacity(0.7),
-                                    fontWeight: FontWeight.w400),
-                              )),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                              Center(
+                                  child: Container(
+                                      height: 35,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.22,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Center(
+                                          child: CustomText(
+                                              text: "Upgrade",
+                                              fontSize: 15,
+                                              color: const Color(0xFF4873A6)
+                                                  .withOpacity(0.7),
+                                              fontWeight: FontWeight.w400))))
+                            ])),
                   ),
                   const SizedBox(height: 22),
                   Container(

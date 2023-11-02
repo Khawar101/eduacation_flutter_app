@@ -182,13 +182,11 @@ class LoginView extends StackedView<LoginViewModel> {
                     width: 20,
                   ),
                   const SizedBox(width: 10),
-                  Text(
-                    'Sign in with Google',
-                    style: GoogleFonts.ibmPlexSans(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  )
+                  CustomText(
+                      text: 'Sign in with Google',
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500)
                 ],
               ),
               const SizedBox(height: 25),

@@ -1,3 +1,4 @@
+import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:education/ui/common/app_colors.dart';
 import 'package:education/ui/common/ui_helpers.dart';
@@ -39,19 +40,15 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        request.title!,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w900),
-                      ),
+                      CustomText(
+                          text: request.title!,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w900),
                       verticalSpaceTiny,
-                      Text(
-                        request.description!,
-                        style:
-                            const TextStyle(fontSize: 14, color: kcMediumGrey),
-                        maxLines: 3,
-                        softWrap: true,
-                      ),
+                      CustomText(
+                          text: request.description!,
+                          fontSize: 14,
+                          color: kcMediumGrey),
                     ],
                   ),
                 ),
@@ -81,13 +78,11 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                 height: 50,
                 width: double.infinity,
                 alignment: Alignment.center,
-                child: const Text(
-                  'Got it',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+                child: CustomText(
+                  text: 'Got it',
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
                 ),
                 decoration: BoxDecoration(
                   color: Colors.black,

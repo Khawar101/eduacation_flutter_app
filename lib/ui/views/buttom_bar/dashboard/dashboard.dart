@@ -1,4 +1,5 @@
 import 'package:education/ui/views/drawer/drawer_view.dart';
+import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -37,14 +38,12 @@ class DashboardView extends StackedView<DashboardViewModel> {
                 );
               },
             ),
-            title: Text(
-              "My Activity",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.ibmPlexSans(
-                  fontSize: 18,
-                  color: const Color(0xff4873a6).withOpacity(0.7),
-                  fontWeight: FontWeight.w600),
-            ),
+            title: CustomText(
+                text: "My Activity",
+                textAlign: TextAlign.center,
+                fontSize: 18,
+                color: const Color(0xff4873a6).withOpacity(0.7),
+                fontWeight: FontWeight.w600),
             centerTitle: true,
             actions: [
               Padding(
@@ -108,18 +107,17 @@ class DashboardView extends StackedView<DashboardViewModel> {
                     tabs: [
                       Tab(
                           child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                "Day",
-                                style: GoogleFonts.ibmPlexSans(
-                                    fontWeight: FontWeight.w700, fontSize: 18),
-                              ))),
-                      Tab(
-                          child: Text(
-                        "Week",
-                        style: GoogleFonts.ibmPlexSans(
-                            fontWeight: FontWeight.w700, fontSize: 18),
+                        alignment: Alignment.center,
+                        child: CustomText(
+                            text: "Day",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18),
                       )),
+                      Tab(
+                          child: CustomText(
+                              text: "Week",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18))
                     ],
                     //        controller: _tabController,
                     //         indicatorSize: TabBarIndicatorSize.tab,
@@ -168,18 +166,15 @@ class DashboardView extends StackedView<DashboardViewModel> {
                                         )),
                                       ),
                                       const SizedBox(width: 12),
-                                      Text(
-                                        'Class \nCompleted',
-                                        style: GoogleFonts.ibmPlexSans(
-                                            color: Colors.white),
-                                      )
+                                      CustomText(
+                                          text: 'Class \nCompleted',
+                                          color: Colors.white),
                                     ],
                                   ),
-                                  Text(
-                                    '12',
-                                    style: GoogleFonts.ibmPlexSans(
-                                        color: Colors.white, fontSize: 26),
-                                  )
+                                  CustomText(
+                                      text: '12',
+                                      color: Colors.white,
+                                      fontSize: 26)
                                 ],
                               ),
                             ),
@@ -217,18 +212,15 @@ class DashboardView extends StackedView<DashboardViewModel> {
                                         )),
                                       ),
                                       const SizedBox(width: 12),
-                                      Text(
-                                        'Time \nDuration',
-                                        style: GoogleFonts.ibmPlexSans(
-                                            color: Colors.white),
-                                      )
+                                      CustomText(
+                                          text: 'Time \nDuration',
+                                          color: Colors.white)
                                     ],
                                   ),
-                                  Text(
-                                    '1h 46m',
-                                    style: GoogleFonts.ibmPlexSans(
-                                        color: Colors.white, fontSize: 26),
-                                  )
+                                  CustomText(
+                                      text: '1h 46m',
+                                      color: Colors.white,
+                                      fontSize: 26)
                                 ],
                               ),
                             ),
@@ -272,18 +264,15 @@ class DashboardView extends StackedView<DashboardViewModel> {
                                         )),
                                       ),
                                       const SizedBox(width: 12),
-                                      Text(
-                                        'Class \nCompleted',
-                                        style: GoogleFonts.ibmPlexSans(
-                                            color: Colors.white),
-                                      )
+                                      CustomText(
+                                          text: 'Class \nCompleted',
+                                          color: Colors.white)
                                     ],
                                   ),
-                                  Text(
-                                    '12',
-                                    style: GoogleFonts.ibmPlexSans(
-                                        color: Colors.white, fontSize: 26),
-                                  )
+                                  CustomText(
+                                      text: '12',
+                                      color: Colors.white,
+                                      fontSize: 26)
                                 ],
                               ),
                             ),
@@ -321,18 +310,15 @@ class DashboardView extends StackedView<DashboardViewModel> {
                                         )),
                                       ),
                                       const SizedBox(width: 12),
-                                      Text(
-                                        'Time \nDuration',
-                                        style: GoogleFonts.ibmPlexSans(
-                                            color: Colors.white),
-                                      )
+                                      CustomText(
+                                          text: 'Time \nDuration',
+                                          color: Colors.white)
                                     ],
                                   ),
-                                  Text(
-                                    '1h 46m',
-                                    style: GoogleFonts.ibmPlexSans(
-                                        color: Colors.white, fontSize: 26),
-                                  )
+                                  CustomText(
+                                      text: '1h 46m',
+                                      color: Colors.white,
+                                      fontSize: 26)
                                 ],
                               ),
                             ),

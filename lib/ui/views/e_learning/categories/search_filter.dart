@@ -49,7 +49,7 @@ class SearchFilter extends StackedView<CategoriesViewModel> {
                         child: Center(
                             child: CustomText(
                                 text: 'Search Filter',
-                                size: 16,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white)),
                       ),

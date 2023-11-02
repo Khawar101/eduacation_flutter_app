@@ -36,14 +36,12 @@ class ContactView extends StackedView<ContactViewModel> {
             );
           },
         ),
-        title: Text(
-          "Contacts",
-          textAlign: TextAlign.center,
-          style: GoogleFonts.ibmPlexSans(
-              fontSize: 18,
-              color: const Color(0xff4873a6).withOpacity(0.7),
-              fontWeight: FontWeight.w600),
-        ),
+        title: CustomText(
+            text: "Contacts",
+            textAlign: TextAlign.center,
+            fontSize: 18,
+            color: const Color(0xff4873a6).withOpacity(0.7),
+            fontWeight: FontWeight.w600),
         centerTitle: true,
       ),
       body: Padding(
@@ -65,30 +63,30 @@ class ContactView extends StackedView<ContactViewModel> {
                   itemCount: 20,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: EdgeInsets.only(bottom: 10),
+                      padding: const EdgeInsets.only(bottom: 10),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CircleAvatar(
+                          const CircleAvatar(
                             radius: 22,
                             backgroundColor: Colors.red,
                             backgroundImage:
                                 AssetImage('assets/images/tree.jpg'),
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               CustomText(
                                   text: 'Contact Name',
-                                  size: 14,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black),
-                              SizedBox(height: 3),
+                              const SizedBox(height: 3),
                               CustomText(
                                   text: '(+92)3012345678',
-                                  size: 12,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black54)
                             ],

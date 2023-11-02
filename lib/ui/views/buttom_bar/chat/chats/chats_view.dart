@@ -46,14 +46,12 @@ class ChatsView extends StackedView<ChatsViewModel> {
             );
           },
         ),
-        title: Text(
-          "Chats",
-          textAlign: TextAlign.center,
-          style: GoogleFonts.ibmPlexSans(
-              fontSize: 18,
-              color: const Color(0xff4873a6).withOpacity(0.7),
-              fontWeight: FontWeight.w600),
-        ),
+        title: CustomText(
+            text: "Chats",
+            textAlign: TextAlign.center,
+            fontSize: 18,
+            color: const Color(0xff4873a6).withOpacity(0.7),
+            fontWeight: FontWeight.w600),
         centerTitle: true,
       ),
       body: Padding(

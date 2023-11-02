@@ -1,3 +1,4 @@
+import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -26,7 +27,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
+        return const AlertDialog(
           title: Text('Downloading...'),
           content: LinearProgressIndicator(),
         );
@@ -67,14 +68,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       appBar: AppBar(
         title: Column(
           children: [
-            const Text(
-              'View and download',
+            CustomText(
+              text: 'View and download',
               textScaleFactor: 0.8,
             ),
-            Text(
-              'Double tap to zoom',
+            CustomText(
+              text: 'Double tap to zoom',
               textScaleFactor: 0.6,
-            )
+            ),
           ],
         ),
         actions: <Widget>[

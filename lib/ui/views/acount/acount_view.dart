@@ -27,14 +27,12 @@ class AcountView extends StackedView<AcountViewModel> {
             size: 18,
           ),
         ),
-        title: Text(
-          "Acount",
-          textAlign: TextAlign.center,
-          style: GoogleFonts.ibmPlexSans(
-              fontSize: 18,
-              color: const Color(0xff4873a6).withOpacity(0.7),
-              fontWeight: FontWeight.w600),
-        ),
+        title: CustomText(
+            text: "Acount",
+            textAlign: TextAlign.center,
+            fontSize: 18,
+            color: const Color(0xff4873a6).withOpacity(0.7),
+            fontWeight: FontWeight.w600),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -56,7 +54,7 @@ class AcountView extends StackedView<AcountViewModel> {
                       alignment: Alignment.centerLeft,
                       child: CustomText(
                           text: 'General Setting',
-                          size: 16,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.white)),
                 ),
@@ -102,7 +100,7 @@ class AcountView extends StackedView<AcountViewModel> {
                       alignment: Alignment.centerLeft,
                       child: CustomText(
                           text: 'Support',
-                          size: 16,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.white)),
                 ),

@@ -112,30 +112,51 @@ class SmallText extends StatelessWidget {
 }
 
 class CustomText extends StatelessWidget {
-  final String text;
-  final double size;
-  final FontWeight fontWeight;
-  final Color color;
-  int? maxLines;
+  String text;
+  double? fontSize;
+  Color? color;
+  bool localization;
+  FontWeight? fontWeight;
+  double? letterSpacing;
+  double? wordspacing;
+  TextAlign? textAlign;
+  TextDirection? textDirection;
   TextOverflow? textOverflow;
-
+  double? textScaleFactor;
+  int? maxLines;
+  bool? softWrap;
   CustomText(
       {super.key,
-      required this.text,
-      required this.size,
-      required this.fontWeight,
-      required this.color,
+      this.text = "",
+      this.color,
+      this.localization = true,
+      this.fontSize,
+      this.fontWeight,
+      this.letterSpacing,
+      this.wordspacing,
+      this.textAlign,
+      this.textDirection,
+      this.textOverflow,
       this.maxLines,
-      this.textOverflow});
+      this.textScaleFactor,
+      this.softWrap});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: GoogleFonts.ibmPlexSans(
-          color: color, fontSize: size, fontWeight: fontWeight),
-      maxLines: maxLines,
+        color: color ?? Colors.black,
+        fontSize: fontSize ?? 14,
+        fontWeight: fontWeight ?? FontWeight.w400,
+        letterSpacing: letterSpacing ?? 0,
+        wordSpacing: wordspacing ?? 0,
+      ),
+      textAlign: textAlign,
       overflow: textOverflow,
+      maxLines: maxLines,
+      textScaleFactor: textScaleFactor,
+      softWrap: softWrap,
     );
   }
 }

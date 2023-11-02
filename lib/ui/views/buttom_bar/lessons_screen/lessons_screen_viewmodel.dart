@@ -124,11 +124,10 @@ class LessonsScreenViewModel extends BaseViewModel {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    data.title.toString(),
-                                    style: const TextStyle(
-                                        overflow: TextOverflow.ellipsis,
-                                        fontWeight: FontWeight.bold),
+                                  CustomText(
+                                    text: data.title.toString(),
+                                    textOverflow: TextOverflow.ellipsis,
+                                    fontWeight: FontWeight.bold,
                                     maxLines: 1,
                                   ),
                                   RatingBar.builder(
@@ -150,7 +149,7 @@ class LessonsScreenViewModel extends BaseViewModel {
                                   ),
                                   CustomText(
                                       text: "\$${data.price.toString()}",
-                                      size: 17,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black),
                                 ],
@@ -161,12 +160,11 @@ class LessonsScreenViewModel extends BaseViewModel {
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 4),
-                          child: Text(
-                            data.description.toString(),
-                            style: const TextStyle(
-                                color: Colors.black45,
-                                overflow: TextOverflow.ellipsis,
-                                fontWeight: FontWeight.bold),
+                          child: CustomText(
+                            text: data.description.toString(),
+                            color: Colors.black45,
+                            textOverflow: TextOverflow.ellipsis,
+                            fontWeight: FontWeight.bold,
                             maxLines: 2,
                           ),
                         ),

@@ -57,8 +57,6 @@ class CoursedetailViewModel extends BaseViewModel {
     Navigator.pop(context);
   }
 
-  
-
   StreamController<bool> streamController = StreamController();
   bool replyVideo = true;
   VideoPlayerController? controller;

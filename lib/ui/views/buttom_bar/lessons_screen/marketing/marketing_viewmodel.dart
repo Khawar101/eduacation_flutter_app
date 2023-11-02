@@ -31,5 +31,4 @@ class MarketingViewModel extends BaseViewModel {
   buyCourse(courseData) {
     _subscriptionService.buyCourse(courseData);
   }
-
 }

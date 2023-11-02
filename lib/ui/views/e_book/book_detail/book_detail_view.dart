@@ -108,7 +108,7 @@ class _BookDetailViewState extends State<BookDetailView>
                     CustomText(
                       text: widget.eBookModel.title!,
                       color: Colors.black,
-                      size: 18,
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
                     const SizedBox(
@@ -147,7 +147,7 @@ class _BookDetailViewState extends State<BookDetailView>
                         CustomText(
                           text: "Description: ",
                           color: Colors.black,
-                          size: 18,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                         CustomText(
@@ -155,7 +155,7 @@ class _BookDetailViewState extends State<BookDetailView>
                               (double.parse(widget.eBookModel.price!))
                                   .toStringAsFixed(2),
                           color: Colors.black,
-                          size: 18,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ],
@@ -208,7 +208,7 @@ class _BookDetailViewState extends State<BookDetailView>
                     onPressed: null,
                     child: CustomText(
                       text: "Buy Audio",
-                      size: 16,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -223,7 +223,7 @@ class _BookDetailViewState extends State<BookDetailView>
                     },
                     child: CustomText(
                       text: "Buy Ebooks",
-                      size: 16,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),

@@ -14,37 +14,34 @@ Widget courseintro(context, CoursesModel courseData) {
       const SizedBox(height: 10),
       Row(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.access_time_outlined,
-                    size: 16,
-                  ),
-                  const SizedBox(width: 7),
-                  Text(courseData.duration.toString(),
-                      style: GoogleFonts.ibmPlexSans(fontSize: 12)),
-                ],
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.access_time_outlined,
+                  size: 16,
+                ),
+                const SizedBox(width: 7),
+                Text(courseData.duration.toString(),
+                    style: GoogleFonts.ibmPlexSans(fontSize: 12)),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(children: [
+              const Icon(
+                Icons.star_border_outlined,
+                size: 16,
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.star_border_outlined,
-                    size: 16,
-                  ),
-                  const SizedBox(width: 7),
-                  Text("${courseData.rating??0.0} (${courseData.students??0.0})",
-                      style: GoogleFonts.ibmPlexSans(fontSize: 12)),
-                ],
-              ),
-            ],
-          ),
+              const SizedBox(width: 7),
+              CustomText(
+                  text:
+                      "${courseData.rating ?? 0.0} (${courseData.students ?? 0.0})",
+                  fontSize: 12)
+            ])
+          ]),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.15,
           ),
@@ -60,8 +57,8 @@ Widget courseintro(context, CoursesModel courseData) {
                     color: Colors.black54,
                   ),
                   const SizedBox(width: 7),
-                  Text("${courseData.chapter} Lessons",
-                      style: GoogleFonts.ibmPlexSans(fontSize: 12)),
+                  CustomText(
+                      text: "${courseData.chapter} Lessons", fontSize: 12)
                 ],
               ),
               const SizedBox(
@@ -75,8 +72,8 @@ Widget courseintro(context, CoursesModel courseData) {
                     size: 16,
                   ),
                   const SizedBox(width: 7),
-                  Text("${courseData.students} students",
-                      style: GoogleFonts.ibmPlexSans(fontSize: 12)),
+                  CustomText(
+                      text: "${courseData.students} students", fontSize: 12)
                 ],
               )
             ],

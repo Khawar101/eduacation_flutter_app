@@ -39,15 +39,13 @@ Widget ratingBuilder(CoursesModel courseData) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundImage: NetworkImage(data.profile!),
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                      Column(
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundImage: NetworkImage(data.profile!),
+                    ),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.03),
+                    Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -56,43 +54,38 @@ Widget ratingBuilder(CoursesModel courseData) {
                             height: 2,
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.75,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                RatingBar.builder(
-                                  wrapAlignment: WrapAlignment.start,
-                                  initialRating: data.rating!,
-                                  minRating: 1,
-                                  direction: Axis.horizontal,
-                                  allowHalfRating: true,
-                                  itemCount: 5,
-                                  itemSize: 15,
-                                  ignoreGestures: true,
-                                  itemBuilder: (context, _) => const Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                  ),
-                                  onRatingUpdate: (rating) {
-                                    log(rating.toString());
-                                  },
-                                ),
-                                Text(
-                                  timeago
-                                      .format(data.date!.toDate())
-                                      .toString(),
-                                  style: GoogleFonts.ibmPlexSans(
-                                      fontSize: 12,
-                                      color: Colors.black45,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                              width: MediaQuery.of(context).size.width * 0.75,
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    RatingBar.builder(
+                                      wrapAlignment: WrapAlignment.start,
+                                      initialRating: data.rating!,
+                                      minRating: 1,
+                                      direction: Axis.horizontal,
+                                      allowHalfRating: true,
+                                      itemCount: 5,
+                                      itemSize: 15,
+                                      ignoreGestures: true,
+                                      itemBuilder: (context, _) => const Icon(
+                                        Icons.star,
+                                        color: Colors.yellow,
+                                      ),
+                                      onRatingUpdate: (rating) {
+                                        log(rating.toString());
+                                      },
+                                    ),
+                                    CustomText(
+                                        text: timeago
+                                            .format(data.date!.toDate())
+                                            .toString(),
+                                        fontSize: 12,
+                                        color: Colors.black45,
+                                        fontWeight: FontWeight.w500)
+                                  ]))
+                        ])
+                  ]),
                   const SizedBox(height: 8),
                   ReadMoreText(
                     data.review.toString(),

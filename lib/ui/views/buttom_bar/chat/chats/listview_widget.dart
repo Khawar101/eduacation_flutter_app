@@ -47,7 +47,7 @@ class ListViewData extends StackedView<ChatsViewModel> {
                           text: viewModel
                               .cruntUserName(chatMember)[0]
                               .toUpperCase(),
-                          size: 18,
+                          fontSize: 18,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
                         )
@@ -63,7 +63,7 @@ class ListViewData extends StackedView<ChatsViewModel> {
                       child: CustomText(
                           text: viewModel.cruntUserName(chatMember) ??
                               "".toString(),
-                          size: 14,
+                          fontSize: 14,
                           maxLines: 1,
                           textOverflow: TextOverflow.ellipsis,
                           fontWeight: FontWeight.w600,
@@ -74,7 +74,7 @@ class ListViewData extends StackedView<ChatsViewModel> {
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: CustomText(
                         text: lastMessage.sMS ?? "",
-                        size: 12,
+                        fontSize: 12,
                         maxLines: 1,
                         textOverflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w500,
@@ -94,7 +94,7 @@ class ListViewData extends StackedView<ChatsViewModel> {
                         int.parse(lastMessage.date ?? ""),
                       ),
                     ),
-                    size: 10,
+                    fontSize: 10,
                     fontWeight: FontWeight.w500,
                     color: Colors.black54)
               ],

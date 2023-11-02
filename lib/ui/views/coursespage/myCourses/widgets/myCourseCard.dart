@@ -85,7 +85,7 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
                         ),
                         CustomText(
                             text: "\$${courseData.price.toString()}",
-                            size: 17,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ],

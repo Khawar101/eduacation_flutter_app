@@ -55,14 +55,12 @@ class _StudentInformationViewState extends State<StudentInformationView>
               );
             },
           ),
-          title: Text(
-            "Student Info",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.ibmPlexSans(
-                fontSize: 18,
-                color: const Color(0xff4873a6).withOpacity(0.7),
-                fontWeight: FontWeight.w600),
-          ),
+          title: CustomText(
+              text: "Student Info",
+              textAlign: TextAlign.center,
+              fontSize: 18,
+              color: const Color(0xff4873a6).withOpacity(0.7),
+              fontWeight: FontWeight.w600),
           centerTitle: true,
           actions: const [
             Padding(
@@ -89,12 +87,11 @@ class _StudentInformationViewState extends State<StudentInformationView>
               const SizedBox(height: 4),
               const BigText(text: "@annymori", color: Colors.black),
               const SizedBox(height: 4),
-              Text(
-                "Professinol comic book artist\nand full time art teacher",
+              CustomText(
+                text:
+                    "Professinol comic book artist\nand full time art teacher",
                 textAlign: TextAlign.center,
-                style: GoogleFonts.ibmPlexSans(
-                  fontSize: 12,
-                ),
+                fontSize: 12,
               ),
               const SizedBox(height: 12),
               Row(

@@ -78,7 +78,7 @@ class InboxView extends StackedView<InboxViewModel> {
                         text: name.isNotEmpty
                             ? name[0].toUpperCase()
                             : "", // Display the first letter of the name
-                        size: 18,
+                        fontSize: 18,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       )
@@ -90,14 +90,12 @@ class InboxView extends StackedView<InboxViewModel> {
                 children: [
                   SizedBox(
                     width: width * 0.62,
-                    child: Text(
-                      name,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.ibmPlexSans(
-                          fontSize: 15,
-                          color: const Color(0xff4873a6).withOpacity(0.7),
-                          fontWeight: FontWeight.w600),
-                    ),
+                    child: CustomText(
+                        text: name,
+                        textOverflow: TextOverflow.ellipsis,
+                        fontSize: 15,
+                        color: const Color(0xff4873a6).withOpacity(0.7),
+                        fontWeight: FontWeight.w600),
                   ),
                   !isGroup
                       ? SizedBox(
@@ -110,29 +108,27 @@ class InboxView extends StackedView<InboxViewModel> {
                                   scrollDirection: Axis.horizontal,
                                   itemBuilder: (ctx, index) {
                                     return InkWell(
-                                      onTap: () {
-                                        viewModel.openNewChat(
-                                            viewModel.memberList[index],
-                                            viewModel.chatMembers[index]);
-                                      },
-                                      child: Text(
-                                          "${viewModel.memberList[index].name}",
-                                          style: GoogleFonts.ibmPlexSans(
-                                              fontSize: 15,
-                                              color: const Color(0xff4873a6)
-                                                  .withOpacity(0.7),
-                                              fontWeight: FontWeight.w600)),
-                                    );
+                                        onTap: () {
+                                          viewModel.openNewChat(
+                                              viewModel.memberList[index],
+                                              viewModel.chatMembers[index]);
+                                        },
+                                        child: CustomText(
+                                            text:
+                                                "${viewModel.memberList[index].name}",
+                                            fontSize: 15,
+                                            color: const Color(0xff4873a6)
+                                                .withOpacity(0.7),
+                                            fontWeight: FontWeight.w600));
                                   },
                                 )
-                              : Text(
-                                  "No One Member In This Group Right Know",
-                                  style: GoogleFonts.ibmPlexSans(
-                                      fontSize: 15,
-                                      color: const Color(0xff4873a6)
-                                          .withOpacity(0.7),
-                                      fontWeight: FontWeight.w600),
-                                ),
+                              : CustomText(
+                                  text:
+                                      "No One Member In This Group Right Know",
+                                  fontSize: 15,
+                                  color:
+                                      const Color(0xff4873a6).withOpacity(0.7),
+                                  fontWeight: FontWeight.w600),
                         )
                       : StreamBuilder(
                           stream: viewModel.publisherStream(otherUID),
@@ -162,16 +158,15 @@ class InboxView extends StackedView<InboxViewModel> {
                                   const SizedBox(
                                     width: 8,
                                   ),
-                                  Text(
+                                  CustomText(
                                     // _userData.email ?? "",
-                                    _userData.status ?? false
+                                    text: _userData.status ?? false
                                         ? "Active now"
                                         : "Offline",
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: const Color(0xff4873a6)
-                                          .withOpacity(0.7),
-                                    ),
+
+                                    fontSize: 10,
+                                    color: const Color(0xff4873a6)
+                                        .withOpacity(0.7),
                                   )
                                 ],
                               );

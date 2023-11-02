@@ -53,14 +53,12 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                     size: 18,
                   ),
                 ),
-                title: Text(
-                  "Details",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.ibmPlexSans(
-                      fontSize: 18,
-                      color: const Color(0xff4873a6).withOpacity(0.7),
-                      fontWeight: FontWeight.w600),
-                ),
+                title: CustomText(
+                    text: "Details",
+                    textAlign: TextAlign.center,
+                    fontSize: 18,
+                    color: const Color(0xff4873a6).withOpacity(0.7),
+                    fontWeight: FontWeight.w600),
                 centerTitle: true,
                 actions: const [
                   Padding(
@@ -149,16 +147,14 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                         },
                                         child: Column(
                                           children: [
-                                            Text(
-                                              'Overview',
-                                              style: GoogleFonts.ibmPlexSans(
-                                                  fontSize: 16.0,
-                                                  color: viewModel.tabPage == 0
-                                                      ? Colors.black
-                                                      : const Color(0xff4873a6)
-                                                          .withOpacity(0.7),
-                                                  fontWeight: FontWeight.w600),
-                                            ),
+                                            CustomText(
+                                                text: 'Overview',
+                                                fontSize: 16.0,
+                                                color: viewModel.tabPage == 0
+                                                    ? Colors.black
+                                                    : const Color(0xff4873a6)
+                                                        .withOpacity(0.7),
+                                                fontWeight: FontWeight.w600),
                                             viewModel.tabPage == 0
                                                 ? Container(
                                                     margin:
@@ -183,16 +179,14 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                         },
                                         child: Column(
                                           children: [
-                                            Text(
-                                              'Contant',
-                                              style: GoogleFonts.ibmPlexSans(
-                                                  fontSize: 16.0,
-                                                  color: viewModel.tabPage == 0
-                                                      ? const Color(0xff4873a6)
-                                                          .withOpacity(0.7)
-                                                      : Colors.black,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
+                                            CustomText(
+                                                text: 'Contant',
+                                                fontSize: 16.0,
+                                                color: viewModel.tabPage == 0
+                                                    ? const Color(0xff4873a6)
+                                                        .withOpacity(0.7)
+                                                    : Colors.black,
+                                                fontWeight: FontWeight.w600),
                                             viewModel.tabPage == 1
                                                 ? Container(
                                                     margin:

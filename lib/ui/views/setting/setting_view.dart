@@ -47,7 +47,7 @@ class SettingView extends StackedView<SettingViewModel> {
                 },
                 child: CustomText(
                     text: 'Save',
-                    size: 13,
+                    fontSize: 13,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xff4873a6).withOpacity(0.7)),
               ),

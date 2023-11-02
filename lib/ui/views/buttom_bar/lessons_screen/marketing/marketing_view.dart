@@ -68,15 +68,13 @@ class _MarketingViewState extends State<MarketingView> {
                                       const Color(0xff4873a6).withOpacity(0.7),
                                 ),
                                 const SizedBox(width: 3),
-                                Text(
-                                  "English",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.ibmPlexSans(
-                                      fontSize: 15,
-                                      color: const Color(0xff4873a6)
-                                          .withOpacity(0.7),
-                                      fontWeight: FontWeight.w600),
-                                ),
+                                CustomText(
+                                    text: "English",
+                                    textAlign: TextAlign.center,
+                                    fontSize: 15,
+                                    color: const Color(0xff4873a6)
+                                        .withOpacity(0.7),
+                                    fontWeight: FontWeight.w600),
                                 Icon(
                                   Icons.keyboard_arrow_down_outlined,
                                   color:
@@ -146,7 +144,7 @@ class _MarketingViewState extends State<MarketingView> {
                                       CustomText(
                                           text: widget.data.chapter ??
                                               "0" + " " + "Chapters",
-                                          size: 14,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                       SizedBox(
@@ -156,7 +154,7 @@ class _MarketingViewState extends State<MarketingView> {
                                               0.1),
                                       CustomText(
                                           text: "Full " + widget.data.duration!,
-                                          size: 14,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                     ],
@@ -240,15 +238,11 @@ class _MarketingViewState extends State<MarketingView> {
                                                         'Welcome to the Course',
                                                     color: Colors.black),
                                                 const SizedBox(height: 4),
-                                                Text(
-                                                  '56 Minutes',
-                                                  style:
-                                                      GoogleFonts.ibmPlexSans(
-                                                          fontSize: 12,
-                                                          color: Colors.black26,
-                                                          fontWeight:
-                                                              FontWeight.w500),
-                                                ),
+                                                CustomText(
+                                                    text: '56 Minutes',
+                                                    fontSize: 12,
+                                                    color: Colors.black26,
+                                                    fontWeight: FontWeight.w500)
                                               ],
                                             ),
                                           ],
@@ -268,77 +262,69 @@ class _MarketingViewState extends State<MarketingView> {
                                                 Lecture lecture =
                                                     widget.data.lecture![index];
                                                 return Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          bottom: 20),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Row(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            bottom: 20),
+                                                    child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                         children: [
-                                                          Container(
-                                                            height: 22,
-                                                            width: 22,
-                                                            decoration: BoxDecoration(
-                                                                border: Border.all(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    width: 1),
-                                                                shape: BoxShape
-                                                                    .circle),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(3.0),
-                                                              child:
-                                                                  Image.asset(
-                                                                'assets/icons/lock-24.png',
-                                                                color: Colors
-                                                                    .black,
+                                                          Row(children: [
+                                                            Container(
+                                                              height: 22,
+                                                              width: 22,
+                                                              decoration: BoxDecoration(
+                                                                  border: Border.all(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      width: 1),
+                                                                  shape: BoxShape
+                                                                      .circle),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(
+                                                                        3.0),
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/icons/lock-24.png',
+                                                                  color: Colors
+                                                                      .black,
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
-                                                          const SizedBox(
-                                                              width: 16),
-                                                          SizedBox(
-                                                            width: width * .5,
-                                                            child: Text(
-                                                              lecture.title!,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: GoogleFonts.ibmPlexSans(
-                                                                  fontSize: 12,
-                                                                  color: Colors
-                                                                      .black54,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Text(
-                                                            "${lecture.duration ?? 0}",
-                                                            style: GoogleFonts
-                                                                .ibmPlexSans(
+                                                            const SizedBox(
+                                                                width: 16),
+                                                            SizedBox(
+                                                                width:
+                                                                    width * .5,
+                                                                child: CustomText(
+                                                                    text: lecture
+                                                                        .title!,
+                                                                    textOverflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
                                                                     fontSize:
                                                                         12,
                                                                     color: Colors
-                                                                        .black26,
+                                                                        .black54,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .w500),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
+                                                                            .w500))
+                                                          ]),
+                                                          Row(children: [
+                                                            CustomText(
+                                                                text:
+                                                                    "${lecture.duration ?? 0}",
+                                                                fontSize: 12,
+                                                                color: Colors
+                                                                    .black26,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500)
+                                                          ])
+                                                        ]));
                                               }),
                                         ),
                                         // SizedBox(

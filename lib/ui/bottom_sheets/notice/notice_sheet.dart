@@ -1,3 +1,4 @@
+import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:education/ui/common/app_colors.dart';
 import 'package:education/ui/common/ui_helpers.dart';
@@ -27,14 +28,13 @@ class NoticeSheet extends StackedView<NoticeSheetModel> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            request.title!,
-            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
-          ),
+          CustomText(
+              text: request.title!, fontSize: 25, fontWeight: FontWeight.w900),
           verticalSpaceTiny,
-          Text(
-            request.description!,
-            style: const TextStyle(fontSize: 14, color: kcMediumGrey),
+          CustomText(
+            text: request.description!,
+            fontSize: 14,
+            color: kcMediumGrey,
             maxLines: 3,
             softWrap: true,
           ),

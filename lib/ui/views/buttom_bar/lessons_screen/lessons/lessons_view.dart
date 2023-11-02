@@ -55,15 +55,12 @@ class _LessonsViewState extends State<LessonsView> {
                               color: const Color(0xff4873a6).withOpacity(0.7),
                             ),
                             const SizedBox(width: 3),
-                            Text(
-                              "English",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.ibmPlexSans(
-                                  fontSize: 15,
-                                  color:
-                                      const Color(0xff4873a6).withOpacity(0.7),
-                                  fontWeight: FontWeight.w600),
-                            ),
+                            CustomText(
+                                text: "English",
+                                textAlign: TextAlign.center,
+                                fontSize: 15,
+                                color: const Color(0xff4873a6).withOpacity(0.7),
+                                fontWeight: FontWeight.w600),
                             Icon(
                               Icons.keyboard_arrow_down_outlined,
                               color: const Color(0xff4873a6).withOpacity(0.7),
@@ -143,13 +140,11 @@ class _LessonsViewState extends State<LessonsView> {
                                                 text: 'Welcome to the Course',
                                                 color: Colors.black),
                                             const SizedBox(height: 4),
-                                            Text(
-                                              '56 Minutes',
-                                              style: GoogleFonts.ibmPlexSans(
-                                                  fontSize: 12,
-                                                  color: Colors.black26,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
+                                            CustomText(
+                                                text: '56 Minutes',
+                                                fontSize: 12,
+                                                color: Colors.black26,
+                                                fontWeight: FontWeight.w500),
                                           ],
                                         ),
                                       ],
@@ -195,32 +190,23 @@ class _LessonsViewState extends State<LessonsView> {
                                                         ),
                                                       ),
                                                       const SizedBox(width: 16),
-                                                      Text(
-                                                        'what is marketing?',
-                                                        style: GoogleFonts
-                                                            .ibmPlexSans(
-                                                                fontSize: 12,
-                                                                color: Colors
-                                                                    .black54,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                      ),
+                                                      CustomText(
+                                                          text:
+                                                              'what is marketing?',
+                                                          fontSize: 12,
+                                                          color: Colors.black54,
+                                                          fontWeight:
+                                                              FontWeight.w500),
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      Text(
-                                                        '56 Minutes',
-                                                        style: GoogleFonts
-                                                            .ibmPlexSans(
-                                                                fontSize: 12,
-                                                                color: Colors
-                                                                    .black26,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                      ),
+                                                      CustomText(
+                                                          text: '56 Minutes',
+                                                          fontSize: 12,
+                                                          color: Colors.black26,
+                                                          fontWeight:
+                                                              FontWeight.w500),
                                                     ],
                                                   ),
                                                 ],
