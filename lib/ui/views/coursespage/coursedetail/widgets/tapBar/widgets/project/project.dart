@@ -34,7 +34,7 @@ Widget project(context) {
           ),
         ],
       ),
-      const SizedBox(height: 30),
+      const SizedBox(height: 20),
       SizedBox(
         child: MediaQuery.removePadding(
           context: context,

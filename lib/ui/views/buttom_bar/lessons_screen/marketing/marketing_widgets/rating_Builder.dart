@@ -1,16 +1,15 @@
-import 'dart:developer';
-
-import 'package:education/app/app.locator.dart';
+// ignore_for_file: file_names
 import 'package:education/services/Model/CoursesModel.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:education/services/Model/ratingModel.dart';
 import 'package:education/services/rating_service.dart';
 import 'package:education/ui/widgets/app_utils.dart';
-import 'package:education/utils/loading.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:readmore/readmore.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:education/app/app.locator.dart';
+import 'package:education/utils/loading.dart';
+import 'package:readmore/readmore.dart';
+import 'package:flutter/material.dart';
+import 'dart:developer';
 
 final ratingService = locator<RatingService>();
 Widget ratingBuilder(CoursesModel courseData) {

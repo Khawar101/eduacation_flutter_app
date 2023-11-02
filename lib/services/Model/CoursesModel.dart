@@ -36,6 +36,17 @@
 //         }
 //     ]
 // }
+
+
+///upload project
+// {
+//   "projectName":"",
+//   "projectDescription":"",
+//   "picture":"",
+//   "pdfFile":""
+// }
+
+
 // ignore_for_file: prefer_collection_literals
 
 import 'package:education/services/Model/EbookModel.dart';
@@ -216,3 +227,7 @@ class Assigment {
     return data;
   }
 }
+
+
+
+// projec

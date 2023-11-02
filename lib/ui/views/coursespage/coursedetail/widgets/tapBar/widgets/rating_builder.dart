@@ -1,4 +1,4 @@
-import '../../../../../buttom_bar/lessons_screen/marketing/marketing_widgets/ratingBuilder.dart';
+import '../../../../../buttom_bar/lessons_screen/marketing/marketing_widgets/rating_Builder.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:education/services/Model/ratingModel.dart';
