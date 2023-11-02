@@ -1,3 +1,7 @@
+
 import 'package:stacked/stacked.dart';
 
-class PosterViewModel extends BaseViewModel {}
+class PosterViewModel extends BaseViewModel {
+
+
+}

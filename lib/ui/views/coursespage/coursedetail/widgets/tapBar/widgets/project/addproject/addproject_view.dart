@@ -1,11 +1,14 @@
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'addproject_viewmodel.dart';
 
 class AddprojectView extends StackedView<AddprojectViewModel> {
-  const AddprojectView({Key? key}) : super(key: key);
+  final CoursesModel courseData;
+  const AddprojectView(this.courseData, {Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -47,6 +50,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
               TextFormField(
                 // minLines: 6,
                 // maxLines: null,
+                controller: viewModel.projectName,
                 keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
                   alignLabelWithHint: true,
@@ -58,6 +62,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
               TextFormField(
                 minLines: 6,
                 maxLines: null,
+                controller: viewModel.projectDescription,
                 keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
                   alignLabelWithHint: true,
@@ -77,7 +82,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
-                      itemCount: 4,
+                      itemCount: courseData.projects?.length ?? 1,
                       itemBuilder: (BuildContext context, int index) {
                         if (index == 0) {
                           return Card(
@@ -91,20 +96,26 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                               ),
                               child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
-                                  child: Center(
-                                    child: Container(
-                                        height: 60,
-                                        width: 60,
-                                        decoration: BoxDecoration(
-                                            color: const Color(0xff4873a6)
-                                                .withOpacity(0.7),
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: const Center(
-                                            child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        ))),
+                                  child: InkWell(
+                                    onTap: () {
+                                      viewModel.sendImage(ImageSource.gallery,
+                                          courseData.uID,"");
+                                    },
+                                    child: Center(
+                                      child: Container(
+                                          height: 60,
+                                          width: 60,
+                                          decoration: BoxDecoration(
+                                              color: const Color(0xff4873a6)
+                                                  .withOpacity(0.7),
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: const Center(
+                                              child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ))),
+                                    ),
                                   ))); // Placeholder for the first index
                         } else {
                           return Card(

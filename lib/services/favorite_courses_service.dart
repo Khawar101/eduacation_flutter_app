@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../app/app.locator.dart';
 import 'Model/CoursesModel.dart';
@@ -11,7 +13,7 @@ class FavoriteCoursesService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   addfavoriteCourse(CoursesModel courseData) async {
-    print("add to favorite");
+    log("add to favorite");
     userData _userData = _loginService.UserData;
     List courseList = _userData.favoriteCourses ?? [];
     try {

@@ -36,17 +36,6 @@
 //         }
 //     ]
 // }
-
-
-///upload project
-// {
-//   "projectName":"",
-//   "projectDescription":"",
-//   "picture":"",
-//   "pdfFile":""
-// }
-
-
 // ignore_for_file: prefer_collection_literals
 
 import 'package:education/services/Model/EbookModel.dart';
@@ -67,6 +56,7 @@ class CoursesModel {
   String? duration;
   List<Lecture>? lecture;
   List<Assigment>? assigment;
+   List<Projects>? projects;
   PublisherData? publisherData;
 
   CoursesModel(
@@ -85,7 +75,9 @@ class CoursesModel {
       duration,
       lecture,
       assigmen,
-      publisherData});
+      projects,
+      publisherData
+      });
 
   CoursesModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -118,6 +110,12 @@ class CoursesModel {
         assigment!.add(Assigment.fromJson(v));
       });
     }
+     if (json['projects'] != null) {
+      projects = <Projects>[];
+      json['projects'].forEach((v) {
+        projects!.add( Projects.fromJson(v));
+      });
+    }
     publisherData = json['publisherData'] != null
         ? PublisherData.fromJson(json['publisherData'])
         : null;
@@ -145,6 +143,9 @@ class CoursesModel {
     }
     if (assigment != null) {
       data['assigment'] = assigment!.map((v) => v.toJson()).toList();
+    }
+     if (projects != null) {
+      data['projects'] = projects!.map((v) => v.toJson()).toList();
     }
     if (publisherData != null) {
       data['publisherData'] = publisherData!.toJson();
@@ -228,6 +229,32 @@ class Assigment {
   }
 }
 
+class Projects {
+  String? projectName;
+  String? projectDescription;
+  String? projectPicture;
+  String? projectpdf;
 
+  Projects(
+      {this.projectName,
+      this.projectDescription,
+      this.projectPicture,
+      this.projectpdf});
 
-// projec
+  Projects.fromJson(Map<String, dynamic> json) {
+    projectName = json['projectName'];
+    projectDescription = json['projectDescription'];
+    projectPicture = json['projectPicture'];
+    projectpdf = json['projectpdf'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data =Map<String, dynamic>();
+    data['projectName'] =projectName;
+    data['projectDescription'] = projectDescription;
+    data['projectPicture'] = projectPicture;
+    data['projectpdf'] = projectpdf;
+    return data;
+  }
+}
+

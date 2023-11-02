@@ -1,4 +1,5 @@
 // ignore_for_file: unnecessary_import
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/addproject_view.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/poster/poster_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../../../widgets/app_utils.dart';
 
-Widget project(context) {
+Widget project(context, CoursesModel courseData) {
   return Column(
     children: [
       Row(
@@ -22,7 +23,7 @@ Widget project(context) {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const AddprojectView()));
+                      builder: (context) =>  AddprojectView(courseData)));
             },
             child: Text(
               "Add projet",
@@ -45,7 +46,7 @@ Widget project(context) {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
               ),
-              itemCount: 4,
+              itemCount: courseData.projects?.length ?? 1,
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
@@ -74,16 +75,16 @@ Widget project(context) {
         ),
       ),
       const SizedBox(height: 30),
-      Container(
-        height: 40,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: const Color(0xFF4873A6).withOpacity(0.7),
-        ),
-        child: const Center(
-            child: ButtonText(text: 'Load more', color: Colors.white)),
-      ),
+      // Container(
+      //   height: 40,
+      //   width: double.infinity,
+      //   decoration: BoxDecoration(
+      //     borderRadius: BorderRadius.circular(10),
+      //     color: const Color(0xFF4873A6).withOpacity(0.7),
+      //   ),
+      //   child: const Center(
+      //       child: ButtonText(text: 'Load more', color: Colors.white)),
+      // ),
     ],
   );
 }

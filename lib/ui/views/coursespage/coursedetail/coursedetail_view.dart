@@ -2,7 +2,6 @@ import 'package:education/ui/common/ui_helpers.dart';
 import 'package:education/ui/views/coursespage/coursedetail/video_player.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/courseintro.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../services/Model/CoursesModel.dart';
 import '../../../../services/Model/reportModel.dart';

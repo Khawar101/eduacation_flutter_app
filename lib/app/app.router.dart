@@ -608,8 +608,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i36.AddprojectView: (data) {
+      final args = data.getArgs<AddprojectViewArguments>(nullOk: false);
       return _i44.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i36.AddprojectView(),
+        builder: (context) =>
+            _i36.AddprojectView(args.courseData, key: args.key),
         settings: data,
       );
     },
@@ -828,6 +830,33 @@ class CoursedetailViewArguments {
 
   @override
   bool operator ==(covariant CoursedetailViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.courseData == courseData && other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return courseData.hashCode ^ key.hashCode;
+  }
+}
+
+class AddprojectViewArguments {
+  const AddprojectViewArguments({
+    required this.courseData,
+    this.key,
+  });
+
+  final _i46.CoursesModel courseData;
+
+  final _i44.Key? key;
+
+  @override
+  String toString() {
+    return '{"courseData": "$courseData", "key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant AddprojectViewArguments other) {
     if (identical(this, other)) return true;
     return other.courseData == courseData && other.key == key;
   }
@@ -1442,14 +1471,17 @@ extension NavigatorStateExtension on _i48.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToAddprojectView([
+  Future<dynamic> navigateToAddprojectView({
+    required _i46.CoursesModel courseData,
+    _i44.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.addprojectView,
+        arguments: AddprojectViewArguments(courseData: courseData, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -2088,14 +2120,17 @@ extension NavigatorStateExtension on _i48.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithAddprojectView([
+  Future<dynamic> replaceWithAddprojectView({
+    required _i46.CoursesModel courseData,
+    _i44.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.addprojectView,
+        arguments: AddprojectViewArguments(courseData: courseData, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
