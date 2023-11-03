@@ -82,7 +82,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
-                      itemCount: courseData.projects?.length ?? 1,
+                      itemCount: courseData.projects?.length,
                       itemBuilder: (BuildContext context, int index) {
                         if (index == 0) {
                           return Card(
@@ -98,8 +98,10 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                                   borderRadius: BorderRadius.circular(10),
                                   child: InkWell(
                                     onTap: () {
-                                      viewModel.sendImage(ImageSource.gallery,
-                                          courseData.uID,"");
+                                      viewModel.sendImage(
+                                          ImageSource.gallery,
+                                          courseData.uID,
+                                          courseData.publishDate);
                                     },
                                     child: Center(
                                       child: Container(
