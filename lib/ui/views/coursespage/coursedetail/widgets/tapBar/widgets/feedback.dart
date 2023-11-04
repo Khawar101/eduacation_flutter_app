@@ -1,10 +1,9 @@
-import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/views/buttom_bar/lessons_screen/marketing/marketing_widgets/rating_Builder.dart';
 import 'package:education/ui/views/coursespage/coursedetail/coursedetail_viewmodel.dart';
-import 'package:flutter/material.dart';
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import '../../../../../../widgets/app_utils.dart';
 
 Widget feedback(context, CoursesModel courseData) {
   return ViewModelBuilder<CoursedetailViewModel>.reactive(
