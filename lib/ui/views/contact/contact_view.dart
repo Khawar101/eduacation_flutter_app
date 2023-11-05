@@ -1,10 +1,8 @@
 import 'package:education/ui/views/drawer/drawer_view.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
-
-import '../../widgets/app_utils.dart';
 import '../../widgets/custom_text_form_field.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
+import '../../widgets/app_utils.dart';
 import 'contact_viewmodel.dart';
 
 class ContactView extends StackedView<ContactViewModel> {

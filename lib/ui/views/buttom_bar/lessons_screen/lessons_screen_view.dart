@@ -1,7 +1,6 @@
 import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'lessons_screen_viewmodel.dart';
 

@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
 import '../../../../widgets/app_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'learners_viewmodel.dart';
 
 class LearnersView extends StackedView<LearnersViewModel> {

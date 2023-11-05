@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_adjacent_string_concatenation
 import 'package:education/ui/views/buttom_bar/lessons_screen/marketing/marketing_widgets/rating_Builder.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../../services/Model/CoursesModel.dart';
