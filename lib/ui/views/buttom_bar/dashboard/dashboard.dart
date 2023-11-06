@@ -1,10 +1,9 @@
 import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-import 'LineChart.dart';
 import 'dashboard_model.dart';
+import 'LineChart.dart';
 
 class DashboardView extends StackedView<DashboardViewModel> {
   const DashboardView({Key? key}) : super(key: key);

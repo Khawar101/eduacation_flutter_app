@@ -36,9 +36,6 @@ class CoursesService {
             "https://firebasestorage.googleapis.com/v0/b/education-app-b5aed.appspot.com/o/profile%2F1686228451064708?alt=media&token=7c093e32-23fd-432b-b7ba-a914cb4b5317",
       ));
 
-
-
-
   Stream<List<CoursesModel>> addProject(courseKey) {
     final stream = FirebaseFirestore.instance
         .collection("courses")

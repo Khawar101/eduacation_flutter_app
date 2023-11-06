@@ -1,14 +1,13 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
-import 'dart:developer';
-import 'package:education/services/Model/chat.dart';
 import 'package:education/services/Model/userData.dart';
-import 'package:education/ui/widgets/app_utils.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
 import '../../../../../services/Model/chat_member.dart';
-import 'MessageBubble.dart';
+import 'package:education/ui/widgets/app_utils.dart';
+import 'package:education/services/Model/chat.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'inbox_viewmodel.dart';
+import 'MessageBubble.dart';
+import 'dart:developer';
 
 class InboxView extends StackedView<InboxViewModel> {
   final String chatId;

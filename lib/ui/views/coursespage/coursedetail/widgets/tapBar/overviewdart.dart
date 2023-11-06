@@ -36,7 +36,7 @@ Widget overview(context, CoursesModel courseData) {
       const SizedBox(height: 30),
       feedback(context, courseData),
       // const SizedBox(height: 30),
-      project(context,courseData),
+      project(context, courseData),
       // const SizedBox(height: 30),
     ],
   );

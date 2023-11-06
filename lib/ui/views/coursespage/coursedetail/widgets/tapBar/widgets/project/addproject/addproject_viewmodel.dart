@@ -46,6 +46,4 @@ class AddprojectViewModel extends BaseViewModel {
       throw onError;
     });
   }
-
-  
 }

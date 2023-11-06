@@ -22,7 +22,7 @@ Widget project(context, CoursesModel courseData) {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>  AddprojectView(courseData)));
+                      builder: (context) => AddprojectView(courseData)));
             },
             child: Text(
               "Add projet",

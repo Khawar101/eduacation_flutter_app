@@ -1,14 +1,11 @@
-import 'dart:developer';
-
 import 'package:education/ui/views/buttom_bar/chat/inbox/inbox_viewmodel.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pdf_viewer_plugin/pdf_viewer_plugin.dart';
-import 'package:stacked/stacked.dart';
-
 import '../../../../../services/Model/chat_member.dart';
 import '../../../../../services/Model/userData.dart';
 import '../../../../widgets/app_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
+import 'dart:developer';
 
 class PdfViewShow extends StackedView<InboxViewModel> {
   final String sampleUrl;

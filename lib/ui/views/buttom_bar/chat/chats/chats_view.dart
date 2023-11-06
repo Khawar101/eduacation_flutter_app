@@ -1,11 +1,10 @@
 // ignore_for_file: unused_local_variable
 import 'package:education/services/Model/chat_member.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
-import '../../../../widgets/app_utils.dart';
 import '../../../../widgets/custom_text_form_field.dart';
+import '../../../../widgets/app_utils.dart';
 import '../../../drawer/drawer_view.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'chats_viewmodel.dart';
 import 'listview_widget.dart';
 

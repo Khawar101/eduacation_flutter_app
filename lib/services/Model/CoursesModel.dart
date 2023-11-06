@@ -56,7 +56,7 @@ class CoursesModel {
   String? duration;
   List<Lecture>? lecture;
   List<Assigment>? assigment;
-   List<Projects>? projects;
+  List<Projects>? projects;
   PublisherData? publisherData;
 
   CoursesModel(
@@ -76,8 +76,7 @@ class CoursesModel {
       lecture,
       assigmen,
       projects,
-      publisherData
-      });
+      publisherData});
 
   CoursesModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -110,10 +109,10 @@ class CoursesModel {
         assigment!.add(Assigment.fromJson(v));
       });
     }
-     if (json['projects'] != null) {
+    if (json['projects'] != null) {
       projects = <Projects>[];
       json['projects'].forEach((v) {
-        projects!.add( Projects.fromJson(v));
+        projects!.add(Projects.fromJson(v));
       });
     }
     publisherData = json['publisherData'] != null
@@ -144,7 +143,7 @@ class CoursesModel {
     if (assigment != null) {
       data['assigment'] = assigment!.map((v) => v.toJson()).toList();
     }
-     if (projects != null) {
+    if (projects != null) {
       data['projects'] = projects!.map((v) => v.toJson()).toList();
     }
     if (publisherData != null) {
@@ -249,12 +248,11 @@ class Projects {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =Map<String, dynamic>();
-    data['projectName'] =projectName;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['projectName'] = projectName;
     data['projectDescription'] = projectDescription;
     data['projectPicture'] = projectPicture;
     data['projectpdf'] = projectpdf;
     return data;
   }
 }
-
