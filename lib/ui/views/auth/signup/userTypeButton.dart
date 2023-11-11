@@ -1,9 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 Widget ganderButton(viewModel) {
   return Row(
     children: [
-      Spacer(),
+      const Spacer(),
       Row(
         children: [
           Radio(
@@ -16,7 +18,7 @@ Widget ganderButton(viewModel) {
           const Text("Student"),
         ],
       ),
-      Spacer(),
+      const Spacer(),
       Row(
         children: [
           Radio(
@@ -29,7 +31,7 @@ Widget ganderButton(viewModel) {
           const Text("Teacher"),
         ],
       ),
-      Spacer()
+      const Spacer()
     ],
   );
 }
