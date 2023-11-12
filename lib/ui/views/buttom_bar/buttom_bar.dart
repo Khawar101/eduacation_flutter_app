@@ -22,7 +22,6 @@ class ButtomBarView extends StackedView<ButtomBarViewModel> {
         shape: viewModel.bottomBarShape,
         padding: viewModel.padding,
 
-        ///configuration for SnakeNavigationBar.color
         snakeViewColor: viewModel.selectedColor,
         selectedItemColor: viewModel.snakeShape == SnakeShape.indicator
             ? viewModel.selectedColor
