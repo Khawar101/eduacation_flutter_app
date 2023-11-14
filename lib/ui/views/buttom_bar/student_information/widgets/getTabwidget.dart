@@ -3,7 +3,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../../widgets/app_utils.dart';
 
 Widget Project(context) {
@@ -158,7 +157,7 @@ Widget Following(context) {
                       ),
                       SizedBox(
                           width: MediaQuery.of(context).size.width * 0.025),
-                      Column(
+                      const Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

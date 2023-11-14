@@ -14,7 +14,6 @@ import 'widgets/tapBar/overviewdart.dart';
 
 class CoursedetailView extends StackedView<CoursedetailViewModel> {
   final CoursesModel courseData;
-
   const CoursedetailView(this.courseData, {Key? key}) : super(key: key);
   @override
   void onViewModelReady(CoursedetailViewModel viewModel) {
@@ -207,7 +206,7 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                     ],
                                   ),
                                   viewModel.tabPage == 0
-                                      ? overview(context, courseData)
+                                      ? overview(context, courseData,viewModel)
                                       : Contant(courseData, _reportData)
                                 ],
                               ),

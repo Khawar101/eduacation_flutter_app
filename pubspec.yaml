@@ -52,7 +52,7 @@ dependencies:
   shared_preferences:
   loading_animation_widget: ^1.2.0+4
   timeago: ^3.3.0
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.0.0
   syncfusion_flutter_pdfviewer: ^20.4.54
   file_picker: ^5.5.0
   pdf_viewer_plugin: ^2.0.1

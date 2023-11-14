@@ -1,14 +1,16 @@
+import 'dart:io';
+
 import 'package:education/services/Model/CoursesModel.dart';
+import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/addproject_viewmodel.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
-import 'addproject_viewmodel.dart';
 
 class AddprojectView extends StackedView<AddprojectViewModel> {
   final CoursesModel courseData;
-  const AddprojectView(this.courseData, {Key? key}) : super(key: key);
+  const AddprojectView({Key? key, required this.courseData}) : super(key: key);
 
   @override
   Widget builder(
@@ -82,7 +84,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
-                      itemCount: courseData.projects?.length,
+                      itemCount: (courseData.studentProjects?.length ?? 0) + 1,
                       itemBuilder: (BuildContext context, int index) {
                         if (index == 0) {
                           return Card(
@@ -129,26 +131,31 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                                     const BorderRadius.all(Radius.circular(10)),
                               ),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  'assets/images/Paul-Wilson.jpg',
-                                  fit: BoxFit.cover,
-                                ),
-                              ));
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.file(
+                                    File(courseData.studentProjects![index + 1]
+                                        .projectPhoto!
+                                        .toString()),
+                                  )));
                         }
                       }),
                 ),
               ),
               const SizedBox(height: 30),
-              Container(
-                height: 40,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xFF4873A6).withOpacity(0.7),
+              GestureDetector(
+                onTap: () {
+                  viewModel.addProject();
+                },
+                child: Container(
+                  height: 40,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xFF4873A6).withOpacity(0.7),
+                  ),
+                  child: const Center(
+                      child: ButtonText(text: 'Save', color: Colors.white)),
                 ),
-                child: const Center(
-                    child: ButtonText(text: 'Save', color: Colors.white)),
               ),
               const SizedBox(height: 30),
             ],

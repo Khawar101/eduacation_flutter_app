@@ -1,12 +1,13 @@
 // ignore_for_file: unnecessary_import
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/poster/poster_view.dart';
-import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/addproject_view.dart';
+import 'package:education/ui/views/coursespage/coursedetail/coursedetail_viewmodel.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget project(context, CoursesModel courseData) {
+Widget project(
+    context, CoursesModel courseData, CoursedetailViewModel viewModel) {
   return Column(
     children: [
       Row(
@@ -19,10 +20,7 @@ Widget project(context, CoursesModel courseData) {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AddprojectView(courseData)));
+              viewModel.navigateAddProjectView(courseData);
             },
             child: Text(
               "Add projet",
@@ -45,7 +43,7 @@ Widget project(context, CoursesModel courseData) {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
               ),
-              itemCount: courseData.projects?.length ?? 1,
+              itemCount: courseData.studentProjects?.length ?? 1,
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
@@ -87,3 +85,5 @@ Widget project(context, CoursesModel courseData) {
     ],
   );
 }
+
+

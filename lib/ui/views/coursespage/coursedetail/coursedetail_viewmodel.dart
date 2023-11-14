@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/chat_member.dart';
 import 'package:education/services/login_service.dart';
@@ -10,13 +11,16 @@ import 'package:education/services/subscription_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:video_player/video_player.dart';
 import '../../../../app/app.locator.dart';
 import '../../../../services/rating_service.dart';
 import 'widgets/ratingNow.dart';
 
+
 class CoursedetailViewModel extends BaseViewModel {
   // final _loginService = locator<LoginService>();
+  final _navigationService = locator<NavigationService>();
   final ratingService = locator<RatingService>();
   final subscriptionService = locator<SubscriptionService>();
   TextEditingController reviewCtrl = TextEditingController();
@@ -28,6 +32,10 @@ class CoursedetailViewModel extends BaseViewModel {
     startVideoPlayer(_videoUrl);
     setVideeComplete(_complete);
     notifyListeners();
+  }
+
+   navigateAddProjectView(courseData) {
+    _navigationService.navigateToAddprojectView(courseData: courseData);
   }
 
   void setVideeComplete(value) {
@@ -211,4 +219,7 @@ class CoursedetailViewModel extends BaseViewModel {
       log("Error: ${e.toString()}");
     }
   }
+
+
+ 
 }

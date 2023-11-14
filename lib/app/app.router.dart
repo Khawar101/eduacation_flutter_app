@@ -611,7 +611,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<AddprojectViewArguments>(nullOk: false);
       return _i44.MaterialPageRoute<dynamic>(
         builder: (context) =>
-            _i36.AddprojectView(args.courseData, key: args.key),
+            _i36.AddprojectView(key: args.key, courseData: args.courseData),
         settings: data,
       );
     },
@@ -842,28 +842,28 @@ class CoursedetailViewArguments {
 
 class AddprojectViewArguments {
   const AddprojectViewArguments({
-    required this.courseData,
     this.key,
+    required this.courseData,
   });
-
-  final _i46.CoursesModel courseData;
 
   final _i44.Key? key;
 
+  final _i46.CoursesModel courseData;
+
   @override
   String toString() {
-    return '{"courseData": "$courseData", "key": "$key"}';
+    return '{"key": "$key", "courseData": "$courseData"}';
   }
 
   @override
   bool operator ==(covariant AddprojectViewArguments other) {
     if (identical(this, other)) return true;
-    return other.courseData == courseData && other.key == key;
+    return other.key == key && other.courseData == courseData;
   }
 
   @override
   int get hashCode {
-    return courseData.hashCode ^ key.hashCode;
+    return key.hashCode ^ courseData.hashCode;
   }
 }
 
@@ -1472,8 +1472,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToAddprojectView({
-    required _i46.CoursesModel courseData,
     _i44.Key? key,
+    required _i46.CoursesModel courseData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1481,7 +1481,7 @@ extension NavigatorStateExtension on _i48.NavigationService {
         transition,
   }) async {
     return navigateTo<dynamic>(Routes.addprojectView,
-        arguments: AddprojectViewArguments(courseData: courseData, key: key),
+        arguments: AddprojectViewArguments(key: key, courseData: courseData),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -2121,8 +2121,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithAddprojectView({
-    required _i46.CoursesModel courseData,
     _i44.Key? key,
+    required _i46.CoursesModel courseData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -2130,7 +2130,7 @@ extension NavigatorStateExtension on _i48.NavigationService {
         transition,
   }) async {
     return replaceWith<dynamic>(Routes.addprojectView,
-        arguments: AddprojectViewArguments(courseData: courseData, key: key),
+        arguments: AddprojectViewArguments(key: key, courseData: courseData),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
