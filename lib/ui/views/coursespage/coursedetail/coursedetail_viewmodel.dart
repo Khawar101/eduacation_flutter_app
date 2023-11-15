@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/chat_member.dart';
+import 'package:education/services/Model/userData.dart';
 import 'package:education/services/login_service.dart';
 import 'package:education/services/subscription_service.dart';
 import 'package:flutter/material.dart';
@@ -17,25 +18,35 @@ import '../../../../app/app.locator.dart';
 import '../../../../services/rating_service.dart';
 import 'widgets/ratingNow.dart';
 
-
 class CoursedetailViewModel extends BaseViewModel {
-  // final _loginService = locator<LoginService>();
+  final _loginService = locator<LoginService>();
   final _navigationService = locator<NavigationService>();
   final ratingService = locator<RatingService>();
   final subscriptionService = locator<SubscriptionService>();
+
+
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
   var videoComplete = false;
+  List<StudentProjects> projectData = [];
+
   updateVideo(_videoUrl, _complete) async {
     videoUrl = _videoUrl;
     startVideoPlayer(_videoUrl);
     setVideeComplete(_complete);
     notifyListeners();
   }
+      userData get user => _loginService.UserData;
 
-   navigateAddProjectView(courseData) {
+
+
+  navigateAddProjectView(courseData) {
     _navigationService.navigateToAddprojectView(courseData: courseData);
+  }
+
+  navigateToPosterView(courseData) {
+    _navigationService.navigateToPosterView(projectData: courseData);
   }
 
   void setVideeComplete(value) {
@@ -169,7 +180,7 @@ class CoursedetailViewModel extends BaseViewModel {
   }
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final _loginService = locator<LoginService>();
+  
   joinGroup(CoursesModel courseData) async {
     try {
       final DocumentSnapshot<Map<String, dynamic>?> snapshot = await firestore
@@ -220,6 +231,53 @@ class CoursedetailViewModel extends BaseViewModel {
     }
   }
 
+  // project data add and show
 
- 
+  // Future<List<CoursesModel>> showProject(courseKey, uID) async {
+  //   try {
+  //    var querySnapshot =
+  //         await FirebaseFirestore.instance
+  //             .collection("courses")
+  //             .doc(courseKey)
+  //             .collection('projectData')
+  //             .where('uid', isEqualTo: uID)
+  //             .get();
+
+  //     if (querySnapshot.docs.isNotEmpty) {
+  //       log("=======>${querySnapshot}");
+  //       querySnapshot.docs.forEach((doc) {
+  //         log("Project Data: ${doc.data()}");
+  //       });
+  //     } else {
+  //       log("No project data found for uID: $uID in course: $courseKey");
+  //     }
+  //   } catch (e) {
+  //     log("======upload data===$e");
+  //   }
+  //   return [];
+  // }
+
+  Future<void> showProject(courseKey) async {
+    try {
+      QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await FirebaseFirestore.instance
+              .collection("courses")
+              .doc(courseKey)
+              .collection('projectData')
+              .where('uid', isEqualTo: _loginService.UserData.uID)
+              .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        projectData = querySnapshot.docs
+            .map((doc) => StudentProjects.fromJson(doc.data()))
+            .toList();
+
+        log("Project Data: $projectData");
+      } else {
+        log("No project data found for uID: ${_loginService.UserData.uID} in course: $courseKey");
+      }
+    } catch (e) {
+      log("Error while fetching project data: $e");
+    }
+  }
 }

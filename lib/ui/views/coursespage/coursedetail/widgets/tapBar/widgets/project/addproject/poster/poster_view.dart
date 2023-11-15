@@ -1,16 +1,18 @@
+import 'package:education/ui/views/coursespage/coursedetail/coursedetail_viewmodel.dart';
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/widgets/app_utils.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'poster_viewmodel.dart';
 
-class PosterView extends StackedView<PosterViewModel> {
-  const PosterView({Key? key}) : super(key: key);
+class PosterView extends StackedView<CoursedetailViewModel> {
+  final StudentProjects projectData;
+  const PosterView({Key? key, required this.projectData}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    PosterViewModel viewModel,
+    CoursedetailViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
@@ -44,13 +46,15 @@ class PosterView extends StackedView<PosterViewModel> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Halloween poster",
+                projectData.name.toString(),
+                // "Halloween poster",
                 style: GoogleFonts.ibmPlexSans(
                     fontSize: 18,
                     color: Colors.black,
                     fontWeight: FontWeight.w500),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -64,7 +68,10 @@ class PosterView extends StackedView<PosterViewModel> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const ButtonText(text: "@mouni", color: Colors.black),
+                      ButtonText(
+                          text: viewModel.user.username.toString(),
+                          // "@mouni",
+                          color: Colors.black),
                       const SizedBox(
                         height: 2,
                       ),
@@ -80,7 +87,8 @@ class PosterView extends StackedView<PosterViewModel> {
                           SizedBox(
                               width: MediaQuery.of(context).size.width * 0.03),
                           Text(
-                            "Student",
+                            viewModel.user.userType.toString(),
+                            // "Student",
                             style: GoogleFonts.ibmPlexSans(fontSize: 12),
                           ),
                         ],
@@ -107,58 +115,59 @@ class PosterView extends StackedView<PosterViewModel> {
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    'assets/images/tree.jpg',
+                  child: Image.network(
+                    projectData.url![0].toString(),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               Text(
-                "In the body, we have ListView.builder with itemcount 5 and itemBuilder which will create a new widget again and again up to 5 times because we have itemCount=5. If we don’t use itemCount in ListView.builder then we will get infinite list items so it is recommended to use itemCount to avoid such mistakes. The itemBuilder returns ListTile which has leading, trailing and title. This ListTile will build again and again up to 5 times.",
+                projectData.description.toString(),
                 style: GoogleFonts.ibmPlexSans(),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.06),
               Text(
-                "In the body, we have ListView.builder with itemcountand . we will get infinite list items so it is recommended to use itemCount to avoid such mistakes. The itemBuilder returns List again up to 5 times.",
+                "",
+                // "In the body, we have ListView.builder with itemcountand . we will get infinite list items so it is recommended to use itemCount to avoid such mistakes. The itemBuilder returns List again up to 5 times.",
                 style: GoogleFonts.ibmPlexSans(),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.06),
-              const Divider(
-                thickness: 1,
-                color: Colors.black,
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.thumb_up_off_alt_outlined,
-                    size: 24,
-                    color: const Color(0xff4873a6).withOpacity(0.7),
-                  ),
-                  const SizedBox(width: 8),
-                  Text("21",
-                      style: GoogleFonts.ibmPlexSans(
-                        fontSize: 14,
-                        color: const Color(0xff4873a6).withOpacity(0.7),
-                      )),
-                  const SizedBox(width: 40),
-                  Icon(
-                    Icons.remove_red_eye_outlined,
-                    size: 24,
-                    color: const Color(0xff4873a6).withOpacity(0.7),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    "150",
-                    style: GoogleFonts.ibmPlexSans(
-                      fontSize: 14,
-                      color: const Color(0xff4873a6).withOpacity(0.7),
-                    ),
-                  ),
-                ],
-              ),
+              // const Divider(
+              //   thickness: 1,
+              //   color: Colors.black,
+              // ),
+              // SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              // Row(
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: [
+              //     Icon(
+              //       Icons.thumb_up_off_alt_outlined,
+              //       size: 24,
+              //       color: const Color(0xff4873a6).withOpacity(0.7),
+              //     ),
+              //     const SizedBox(width: 8),
+              //     Text("21",
+              //         style: GoogleFonts.ibmPlexSans(
+              //           fontSize: 14,
+              //           color: const Color(0xff4873a6).withOpacity(0.7),
+              //         )),
+              //     const SizedBox(width: 40),
+              //     Icon(
+              //       Icons.remove_red_eye_outlined,
+              //       size: 24,
+              //       color: const Color(0xff4873a6).withOpacity(0.7),
+              //     ),
+              //     const SizedBox(width: 8),
+              //     Text(
+              //       "150",
+              //       style: GoogleFonts.ibmPlexSans(
+              //         fontSize: 14,
+              //         color: const Color(0xff4873a6).withOpacity(0.7),
+              //       ),
+              //     ),
+              //   ],
+              // ),
               const SizedBox(height: 30),
             ],
           ),
@@ -168,8 +177,8 @@ class PosterView extends StackedView<PosterViewModel> {
   }
 
   @override
-  PosterViewModel viewModelBuilder(
+  CoursedetailViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      PosterViewModel();
+      CoursedetailViewModel();
 }

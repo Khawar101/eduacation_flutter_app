@@ -84,7 +84,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
-                      itemCount: (courseData.studentProjects?.length ?? 0) + 1,
+                      itemCount: viewModel.imageList.length + 1,
                       itemBuilder: (BuildContext context, int index) {
                         if (index == 0) {
                           return Card(
@@ -101,9 +101,8 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                                   child: InkWell(
                                     onTap: () {
                                       viewModel.sendImage(
-                                          ImageSource.gallery,
-                                          courseData.uID,
-                                          courseData.publishDate);
+                                        ImageSource.gallery,
+                                      );
                                     },
                                     child: Center(
                                       child: Container(
@@ -132,10 +131,9 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                               ),
                               child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
-                                  child: Image.file(
-                                    File(courseData.studentProjects![index + 1]
-                                        .projectPhoto!
-                                        .toString()),
+                                  child: Image.network(
+                                    viewModel.imageList[index - 1].toString(),
+                                    fit: BoxFit.cover,
                                   )));
                         }
                       }),
@@ -144,6 +142,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
               const SizedBox(height: 30),
               GestureDetector(
                 onTap: () {
+                  viewModel.uploadProject(courseData.publishDate);
                   viewModel.addProject();
                 },
                 child: Container(

@@ -616,8 +616,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i37.PosterView: (data) {
+      final args = data.getArgs<PosterViewArguments>(nullOk: false);
       return _i44.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i37.PosterView(),
+        builder: (context) =>
+            _i37.PosterView(key: args.key, projectData: args.projectData),
         settings: data,
       );
     },
@@ -864,6 +866,33 @@ class AddprojectViewArguments {
   @override
   int get hashCode {
     return key.hashCode ^ courseData.hashCode;
+  }
+}
+
+class PosterViewArguments {
+  const PosterViewArguments({
+    this.key,
+    required this.projectData,
+  });
+
+  final _i44.Key? key;
+
+  final _i46.StudentProjects projectData;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "projectData": "$projectData"}';
+  }
+
+  @override
+  bool operator ==(covariant PosterViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.projectData == projectData;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ projectData.hashCode;
   }
 }
 
@@ -1488,14 +1517,17 @@ extension NavigatorStateExtension on _i48.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToPosterView([
+  Future<dynamic> navigateToPosterView({
+    _i44.Key? key,
+    required _i46.StudentProjects projectData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.posterView,
+        arguments: PosterViewArguments(key: key, projectData: projectData),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -2137,14 +2169,17 @@ extension NavigatorStateExtension on _i48.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithPosterView([
+  Future<dynamic> replaceWithPosterView({
+    _i44.Key? key,
+    required _i46.StudentProjects projectData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.posterView,
+        arguments: PosterViewArguments(key: key, projectData: projectData),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

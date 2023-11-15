@@ -18,6 +18,7 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
   @override
   void onViewModelReady(CoursedetailViewModel viewModel) {
     viewModel.initializePlay(courseData.lecture![0].videoUrl);
+    viewModel.showProject(courseData.publishDate);
     super.onViewModelReady(viewModel);
   }
 
@@ -206,7 +207,9 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                     ],
                                   ),
                                   viewModel.tabPage == 0
-                                      ? overview(context, courseData,viewModel)
+                                      ? Overview(
+                                          courseData,
+                                        )
                                       : Contant(courseData, _reportData)
                                 ],
                               ),

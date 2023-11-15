@@ -255,24 +255,28 @@ class Assigment {
 
 
 class StudentProjects {
-  String? projectName;
-  String? projectDescription;
-  List<String>? projectPhoto;
+  String? uid;
+  String? name;
+  String? description;
+  List<String>? url;
 
-  StudentProjects(
-      {this.projectName, this.projectDescription, this.projectPhoto});
+  StudentProjects({this.uid, this.name, this.description, this.url});
 
   StudentProjects.fromJson(Map<String, dynamic> json) {
-    projectName = json['projectName'];
-    projectDescription = json['projectDescription'];
-    projectPhoto = json['projectPhoto'] != null ? List<String>.from(json['projectPhoto']) : null;
-    }
+    uid = json['uid'];
+    name = json['name'];
+    description = json['description'];
+    url = json['url'].cast<String>();
+  }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    data['projectName'] = projectName;
-    data['projectDescription'] = projectDescription;
-    data['ProjectPhoto'] = projectPhoto;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['uid'] = uid;
+    data['name'] = name;
+    data['description'] = description;
+    data['url'] = url;
     return data;
   }
 }
+
+
