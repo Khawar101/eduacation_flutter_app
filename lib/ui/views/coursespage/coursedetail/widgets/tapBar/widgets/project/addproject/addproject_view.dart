@@ -143,7 +143,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
               GestureDetector(
                 onTap: () {
                   viewModel.uploadProject(courseData.publishDate);
-                  viewModel.addProject();
+                  viewModel.addProject(courseData.publishDate);
                 },
                 child: Container(
                   height: 40,

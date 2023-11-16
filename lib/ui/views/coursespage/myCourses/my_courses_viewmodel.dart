@@ -25,7 +25,8 @@ class MyCoursesViewModel extends BaseViewModel {
   }
 
   navigatecoursedetail(courseData) {
-    _navigationService.navigateToCoursedetailView(courseData: courseData.projectData);
+    _navigationService.navigateToCoursedetailView(
+        courseData: courseData.projectData);
     notifyListeners();
   }
 

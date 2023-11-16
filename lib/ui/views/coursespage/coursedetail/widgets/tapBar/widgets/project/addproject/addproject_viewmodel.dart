@@ -22,7 +22,7 @@ class AddprojectViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _loginService = locator<LoginService>();
 //locator
-   String? get uID => _loginService.UserData.uID;
+  String? get uID => _loginService.UserData.uID;
 // list
   List<StudentProjects> projectsList = [];
   List<String> imageList = [];
@@ -116,14 +116,13 @@ class AddprojectViewModel extends BaseViewModel {
       throw error;
     }
   }
- 
 
   uploadProject(courseKey) async {
     Map<String, dynamic> newProject = {
       'url': imageList,
       'description': projectDescription.text,
       'name': projectName.text,
-      'uid':uID
+      'uid': uID
     };
     // existingProjects.add(newProject);
 
@@ -140,7 +139,7 @@ class AddprojectViewModel extends BaseViewModel {
     }
   }
 
-  Future<void> addProject() async {
+  Future<void> addProject(courseKey) async {
     // Assuming projectName and projectDescription are not null
     if (projectName.text.isNotEmpty && projectDescription.text.isNotEmpty) {
       // Create a new StudentProjects object
@@ -160,6 +159,8 @@ class AddprojectViewModel extends BaseViewModel {
       projectDescription.clear();
       imageList.clear();
       navigationBack();
+
+      coursesService.showProject(courseKey);
       // Notify listeners to update the UI
       notifyListeners();
     }

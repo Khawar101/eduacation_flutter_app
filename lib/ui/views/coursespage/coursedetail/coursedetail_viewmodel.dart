@@ -7,6 +7,7 @@ import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/chat_member.dart';
 import 'package:education/services/Model/userData.dart';
+import 'package:education/services/courses_service.dart';
 import 'package:education/services/login_service.dart';
 import 'package:education/services/subscription_service.dart';
 import 'package:flutter/material.dart';
@@ -21,15 +22,16 @@ import 'widgets/ratingNow.dart';
 class CoursedetailViewModel extends BaseViewModel {
   final _loginService = locator<LoginService>();
   final _navigationService = locator<NavigationService>();
+  final _courseService = locator<CoursesService>();
   final ratingService = locator<RatingService>();
   final subscriptionService = locator<SubscriptionService>();
-
 
   TextEditingController reviewCtrl = TextEditingController();
   var rating;
   var videoUrl;
   var videoComplete = false;
-  List<StudentProjects> projectData = [];
+
+  List<StudentProjects> get projectData => _courseService.projectData;
 
   updateVideo(_videoUrl, _complete) async {
     videoUrl = _videoUrl;
@@ -37,9 +39,8 @@ class CoursedetailViewModel extends BaseViewModel {
     setVideeComplete(_complete);
     notifyListeners();
   }
-      userData get user => _loginService.UserData;
 
-
+  userData get user => _loginService.UserData;
 
   navigateAddProjectView(courseData) {
     _navigationService.navigateToAddprojectView(courseData: courseData);
@@ -180,7 +181,7 @@ class CoursedetailViewModel extends BaseViewModel {
   }
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  
+
   joinGroup(CoursesModel courseData) async {
     try {
       final DocumentSnapshot<Map<String, dynamic>?> snapshot = await firestore
@@ -257,27 +258,32 @@ class CoursedetailViewModel extends BaseViewModel {
   //   return [];
   // }
 
-  Future<void> showProject(courseKey) async {
-    try {
-      QuerySnapshot<Map<String, dynamic>> querySnapshot =
-          await FirebaseFirestore.instance
-              .collection("courses")
-              .doc(courseKey)
-              .collection('projectData')
-              .where('uid', isEqualTo: _loginService.UserData.uID)
-              .get();
+  // Future<void> showProject(courseKey) async {
+  //   try {
+  //     QuerySnapshot<Map<String, dynamic>> querySnapshot =
+  //         await FirebaseFirestore.instance
+  //             .collection("courses")
+  //             .doc(courseKey)
+  //             .collection('projectData')
+  //             .where('uid', isEqualTo: _loginService.UserData.uID)
+  //             .get();
 
-      if (querySnapshot.docs.isNotEmpty) {
-        projectData = querySnapshot.docs
-            .map((doc) => StudentProjects.fromJson(doc.data()))
-            .toList();
+  //     if (querySnapshot.docs.isNotEmpty) {
+  //       projectData = querySnapshot.docs
+  //           .map((doc) => StudentProjects.fromJson(doc.data()))
+  //           .toList();
 
-        log("Project Data: $projectData");
-      } else {
-        log("No project data found for uID: ${_loginService.UserData.uID} in course: $courseKey");
-      }
-    } catch (e) {
-      log("Error while fetching project data: $e");
-    }
+  //       log("Project Data: $projectData");
+  //     } else {
+  //       log("No project data found for uID: ${_loginService.UserData.uID} in course: $courseKey");
+  //     }
+  //   } catch (e) {
+  //     log("Error while fetching project data: $e");
+  //   }
+  // }
+
+  void showProject(courseKey) async {
+    await _courseService.showProject(courseKey);
+    notifyListeners();
   }
 }

@@ -106,7 +106,7 @@ class CoursesModel {
     if (json['FAQ'] != null) {
       fAQ = <FAQ>[];
       json['FAQ'].forEach((v) {
-        fAQ!.add( FAQ.fromJson(v));
+        fAQ!.add(FAQ.fromJson(v));
       });
     }
     price = json['price'];
@@ -114,28 +114,28 @@ class CoursesModel {
     if (json['lecture'] != null) {
       lecture = <Lecture>[];
       json['lecture'].forEach((v) {
-        lecture!.add( Lecture.fromJson(v));
+        lecture!.add(Lecture.fromJson(v));
       });
     }
     if (json['assigment'] != null) {
       assigment = <Assigment>[];
       json['assigment'].forEach((v) {
-        assigment!.add( Assigment.fromJson(v));
+        assigment!.add(Assigment.fromJson(v));
       });
     }
     publisherData = json['publisherData'] != null
-        ?  PublisherData.fromJson(json['publisherData'])
+        ? PublisherData.fromJson(json['publisherData'])
         : null;
     if (json['studentProjects'] != null) {
       studentProjects = <StudentProjects>[];
       json['studentProjects'].forEach((v) {
-        studentProjects!.add( StudentProjects.fromJson(v));
+        studentProjects!.add(StudentProjects.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['title'] = title;
     data['category'] = category;
     data['chapter'] = chapter;
@@ -180,7 +180,7 @@ class FAQ {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['question'] = question;
     data['answer'] = answer;
     return data;
@@ -210,12 +210,12 @@ class Lecture {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    data['title'] =title;
-    data['duration'] =duration;
-    data['description'] =description;
-    data['thumbnail'] =thumbnail;
-    data['videoUrl'] =videoUrl;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['title'] = title;
+    data['duration'] = duration;
+    data['description'] = description;
+    data['thumbnail'] = thumbnail;
+    data['videoUrl'] = videoUrl;
     return data;
   }
 }
@@ -243,16 +243,15 @@ class Assigment {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    data['title'] =title;
-    data['lastDate'] =lastDate;
-    data['description'] =description;
-    data['thumbnail'] =thumbnail;
-    data['fileUrl'] =fileUrl;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['title'] = title;
+    data['lastDate'] = lastDate;
+    data['description'] = description;
+    data['thumbnail'] = thumbnail;
+    data['fileUrl'] = fileUrl;
     return data;
   }
 }
-
 
 class StudentProjects {
   String? uid;
@@ -278,5 +277,3 @@ class StudentProjects {
     return data;
   }
 }
-
-

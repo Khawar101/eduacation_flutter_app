@@ -88,7 +88,6 @@ class Overview extends ViewModelWidget<CoursedetailViewModel> {
         const SizedBox(height: 30),
         feedback(context, courseData),
         const SizedBox(height: 30),
-        // ShowProject(courseData),
         project(context, courseData, viewModel),
         // const SizedBox(height: 30),
       ],

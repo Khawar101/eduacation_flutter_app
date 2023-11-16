@@ -1,7 +1,12 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.locator.dart';
 import 'package:education/services/Model/EbookModel.dart';
 import 'package:education/services/login_service.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'Model/CoursesModel.dart';
 
 class CoursesService {
@@ -46,5 +51,32 @@ class CoursesService {
     return stream.map((event) => event.docs.map((doc) {
           return CoursesModel.fromJson(doc.data());
         }).toList());
+  }
+
+  /////////////////////
+  ///
+  List<StudentProjects> projectData = [];
+  Future<void> showProject(courseKey) async {
+    try {
+      QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await FirebaseFirestore.instance
+              .collection("courses")
+              .doc(courseKey)
+              .collection('projectData')
+              .where('uid', isEqualTo: _loginService.UserData.uID)
+              .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        projectData = querySnapshot.docs
+            .map((doc) => StudentProjects.fromJson(doc.data()))
+            .toList();
+
+        log("Project Data: $projectData");
+      } else {
+        log("No project data found for uID: ${_loginService.UserData.uID} in course: $courseKey");
+      }
+    } catch (e) {
+      log("Error while fetching project data: $e");
+    }
   }
 }
