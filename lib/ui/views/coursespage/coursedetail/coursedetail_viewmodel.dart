@@ -1,23 +1,23 @@
 // import 'package:education/services/login_service.dart';
 // ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, recursive_getters, deprecated_member_use
-import 'dart:async';
-import 'dart:developer';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education/app/app.router.dart';
+import 'package:education/services/subscription_service.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/chat_member.dart';
-import 'package:education/services/Model/userData.dart';
 import 'package:education/services/courses_service.dart';
+import 'package:education/services/Model/userData.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:education/services/login_service.dart';
-import 'package:education/services/subscription_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../../../services/rating_service.dart';
+import 'package:video_player/video_player.dart';
+import 'package:education/app/app.router.dart';
+import '../../../../app/app.locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-import 'package:video_player/video_player.dart';
-import '../../../../app/app.locator.dart';
-import '../../../../services/rating_service.dart';
 import 'widgets/ratingNow.dart';
+import 'dart:developer';
+import 'dart:async';
 
 class CoursedetailViewModel extends BaseViewModel {
   final _loginService = locator<LoginService>();

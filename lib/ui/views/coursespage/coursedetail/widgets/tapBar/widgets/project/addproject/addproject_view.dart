@@ -1,11 +1,9 @@
-import 'dart:io';
-
-import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/views/coursespage/coursedetail/widgets/tapBar/widgets/project/addproject/addproject_viewmodel.dart';
+import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/widgets/app_utils.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class AddprojectView extends StackedView<AddprojectViewModel> {
