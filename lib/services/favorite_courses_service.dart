@@ -1,10 +1,10 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../app/app.locator.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'Model/CoursesModel.dart';
+import '../app/app.locator.dart';
 import 'Model/userData.dart';
 import 'login_service.dart';
+import 'dart:developer';
 
 class FavoriteCoursesService {
   final _loginService = locator<LoginService>();
@@ -24,7 +24,8 @@ class FavoriteCoursesService {
       _loginService.updateUserData(_userData.uID);
       //_navigationService.back();
       message = "Added To Favorite Successfully";
-    } catch (e) {
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:addfovoriteCourse(CourseModel courseData)",printDetails: true,fatal: true);
       message = e.toString();
     }
   }
@@ -39,7 +40,8 @@ class FavoriteCoursesService {
       });
       _loginService.updateUserData(_userData.uID);
       message = "Added To Favorite Successfully";
-    } catch (e) {
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:removefavouriteCourse(CoursesModel courseData)",printDetails: true,fatal: true);
       message = e.toString();
     }
   }

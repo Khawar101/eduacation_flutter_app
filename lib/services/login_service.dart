@@ -1,6 +1,9 @@
 // ignore_for_file: unused_local_variable, prefer_typing_uninitialized_variables, non_constant_identifier_names, unrelated_type_equality_checks
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'Model/userData.dart';
 
 class LoginService {
@@ -52,12 +55,14 @@ class LoginService {
       } else {
         message = "Please fill all text field";
       }
-    } catch (e) {
-      message = e.toString();
+    } catch (e, s) {
+       FirebaseCrashlytics.instance.recordError(e, s,reason:"function: logins(emailCTRL, passwordCTRL)",printDetails: true,fatal: true);
+       message = e.toString();
     }
   }
 
   updateUserData(id) async {
+    try{
     final DocumentSnapshot snapshot =
         await FirebaseFirestore.instance.collection("users").doc(id).get();
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
@@ -81,6 +86,10 @@ class LoginService {
       buyEBooks: data["buyEBooks"],
       favoriteCourses: data["favoriteCourses"],
     );
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:updateUserData(id)",printDetails: true,fatal: true);
+      log(e.toString());
+    }
   }
 
   profileComplete() {
@@ -121,10 +130,15 @@ class LoginService {
   }
 
   void setOnlineStatus(bool status) async {
+    try{
     // final userDoc = firestore.collection('chats').doc(loginService.UserData.uID);
     await firestore
         .collection('users')
         .doc(UserData.uID)
         .update({"status": status});
+        } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:setOnlineStatus(bool status)",printDetails: true,fatal: true);
+      log(e.toString());
+    }
   }
 }

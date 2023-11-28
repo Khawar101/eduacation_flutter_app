@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/Model/reportModel.dart';
 import 'package:education/services/Model/userData.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../app/app.locator.dart';
 import 'Model/EbookModel.dart';
@@ -47,8 +48,12 @@ class SubscriptionService {
       // log(user.toString());
       _navigationService.back();
       message = "Course buy Successfully";
-    } catch (e) {
-      message = e.toString();
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:buyCourse(CourseModel courseData)",
+          printDetails: true,
+          fatal: true);
+      log(e.toString());
     }
   }
 
@@ -83,16 +88,29 @@ class SubscriptionService {
       // log(user.toString());
       _navigationService.back();
       message = "Ebook buy Successfully";
-    } catch (e) {
-      message = e.toString();
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:buyEbook(EbookModel eBookData)",
+          printDetails: true,
+          fatal: true);
+      log(e.toString());
     }
   }
 
   Stream reportStream(courseKey) {
-    return FirebaseFirestore.instance
-        .collection("subscription")
-        .doc("${_loginService.UserData.uID}$courseKey")
-        .snapshots();
+    try {
+      return FirebaseFirestore.instance
+          .collection("subscription")
+          .doc("${_loginService.UserData.uID}$courseKey")
+          .snapshots();
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:reportStream(courseKey)",
+          printDetails: true,
+          fatal: true);
+      log(e.toString());
+      return Stream.error(e.toString());
+    }
   }
 
   updateLecture(
@@ -114,7 +132,9 @@ class SubscriptionService {
       _loginService.updateUserData(_userData.uID);
       // log(user.toString());
       // _navigationService.back();
-    } catch (e) {
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:updateLecture()", printDetails: true, fatal: true);
       log(e.toString());
     }
   }

@@ -1,12 +1,12 @@
 // ignore_for_file: body_might_complete_normally_catch_error, prefer_typing_uninitialized_variables
-
-import 'dart:developer';
-import 'dart:io';
-import 'package:email_otp/email_otp.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:email_otp/email_otp.dart';
+import 'dart:developer';
+import 'dart:io';
 
 class SignupService {
   var message = "";
@@ -67,19 +67,25 @@ class SignupService {
         } else {
           message = "OTP send failled";
         }
-      } catch (e) {
-        message = e.toString();
-      }
+      } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:sendOtp",printDetails: true,fatal: true);
+      log(e.toString());
     }
+    }  
   }
 
   verify(otp) async {
     log('==>$otp');
+    try{
     if (await myauth.verifyOTP(otp: otp) == true) {
       createAccount();
       message = "Signup Successfuly";
     } else {
       message = 'incorrect otp';
+    }
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:verify(otp)",printDetails: true,fatal: true);
+      log(e.toString());
     }
   }
 
@@ -111,9 +117,10 @@ class SignupService {
         } else if (e.code == 'email-already-in-use') {
           message = 'The account already exists for that email.';
         }
-      } catch (e) {
-        message = e.toString();
-      }
+     } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:createAccount",printDetails: true,fatal: true);
+      log(e.toString());
+    }
     }
   }
 }

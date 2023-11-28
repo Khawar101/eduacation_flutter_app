@@ -1,17 +1,18 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // ignore_for_file: avoid_web_libraries_in_flutter, unnecessary_brace_in_string_interps, body_might_complete_normally_catch_error
-import 'dart:async';
-import 'dart:io';
-import 'dart:developer';
-import 'package:education/app/app.locator.dart';
-import 'package:education/services/Model/chat.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education/services/login_service.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:education/services/Model/chat_member.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:education/services/login_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/services/Model/chat.dart';
+import 'package:education/app/app.locator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
+import 'dart:developer';
+import 'dart:async';
+import 'dart:io';
 
 class ChatService {
   List<Member> memberList = [];
@@ -38,29 +39,53 @@ class ChatService {
             // log(doc.id.toString());
             return Chat.fromJson(doc.data(), docId: doc.id);
           }).toList());
-    } catch (e) {
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:chatStream(chatId))",
+          printDetails: true,
+          fatal: true);
       log("Error fetching chat data: $e");
       return Stream.error("Error fetching chat data: $e");
     }
   }
 
   Stream<List<ChatMember>> getChatRoomsStream() async* {
-    final result = firestore
-        .collection('chatRoom')
-        .where('membersUid', arrayContains: uID)
-        .snapshots();
-    await for (final event in result) {
-      final List<ChatMember> chatRooms = List.empty(growable: true);
-      for (final doc in event.docs) {
-        final data = doc.data();
-        chatRooms.add(ChatMember.fromJson(data));
+    try {
+      final result = firestore
+          .collection('chatRoom')
+          .where('membersUid', arrayContains: uID)
+          .snapshots();
+      await for (final event in result) {
+        final List<ChatMember> chatRooms = List.empty(growable: true);
+        for (final doc in event.docs) {
+          final data = doc.data();
+          chatRooms.add(ChatMember.fromJson(data));
+        }
+        yield chatRooms;
       }
-      yield chatRooms;
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:getChatRoomsStream",
+          printDetails: true,
+          fatal: true);
+      log(e.toString());
     }
   }
 
   Stream publisherStream(uID) {
-    return FirebaseFirestore.instance.collection("users").doc(uID).snapshots();
+    try {
+      return FirebaseFirestore.instance
+          .collection("users")
+          .doc(uID)
+          .snapshots();
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:publishStram(uID)",
+          printDetails: true,
+          fatal: true);
+      log(e.toString());
+      return Stream.error(e.toString());
+    }
   }
 
   void sendSMS(chatId, name, profile, otherUID, smsController) async {
@@ -105,14 +130,16 @@ class ChatService {
             .doc()
             .set(messageData);
       }
-    } catch (e) {
-      log("=======>${e.toString()}");
-      // ScaffoldMessenger.of(context).showSnackBar(
+      } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:sendSMS()",printDetails: true,fatal: true);
+      log(e.toString());
+        // ScaffoldMessenger.of(context).showSnackBar(
       //   SnackBar(
       //     content: Text(e.toString()),
       //   ),
       // );
     }
+    
   }
 
   void deleteMessage(chatId, id) async {
@@ -125,7 +152,8 @@ class ChatService {
           .doc(id)
           .delete();
       log("message will be deleted");
-    } catch (e) {
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s);
       log("Error occurred while deleting message: $e");
     }
   }
@@ -133,52 +161,57 @@ class ChatService {
   Future sendImage(chatId, name, profile, otherUID, ImageSource source) async {
     XFile? image;
     image = await ImagePicker().pickImage(source: source, imageQuality: 35);
-    Reference ref = FirebaseStorage.instance
-        .ref()
-        .child("profile/${DateTime.now().microsecondsSinceEpoch}");
-    UploadTask uploadTask = ref.putFile(File(image!.path));
-    uploadTask.whenComplete(() async {
-      String uRL = await ref.getDownloadURL();
-      Map<String, dynamic> messageData = {
-        "SMS": uRL,
-        "Date": "${DateTime.now().microsecondsSinceEpoch}",
-        "type": "image",
-        "UID": loginService.UserData.uID,
-      };
-      var docRef = firestore.collection("chatRoom").doc(chatId);
-      docRef.get().then((doc) => {
-            if (doc.exists)
-              {
-                docRef.update({"lastMessage": messageData})
-              }
-            else
-              {
-                docRef.set({
-                  "Date": "${DateTime.now().microsecondsSinceEpoch}",
-                  "member": [
-                    {
-                      "name": loginService.UserData.username,
-                      "profile": loginService.UserData.profile,
-                      "UID": loginService.UserData.uID
-                    },
-                    {"name": name, "profile": profile, "UID": otherUID},
-                  ],
-                  "membersUid": [loginService.UserData.uID, otherUID],
-                  "lastMessage": messageData
-                })
-              }
-          });
-      await firestore
-          .collection("chatRoom")
-          .doc(chatId)
-          .collection('chats')
-          .doc()
-          .set(messageData);
-    }).catchError((onError) {
-      log("=======>image error${onError}");
-      // snackBar(context, onError.toString());
-      throw onError;
-    });
+    try {
+      Reference ref = FirebaseStorage.instance
+          .ref()
+          .child("profile/${DateTime.now().microsecondsSinceEpoch}");
+      UploadTask uploadTask = ref.putFile(File(image!.path));
+      uploadTask.whenComplete(() async {
+        String uRL = await ref.getDownloadURL();
+        Map<String, dynamic> messageData = {
+          "SMS": uRL,
+          "Date": "${DateTime.now().microsecondsSinceEpoch}",
+          "type": "image",
+          "UID": loginService.UserData.uID,
+        };
+        var docRef = firestore.collection("chatRoom").doc(chatId);
+        docRef.get().then((doc) => {
+              if (doc.exists)
+                {
+                  docRef.update({"lastMessage": messageData})
+                }
+              else
+                {
+                  docRef.set({
+                    "Date": "${DateTime.now().microsecondsSinceEpoch}",
+                    "member": [
+                      {
+                        "name": loginService.UserData.username,
+                        "profile": loginService.UserData.profile,
+                        "UID": loginService.UserData.uID
+                      },
+                      {"name": name, "profile": profile, "UID": otherUID},
+                    ],
+                    "membersUid": [loginService.UserData.uID, otherUID],
+                    "lastMessage": messageData
+                  })
+                }
+            });
+        await firestore
+            .collection("chatRoom")
+            .doc(chatId)
+            .collection('chats')
+            .doc()
+            .set(messageData);
+      }).catchError((onError) {
+        log("=======>image error${onError}");
+        // snackBar(context, onError.toString());
+        throw onError;
+      });
+   } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:sendImage()",printDetails: true,fatal: true);
+      log(e.toString());
+    }
   }
 
   Future sendPdf(chatId, name, profile, otherUID) async {
@@ -238,7 +271,8 @@ class ChatService {
           log("=======>pdf error${onError}");
         });
       } else {}
-    } catch (e) {
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:sendPdf",printDetails: true,fatal: true);
       log(e.toString());
     }
   }

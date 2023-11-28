@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/userData.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import '../app/app.locator.dart';
 import 'login_service.dart';
 
@@ -16,6 +17,7 @@ class ProfileService {
     // log("${UserData.email == email}, ${UserData.password == password}, ${UserData.email}, $email");
     var UserData = loginService.UserData;
     var uid = UserData.uID.toString();
+    try{
     log({
       "firstName": firstName,
       "lastName": lastName,
@@ -45,11 +47,18 @@ class ProfileService {
         });
         await loginService.updateUserData(uid);
         message = "update successfully";
-      } catch (e) {
-        message = e.toString();
-      }
+        } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:updateProfile",printDetails: true,fatal: true);
+      message = e.toString();
+    }
+     
     } else {
       message = "Filed all TextField";
     }
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:updateProfile",printDetails: true,fatal: true);
+      log(e.toString());
+    }
   }
+  
 }

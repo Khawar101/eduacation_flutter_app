@@ -1,7 +1,7 @@
 import 'package:stacked/stacked.dart';
 
 class AcountViewModel extends BaseViewModel {
-  List Support = [
+  List support = [
     'Take A Tour',
     'Take A Tour of Home Screen',
     'My Account',

@@ -134,7 +134,7 @@ class AcountView extends StackedView<AcountViewModel> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   ButtonText(
-                                    text: viewModel.Support[index].toString(),
+                                    text: viewModel.support[index].toString(),
                                     color: const Color(0xFF4873A6)
                                         .withOpacity(0.7),
                                   ),
