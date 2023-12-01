@@ -1,19 +1,24 @@
 // ignore_for_file: unused_field, prefer_final_fields, non_constant_identifier_names
-
-import 'dart:developer';
-import 'package:education/app/app.router.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:education/services/Model/userData.dart';
 import 'package:education/services/login_service.dart';
+import 'package:stacked_services/stacked_services.dart';
+import '../../../../utils/shared_preferences.dart';
+import 'package:education/app/app.router.dart';
+import '../../../../app/app.locator.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-import '../../../../app/app.locator.dart';
-import '../../../../utils/shared_preferences.dart';
+import 'dart:developer';
 
 class LoginViewModel extends BaseViewModel {
   bool visibleCheck = true;
+  bool looding = false;
+  bool _obscureText = true;
   final _navigationService = locator<NavigationService>();
   final _loginService = locator<LoginService>();
+  TextEditingController emailCTRL =
+      TextEditingController(text: "khawarjutt101@gmail.com");
+  TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
 
   visible_check() {
     visibleCheck = !visibleCheck;
@@ -39,30 +44,28 @@ class LoginViewModel extends BaseViewModel {
 // String number = numberCTRL.text.trim();
 //     String password = passwordCTRL.text.trim();
 
-  TextEditingController emailCTRL =
-      TextEditingController(text: "khawarjutt101@gmail.com");
-
-  TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
-
-  bool looding = false;
-  bool _obscureText = true;
-
   logIN(context) async {
     userData userDetail = await _loginService.logins(emailCTRL, passwordCTRL);
-    if (_loginService.message == 'login successfully') {
-      // log("sign up now...");
-      if (userDetail.uID != null && userDetail.uID != "") {
-        await Store.save('userId', userDetail.uID!);
+    try {
+      if (_loginService.message == 'login successfully') {
+        // log("sign up now...");
+        if (userDetail.uID != null && userDetail.uID != "") {
+          await Store.save('userId', userDetail.uID!);
+        }
+        _navigationService.navigateToButtomBarView();
+      } else {
+        log("try again...");
       }
-      _navigationService.navigateToButtomBarView();
-    } else {
-      log("try again...");
+      log("=====>${_loginService.message}");
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(_loginService.message),
+        dismissDirection: DismissDirection.endToStart,
+      ));
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:logIN(context)", printDetails: true, fatal: true);
+      log(e.toString());
     }
-    log("=====>${_loginService.message}");
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(_loginService.message),
-      dismissDirection: DismissDirection.endToStart,
-    ));
   }
 
   // final LocalAuthentication auth = LocalAuthentication();

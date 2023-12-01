@@ -57,6 +57,7 @@ dependencies:
   file_picker: ^5.5.0
   pdf_viewer_plugin: ^2.0.1
   firebase_crashlytics: ^3.4.5
+  flutter_local_notifications: ^16.2.0
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:education/app/app.router.dart';
 import 'package:education/services/signup_service.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -15,6 +16,7 @@ class VerifyViewModel extends BaseViewModel {
   final List<String> _codes = ['', '', '', '', '', ''];
   List<String> get codes => _codes;
   onKeyboardTap(String value, context) {
+try{
     for (var i = 0; i < _codes.length; i++) {
       if (_codes[i].isEmpty) {
         _codes[i] = value;
@@ -29,9 +31,15 @@ class VerifyViewModel extends BaseViewModel {
         break;
       }
     }
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:onKeyboardTap(String value, context)", printDetails: true, fatal: true);
+      log(e.toString());
+    }
   }
 
   void clearCodeField(int index, context) {
+    try{
     if (index > 0 && _codes[index].isEmpty) {
       // Clear the current field and move focus to the previous field
       _codes[index - 1] = '';
@@ -41,6 +49,11 @@ class VerifyViewModel extends BaseViewModel {
       // Clear the current field
       _codes[index] = '';
       notifyListeners();
+    }
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:clearCodeField(int index, context)", printDetails: true, fatal: true);
+      log(e.toString());
     }
   }
 

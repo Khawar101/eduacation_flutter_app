@@ -1,13 +1,12 @@
-// ignore_for_file: non_constant_identifier_names, unnecessary_null_comparison
-import 'dart:developer';
-
-import 'package:education/app/app.router.dart';
+// ignore_for_file: non_constant_identifier_names, unnecessary_null_comparison, prefer_typing_uninitialized_variables
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:education/services/signup_service.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:education/app/app.router.dart';
+import '../../../../app/app.locator.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-
-import '../../../../app/app.locator.dart';
+import 'dart:developer';
 
 class SignupViewModel extends BaseViewModel {
   bool visibleCheck = true;
@@ -46,28 +45,46 @@ class SignupViewModel extends BaseViewModel {
   // }
 
   uploadProfile() async {
-    await _signupService.pickImage().whenComplete(() {
-      if (_signupService.message != '') {
-        log("Profile uploded successfully...");
-        // _navigationService.navigateToVerifyView();
-        profile = _signupService.profile;
-        log('2====>$profile');
-        notifyListeners();
-      } else {
-        log("try again...");
-      }
-      log("=====>${_signupService.message}");
-    });
+    try {
+      await _signupService.pickImage().whenComplete(() {
+        if (_signupService.message != '') {
+          log("Profile uploded successfully...");
+          // _navigationService.navigateToVerifyView();
+          profile = _signupService.profile;
+          log('2====>$profile');
+          notifyListeners();
+        } else {
+          log("try again...");
+        }
+        log("=====>${_signupService.message}");
+      });
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:uploadProfile()", printDetails: true, fatal: true);
+      log(e.toString());
+    }
   }
 
   sendOtp() async {
-    await _signupService.sendOtpS(nameCTRL, emailCTRL, passwordCTRL, userType);
-    if (_signupService.message == 'OTP has been sent') {
-      log("sign up now...");
-      _navigationService.navigateToVerifyView();
-    } else {
-      log("try again...");
+    try {
+      await _signupService.sendOtpS(
+          nameCTRL, emailCTRL, passwordCTRL, userType);
+      if (_signupService.message == 'OTP has been sent') {
+        log("sign up now...");
+        _navigationService.navigateToVerifyView();
+      } else {
+        log("try again...");
+      }
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:sendOtp()", printDetails: true, fatal: true);
+      log(e.toString());
     }
     log("=====>${_signupService.message}");
   }
 }
+
+
+
+
+

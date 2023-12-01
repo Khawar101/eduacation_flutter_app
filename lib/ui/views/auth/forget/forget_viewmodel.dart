@@ -57,28 +57,32 @@ class ForgetViewModel extends BaseViewModel {
         if (urlSegment == "signUp") {
           sharedPreferences.setString("token", _token.toString());
         }
-      } catch (e, s) {
-  FirebaseCrashlytics.instance.recordError(e, s);
-}
+     } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:urlSegment == 'SignUp'",printDetails: true,fatal: true);
+      log(e.toString());
+    }
       log("true");
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s);
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:_authenticate()",printDetails: true,fatal: true);
+      log(e.toString());
     }
   }
 
   Future<void> signUp(String email, String password) async {
     try{
     return _authenticate(email, password, 'signUp');
-    }catch(e,s){
-       FirebaseCrashlytics.instance.recordError(e, s);
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:signUp",printDetails: true,fatal: true);
+      log(e.toString());
     }
   }
 
   Future<void> login(String email, String password) async {
     try{
     return _authenticate(email, password, 'signInWithPassword');
-    }catch(e,s){
-       FirebaseCrashlytics.instance.recordError(e, s);
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:login",printDetails: true,fatal: true);
+      log(e.toString());
     }
   }
 
@@ -101,12 +105,14 @@ class ForgetViewModel extends BaseViewModel {
           },
         ),
       );
-    }catch(e,s){
-       FirebaseCrashlytics.instance.recordError(e, s);
+   } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:http.post(url)",printDetails: true,fatal: true);
+      log(e.toString());
     }
-  }catch (e, s) {
-  FirebaseCrashlytics.instance.recordError(e, s);
-}
+  } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:changePassword",printDetails: true,fatal: true);
+      log(e.toString());
+    }
 }
   
 }
