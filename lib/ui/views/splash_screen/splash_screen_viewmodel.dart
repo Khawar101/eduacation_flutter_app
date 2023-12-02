@@ -1,4 +1,5 @@
 import 'package:education/app/app.router.dart';
+import 'package:education/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -11,6 +12,13 @@ import 'widgets/SplashContainer4.dart';
 import 'widgets/SplashContainer5.dart';
 
 class SplashScreenViewModel extends BaseViewModel {
+  final _notificationService = locator<NotificationService>();
+  initState() {
+    _notificationService.requestNotificationPermission();
+    _notificationService.initFirebaseMessaging();
+    notifyListeners();
+  }
+
   final List<Widget> items = [
     const SplashContainer1(),
     const SplashContainer2(),

@@ -1,4 +1,5 @@
 import 'package:education/services/courses_service.dart';
+import 'package:education/services/notification_service.dart';
 import 'package:education/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:education/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:education/ui/views/startup/startup_view.dart';
@@ -124,6 +125,7 @@ import 'package:education/services/ebook_service.dart';
     LazySingleton(classType: SubscriptionService),
     LazySingleton(classType: FavoriteCoursesService),
     LazySingleton(classType: EbookService),
+    LazySingleton(classType: NotificationService),
 // @stacked-service
   ],
   bottomsheets: [

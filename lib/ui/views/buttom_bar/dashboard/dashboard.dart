@@ -1,7 +1,5 @@
 import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:education/ui/widgets/app_utils.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'dashboard_model.dart';
@@ -9,6 +7,12 @@ import 'LineChart.dart';
 
 class DashboardView extends StackedView<DashboardViewModel> {
   const DashboardView({Key? key}) : super(key: key);
+
+  @override
+  void onViewModelReady(DashboardViewModel viewModel) {
+    viewModel.initNoti();
+    super.onViewModelReady(viewModel);
+  }
 
   @override
   Widget builder(
@@ -50,7 +54,11 @@ class DashboardView extends StackedView<DashboardViewModel> {
               Padding(
                 padding: const EdgeInsets.only(right: 15, top: 10),
                 child: GestureDetector(
-                  onTap: viewModel.navigateNotification,
+                  onTap: () {
+                    viewModel.navigateNotification();
+                    // viewModel.showNotification();
+                    // viewModel.showNoti("flutter notification","notification body");
+                  },
                   child: Stack(
                     children: [
                       const Icon(

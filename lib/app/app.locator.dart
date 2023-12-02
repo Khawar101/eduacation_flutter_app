@@ -17,6 +17,7 @@ import '../services/ebook_service.dart';
 import '../services/favorite_courses_service.dart';
 import '../services/forgetpassword_service.dart';
 import '../services/login_service.dart';
+import '../services/notification_service.dart';
 import '../services/profile_service.dart';
 import '../services/rating_service.dart';
 import '../services/setting_service.dart';
@@ -48,4 +49,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => SubscriptionService());
   locator.registerLazySingleton(() => FavoriteCoursesService());
   locator.registerLazySingleton(() => EbookService());
+  locator.registerLazySingleton(() => NotificationService());
 }

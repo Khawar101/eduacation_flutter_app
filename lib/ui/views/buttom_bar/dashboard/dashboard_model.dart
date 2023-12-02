@@ -1,11 +1,18 @@
+import 'dart:developer';
+
 import 'package:education/app/app.router.dart';
+import 'package:education/main.dart';
+import 'package:education/services/notification_service.dart';
 import 'package:education/ui/views/buttom_bar/dashboard/widgets/bottomTitle.dart';
 import 'package:education/ui/views/buttom_bar/dashboard/widgets/leftTitle.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:stacked/stacked.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../app/app.locator.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 class DashboardViewModel extends BaseViewModel {
   final bool isShowingMainData = true;
@@ -122,10 +129,76 @@ class DashboardViewModel extends BaseViewModel {
           FlSpot(13, 1.8),
         ],
       );
+  // final _NotificationService = locator<NotificationService>();
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  Future<String> getFCMDeviceToken() async {
+    String? token = await messaging.getToken();
+    log("FCM token is $token");
+    return token!;
+  }
+
+  void showNotification() async {
+    getFCMDeviceToken();
+    AndroidNotificationDetails androidDetails =
+        const AndroidNotificationDetails("channelId", "channelName",
+            priority: Priority.max,
+            importance: Importance.max,
+            channelDescription: "channel discription",
+            visibility: NotificationVisibility.public);
+
+    DarwinNotificationDetails iosDetails = const DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
+
+    NotificationDetails notiDetails =
+        NotificationDetails(android: androidDetails, iOS: iosDetails);
+
+    // await notificationsPlugin.show(
+    //     0, "Sample Notification", "This is a notification", notiDetails);
+    // DateTime scheduleDate = DateTime.now().add(Duration(seconds: 5));
+
+    await notificationsPlugin.show(
+        0, "Sample Notification", "This is a notification", notiDetails,
+        payload: "notification-payload");
+
+    log("on press noti");
+    notifyListeners();
+  }
+
+  void checkForNotification() async {
+    NotificationAppLaunchDetails? details =
+        await notificationsPlugin.getNotificationAppLaunchDetails();
+
+    if (details != null) {
+      if (details.didNotificationLaunchApp) {
+        NotificationResponse? response = details.notificationResponse;
+
+        if (response != null) {
+          String? payload = response.payload;
+          log("Notification Payload: $payload");
+          notifyListeners();
+        }
+      }
+    }
+  }
 
   final _navigationService = locator<NavigationService>();
 
   navigateNotification() {
     _navigationService.navigateToNotificationView();
+  }
+
+  final _navigatonService = locator<NotificationService>();
+  void showNoti(title, body) async {
+    await _navigatonService.showNotification(title, body);
+    notifyListeners();
+  }
+
+  void initNoti() async {
+    await _navigatonService.initLocalNotification();
+    _navigatonService.initFirebaseMessaging();
+    notifyListeners();
   }
 }

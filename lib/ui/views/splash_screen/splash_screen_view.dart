@@ -36,4 +36,10 @@ class SplashScreenView extends StackedView<SplashScreenViewModel> {
     BuildContext context,
   ) =>
       SplashScreenViewModel();
+  @override
+  void onViewModelReady(SplashScreenViewModel viewModel) {
+    viewModel.initState();
+
+    super.onViewModelReady(viewModel);
+  }
 }
