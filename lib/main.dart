@@ -28,7 +28,7 @@ Future<void> main() async {
   AndroidInitializationSettings androidSetting =
       const AndroidInitializationSettings("@mipmap/ic_launcher");
 
-      FirebaseMessaging.onBackgroundMessage(
+  FirebaseMessaging.onBackgroundMessage(
       NotificationService.firebaseMessagingBackgroundHandler);
 
   DarwinInitializationSettings iosSetting = const DarwinInitializationSettings(
@@ -59,7 +59,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

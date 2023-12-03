@@ -17,48 +17,50 @@ class ProfileService {
     // log("${UserData.email == email}, ${UserData.password == password}, ${UserData.email}, $email");
     var UserData = loginService.UserData;
     var uid = UserData.uID.toString();
-    try{
-    log({
-      "firstName": firstName,
-      "lastName": lastName,
-      "phoneNo": phoneNo,
-      "address": address,
-      "clas": clas,
-    }.toString());
-    if (firstName != null &&
-        phoneNo != null &&
-        lastName != null &&
-        address != null &&
-        clas != null) {
-      try {
-        UserData = userData(
-          firstName: firstName,
-          lastName: lastName,
-          phoneNo: phoneNo,
-          address: address,
-          clas: clas,
-        );
-        await firestore.collection("users").doc(uid).update({
-          "firstName": firstName,
-          "lastName": lastName,
-          "phoneNo": phoneNo,
-          "address": address,
-          "clas": clas,
-        });
-        await loginService.updateUserData(uid);
-        message = "update successfully";
+    try {
+      log({
+        "firstName": firstName,
+        "lastName": lastName,
+        "phoneNo": phoneNo,
+        "address": address,
+        "clas": clas,
+      }.toString());
+      if (firstName != null &&
+          phoneNo != null &&
+          lastName != null &&
+          address != null &&
+          clas != null) {
+        try {
+          UserData = userData(
+            firstName: firstName,
+            lastName: lastName,
+            phoneNo: phoneNo,
+            address: address,
+            clas: clas,
+          );
+          await firestore.collection("users").doc(uid).update({
+            "firstName": firstName,
+            "lastName": lastName,
+            "phoneNo": phoneNo,
+            "address": address,
+            "clas": clas,
+          });
+          await loginService.updateUserData(uid);
+          message = "update successfully";
         } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:updateProfile",printDetails: true,fatal: true);
-      message = e.toString();
-    }
-     
-    } else {
-      message = "Filed all TextField";
-    }
+          FirebaseCrashlytics.instance.recordError(e, s,
+              reason: "function:updateProfile",
+              printDetails: true,
+              fatal: true);
+          message = e.toString();
+        }
+      } else {
+        message = "Filed all TextField";
+      }
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:updateProfile",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:updateProfile", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
-  
 }

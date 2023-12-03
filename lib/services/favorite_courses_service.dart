@@ -25,7 +25,10 @@ class FavoriteCoursesService {
       //_navigationService.back();
       message = "Added To Favorite Successfully";
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:addfovoriteCourse(CourseModel courseData)",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:addfovoriteCourse(CourseModel courseData)",
+          printDetails: true,
+          fatal: true);
       message = e.toString();
     }
   }
@@ -41,7 +44,10 @@ class FavoriteCoursesService {
       _loginService.updateUserData(_userData.uID);
       message = "Added To Favorite Successfully";
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:removefavouriteCourse(CoursesModel courseData)",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:removefavouriteCourse(CoursesModel courseData)",
+          printDetails: true,
+          fatal: true);
       message = e.toString();
     }
   }

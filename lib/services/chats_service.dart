@@ -130,16 +130,16 @@ class ChatService {
             .doc()
             .set(messageData);
       }
-      } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:sendSMS()",printDetails: true,fatal: true);
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:sendSMS()", printDetails: true, fatal: true);
       log(e.toString());
-        // ScaffoldMessenger.of(context).showSnackBar(
+      // ScaffoldMessenger.of(context).showSnackBar(
       //   SnackBar(
       //     content: Text(e.toString()),
       //   ),
       // );
     }
-    
   }
 
   void deleteMessage(chatId, id) async {
@@ -208,8 +208,9 @@ class ChatService {
         // snackBar(context, onError.toString());
         throw onError;
       });
-   } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:sendImage()",printDetails: true,fatal: true);
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:sendImage()", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
@@ -272,7 +273,8 @@ class ChatService {
         });
       } else {}
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:sendPdf",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:sendPdf", printDetails: true, fatal: true);
       log(e.toString());
     }
   }

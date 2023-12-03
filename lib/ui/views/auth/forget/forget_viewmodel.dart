@@ -57,62 +57,69 @@ class ForgetViewModel extends BaseViewModel {
         if (urlSegment == "signUp") {
           sharedPreferences.setString("token", _token.toString());
         }
-     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:urlSegment == 'SignUp'",printDetails: true,fatal: true);
-      log(e.toString());
-    }
+      } catch (e, s) {
+        FirebaseCrashlytics.instance.recordError(e, s,
+            reason: "function:urlSegment == 'SignUp'",
+            printDetails: true,
+            fatal: true);
+        log(e.toString());
+      }
       log("true");
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:_authenticate()",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:_authenticate()", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
 
   Future<void> signUp(String email, String password) async {
-    try{
-    return _authenticate(email, password, 'signUp');
+    try {
+      return _authenticate(email, password, 'signUp');
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:signUp",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:signUp", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
 
   Future<void> login(String email, String password) async {
-    try{
-    return _authenticate(email, password, 'signInWithPassword');
+    try {
+      return _authenticate(email, password, 'signInWithPassword');
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:login",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:login", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
 
   Future<void> changePassword(String newPassword) async {
     try {
-
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    log(newPassword);
-    _token = sharedPreferences.getString("token")!;
-    final url = Uri.parse(
-        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=$webApiKey");
-    try {
-      await http.post(
-        url,
-        body: json.encode(
-          {
-            'idToken': _token,
-            'password': newPassword,
-            'returnSecureToken': true,
-          },
-        ),
-      );
-   } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:http.post(url)",printDetails: true,fatal: true);
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      log(newPassword);
+      _token = sharedPreferences.getString("token")!;
+      final url = Uri.parse(
+          "https://identitytoolkit.googleapis.com/v1/accounts:update?key=$webApiKey");
+      try {
+        await http.post(
+          url,
+          body: json.encode(
+            {
+              'idToken': _token,
+              'password': newPassword,
+              'returnSecureToken': true,
+            },
+          ),
+        );
+      } catch (e, s) {
+        FirebaseCrashlytics.instance.recordError(e, s,
+            reason: "function:http.post(url)", printDetails: true, fatal: true);
+        log(e.toString());
+      }
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:changePassword", printDetails: true, fatal: true);
       log(e.toString());
     }
-  } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:changePassword",printDetails: true,fatal: true);
-      log(e.toString());
-    }
-}
-  
+  }
 }

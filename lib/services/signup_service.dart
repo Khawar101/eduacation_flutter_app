@@ -68,23 +68,25 @@ class SignupService {
           message = "OTP send failled";
         }
       } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:sendOtp",printDetails: true,fatal: true);
-      log(e.toString());
+        FirebaseCrashlytics.instance.recordError(e, s,
+            reason: "function:sendOtp", printDetails: true, fatal: true);
+        log(e.toString());
+      }
     }
-    }  
   }
 
   verify(otp) async {
     log('==>$otp');
-    try{
-    if (await myauth.verifyOTP(otp: otp) == true) {
-      createAccount();
-      message = "Signup Successfuly";
-    } else {
-      message = 'incorrect otp';
-    }
+    try {
+      if (await myauth.verifyOTP(otp: otp) == true) {
+        createAccount();
+        message = "Signup Successfuly";
+      } else {
+        message = 'incorrect otp';
+      }
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:verify(otp)",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:verify(otp)", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
@@ -117,10 +119,11 @@ class SignupService {
         } else if (e.code == 'email-already-in-use') {
           message = 'The account already exists for that email.';
         }
-     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:createAccount",printDetails: true,fatal: true);
-      log(e.toString());
-    }
+      } catch (e, s) {
+        FirebaseCrashlytics.instance.recordError(e, s,
+            reason: "function:createAccount", printDetails: true, fatal: true);
+        log(e.toString());
+      }
     }
   }
 }

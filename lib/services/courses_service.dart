@@ -73,7 +73,10 @@ class CoursesService {
         log("No project data found for uID: ${_loginService.UserData.uID} in course: $courseKey");
       }
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:showProject(coursekey)",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:showProject(coursekey)",
+          printDetails: true,
+          fatal: true);
       log(e.toString());
     }
   }

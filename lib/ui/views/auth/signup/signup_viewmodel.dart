@@ -83,8 +83,3 @@ class SignupViewModel extends BaseViewModel {
     log("=====>${_signupService.message}");
   }
 }
-
-
-
-
-

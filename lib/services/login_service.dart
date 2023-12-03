@@ -56,38 +56,44 @@ class LoginService {
         message = "Please fill all text field";
       }
     } catch (e, s) {
-       FirebaseCrashlytics.instance.recordError(e, s,reason:"function: logins(emailCTRL, passwordCTRL)",printDetails: true,fatal: true);
-       message = e.toString();
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function: logins(emailCTRL, passwordCTRL)",
+          printDetails: true,
+          fatal: true);
+      message = e.toString();
     }
   }
 
   updateUserData(id) async {
-    try{
-    final DocumentSnapshot snapshot =
-        await FirebaseFirestore.instance.collection("users").doc(id).get();
-    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-    UserData = userData(
-      uID: data["UID"],
-      username: data["username"],
-      firstName: data["firstName"],
-      lastName: data["lastName"],
-      email: data["email"],
-      password: data["password"],
-      profile: data["profile"],
-      userType: data["userType"],
-      gender: data["gender"],
-      phoneNo: data["phoneNo"],
-      address: data["address"],
-      clas: data["clas"],
-      status: data["status"],
-      educationSector: data["educationSector"],
-      // socialLinks: data["socialLinks"],
-      buyCourses: data["buyCourses"],
-      buyEBooks: data["buyEBooks"],
-      favoriteCourses: data["favoriteCourses"],
-    );
+    try {
+      final DocumentSnapshot snapshot =
+          await FirebaseFirestore.instance.collection("users").doc(id).get();
+      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      UserData = userData(
+        uID: data["UID"],
+        username: data["username"],
+        firstName: data["firstName"],
+        lastName: data["lastName"],
+        email: data["email"],
+        password: data["password"],
+        profile: data["profile"],
+        userType: data["userType"],
+        gender: data["gender"],
+        phoneNo: data["phoneNo"],
+        address: data["address"],
+        clas: data["clas"],
+        status: data["status"],
+        educationSector: data["educationSector"],
+        // socialLinks: data["socialLinks"],
+        buyCourses: data["buyCourses"],
+        buyEBooks: data["buyEBooks"],
+        favoriteCourses: data["favoriteCourses"],
+      );
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:updateUserData(id)",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:updateUserData(id)",
+          printDetails: true,
+          fatal: true);
       log(e.toString());
     }
   }
@@ -130,14 +136,17 @@ class LoginService {
   }
 
   void setOnlineStatus(bool status) async {
-    try{
-    // final userDoc = firestore.collection('chats').doc(loginService.UserData.uID);
-    await firestore
-        .collection('users')
-        .doc(UserData.uID)
-        .update({"status": status});
-        } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:setOnlineStatus(bool status)",printDetails: true,fatal: true);
+    try {
+      // final userDoc = firestore.collection('chats').doc(loginService.UserData.uID);
+      await firestore
+          .collection('users')
+          .doc(UserData.uID)
+          .update({"status": status});
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:setOnlineStatus(bool status)",
+          printDetails: true,
+          fatal: true);
       log(e.toString());
     }
   }

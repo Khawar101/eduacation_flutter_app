@@ -25,9 +25,7 @@ class RatingService {
           }).toList());
     } catch (e, s) {
       FirebaseCrashlytics.instance.recordError(e, s,
-          reason: "function:reatingStream",
-          printDetails: true,
-          fatal: true);
+          reason: "function:reatingStream", printDetails: true, fatal: true);
       return Stream.error(e.toString());
     }
   }
@@ -35,36 +33,37 @@ class RatingService {
   rateNow(reviewCTRL, rating, CoursesModel courseData) async {
     userData _userData = _loginService.UserData;
     String review = reviewCTRL.text.trim();
-  try{
-    if (review == "") {
-      message = "Please enter review";
-    } else {
-      try {
-        log("======>${courseData.rating}");
-        var courseKey = courseData.publishDate;
-        await firestore.collection("courses").doc(courseKey).update({
-          "rating": (courseData.rating ?? 5 + rating) / 2,
-        });
-        var key = "${_userData.uID}$courseKey";
-        await firestore.collection("Rating").doc(key).set({
-          "UID": _userData.uID,
-          "courseKey": courseData.publishDate,
-          "name": _userData.username,
-          "profile": _userData.profile,
-          "review": review,
-          "rating": rating,
-          "date": DateTime.timestamp(),
-        });
-        message = "Rate Successfully";
-     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:rateNow",printDetails: true,fatal: true);
-      log(e.toString());
-    }
-    }
+    try {
+      if (review == "") {
+        message = "Please enter review";
+      } else {
+        try {
+          log("======>${courseData.rating}");
+          var courseKey = courseData.publishDate;
+          await firestore.collection("courses").doc(courseKey).update({
+            "rating": (courseData.rating ?? 5 + rating) / 2,
+          });
+          var key = "${_userData.uID}$courseKey";
+          await firestore.collection("Rating").doc(key).set({
+            "UID": _userData.uID,
+            "courseKey": courseData.publishDate,
+            "name": _userData.username,
+            "profile": _userData.profile,
+            "review": review,
+            "rating": rating,
+            "date": DateTime.timestamp(),
+          });
+          message = "Rate Successfully";
+        } catch (e, s) {
+          FirebaseCrashlytics.instance.recordError(e, s,
+              reason: "function:rateNow", printDetails: true, fatal: true);
+          log(e.toString());
+        }
+      }
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:rateNow",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:rateNow", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
-  
 }

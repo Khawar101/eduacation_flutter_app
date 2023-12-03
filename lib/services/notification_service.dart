@@ -7,10 +7,10 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
-   showNotification(String title,String body) async{
-    AndroidNotificationDetails androidDetails = const AndroidNotificationDetails(
-        "channelId", "channelName",
-        priority: Priority.high, importance: Importance.max);
+  showNotification(String title, String body) async {
+    AndroidNotificationDetails androidDetails =
+        const AndroidNotificationDetails("channelId", "channelName",
+            priority: Priority.high, importance: Importance.max);
 
     DarwinNotificationDetails iosDetails = const DarwinNotificationDetails(
       presentAlert: true,
@@ -21,12 +21,10 @@ class NotificationService {
     NotificationDetails notiDetails =
         NotificationDetails(android: androidDetails, iOS: iosDetails);
 
-  await  notificationsPlugin.show(
-        0, title, body, notiDetails);
+    await notificationsPlugin.show(0, title, body, notiDetails);
   }
 
-
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
@@ -101,6 +99,4 @@ class NotificationService {
     await Firebase.initializeApp();
     NotificationService().showFirebaseNotification(message);
   }
-
- 
 }

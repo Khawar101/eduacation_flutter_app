@@ -16,43 +16,47 @@ class VerifyViewModel extends BaseViewModel {
   final List<String> _codes = ['', '', '', '', '', ''];
   List<String> get codes => _codes;
   onKeyboardTap(String value, context) {
-try{
-    for (var i = 0; i < _codes.length; i++) {
-      if (_codes[i].isEmpty) {
-        _codes[i] = value;
-        notifyListeners();
-        if (i < _codes.length - 1) {
-          // Move focus to the next text field
-          FocusScope.of(context).nextFocus();
+    try {
+      for (var i = 0; i < _codes.length; i++) {
+        if (_codes[i].isEmpty) {
+          _codes[i] = value;
           notifyListeners();
-        } else {
-          // Last text field, perform your logic here (e.g., submitting the code)
+          if (i < _codes.length - 1) {
+            // Move focus to the next text field
+            FocusScope.of(context).nextFocus();
+            notifyListeners();
+          } else {
+            // Last text field, perform your logic here (e.g., submitting the code)
+          }
+          break;
         }
-        break;
       }
-    }
     } catch (e, s) {
       FirebaseCrashlytics.instance.recordError(e, s,
-          reason: "function:onKeyboardTap(String value, context)", printDetails: true, fatal: true);
+          reason: "function:onKeyboardTap(String value, context)",
+          printDetails: true,
+          fatal: true);
       log(e.toString());
     }
   }
 
   void clearCodeField(int index, context) {
-    try{
-    if (index > 0 && _codes[index].isEmpty) {
-      // Clear the current field and move focus to the previous field
-      _codes[index - 1] = '';
-      notifyListeners();
-      FocusScope.of(context).previousFocus();
-    } else {
-      // Clear the current field
-      _codes[index] = '';
-      notifyListeners();
-    }
+    try {
+      if (index > 0 && _codes[index].isEmpty) {
+        // Clear the current field and move focus to the previous field
+        _codes[index - 1] = '';
+        notifyListeners();
+        FocusScope.of(context).previousFocus();
+      } else {
+        // Clear the current field
+        _codes[index] = '';
+        notifyListeners();
+      }
     } catch (e, s) {
       FirebaseCrashlytics.instance.recordError(e, s,
-          reason: "function:clearCodeField(int index, context)", printDetails: true, fatal: true);
+          reason: "function:clearCodeField(int index, context)",
+          printDetails: true,
+          fatal: true);
       log(e.toString());
     }
   }

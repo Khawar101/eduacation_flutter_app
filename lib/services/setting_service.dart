@@ -5,16 +5,16 @@ import 'package:education/app/app.router.dart';
 import '../app/app.locator.dart';
 import 'dart:developer';
 
-
 class SettingService {
   final _navigationService = locator<NavigationService>();
 
   signOut() async {
-    try{
-    await FirebaseAuth.instance.signOut();
-    _navigationService.navigateToLoginView();
+    try {
+      await FirebaseAuth.instance.signOut();
+      _navigationService.navigateToLoginView();
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError(e, s,reason:"function:signOut",printDetails: true,fatal: true);
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "function:signOut", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
