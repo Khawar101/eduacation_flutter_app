@@ -1,7 +1,7 @@
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:developer';
 import 'dart:io';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class FirebaseNotification {
   late AndroidNotificationChannel channel;
@@ -77,15 +77,15 @@ class FirebaseNotification {
       if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       } else if (settings.authorizationStatus ==
           AuthorizationStatus.provisional) {
-        print('User granted provisional permission');
+        log('User granted provisional permission');
       } else {
-        print('User declined or has not accepted permission');
+        log('User declined or has not accepted permission');
       }
 
       // onMessage is called in foreground
       FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-        print(message.notification!.title);
-        print(message.notification!.body);
+        log(message.notification!.title.toString());
+        log(message.notification!.body.toString());
 
         RemoteNotification? notification = message.notification;
         AndroidNotification? android = message.notification!.android;
