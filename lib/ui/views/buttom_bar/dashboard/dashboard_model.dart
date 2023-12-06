@@ -1,18 +1,16 @@
-import 'dart:developer';
-
-import 'package:education/app/app.router.dart';
-import 'package:education/main.dart';
-import 'package:education/services/notification_service.dart';
 import 'package:education/ui/views/buttom_bar/dashboard/widgets/bottomTitle.dart';
 import 'package:education/ui/views/buttom_bar/dashboard/widgets/leftTitle.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:stacked/stacked.dart';
+import 'package:education/services/notification_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:education/app/app.router.dart';
+import '../../../../app/app.locator.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked_services/stacked_services.dart';
-import '../../../../app/app.locator.dart';
-import 'package:timezone/timezone.dart' as tz;
+import 'package:stacked/stacked.dart';
+import 'package:education/main.dart';
+import 'dart:developer';
 
 class DashboardViewModel extends BaseViewModel {
   final bool isShowingMainData = true;
