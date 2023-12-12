@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/chat.dart';
 import 'package:education/services/Model/chat_member.dart';
 import 'package:education/services/chats_service.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -30,38 +33,51 @@ class ChatsViewModel extends BaseViewModel {
   }
 
   openNewChat(Member member) {
-    otherUID = member.uID!.toString();
-    name = member.name ?? "";
-    profile = member.profile ?? "";
-    String currentuID = loginService.UserData.uID.toString();
-    List<String> _chatID = [currentuID, otherUID]..sort();
-    chatId = _chatID.join('_');
-    memberList = [];
-    notifyListeners();
+    try {
+      otherUID = member.uID!.toString();
+      name = member.name ?? "";
+      profile = member.profile ?? "";
+      String currentuID = loginService.UserData.uID.toString();
+      List<String> _chatID = [currentuID, otherUID]..sort();
+      chatId = _chatID.join('_');
+      memberList = [];
+      notifyListeners();
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "openNewChat(Member member)",
+          printDetails: true,
+          fatal: true);
+      log(e.toString());
+    }
   }
 
   setChatId(ChatMember chatMember) {
     String currentuID = loginService.UserData.uID.toString();
-
-    if (chatMember.group == null) {
-      if (chatMember.member![0].uID != currentuID) {
-        openNewChat(chatMember.member![0]);
+    try {
+      if (chatMember.group == null) {
+        if (chatMember.member![0].uID != currentuID) {
+          openNewChat(chatMember.member![0]);
+        } else {
+          openNewChat(chatMember.member![1]);
+        }
+        isGroup = true;
       } else {
-        openNewChat(chatMember.member![1]);
+        isGroup = false;
+        otherUID = chatMember.group!.key ?? "";
+        chatId = chatMember.group!.key ?? "";
+        name = chatMember.group!.name ?? "";
+        profile = chatMember.group!.profile ?? "";
+        memberList = chatMember.member!
+            .where((member) => member.uID != currentuID)
+            .toList();
       }
-      isGroup = true;
-    } else {
-      isGroup = false;
-      otherUID = chatMember.group!.key ?? "";
-      chatId = chatMember.group!.key ?? "";
-      name = chatMember.group!.name ?? "";
-      profile = chatMember.group!.profile ?? "";
-      memberList = chatMember.member!
-          .where((member) => member.uID != currentuID)
-          .toList();
+      notifyListeners();
+      navigateinbox(chatMember);
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "verifyOtp", printDetails: true, fatal: true);
+      log(e.toString());
     }
-    notifyListeners();
-    navigateinbox(chatMember);
   }
 
   Stream<List<Chat>> chatStream(chatId) {
@@ -79,31 +95,39 @@ class ChatsViewModel extends BaseViewModel {
   }
 
   Member cruntUserData(ChatMember chatMember) {
-    Member _member = Member();
-    String currentuID = loginService.UserData.uID.toString();
-    if (chatMember.group == null) {
-      if (chatMember.member![0].uID != currentuID) {
-        _member.uID = chatMember.member![0].uID!.toString();
-        _member.name = chatMember.member![0].name!.toString();
-        _member.profile = chatMember.member![0].profile!.toString();
+    // try {
+      Member _member = Member();
+      String currentuID = loginService.UserData.uID.toString();
+      if (chatMember.group == null) {
+        if (chatMember.member![0].uID != currentuID) {
+          _member.uID = chatMember.member![0].uID!.toString();
+          _member.name = chatMember.member![0].name!.toString();
+          _member.profile = chatMember.member![0].profile!.toString();
+        } else {
+          _member.uID = chatMember.member![1].uID!.toString();
+          _member.name = chatMember.member![1].name!.toString();
+          _member.profile = chatMember.member![1].profile!.toString();
+        }
       } else {
-        _member.uID = chatMember.member![1].uID!.toString();
-        _member.name = chatMember.member![1].name!.toString();
-        _member.profile = chatMember.member![1].profile!.toString();
+        _member.uID = chatMember.group!.key ?? "";
+        _member.name = chatMember.group!.name ?? "";
+        _member.profile = chatMember.group!.profile ?? "";
       }
-    } else {
-      _member.uID = chatMember.group!.key ?? "";
-      _member.name = chatMember.group!.name ?? "";
-      _member.profile = chatMember.group!.profile ?? "";
-    }
 
-    // // If the logged-in user is in memberList, remove them
-    // if (memberList.any((member) => member.uID == currentuID)) {
-    //   memberList.removeWhere((member) => member.uID == currentuID);
+      // // If the logged-in user is in memberList, remove them
+      // if (memberList.any((member) => member.uID == currentuID)) {
+      //   memberList.removeWhere((member) => member.uID == currentuID);
+      // }
+
+      // notifyListeners();
+      return _member;
+    // } catch (e, s) {
+     
+    //   FirebaseCrashlytics.instance.recordError(e, s,
+    //       reason: "verifyOtp", printDetails: true, fatal: true);
+    //   log(e.toString());
+    //      return Stream.error(e.toString());
     // }
-
-    // notifyListeners();
-    return _member;
   }
 
   Stream publisherStream(uID) {

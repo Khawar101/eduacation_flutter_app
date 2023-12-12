@@ -62,6 +62,7 @@ class VerifyViewModel extends BaseViewModel {
   }
 
   verifyOtp() async {
+    try{
     var otp = _codes.reduce((value, element) => value + element);
 
     await _signupService.verify(otp);
@@ -72,6 +73,13 @@ class VerifyViewModel extends BaseViewModel {
       log("try again...");
     }
     log("=====>${_signupService.message}");
+ } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s,
+          reason: "verifyOtp",
+          printDetails: true,
+          fatal: true);
+      log(e.toString());
+    }
   }
 
   navigateapplication() {
