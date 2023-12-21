@@ -50,8 +50,6 @@ class CoursesService {
         }).toList());
   }
 
-  /////////////////////
-  ///
   List<StudentProjects> projectData = [];
   Future<void> showProject(courseKey) async {
     try {
