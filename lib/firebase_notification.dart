@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, unused_element
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:developer';
@@ -110,7 +112,6 @@ class FirebaseNotification {
                   channel.id,
                   channel.name,
 
-                  // TODO add a proper drawable resource to android, for now using
                   //      one that already exists in example app.
                   icon: 'launch_background',
                 ),
@@ -134,7 +135,6 @@ class FirebaseNotification {
                 android: AndroidNotificationDetails(
                   channel.id,
                   channel.name,
-                  // TODO add a proper drawable resource to android, for now using
                   //      one that already exists in example app.
                   icon: 'launch_background',
                 ),
