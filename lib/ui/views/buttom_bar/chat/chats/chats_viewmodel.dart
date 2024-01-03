@@ -96,33 +96,33 @@ class ChatsViewModel extends BaseViewModel {
 
   Member cruntUserData(ChatMember chatMember) {
     // try {
-      Member _member = Member();
-      String currentuID = loginService.UserData.uID.toString();
-      if (chatMember.group == null) {
-        if (chatMember.member![0].uID != currentuID) {
-          _member.uID = chatMember.member![0].uID!.toString();
-          _member.name = chatMember.member![0].name!.toString();
-          _member.profile = chatMember.member![0].profile!.toString();
-        } else {
-          _member.uID = chatMember.member![1].uID!.toString();
-          _member.name = chatMember.member![1].name!.toString();
-          _member.profile = chatMember.member![1].profile!.toString();
-        }
+    Member _member = Member();
+    String currentuID = loginService.UserData.uID.toString();
+    if (chatMember.group == null) {
+      if (chatMember.member![0].uID != currentuID) {
+        _member.uID = chatMember.member![0].uID!.toString();
+        _member.name = chatMember.member![0].name!.toString();
+        _member.profile = chatMember.member![0].profile!.toString();
       } else {
-        _member.uID = chatMember.group!.key ?? "";
-        _member.name = chatMember.group!.name ?? "";
-        _member.profile = chatMember.group!.profile ?? "";
+        _member.uID = chatMember.member![1].uID!.toString();
+        _member.name = chatMember.member![1].name!.toString();
+        _member.profile = chatMember.member![1].profile!.toString();
       }
+    } else {
+      _member.uID = chatMember.group!.key ?? "";
+      _member.name = chatMember.group!.name ?? "";
+      _member.profile = chatMember.group!.profile ?? "";
+    }
 
-      // // If the logged-in user is in memberList, remove them
-      // if (memberList.any((member) => member.uID == currentuID)) {
-      //   memberList.removeWhere((member) => member.uID == currentuID);
-      // }
+    // // If the logged-in user is in memberList, remove them
+    // if (memberList.any((member) => member.uID == currentuID)) {
+    //   memberList.removeWhere((member) => member.uID == currentuID);
+    // }
 
-      // notifyListeners();
-      return _member;
+    // notifyListeners();
+    return _member;
     // } catch (e, s) {
-     
+
     //   FirebaseCrashlytics.instance.recordError(e, s,
     //       reason: "verifyOtp", printDetails: true, fatal: true);
     //   log(e.toString());

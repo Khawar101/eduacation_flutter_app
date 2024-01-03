@@ -62,22 +62,20 @@ class VerifyViewModel extends BaseViewModel {
   }
 
   verifyOtp() async {
-    try{
-    var otp = _codes.reduce((value, element) => value + element);
+    try {
+      var otp = _codes.reduce((value, element) => value + element);
 
-    await _signupService.verify(otp);
-    if (_signupService.message == 'verify correct') {
-      log("otp is correct congratulation");
-      _navigationService.navigateToButtomBarView();
-    } else {
-      log("try again...");
-    }
-    log("=====>${_signupService.message}");
- } catch (e, s) {
+      await _signupService.verify(otp);
+      if (_signupService.message == 'verify correct') {
+        log("otp is correct congratulation");
+        _navigationService.navigateToButtomBarView();
+      } else {
+        log("try again...");
+      }
+      log("=====>${_signupService.message}");
+    } catch (e, s) {
       FirebaseCrashlytics.instance.recordError(e, s,
-          reason: "verifyOtp",
-          printDetails: true,
-          fatal: true);
+          reason: "verifyOtp", printDetails: true, fatal: true);
       log(e.toString());
     }
   }
