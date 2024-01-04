@@ -1,3 +1,4 @@
+import 'package:education/ui/views/buttom_bar/lessons_screen/widget/courses_bilder_widget.dart';
 import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
@@ -154,7 +155,7 @@ class LessonsScreenView extends StackedView<LessonsScreenViewModel> {
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.8,
-                    child: viewModel.coursesBuilder())),
+                    child: const CoursesBuilder())),
           ],
         ),
       ),
