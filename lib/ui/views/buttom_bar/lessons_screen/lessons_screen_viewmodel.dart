@@ -1,17 +1,13 @@
-import 'dart:developer';
-import 'package:education/app/app.router.dart';
-import 'package:education/services/login_service.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-import 'package:flutter/material.dart';
-import '../../../../app/app.locator.dart';
-import '../../../../services/Model/CoursesModel.dart';
-import '../../../../services/Model/userData.dart';
-import '../../../../services/courses_service.dart';
 import '../../../../services/favorite_courses_service.dart';
-import '../../../../utils/loading.dart';
-import '../../../widgets/app_utils.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:education/services/login_service.dart';
+import '../../../../services/Model/CoursesModel.dart';
+import '../../../../services/courses_service.dart';
+import '../../../../services/Model/userData.dart';
+import 'package:education/app/app.router.dart';
+import '../../../../app/app.locator.dart';
+import 'package:stacked/stacked.dart';
+import 'dart:developer';
 
 class LessonsScreenViewModel extends BaseViewModel {
   static List<String> itemsnames = [

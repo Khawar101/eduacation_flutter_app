@@ -1,5 +1,8 @@
+// ignore_for_file: sdk_version_since
+
 import 'dart:developer';
 import 'dart:io';
+import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/login_service.dart';
 import 'package:education/services/subscription_service.dart';
@@ -32,6 +35,7 @@ class AddprojectViewModel extends BaseViewModel {
 
   navigationBack() {
     _navigationService.back();
+    notifyListeners();
   }
 
 //   Future<void> sendImage(
@@ -93,6 +97,7 @@ class AddprojectViewModel extends BaseViewModel {
   // String? uRL;
 
   Future<void> sendImage(ImageSource source) async {
+    setBusy(true);
     XFile? image;
     image = await ImagePicker().pickImage(source: source, imageQuality: 35);
     if (image == null) {
@@ -115,10 +120,12 @@ class AddprojectViewModel extends BaseViewModel {
       log("=======>image error $error");
       throw error;
     }
+    setBusy(false);
   }
 
   uploadProject(courseKey) async {
     Map<String, dynamic> newProject = {
+      "date": DateTime.timestamp(),
       'url': imageList,
       'description': projectDescription.text,
       'name': projectName.text,
@@ -139,16 +146,19 @@ class AddprojectViewModel extends BaseViewModel {
     }
   }
 
-  Future<void> addProject(courseKey) async {
+  Future<void> addProject(courseKey,context) async {
     // Assuming projectName and projectDescription are not null
-    if (projectName.text.isNotEmpty && projectDescription.text.isNotEmpty) {
+    if (projectName.text.isNotEmpty &&
+        projectDescription.text.isNotEmpty &&
+        imageList.isNotEmpty) {
       // Create a new StudentProjects object
       StudentProjects newProject = StudentProjects(
         name: projectName.text,
         description: projectDescription.text,
+
         url: [], // Initialize with an empty list, update this if you have photos
       );
-
+      uploadProject(courseKey);
       // Add the new project to the list
       projectsList.add(newProject);
 
@@ -159,10 +169,15 @@ class AddprojectViewModel extends BaseViewModel {
       projectDescription.clear();
       imageList.clear();
       navigationBack();
-
       coursesService.showProject(courseKey);
       // Notify listeners to update the UI
       notifyListeners();
+    } else {
+      log("please enter some text or upload photo");
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Please Upload Photos"),
+        dismissDirection: DismissDirection.endToStart,
+      ));
     }
   }
 }

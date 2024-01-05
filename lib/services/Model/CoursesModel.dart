@@ -52,6 +52,7 @@
 
 // dynamic rating;
 //   dynamic students;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/EbookModel.dart';
 
 class CoursesModel {
@@ -254,14 +255,16 @@ class Assigment {
 }
 
 class StudentProjects {
+  Timestamp? date;
   String? uid;
   String? name;
   String? description;
   List<String>? url;
 
-  StudentProjects({this.uid, this.name, this.description, this.url});
+  StudentProjects({this.date,this.uid, this.name, this.description, this.url});
 
   StudentProjects.fromJson(Map<String, dynamic> json) {
+    date = json['date'];
     uid = json['uid'];
     name = json['name'];
     description = json['description'];
@@ -270,6 +273,7 @@ class StudentProjects {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
+    data['date'] = date;
     data['uid'] = uid;
     data['name'] = name;
     data['description'] = description;

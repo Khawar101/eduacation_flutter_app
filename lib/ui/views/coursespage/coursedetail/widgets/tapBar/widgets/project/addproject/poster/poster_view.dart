@@ -1,6 +1,7 @@
 import 'package:education/ui/views/coursespage/coursedetail/coursedetail_viewmodel.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/widgets/app_utils.dart';
+import 'package:timeago/timeago.dart' as timeago;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -58,11 +59,11 @@ class PosterView extends StackedView<CoursedetailViewModel> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const CircleAvatar(
-                    radius: 20,
-                    backgroundImage:
-                        AssetImage('assets/images/profile-pic.jpg'),
-                  ),
+                  CircleAvatar(
+                      radius: 20,
+                      backgroundImage: NetworkImage(viewModel.user.profile!)
+                      // AssetImage('assets/images/profile-pic.jpg'),
+                      ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,7 +79,9 @@ class PosterView extends StackedView<CoursedetailViewModel> {
                       Row(
                         children: [
                           Text(
-                            "11 min ago",
+                            timeago.format(projectData.date!.toDate()).toString(),
+
+                            // "11 min ago",
                             style: GoogleFonts.ibmPlexSans(fontSize: 12),
                           ),
                           SizedBox(

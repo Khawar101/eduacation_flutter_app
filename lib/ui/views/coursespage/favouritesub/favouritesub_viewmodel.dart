@@ -12,7 +12,7 @@ import '../../../../services/login_service.dart';
 import '../../../../utils/loading.dart';
 
 class FavouritesubViewModel extends BaseViewModel {
-  bool data = false;
+  bool data = true;
 
   final _navigationService = locator<NavigationService>();
   final favoritecoursesService = locator<FavoriteCoursesService>();
@@ -26,6 +26,8 @@ class FavouritesubViewModel extends BaseViewModel {
   final _loginService = locator<LoginService>();
   var favoriteCourses = [];
   var buyCourses = [];
+
+  
 
   viewModelReady() {
     userData _userData = _loginService.UserData;

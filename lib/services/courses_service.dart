@@ -60,12 +60,11 @@ class CoursesService {
               .collection('projectData')
               .where('uid', isEqualTo: _loginService.UserData.uID)
               .get();
-
       if (querySnapshot.docs.isNotEmpty) {
         projectData = querySnapshot.docs
             .map((doc) => StudentProjects.fromJson(doc.data()))
             .toList();
-
+        
         log("Project Data: $projectData");
       } else {
         log("No project data found for uID: ${_loginService.UserData.uID} in course: $courseKey");

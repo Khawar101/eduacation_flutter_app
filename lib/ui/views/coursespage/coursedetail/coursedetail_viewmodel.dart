@@ -44,6 +44,8 @@ class CoursedetailViewModel extends BaseViewModel {
 
   navigateAddProjectView(courseData) {
     _navigationService.navigateToAddprojectView(courseData: courseData);
+    _courseService.showProject(courseData);
+    notifyListeners();
   }
 
   navigateToPosterView(courseData) {
@@ -282,7 +284,7 @@ class CoursedetailViewModel extends BaseViewModel {
   //   }
   // }
 
-  void showProject(courseKey) async {
+  showProject(courseKey) async {
     await _courseService.showProject(courseKey);
     notifyListeners();
   }

@@ -13,11 +13,34 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
     FavouritesubViewModel viewModel,
     Widget? child,
   ) {
-    return viewModel.data
+    return viewModel.favoriteCourses.isNotEmpty
         ? Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.white,
+              leading: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.black54,
+                  size: 18,
+                ),
+              ),
+              title: Text(
+                "My Favorites",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.ibmPlexSans(
+                    fontSize: 18,
+                    color: const Color(0xff4873a6).withOpacity(0.7),
+                    fontWeight: FontWeight.w600),
+              ),
+              centerTitle: true,
+            ),
             body: Padding(
               padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height * 0.15,
+                  vertical: MediaQuery.of(context).size.height * 0.1,
                   horizontal: 20),
               child: Column(
                 //  crossAxisAlignment: CrossAxisAlignment.center,
@@ -96,4 +119,6 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
     BuildContext context,
   ) =>
       FavouritesubViewModel();
+
+      
 }
