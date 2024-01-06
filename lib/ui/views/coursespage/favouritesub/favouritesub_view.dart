@@ -1,3 +1,4 @@
+import 'package:education/ui/views/coursespage/favouritesub/widgets/favorite_course_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -13,32 +14,32 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
     FavouritesubViewModel viewModel,
     Widget? child,
   ) {
-    return viewModel.favoriteCourses.isNotEmpty
-        ? Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.white,
-              leading: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black54,
-                  size: 18,
-                ),
-              ),
-              title: Text(
-                "My Favorites",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.ibmPlexSans(
-                    fontSize: 18,
-                    color: const Color(0xff4873a6).withOpacity(0.7),
-                    fontWeight: FontWeight.w600),
-              ),
-              centerTitle: true,
-            ),
-            body: Padding(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black54,
+            size: 18,
+          ),
+        ),
+        title: Text(
+          "My Favorites",
+          textAlign: TextAlign.center,
+          style: GoogleFonts.ibmPlexSans(
+              fontSize: 18,
+              color: const Color(0xff4873a6).withOpacity(0.7),
+              fontWeight: FontWeight.w600),
+        ),
+        centerTitle: true,
+      ),
+      body: viewModel.favoriteCourses.isEmpty
+          ? Padding(
               padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height * 0.1,
                   horizontal: 20),
@@ -75,43 +76,18 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
                   ),
                 ],
               ),
-            ),
-          )
-        : Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.white,
-              leading: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black54,
-                  size: 18,
-                ),
-              ),
-              title: Text(
-                "My Favorites",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.ibmPlexSans(
-                    fontSize: 18,
-                    color: const Color(0xff4873a6).withOpacity(0.7),
-                    fontWeight: FontWeight.w600),
-              ),
-              centerTitle: true,
-            ),
-            body: ListView.builder(
-                shrinkWrap: true,
-                itemCount:
-                    viewModel.loginService.UserData.favoriteCourses!.length,
-                // physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (BuildContext context, index) {
-                  var courseKey =
-                      viewModel.loginService.UserData.favoriteCourses![index];
-                  return viewModel.favoritecousesBuilder(courseKey);
-                }),
-          );
+            )
+          : ListView.builder(
+              shrinkWrap: true,
+              itemCount:
+                  viewModel.loginService.UserData.favoriteCourses!.length,
+              // physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (BuildContext context, index) {
+                var courseKey =
+                    viewModel.loginService.UserData.favoriteCourses![index];
+                return favoritecousesBuilder(courseKey);
+              }),
+    );
   }
 
   @override
@@ -119,6 +95,9 @@ class FavouritesubView extends StackedView<FavouritesubViewModel> {
     BuildContext context,
   ) =>
       FavouritesubViewModel();
-
-      
+  @override
+  void onViewModelReady(FavouritesubViewModel viewModel) {
+    viewModel.viewModelReady();
+    super.onViewModelReady(viewModel);
+  }
 }

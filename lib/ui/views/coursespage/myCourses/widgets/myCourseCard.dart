@@ -26,11 +26,14 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               //networkImage(courseData.coverPic, 80, 100, false),
-              Image.network(
-                courseData.coverPic.toString(),
-                fit: BoxFit.cover,
-                height: 80,
-                width: 100,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  courseData.coverPic.toString(),
+                  fit: BoxFit.cover,
+                  height: 110,
+                  width: 100,
+                ),
               ),
               SizedBox(width: MediaQuery.of(context).size.width * 0.025),
               Expanded(
@@ -41,12 +44,15 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          courseData.title.toString(),
-                          style: const TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              fontWeight: FontWeight.bold),
-                          maxLines: 1,
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.65,
+                          child: Text(
+                            courseData.title.toString(),
+                            style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                fontWeight: FontWeight.bold),
+                            maxLines: 1,
+                          ),
                         ),
                         // GestureDetector(
                         //   onTap: viewModel.update(context),
@@ -85,7 +91,7 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
                         ),
                         CustomText(
                             text: "\$${courseData.price.toString()}",
-                            fontSize: 17,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ],
@@ -94,8 +100,9 @@ class MyCoursesCard extends StackedView<MyCoursesViewModel> {
                     Text(
                       courseData.description.toString(),
                       style: const TextStyle(
+                          fontSize: 12,
                           overflow: TextOverflow.ellipsis,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w400),
                       maxLines: 3,
                     ),
                     // Row(
