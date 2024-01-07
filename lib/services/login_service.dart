@@ -1,10 +1,9 @@
 // ignore_for_file: unused_local_variable, prefer_typing_uninitialized_variables, non_constant_identifier_names, unrelated_type_equality_checks
-import 'dart:developer';
-
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'Model/userData.dart';
+import 'dart:developer';
 
 class LoginService {
   var message = "";
