@@ -129,15 +129,16 @@ class AddprojectViewModel extends BaseViewModel {
       'url': imageList,
       'description': projectDescription.text,
       'name': projectName.text,
-      'uid': uID
+      'uid': uID,
+      'courseKey': courseKey
     };
     // existingProjects.add(newProject);
 
     // Update the document with the updated list of projects
     try {
       await FirebaseFirestore.instance
-          .collection("courses")
-          .doc(courseKey)
+          // .collection("courses")
+          // .doc(courseKey)
           .collection('projectData')
           .doc()
           .set(newProject);
@@ -146,7 +147,7 @@ class AddprojectViewModel extends BaseViewModel {
     }
   }
 
-  Future<void> addProject(courseKey,context) async {
+  Future<void> addProject(courseKey, context) async {
     // Assuming projectName and projectDescription are not null
     if (projectName.text.isNotEmpty &&
         projectDescription.text.isNotEmpty &&
