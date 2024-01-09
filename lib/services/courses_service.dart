@@ -15,7 +15,16 @@ class CoursesService {
         }).toList());
   }
 
- 
+  Stream<List<StudentProjects>> studentProjectStream() {
+    final stream = FirebaseFirestore.instance
+        .collection("projectData")
+        .where('uid', isEqualTo: _loginService.UserData.uID)
+        // .where('courseKey', isEqualTo: courseKey)
+        .snapshots();
+    return stream.map((event) => event.docs.map((doc) {
+          return StudentProjects.fromJson(doc.data());
+        }).toList());
+  }
 
   Stream publisherStream(uID) {
     return FirebaseFirestore.instance.collection("users").doc(uID).snapshots();
@@ -42,8 +51,8 @@ class CoursesService {
 
   Stream<List<CoursesModel>> addProject(courseKey) {
     final stream = FirebaseFirestore.instance
-        .collection("courses")
-        .doc(courseKey)
+        // .collection("courses")
+        // .doc(courseKey)
         .collection("UploadProject")
         .where("publishDate", isEqualTo: courseKey)
         .snapshots();
@@ -57,17 +66,18 @@ class CoursesService {
     try {
       QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await FirebaseFirestore.instance
-              .collection("courses")
-              .doc(courseKey)
+              // .collection("courses")
+              // .doc(courseKey)
               .collection('projectData')
               .where('uid', isEqualTo: _loginService.UserData.uID)
+              .where('courseKey', isEqualTo: courseKey)
               .get();
       if (querySnapshot.docs.isNotEmpty) {
         projectData = querySnapshot.docs
             .map((doc) => StudentProjects.fromJson(doc.data()))
             .toList();
-        
-        log("Project Data: $projectData");
+
+        // log("Project Data: $projectData");
       } else {
         log("No project data found for uID: ${_loginService.UserData.uID} in course: $courseKey");
       }

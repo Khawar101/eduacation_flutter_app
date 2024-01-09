@@ -21,5 +21,5 @@ class StudentInformationViewModel extends BaseViewModel {
 
   userData get userInfo => _loginService.UserData;
   CoursesModel get courseData => coursesService.courseData;
-  List<StudentProjects> get projects => coursesService.projectData;
+  // List<StudentProjects> get projects => coursesService.projectData;
 }

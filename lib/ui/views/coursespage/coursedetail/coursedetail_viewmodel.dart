@@ -99,7 +99,7 @@ class CoursedetailViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  var tabPage = 1;
+  var tabPage = 0;
   tabPageChange(value) {
     tabPage = value;
     notifyListeners();

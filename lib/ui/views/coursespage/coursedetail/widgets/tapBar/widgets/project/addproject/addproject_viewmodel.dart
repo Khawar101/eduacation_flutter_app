@@ -1,8 +1,6 @@
 // ignore_for_file: sdk_version_since
-
 import 'dart:developer';
 import 'dart:io';
-import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/services/login_service.dart';
 import 'package:education/services/subscription_service.dart';
@@ -38,87 +36,36 @@ class AddprojectViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-//   Future<void> sendImage(
-//   ImageSource source,
-//    uID,
-//    courseKey,
-// ) async {
-//   XFile? image;
-//   image = await ImagePicker().pickImage(source: source, imageQuality: 35);
-//   if (image == null) {
-//     throw Exception('No image selected');
-//   }
-
-//   Reference ref = FirebaseStorage.instance
-//       .ref()
-//       .child("profile/${DateTime.now().microsecondsSinceEpoch}");
-//   UploadTask uploadTask = ref.putFile(File(image.path));
-
-//   try {
-//     await uploadTask.whenComplete(() async {
-//       String uRL = await ref.getDownloadURL();
-
-//       // Add the new project to the list
-//       Map<String, dynamic> newProject = {
-//         'url': uRL,
-//         'description': projectDescription.text,
-//         'name': projectName.text,
-//       };
-//       // Retrieve the existing list of projects
-//       List<Map<String, dynamic>> existingProjects = [];
-//       await FirebaseFirestore.instance
-//           .collection("courses")
-//           .doc(courseKey)
-//           .collection('projectData')
-//           .doc(uID)
-//           .get()
-//           .then((doc) {
-//         if (doc.exists) {
-//           // existingProjects =
-//           //     List<Map<String, dynamic>>.from(doc['projects'] ?? []);
-//       existingProjects.add(newProject);
-//         }
-//       });
-
-//       // Update the document with the updated list of projects
-//       await FirebaseFirestore.instance
-//           .collection("courses")
-//           .doc(courseKey)
-//           .collection('projectData')
-//           .doc(uID)
-//           .set({'projects': existingProjects});
-//     });
-//   } catch (error) {
-//     debugPrint("=======>image error $error");
-//     throw error;
-//   }
-// }
-
-  // String? uRL;
-
-  Future<void> sendImage(ImageSource source) async {
+  XFile? image;
+  Future sendImage(ImageSource source) async {
     setBusy(true);
-    XFile? image;
-    image = await ImagePicker().pickImage(source: source, imageQuality: 35);
+    image = await ImagePicker().pickImage(source: source, imageQuality: 45);
     if (image == null) {
       throw Exception('No image selected');
     }
 
     Reference ref = FirebaseStorage.instance
         .ref()
-        .child("profile/${DateTime.now().microsecondsSinceEpoch}");
-    UploadTask uploadTask = ref.putFile(File(image.path));
+        .child("projectPhoto/${DateTime.now().microsecondsSinceEpoch}");
+    UploadTask uploadTask = ref.putFile(
+      File(image!.path),
+      SettableMetadata(
+        contentType: 'image/jpeg',
+        cacheControl: 'public,max-age=31536000',
+      ),
+    );
 
     try {
-      await uploadTask.whenComplete(() async {
+      uploadTask.whenComplete(() async {
         String uRL = await ref.getDownloadURL();
         imageList.add(uRL);
         notifyListeners();
+        log("prject data pictures  ${uRL}");
         // Add the new project to the list
       });
     } catch (error) {
       log("=======>image error $error");
-      throw error;
+      rethrow;
     }
     setBusy(false);
   }
@@ -182,3 +129,63 @@ class AddprojectViewModel extends BaseViewModel {
     }
   }
 }
+
+
+
+//   Future<void> sendImage(
+//   ImageSource source,
+//    uID,
+//    courseKey,
+// ) async {
+//   XFile? image;
+//   image = await ImagePicker().pickImage(source: source, imageQuality: 35);
+//   if (image == null) {
+//     throw Exception('No image selected');
+//   }
+
+//   Reference ref = FirebaseStorage.instance
+//       .ref()
+//       .child("profile/${DateTime.now().microsecondsSinceEpoch}");
+//   UploadTask uploadTask = ref.putFile(File(image.path));
+
+//   try {
+//     await uploadTask.whenComplete(() async {
+//       String uRL = await ref.getDownloadURL();
+
+//       // Add the new project to the list
+//       Map<String, dynamic> newProject = {
+//         'url': uRL,
+//         'description': projectDescription.text,
+//         'name': projectName.text,
+//       };
+//       // Retrieve the existing list of projects
+//       List<Map<String, dynamic>> existingProjects = [];
+//       await FirebaseFirestore.instance
+//           .collection("courses")
+//           .doc(courseKey)
+//           .collection('projectData')
+//           .doc(uID)
+//           .get()
+//           .then((doc) {
+//         if (doc.exists) {
+//           // existingProjects =
+//           //     List<Map<String, dynamic>>.from(doc['projects'] ?? []);
+//       existingProjects.add(newProject);
+//         }
+//       });
+
+//       // Update the document with the updated list of projects
+//       await FirebaseFirestore.instance
+//           .collection("courses")
+//           .doc(courseKey)
+//           .collection('projectData')
+//           .doc(uID)
+//           .set({'projects': existingProjects});
+//     });
+//   } catch (error) {
+//     debugPrint("=======>image error $error");
+//     throw error;
+//   }
+// }
+
+  // String? uRL;
