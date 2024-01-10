@@ -48,8 +48,6 @@ class LessonsScreenViewModel extends BaseViewModel {
     _navigationService.navigateToNotificationView();
   }
 
-
-
   checkCourseStatus(CoursesModel courseData) async {
     if (!favoriteCourses.contains(courseData.publishDate)) {
       _favoriteCourseService.addfavoriteCourse(courseData);

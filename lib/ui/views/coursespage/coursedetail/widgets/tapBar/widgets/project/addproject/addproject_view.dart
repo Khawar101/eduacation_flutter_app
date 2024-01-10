@@ -165,7 +165,7 @@ class AddprojectView extends StackedView<AddprojectViewModel> {
                 GestureDetector(
                   onTap: () {
                     // viewModel.uploadProject(courseData.publishDate);
-                    viewModel.addProject(courseData.publishDate,context);
+                    viewModel.addProject(courseData.publishDate, context);
                     if (_formKey.currentState!.validate()) {}
                   },
                   child: Container(

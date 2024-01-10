@@ -261,7 +261,7 @@ class StudentProjects {
   String? description;
   List<String>? url;
 
-  StudentProjects({this.date,this.uid, this.name, this.description, this.url});
+  StudentProjects({this.date, this.uid, this.name, this.description, this.url});
 
   StudentProjects.fromJson(Map<String, dynamic> json) {
     date = json['date'];

@@ -79,7 +79,9 @@ class PosterView extends StackedView<CoursedetailViewModel> {
                       Row(
                         children: [
                           Text(
-                            timeago.format(projectData.date!.toDate()).toString(),
+                            timeago
+                                .format(projectData.date!.toDate())
+                                .toString(),
 
                             // "11 min ago",
                             style: GoogleFonts.ibmPlexSans(fontSize: 12),
