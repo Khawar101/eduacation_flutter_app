@@ -114,7 +114,7 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                 children: [
                                   const SizedBox(height: 16),
                                   introBuilder(
-                                    courseData,
+                                    courseData
                                   ),
                                   const SizedBox(height: 5),
                                   courseintro(context, courseData),

@@ -37,7 +37,7 @@ class LessonsScreenViewModel extends BaseViewModel {
     notifyListeners();
     log(buyCourses.toString());
     if (buyCourses.contains(courseData.publishDate)) {
-      log("bury course");
+      log("buy course");
       _navigationService.navigateToCoursedetailView(courseData: courseData);
     } else {
       _navigationService.navigateToMarketingView(data: courseData);

@@ -5,9 +5,9 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:education/services/Model/chat_member.dart' as _i45;
-import 'package:education/services/Model/CoursesModel.dart' as _i46;
-import 'package:education/services/Model/EbookModel.dart' as _i47;
+import 'package:education/services/Model/chat_member.dart' as _i46;
+import 'package:education/services/Model/CoursesModel.dart' as _i47;
+import 'package:education/services/Model/EbookModel.dart' as _i48;
 import 'package:education/ui/views/acount/acount_view.dart' as _i26;
 import 'package:education/ui/views/auth/forget/forget_view.dart' as _i6;
 import 'package:education/ui/views/auth/login/login_view.dart' as _i4;
@@ -48,6 +48,8 @@ import 'package:education/ui/views/coursespage/favouritesub/favouritesub_view.da
     as _i33;
 import 'package:education/ui/views/coursespage/myCourses/my_courses_view.dart'
     as _i16;
+import 'package:education/ui/views/coursespage/teacher_profile/teacher_profile_view.dart'
+    as _i44;
 import 'package:education/ui/views/drawer/drawer_view.dart' as _i25;
 import 'package:education/ui/views/e_book/book_detail/book_detail_view.dart'
     as _i42;
@@ -75,9 +77,9 @@ import 'package:education/ui/views/teacher/popular_view.dart' as _i22;
 import 'package:education/ui/views/teacher/sdatetime/sdatetime_view.dart'
     as _i27;
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as _i44;
+import 'package:flutter/material.dart' as _i45;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i48;
+import 'package:stacked_services/stacked_services.dart' as _i49;
 
 class Routes {
   static const startupView = '/startup-view';
@@ -164,6 +166,8 @@ class Routes {
 
   static const pdfViewShow = '/pdf-view-show';
 
+  static const teacherProfileView = '/teacher-profile-view';
+
   static const all = <String>{
     startupView,
     splashScreenView,
@@ -207,6 +211,7 @@ class Routes {
     eBookView,
     bookDetailView,
     pdfViewShow,
+    teacherProfileView,
   };
 }
 
@@ -380,66 +385,70 @@ class StackedRouter extends _i1.RouterBase {
       Routes.pdfViewShow,
       page: _i43.PdfViewShow,
     ),
+    _i1.RouteDef(
+      Routes.teacherProfileView,
+      page: _i44.TeacherProfileView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.StartupView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.StartupView(),
         settings: data,
       );
     },
     _i3.SplashScreenView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.SplashScreenView(),
         settings: data,
       );
     },
     _i4.LoginView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.LoginView(),
         settings: data,
       );
     },
     _i5.SignupView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SignupView(),
         settings: data,
       );
     },
     _i6.ForgetView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.ForgetView(),
         settings: data,
       );
     },
     _i7.VerifyView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.VerifyView(),
         settings: data,
       );
     },
     _i8.ButtomBarView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ButtomBarView(),
         settings: data,
       );
     },
     _i9.DashboardView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.DashboardView(),
         settings: data,
       );
     },
     _i10.ChatsView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.ChatsView(),
         settings: data,
       );
     },
     _i11.InboxView: (data) {
       final args = data.getArgs<InboxViewArguments>(nullOk: false);
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => _i11.InboxView(
             key: args.key,
             chatId: args.chatId,
@@ -453,14 +462,14 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i12.ProfileView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.ProfileView(),
         settings: data,
       );
     },
     _i13.EditInfoView: (data) {
       final args = data.getArgs<EditInfoViewArguments>(nullOk: false);
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => _i13.EditInfoView(
             key: args.key,
             firstName: args.firstName,
@@ -472,136 +481,136 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i14.LessonsScreenView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i14.LessonsScreenView(),
         settings: data,
       );
     },
     _i15.MarketingView: (data) {
       final args = data.getArgs<MarketingViewArguments>(nullOk: false);
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i15.MarketingView(key: args.key, data: args.data),
         settings: data,
       );
     },
     _i16.MyCoursesView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i16.MyCoursesView(),
         settings: data,
       );
     },
     _i17.LearnersView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i17.LearnersView(),
         settings: data,
       );
     },
     _i18.StudentInformationView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i18.StudentInformationView(),
         settings: data,
       );
     },
     _i19.NotificationView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i19.NotificationView(),
         settings: data,
       );
     },
     _i20.SettingView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i20.SettingView(),
         settings: data,
       );
     },
     _i21.ContactView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i21.ContactView(),
         settings: data,
       );
     },
     _i22.PopularView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i22.PopularView(),
         settings: data,
       );
     },
     _i23.DetailView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i23.DetailView(),
         settings: data,
       );
     },
     _i24.BookingView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i24.BookingView(),
         settings: data,
       );
     },
     _i25.DrawerView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i25.DrawerView(),
         settings: data,
       );
     },
     _i26.AcountView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i26.AcountView(),
         settings: data,
       );
     },
     _i27.SdatetimeView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i27.SdatetimeView(),
         settings: data,
       );
     },
     _i28.EnhanceView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i28.EnhanceView(),
         settings: data,
       );
     },
     _i29.CarddataView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i29.CarddataView(),
         settings: data,
       );
     },
     _i30.CardView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i30.CardView(),
         settings: data,
       );
     },
     _i31.CardbottomsheetView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i31.CardbottomsheetView(),
         settings: data,
       );
     },
     _i32.PaymentdoneView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i32.PaymentdoneView(),
         settings: data,
       );
     },
     _i33.FavouritesubView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i33.FavouritesubView(),
         settings: data,
       );
     },
     _i34.LessonsView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i34.LessonsView(),
         settings: data,
       );
     },
     _i35.CoursedetailView: (data) {
       final args = data.getArgs<CoursedetailViewArguments>(nullOk: false);
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i35.CoursedetailView(args.courseData, key: args.key),
         settings: data,
@@ -609,7 +618,7 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i36.AddprojectView: (data) {
       final args = data.getArgs<AddprojectViewArguments>(nullOk: false);
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i36.AddprojectView(key: args.key, courseData: args.courseData),
         settings: data,
@@ -617,39 +626,39 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i37.PosterView: (data) {
       final args = data.getArgs<PosterViewArguments>(nullOk: false);
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i37.PosterView(key: args.key, projectData: args.projectData),
         settings: data,
       );
     },
     _i38.AddcommentView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i38.AddcommentView(),
         settings: data,
       );
     },
     _i39.ELearningView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i39.ELearningView(),
         settings: data,
       );
     },
     _i40.CategoriesView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i40.CategoriesView(),
         settings: data,
       );
     },
     _i41.EBookView: (data) {
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => const _i41.EBookView(),
         settings: data,
       );
     },
     _i42.BookDetailView: (data) {
       final args = data.getArgs<BookDetailViewArguments>(nullOk: false);
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i42.BookDetailView(key: args.key, eBookModel: args.eBookModel),
         settings: data,
@@ -657,7 +666,7 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i43.PdfViewShow: (data) {
       final args = data.getArgs<PdfViewShowArguments>(nullOk: false);
-      return _i44.MaterialPageRoute<dynamic>(
+      return _i45.MaterialPageRoute<dynamic>(
         builder: (context) => _i43.PdfViewShow(
             key: args.key,
             sampleUrl: args.sampleUrl,
@@ -668,6 +677,14 @@ class StackedRouter extends _i1.RouterBase {
             isGroup: args.isGroup,
             otherUID: args.otherUID,
             memberList: args.memberList),
+        settings: data,
+      );
+    },
+    _i44.TeacherProfileView: (data) {
+      final args = data.getArgs<TeacherProfileViewArguments>(nullOk: false);
+      return _i45.MaterialPageRoute<dynamic>(
+        builder: (context) =>
+            _i44.TeacherProfileView(args.courseData, key: args.key),
         settings: data,
       );
     },
@@ -692,7 +709,7 @@ class InboxViewArguments {
     required this.memberList,
   });
 
-  final _i44.Key? key;
+  final _i45.Key? key;
 
   final String chatId;
 
@@ -706,7 +723,7 @@ class InboxViewArguments {
 
   final String otherUID;
 
-  final List<_i45.Member> memberList;
+  final List<_i46.Member> memberList;
 
   @override
   String toString() {
@@ -749,7 +766,7 @@ class EditInfoViewArguments {
     required this.clas,
   });
 
-  final _i44.Key? key;
+  final _i45.Key? key;
 
   final String firstName;
 
@@ -794,9 +811,9 @@ class MarketingViewArguments {
     required this.data,
   });
 
-  final _i44.Key? key;
+  final _i45.Key? key;
 
-  final _i46.CoursesModel data;
+  final _i47.CoursesModel data;
 
   @override
   String toString() {
@@ -821,9 +838,9 @@ class CoursedetailViewArguments {
     this.key,
   });
 
-  final _i46.CoursesModel courseData;
+  final _i47.CoursesModel courseData;
 
-  final _i44.Key? key;
+  final _i45.Key? key;
 
   @override
   String toString() {
@@ -848,9 +865,9 @@ class AddprojectViewArguments {
     required this.courseData,
   });
 
-  final _i44.Key? key;
+  final _i45.Key? key;
 
-  final _i46.CoursesModel courseData;
+  final _i47.CoursesModel courseData;
 
   @override
   String toString() {
@@ -875,9 +892,9 @@ class PosterViewArguments {
     required this.projectData,
   });
 
-  final _i44.Key? key;
+  final _i45.Key? key;
 
-  final _i46.StudentProjects projectData;
+  final _i47.StudentProjects projectData;
 
   @override
   String toString() {
@@ -902,9 +919,9 @@ class BookDetailViewArguments {
     required this.eBookModel,
   });
 
-  final _i44.Key? key;
+  final _i45.Key? key;
 
-  final _i47.EbookModel eBookModel;
+  final _i48.EbookModel eBookModel;
 
   @override
   String toString() {
@@ -936,7 +953,7 @@ class PdfViewShowArguments {
     required this.memberList,
   });
 
-  final _i44.Key? key;
+  final _i45.Key? key;
 
   final String sampleUrl;
 
@@ -952,7 +969,7 @@ class PdfViewShowArguments {
 
   final String otherUID;
 
-  final List<_i45.Member> memberList;
+  final List<_i46.Member> memberList;
 
   @override
   String toString() {
@@ -987,7 +1004,34 @@ class PdfViewShowArguments {
   }
 }
 
-extension NavigatorStateExtension on _i48.NavigationService {
+class TeacherProfileViewArguments {
+  const TeacherProfileViewArguments({
+    required this.courseData,
+    this.key,
+  });
+
+  final _i47.CoursesModel courseData;
+
+  final _i45.Key? key;
+
+  @override
+  String toString() {
+    return '{"courseData": "$courseData", "key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant TeacherProfileViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.courseData == courseData && other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return courseData.hashCode ^ key.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i49.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -1115,14 +1159,14 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToInboxView({
-    _i44.Key? key,
+    _i45.Key? key,
     required String chatId,
     required String uID,
     required String name,
     required String profile,
     required bool isGroup,
     required String otherUID,
-    required List<_i45.Member> memberList,
+    required List<_i46.Member> memberList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1160,7 +1204,7 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToEditInfoView({
-    _i44.Key? key,
+    _i45.Key? key,
     required String firstName,
     required String lastName,
     required String phoneNo,
@@ -1201,8 +1245,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToMarketingView({
-    _i44.Key? key,
-    required _i46.CoursesModel data,
+    _i45.Key? key,
+    required _i47.CoursesModel data,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1484,8 +1528,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToCoursedetailView({
-    required _i46.CoursesModel courseData,
-    _i44.Key? key,
+    required _i47.CoursesModel courseData,
+    _i45.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1501,8 +1545,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToAddprojectView({
-    _i44.Key? key,
-    required _i46.CoursesModel courseData,
+    _i45.Key? key,
+    required _i47.CoursesModel courseData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1518,8 +1562,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToPosterView({
-    _i44.Key? key,
-    required _i46.StudentProjects projectData,
+    _i45.Key? key,
+    required _i47.StudentProjects projectData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1591,8 +1635,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToBookDetailView({
-    _i44.Key? key,
-    required _i47.EbookModel eBookModel,
+    _i45.Key? key,
+    required _i48.EbookModel eBookModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1608,7 +1652,7 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> navigateToPdfViewShow({
-    _i44.Key? key,
+    _i45.Key? key,
     required String sampleUrl,
     required String chatId,
     required String uID,
@@ -1616,7 +1660,7 @@ extension NavigatorStateExtension on _i48.NavigationService {
     required String profile,
     required bool isGroup,
     required String otherUID,
-    required List<_i45.Member> memberList,
+    required List<_i46.Member> memberList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1634,6 +1678,24 @@ extension NavigatorStateExtension on _i48.NavigationService {
             isGroup: isGroup,
             otherUID: otherUID,
             memberList: memberList),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToTeacherProfileView({
+    required _i47.CoursesModel courseData,
+    _i45.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.teacherProfileView,
+        arguments:
+            TeacherProfileViewArguments(courseData: courseData, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1767,14 +1829,14 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithInboxView({
-    _i44.Key? key,
+    _i45.Key? key,
     required String chatId,
     required String uID,
     required String name,
     required String profile,
     required bool isGroup,
     required String otherUID,
-    required List<_i45.Member> memberList,
+    required List<_i46.Member> memberList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1812,7 +1874,7 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithEditInfoView({
-    _i44.Key? key,
+    _i45.Key? key,
     required String firstName,
     required String lastName,
     required String phoneNo,
@@ -1853,8 +1915,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithMarketingView({
-    _i44.Key? key,
-    required _i46.CoursesModel data,
+    _i45.Key? key,
+    required _i47.CoursesModel data,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -2136,8 +2198,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithCoursedetailView({
-    required _i46.CoursesModel courseData,
-    _i44.Key? key,
+    required _i47.CoursesModel courseData,
+    _i45.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -2153,8 +2215,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithAddprojectView({
-    _i44.Key? key,
-    required _i46.CoursesModel courseData,
+    _i45.Key? key,
+    required _i47.CoursesModel courseData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -2170,8 +2232,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithPosterView({
-    _i44.Key? key,
-    required _i46.StudentProjects projectData,
+    _i45.Key? key,
+    required _i47.StudentProjects projectData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -2243,8 +2305,8 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithBookDetailView({
-    _i44.Key? key,
-    required _i47.EbookModel eBookModel,
+    _i45.Key? key,
+    required _i48.EbookModel eBookModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -2260,7 +2322,7 @@ extension NavigatorStateExtension on _i48.NavigationService {
   }
 
   Future<dynamic> replaceWithPdfViewShow({
-    _i44.Key? key,
+    _i45.Key? key,
     required String sampleUrl,
     required String chatId,
     required String uID,
@@ -2268,7 +2330,7 @@ extension NavigatorStateExtension on _i48.NavigationService {
     required String profile,
     required bool isGroup,
     required String otherUID,
-    required List<_i45.Member> memberList,
+    required List<_i46.Member> memberList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -2286,6 +2348,24 @@ extension NavigatorStateExtension on _i48.NavigationService {
             isGroup: isGroup,
             otherUID: otherUID,
             memberList: memberList),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithTeacherProfileView({
+    required _i47.CoursesModel courseData,
+    _i45.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.teacherProfileView,
+        arguments:
+            TeacherProfileViewArguments(courseData: courseData, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

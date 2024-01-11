@@ -234,13 +234,15 @@ class PublisherData {
   String? name;
   String? email;
   String? profile;
+  String? userType;
 
-  PublisherData({this.name, this.email, this.profile});
+  PublisherData({this.name, this.email, this.profile, this.userType});
 
   PublisherData.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     email = json['email'];
     profile = json['profile'];
+    userType = json['userType'];
   }
 
   Map<String, dynamic> toJson() {
@@ -248,6 +250,7 @@ class PublisherData {
     data['name'] = this.name;
     data['email'] = this.email;
     data['profile'] = this.profile;
+    data["userType"] = this.userType;
     return data;
   }
 }

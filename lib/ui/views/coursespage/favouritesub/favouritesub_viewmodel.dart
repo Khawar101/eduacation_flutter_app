@@ -1,16 +1,11 @@
-import 'dart:developer';
-
 import 'package:education/app/app.router.dart';
 import 'package:education/services/Model/CoursesModel.dart';
-import 'package:education/ui/views/coursespage/favouritesub/widgets/favoriteCourseCard.dart';
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../app/app.locator.dart';
 import '../../../../services/Model/userData.dart';
 import '../../../../services/favorite_courses_service.dart';
 import '../../../../services/login_service.dart';
-import '../../../../utils/loading.dart';
 
 class FavouritesubViewModel extends BaseViewModel {
   bool data = true;

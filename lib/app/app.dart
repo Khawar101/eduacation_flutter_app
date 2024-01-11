@@ -2,6 +2,7 @@ import 'package:education/services/courses_service.dart';
 import 'package:education/services/notification_service.dart';
 import 'package:education/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:education/ui/dialogs/info_alert/info_alert_dialog.dart';
+import 'package:education/ui/views/coursespage/teacher_profile/teacher_profile_view.dart';
 import 'package:education/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -94,7 +95,6 @@ import 'package:education/services/ebook_service.dart';
     MaterialRoute(page: CardbottomsheetView),
     MaterialRoute(page: PaymentdoneView),
     MaterialRoute(page: FavouritesubView),
-
     MaterialRoute(page: LessonsView),
     MaterialRoute(page: CoursedetailView),
     MaterialRoute(page: AddprojectView),
@@ -105,6 +105,7 @@ import 'package:education/services/ebook_service.dart';
     MaterialRoute(page: EBookView),
     MaterialRoute(page: BookDetailView),
     MaterialRoute(page: PdfViewShow),
+    MaterialRoute(page: TeacherProfileView),
 
     // MaterialRoute(page: VideosPlayer),
 

@@ -33,6 +33,11 @@ class CoursedetailViewModel extends BaseViewModel {
 
   List<StudentProjects> get projectData => _courseService.projectData;
 
+  navigateToTeacherProfileView(courseData) {
+    _navigationService.navigateToTeacherProfileView(courseData: courseData);
+    notifyListeners();
+  }
+
   updateVideo(_videoUrl, _complete) async {
     videoUrl = _videoUrl;
     startVideoPlayer(_videoUrl);

@@ -37,10 +37,41 @@ class TabBarNameWidget extends ViewModelWidget<StudentInformationViewModel> {
                   return Text(snapshot.data!.length.toString());
                 }),
             text: "Project"),
+
         Tab(
-            icon: Text(viewModel.userInfo.buyCourses!.length.toString()),
+            icon: StreamBuilder<List<CoursesModel>>(
+                stream: viewModel.coursesService.coursesStream(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<CoursesModel>> snapshot) {
+                  if (snapshot.hasError) {
+                    return Text(snapshot.error.toString());
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Container();
+                  }
+                  return Text(snapshot.data!.length.toString());
+                }),
             text: "Courses"),
-        const Tab(icon: Text("23"), text: "Following"),
+        Tab(
+            icon: StreamBuilder<List<CoursesModel>>(
+                stream: viewModel.coursesService.coursesStream(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<CoursesModel>> snapshot) {
+                  if (snapshot.hasError) {
+                    return Text(snapshot.error.toString());
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Container();
+                  }
+                  return Text(snapshot.data!.length.toString());
+                }),
+            text: "Following"),
+        // Tab(
+        //     icon: Text(viewModel.userInfo.buyCourses!.length.toString()),
+        //     text: "Courses"),
+        // const Tab(icon: Text("23"), text: "Following"),
       ],
     );
   }
