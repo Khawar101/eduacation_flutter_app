@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/CoursesModel.dart';
 import 'package:education/ui/views/buttom_bar/student_information/student_information_viewmodel.dart';
 import 'package:education/ui/views/coursespage/teacher_profile/teacher_profile_viewmodel.dart';
@@ -52,14 +53,19 @@ class TeacherInfo extends ViewModelWidget<TeacherProfileViewModel> {
                         text: "${courseData.publisherData!.userType}",
                         color: Colors.black))),
             const SizedBox(width: 10),
-            Container(
-              height: 30,
-              width: 90,
-              decoration: BoxDecoration(
-                  color: const Color(0xff4873a6).withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(10)),
-              child: const Center(
-                  child: ButtonText(text: "Follow", color: Colors.white)),
+            GestureDetector(
+              onTap: () {
+                viewModel.teacherData();
+              },
+              child: Container(
+                height: 30,
+                width: 90,
+                decoration: BoxDecoration(
+                    color: const Color(0xff4873a6).withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Center(
+                    child: ButtonText(text: "Follow", color: Colors.white)),
+              ),
             ),
           ],
         ),

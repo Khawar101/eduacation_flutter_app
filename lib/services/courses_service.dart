@@ -77,7 +77,7 @@ class CoursesService {
             .map((doc) => StudentProjects.fromJson(doc.data()))
             .toList();
 
-        // log("Project Data: $projectData");
+        log("Project Data: $projectData");
       } else {
         log("No project data found for uID: ${_loginService.UserData.uID} in course: $courseKey");
       }

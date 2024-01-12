@@ -114,8 +114,8 @@ class InboxView extends StackedView<InboxViewModel> {
                                         },
                                         child: CustomText(
                                             text:
-                                                "${viewModel.memberList[index].name}",
-                                            fontSize: 15,
+                                                "${viewModel.memberList[index].name} , ",
+                                            fontSize: 14,
                                             color: const Color(0xff4873a6)
                                                 .withOpacity(0.7),
                                             fontWeight: FontWeight.w600));
