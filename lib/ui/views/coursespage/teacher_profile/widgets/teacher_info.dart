@@ -20,18 +20,18 @@ class TeacherInfo extends ViewModelWidget<TeacherProfileViewModel> {
         Center(
           child: CircleAvatar(
               radius: 50,
-              backgroundImage:
-                  NetworkImage(courseData.publisherData!.profile.toString())
+              backgroundImage: NetworkImage(viewModel.UserData?.profile ?? "")
               // AssetImage('assets/images/profile_picture.jpeg'),
               ),
         ),
         const SizedBox(height: 4),
         BigText(
-            text: "@${courseData.publisherData!.name}", color: Colors.black),
+            text: "@${viewModel.UserData?.username ?? ""}",
+            color: Colors.black),
         const SizedBox(height: 4),
         CustomText(
           text:
-              "Professinol comic book artist\nand full time art ${courseData.publisherData!.userType}",
+              "Professinol comic book artist\nand full time art ${viewModel.UserData?.userType ?? ""}",
           textAlign: TextAlign.center,
           fontSize: 12,
         ),
@@ -50,12 +50,12 @@ class TeacherInfo extends ViewModelWidget<TeacherProfileViewModel> {
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(
                     child: ButtonText(
-                        text: "${courseData.publisherData!.userType}",
+                        text: viewModel.UserData?.userType ?? "",
                         color: Colors.black))),
             const SizedBox(width: 10),
             GestureDetector(
               onTap: () {
-                viewModel.teacherData();
+                // viewModel.teacherData();
               },
               child: Container(
                 height: 30,

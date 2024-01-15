@@ -1,6 +1,5 @@
 import 'package:education/ui/views/coursespage/teacher_profile/teacher_profile_viewmodel.dart';
 import 'package:education/ui/views/coursespage/teacher_profile/widgets/teacher_info.dart';
-import 'package:education/ui/views/drawer/drawer_view.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -18,7 +17,6 @@ class TeacherProfileView extends StackedView<TeacherProfileViewModel> {
   ) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      // drawer: const DrawerView(),
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
@@ -32,7 +30,6 @@ class TeacherProfileView extends StackedView<TeacherProfileViewModel> {
                 ),
                 onPressed: () {
                   viewModel.navigateToBackScreen();
-                  // Scaffold.of(context).openDrawer();
                 },
                 tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               );
@@ -55,16 +52,19 @@ class TeacherProfileView extends StackedView<TeacherProfileViewModel> {
               ),
             )
           ]),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-          child: Column(
-            children: [
-              TeacherInfo(courseData),
-            ],
-          ),
-        ),
-      ),
+      body: viewModel.isBusy
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                child: Column(
+                  children: [
+                    TeacherInfo(courseData),
+                  ],
+                ),
+              ),
+            ),
     );
   }
 
@@ -73,4 +73,10 @@ class TeacherProfileView extends StackedView<TeacherProfileViewModel> {
     BuildContext context,
   ) =>
       TeacherProfileViewModel();
+
+  @override
+  void onViewModelReady(TeacherProfileViewModel viewModel) {
+    viewModel.getUserData(courseData.uID);
+    super.onViewModelReady(viewModel);
+  }
 }

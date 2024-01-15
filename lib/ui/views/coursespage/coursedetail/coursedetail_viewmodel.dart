@@ -123,7 +123,7 @@ class CoursedetailViewModel extends BaseViewModel {
   }
 
   Future<void> startVideoPlayer(url) async {
-    print('~=============>$url');
+    log('~=============>$url');
     // streamController.add(true);
     replyVideo = false;
     notifyListeners();
@@ -142,7 +142,6 @@ class CoursedetailViewModel extends BaseViewModel {
           controller ?? VideoPlayerController.network(url);
 
       controller = _controller;
-      // notifyListeners();
       await _controller.play();
       await oldController.dispose();
       // streamController.add(false);
