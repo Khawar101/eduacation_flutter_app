@@ -49,7 +49,7 @@ class TeacherProfileViewModel extends BaseViewModel {
     } catch (e) {
       log(e.toString());
     }
-      setBusy(false);
+    setBusy(false);
 
     // showProject(courseKey) async {
     //   await _courseService.showProject(courseKey);

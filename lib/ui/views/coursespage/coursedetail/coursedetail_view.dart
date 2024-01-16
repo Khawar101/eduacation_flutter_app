@@ -113,9 +113,7 @@ class CoursedetailView extends StackedView<CoursedetailViewModel> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 16),
-                                  introBuilder(
-                                    courseData
-                                  ),
+                                  introBuilder(courseData),
                                   const SizedBox(height: 5),
                                   courseintro(context, courseData),
                                   verticalSpace(6),
