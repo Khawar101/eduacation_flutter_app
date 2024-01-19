@@ -1,16 +1,15 @@
-import 'dart:developer';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education/app/app.router.dart';
-import 'package:education/services/Model/chat.dart';
-import 'package:education/services/Model/chat_member.dart';
-import 'package:education/services/chats_service.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:education/services/Model/chat_member.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:education/services/chats_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/services/Model/chat.dart';
+import '../../../../../services/login_service.dart';
+import 'package:education/app/app.router.dart';
+import '../../../../../app/app.locator.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-import '../../../../../app/app.locator.dart';
-import '../../../../../services/login_service.dart';
+import 'dart:developer';
 
 class ChatsViewModel extends BaseViewModel {
   String chatId = "";
