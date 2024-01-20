@@ -1,9 +1,9 @@
 import 'package:education/services/Model/chat_member.dart';
+import 'package:timeago/timeago.dart' as timeago;
+import '../../../../widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import '../../../../widgets/app_utils.dart';
 import 'chats_viewmodel.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 class ListViewData extends StackedView<ChatsViewModel> {
   final ChatMember chatMember;
