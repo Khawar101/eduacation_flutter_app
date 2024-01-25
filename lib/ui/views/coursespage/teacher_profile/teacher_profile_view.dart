@@ -15,7 +15,6 @@ class TeacherProfileView extends StackedView<TeacherProfileViewModel> {
     TeacherProfileViewModel viewModel,
     Widget? child,
   ) {
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
           elevation: 0,
