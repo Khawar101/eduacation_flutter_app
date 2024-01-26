@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/CoursesModel.dart';
-import 'package:education/ui/views/buttom_bar/student_information/student_information_viewmodel.dart';
 import 'package:education/ui/views/coursespage/teacher_profile/teacher_profile_viewmodel.dart';
 import 'package:education/ui/widgets/app_utils.dart';
 import 'package:flutter/material.dart';
