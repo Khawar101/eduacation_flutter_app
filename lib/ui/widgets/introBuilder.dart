@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 import 'package:education/app/app.router.dart';
-import 'package:education/ui/views/coursespage/coursedetail/coursedetail_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
