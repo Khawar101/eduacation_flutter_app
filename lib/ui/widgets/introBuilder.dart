@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
-import 'package:education/app/app.router.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
-import '../../app/app.locator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../services/Model/CoursesModel.dart';
-import '../../services/Model/userData.dart';
+import 'package:education/app/app.router.dart';
 import '../../services/courses_service.dart';
+import '../../services/Model/userData.dart';
+import 'package:flutter/material.dart';
+import '../../app/app.locator.dart';
 import '../../utils/loading.dart';
 import 'app_utils.dart';
 
