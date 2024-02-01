@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:education/ui/widgets/custom_text_form_field.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 
 class AppUtils {
 // const Color(0xff4873a6).withOpacity(0.7),
@@ -42,51 +42,38 @@ class BigText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: GoogleFonts.ibmPlexSans(
-          color: color, fontSize: 20, fontWeight: FontWeight.w600),
-    );
+    return Text(text,
+        style: GoogleFonts.ibmPlexSans(
+            color: color, fontSize: 20, fontWeight: FontWeight.w600));
   }
 }
 
 class BigSubText extends StatelessWidget {
   final String text;
 
-  const BigSubText({
-    super.key,
-    required this.text,
-  });
+  const BigSubText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: TextAlign.center,
-      style: GoogleFonts.ibmPlexSans(
-          color: const Color(0xff969799),
-          fontSize: 15,
-          fontWeight: FontWeight.w400),
-    );
+    return Text(text,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.ibmPlexSans(
+            color: const Color(0xff969799),
+            fontSize: 15,
+            fontWeight: FontWeight.w400));
   }
 }
 
 class ButtonText extends StatelessWidget {
   final String text;
   final Color color;
-  const ButtonText({
-    super.key,
-    required this.text,
-    required this.color,
-  });
+  const ButtonText({super.key, required this.text, required this.color});
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: GoogleFonts.ibmPlexSans(
-          color: color, fontSize: 15, fontWeight: FontWeight.w500),
-    );
+    return Text(text,
+        style: GoogleFonts.ibmPlexSans(
+            color: color, fontSize: 15, fontWeight: FontWeight.w500));
   }
 }
 
