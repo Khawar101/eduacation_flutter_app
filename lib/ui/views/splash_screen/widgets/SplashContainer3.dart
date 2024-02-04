@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -8,7 +10,6 @@ class SplashContainer3 extends StatefulWidget {
   const SplashContainer3({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _SplashContainer3State createState() => _SplashContainer3State();
 }
 
@@ -22,7 +23,6 @@ class _SplashContainer3State extends State<SplashContainer3> {
           children: [
             SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5,
-                //   width: double.infinity,
                 child: Image.asset(
                   'assets/images/girl-images-2.jpg',
                   fit: BoxFit.cover,
@@ -31,10 +31,7 @@ class _SplashContainer3State extends State<SplashContainer3> {
               alignment: Alignment.bottomCenter,
               child: Transform.scale(
                 scale: 1.65,
-
                 origin: const Offset(-5, 30),
-                // scaleX: 20,
-                // scaleY: 20,
                 child: Container(
                     height: MediaQuery.of(context).size.height * 0.4,
                     width: double.infinity,
