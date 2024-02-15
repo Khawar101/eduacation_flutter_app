@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 import 'SplashContainer5.dart';
 
 class SplashContainer4 extends StatefulWidget {
