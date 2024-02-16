@@ -1,11 +1,9 @@
 // ignore_for_file: file_names
-
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../splash_screen_viewmodel.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 
 class SplashContainer5 extends StackedView<SplashScreenViewModel> {
   const SplashContainer5({Key? key}) : super(key: key);
