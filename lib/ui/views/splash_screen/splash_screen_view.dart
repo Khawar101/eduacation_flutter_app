@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import 'splash_screen_viewmodel.dart';
 
 class SplashScreenView extends StackedView<SplashScreenViewModel> {
