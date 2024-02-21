@@ -1,8 +1,7 @@
 import 'package:education/ui/views/setting/more_card.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../widgets/app_utils.dart';
 import 'setting_viewmodel.dart';
 
