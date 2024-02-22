@@ -1,8 +1,7 @@
 import 'package:education/services/setting_service.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
-
 import '../../../app/app.locator.dart';
+import 'package:stacked/stacked.dart';
 
 class SettingViewModel extends BaseViewModel {
   final settingService = locator<SettingService>();
@@ -13,7 +12,6 @@ class SettingViewModel extends BaseViewModel {
   final MaterialStateProperty<Icon?> thumbIcon =
       MaterialStateProperty.resolveWith<Icon?>(
     (Set<MaterialState> states) {
-      // Thumb icon when the switch is selected.
       if (states.contains(MaterialState.selected)) {
         return const Icon(
           Icons.check,
