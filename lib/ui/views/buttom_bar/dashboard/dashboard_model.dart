@@ -39,19 +39,19 @@ class DashboardViewModel extends BaseViewModel {
         minY: 0,
       );
 
-  LineTouchData get lineTouchData1 => LineTouchData(
+  LineTouchData get lineTouchData1 =>  LineTouchData(
         handleBuiltInTouches: true,
-        touchTooltipData: LineTouchTooltipData(tooltipBgColor: Colors.black),
+        // touchTooltipData: LineTouchTooltipData(color: Colors.black),
       );
 
   FlTitlesData get titlesData1 => FlTitlesData(
         bottomTitles: AxisTitles(
           sideTitles: bottomTitles,
         ),
-        rightTitles: AxisTitles(
+        rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
-        topTitles: AxisTitles(
+        topTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
         leftTitles: AxisTitles(
@@ -63,7 +63,7 @@ class DashboardViewModel extends BaseViewModel {
         lineChartBarData1_1,
       ];
 
-  LineTouchData get lineTouchData2 => LineTouchData(
+  LineTouchData get lineTouchData2 => const LineTouchData(
         enabled: false,
       );
 
@@ -71,10 +71,10 @@ class DashboardViewModel extends BaseViewModel {
         bottomTitles: AxisTitles(
           sideTitles: bottomTitles,
         ),
-        rightTitles: AxisTitles(
+        rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
-        topTitles: AxisTitles(
+        topTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
         leftTitles: AxisTitles(
@@ -82,21 +82,21 @@ class DashboardViewModel extends BaseViewModel {
         ),
       );
 
-  SideTitles leftTitles() => SideTitles(
+  SideTitles leftTitles() => const SideTitles(
         getTitlesWidget: leftTitleWidgets,
         showTitles: true,
         interval: 1,
         reservedSize: 40,
       );
 
-  SideTitles get bottomTitles => SideTitles(
+  SideTitles get bottomTitles => const SideTitles(
         showTitles: true,
         reservedSize: 33,
         interval: 1,
         getTitlesWidget: bottomTitleWidgets,
       );
 
-  FlGridData get gridData => FlGridData(show: true, drawVerticalLine: false);
+  FlGridData get gridData => const FlGridData(show: true, drawVerticalLine: false);
 
   FlBorderData get borderData => FlBorderData(
         show: true,
@@ -115,7 +115,7 @@ class DashboardViewModel extends BaseViewModel {
         color: Colors.white,
         barWidth: 4,
         isStrokeCapRound: true,
-        dotData: FlDotData(show: false),
+        dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
         spots: const [
           FlSpot(1, 2),

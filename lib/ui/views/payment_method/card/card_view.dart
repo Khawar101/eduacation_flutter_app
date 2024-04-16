@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-import 'package:flutter_credit_card/credit_card_brand.dart';
-import 'package:flutter_credit_card/credit_card_widget.dart';
-import 'package:flutter_credit_card/glassmorphism_config.dart';
+// import 'package:flutter_credit_card/credit_card_brand.dart';
+// import 'package:flutter_credit_card/credit_card_widget.dart';
+// import 'package:flutter_credit_card/glassmorphism_config.dart';
 import '../../../widgets/app_utils.dart';
 import 'card_viewmodel.dart';
 
@@ -50,41 +50,41 @@ class CardView extends StackedView<CardViewModel> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               const ButtonText(text: "My card", color: Colors.black),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-              CreditCardWidget(
-                glassmorphismConfig: viewModel.useGlassMorphism
-                    ? Glassmorphism.defaultConfig()
-                    : null,
-                cardNumber: viewModel.cardNumber,
-                expiryDate: viewModel.expiryDate,
-                cardHolderName: viewModel.cardHolderName,
-                cvvCode: viewModel.cvvCode,
-                bankName: 'Axis Bank',
-                frontCardBorder: !viewModel.useGlassMorphism
-                    ? Border.all(color: Colors.grey)
-                    : null,
-                backCardBorder: !viewModel.useGlassMorphism
-                    ? Border.all(color: Colors.grey)
-                    : null,
-                showBackView: viewModel.isCvvFocused,
-                obscureCardNumber: true,
-                obscureCardCvv: true,
-                isHolderNameVisible: true,
-                cardBgColor: const Color(0xff4873a6).withOpacity(0.7),
-                backgroundImage:
-                    viewModel.useBackgroundImage ? 'assets/card_bg.png' : null,
-                isSwipeGestureEnabled: true,
-                onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
-                // customCardTypeIcons: <CustomCardTypeIcon>[
-                //   CustomCardTypeIcon(
-                //     cardType: CardType.mastercard,
-                //     cardImage: Image.asset(
-                //       'assets/mastercard.png',
-                //       height: 48,
-                //       width: 48,
-                //     ),
-                //   ),
-                // ],
-              ),
+              // CreditCardWidget(
+              //   glassmorphismConfig: viewModel.useGlassMorphism
+              //       ? Glassmorphism.defaultConfig()
+              //       : null,
+              //   cardNumber: viewModel.cardNumber,
+              //   expiryDate: viewModel.expiryDate,
+              //   cardHolderName: viewModel.cardHolderName,
+              //   cvvCode: viewModel.cvvCode,
+              //   bankName: 'Axis Bank',
+              //   frontCardBorder: !viewModel.useGlassMorphism
+              //       ? Border.all(color: Colors.grey)
+              //       : null,
+              //   backCardBorder: !viewModel.useGlassMorphism
+              //       ? Border.all(color: Colors.grey)
+              //       : null,
+              //   showBackView: viewModel.isCvvFocused,
+              //   obscureCardNumber: true,
+              //   obscureCardCvv: true,
+              //   isHolderNameVisible: true,
+              //   cardBgColor: const Color(0xff4873a6).withOpacity(0.7),
+              //   backgroundImage:
+              //       viewModel.useBackgroundImage ? 'assets/card_bg.png' : null,
+              //   isSwipeGestureEnabled: true,
+              //   onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
+              //   // customCardTypeIcons: <CustomCardTypeIcon>[
+              //   //   CustomCardTypeIcon(
+              //   //     cardType: CardType.mastercard,
+              //   //     cardImage: Image.asset(
+              //   //       'assets/mastercard.png',
+              //   //       height: 48,
+              //   //       width: 48,
+              //   //     ),
+              //   //   ),
+              //   // ],
+              // ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               GestureDetector(
                 onTap: () => viewModel.openBottomSheet(context),
