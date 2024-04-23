@@ -1,10 +1,5 @@
 
 
-// android {
-//     namespace "com.example.education"
-//     compileSdkVersion flutter.compileSdkVersion
-//     ndkVersion flutter.ndkVersion
-
 //     compileOptions {
 //         coreLibraryDesugaringEnabled true
 //         sourceCompatibility JavaVersion.VERSION_1_8
