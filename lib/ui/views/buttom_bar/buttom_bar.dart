@@ -4,7 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'buttom_bar_model.dart';
 
 class ButtomBarView extends StackedView<ButtomBarViewModel> {
-  const ButtomBarView({Key? key}) : super(key: key);
+  const ButtomBarView({super.key});
 
   @override
   Widget builder(
