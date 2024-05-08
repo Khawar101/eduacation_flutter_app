@@ -1,8 +1,8 @@
-import 'package:education/services/Model/EbookModel.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education/services/login_service.dart';
-import 'package:education/app/app.locator.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:education/services/Model/EbookModel.dart';
+import 'package:education/services/login_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/app/app.locator.dart';
 import 'Model/CoursesModel.dart';
 import 'dart:developer';
 
