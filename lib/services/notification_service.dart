@@ -1,10 +1,10 @@
-import 'dart:developer';
-import 'dart:io';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:education/main.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'dart:developer';
+import 'dart:io';
 
 class NotificationService {
   showNotification(String title, String body) async {
