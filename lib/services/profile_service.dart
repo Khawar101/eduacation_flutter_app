@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education/services/Model/userData.dart';
 import '../app/app.locator.dart';
 import 'login_service.dart';
