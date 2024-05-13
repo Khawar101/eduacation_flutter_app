@@ -1,9 +1,9 @@
-import 'package:education/ui/widgets/app_utils.dart';
-import 'package:flutter/material.dart';
-import 'package:education/ui/common/app_colors.dart';
-import 'package:education/ui/common/ui_helpers.dart';
-import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:education/ui/widgets/app_utils.dart';
+import 'package:education/ui/common/ui_helpers.dart';
+import 'package:education/ui/common/app_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'info_alert_dialog_model.dart';
 
 const double _graphicSize = 60;
@@ -13,10 +13,10 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
   final Function(DialogResponse) completer;
 
   const InfoAlertDialog({
-    Key? key,
+    super.key,
     required this.request,
     required this.completer,
-  }) : super(key: key);
+  });
 
   @override
   Widget builder(
@@ -78,15 +78,15 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                 height: 50,
                 width: double.infinity,
                 alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: CustomText(
                   text: 'Got it',
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
             )
