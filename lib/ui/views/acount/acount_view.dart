@@ -4,7 +4,7 @@ import '../../widgets/app_utils.dart';
 import 'acount_viewmodel.dart';
 
 class AcountView extends StackedView<AcountViewModel> {
-  const AcountView({Key? key}) : super(key: key);
+  const AcountView({super.key});
 
   @override
   Widget builder(
@@ -42,7 +42,6 @@ class AcountView extends StackedView<AcountViewModel> {
             children: [
               Container(
                 height: 40,
-                //     width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xFF4873A6).withOpacity(0.7),
