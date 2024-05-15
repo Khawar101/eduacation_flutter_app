@@ -1,14 +1,16 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
-class PinputExample extends StatefulWidget {
-  const PinputExample({Key? key}) : super(key: key);
+class PinPutExample extends StatefulWidget {
+  const PinPutExample({super.key});
 
   @override
-  State<PinputExample> createState() => _PinputExampleState();
+  State<PinPutExample> createState() => _PinPutExampleState();
 }
 
-class _PinputExampleState extends State<PinputExample> {
+class _PinPutExampleState extends State<PinPutExample> {
   final pinController = TextEditingController();
   final focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
