@@ -1,12 +1,12 @@
+import '../../../widgets/custom_text_form_field.dart';
+import '../../../widgets/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import '../../../widgets/app_utils.dart';
-import '../../../widgets/custom_text_form_field.dart';
-import 'change_doneView.dart';
 import 'forget_viewmodel.dart';
+import 'change_doneView.dart';
 
 class ChangePasswordView extends StackedView<ForgetViewModel> {
-  const ChangePasswordView({Key? key}) : super(key: key);
+  const ChangePasswordView({super.key});
 
   @override
   Widget builder(

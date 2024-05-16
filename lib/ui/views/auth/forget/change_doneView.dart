@@ -5,7 +5,7 @@ import '../../../widgets/app_utils.dart';
 import 'forget_viewmodel.dart';
 
 class PasswordChangeDoneView extends StackedView<ForgetViewModel> {
-  const PasswordChangeDoneView({Key? key}) : super(key: key);
+  const PasswordChangeDoneView({super.key});
 
   @override
   Widget builder(
@@ -14,7 +14,6 @@ class PasswordChangeDoneView extends StackedView<ForgetViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      //   backgroundColor: const Color(0xffe4f1f8),
       body: Padding(
         padding: EdgeInsets.only(
             top: MediaQuery.of(context).size.height * 0.22,
