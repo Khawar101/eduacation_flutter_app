@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
-import '../../../widgets/app_utils.dart';
 import '../../../widgets/custom_text_form_field.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../../widgets/app_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'forget_viewmodel.dart';
 import 'otp_view.dart';
 
 class ForgetView extends StackedView<ForgetViewModel> {
-  const ForgetView({Key? key}) : super(key: key);
+  const ForgetView({super.key});
 
   @override
   Widget builder(
