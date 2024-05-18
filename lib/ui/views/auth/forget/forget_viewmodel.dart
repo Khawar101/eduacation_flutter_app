@@ -1,15 +1,16 @@
 // ignore_for_file: non_constant_identifier_names
-
-import 'dart:developer';
-import 'package:education/app/app.router.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:stacked_services/stacked_services.dart';
+import 'package:education/app/app.router.dart';
 import '../../../../app/app.locator.dart';
+import 'package:http/http.dart' as http;
+import 'package:stacked/stacked.dart';
+import 'dart:developer';
+import 'dart:convert';
+
+
 
 class ForgetViewModel extends BaseViewModel {
   bool visibleCheck = true;
