@@ -1,14 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pinput/pinput.dart';
-import 'package:stacked/stacked.dart';
-
 import '../../../widgets/app_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
+import 'package:pinput/pinput.dart';
 import 'change_password_view.dart';
 import 'forget_viewmodel.dart';
 
 class OtpView extends StackedView<ForgetViewModel> {
-  const OtpView({Key? key}) : super(key: key);
+  const OtpView({super.key});
 
   @override
   Widget builder(

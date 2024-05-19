@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
-import '../../../widgets/app_utils.dart';
 import '../../../widgets/custom_text_form_field.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../../widgets/app_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'login_viewmodel.dart';
 
 class LoginView extends StackedView<LoginViewModel> {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   void onViewModelReady(LoginViewModel viewModel) {
-    // TODO: implement onViewModelReady
+    //  implement onViewModelReady
     super.onViewModelReady(viewModel);
     viewModel.setFirstTimeFalseToSP();
   }
@@ -22,7 +22,6 @@ class LoginView extends StackedView<LoginViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      //  backgroundColor: const Color(0xffe4f1f8),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
