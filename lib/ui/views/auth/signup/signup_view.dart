@@ -7,7 +7,7 @@ import '../../../widgets/custom_text_form_field.dart';
 import 'signup_viewmodel.dart';
 
 class SignupView extends StackedView<SignupViewModel> {
-  const SignupView({Key? key}) : super(key: key);
+  const SignupView({super.key});
 
   @override
   Widget builder(
