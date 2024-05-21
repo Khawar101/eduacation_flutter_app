@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
-import 'package:stacked/stacked.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../../../widgets/app_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'verify_viewmodel.dart';
 
+
 class VerifyView extends StackedView<VerifyViewModel> {
-  const VerifyView({Key? key}) : super(key: key);
+  const VerifyView({super.key});
 
   @override
   Widget builder(

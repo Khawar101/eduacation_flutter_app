@@ -1,13 +1,11 @@
-import 'dart:developer';
-
-import 'package:education/app/app.router.dart';
-import 'package:education/services/signup_service.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:education/services/signup_service.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:education/app/app.router.dart';
+import '../../../../app/app.locator.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-
-import '../../../../app/app.locator.dart';
+import 'dart:developer';
 
 class VerifyViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
