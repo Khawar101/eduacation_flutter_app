@@ -10,8 +10,8 @@ import 'listview_widget.dart';
 
 class ChatsView extends StackedView<ChatsViewModel> {
   const ChatsView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   @override
   void onViewModelReady(ChatsViewModel viewModel) {
     viewModel.initState();
