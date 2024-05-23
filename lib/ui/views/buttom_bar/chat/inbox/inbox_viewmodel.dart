@@ -169,11 +169,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
 
 
   
-  //         });
-  //     await firestore
-  //         .collection("chatRoom")
-  //         .doc(chatId)
-  //         .collection('chats')
+ 
   //         .doc()
   //         .set(messageData);
   //   }).catchError((onError) {
