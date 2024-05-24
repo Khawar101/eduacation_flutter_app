@@ -9,8 +9,7 @@ class ListViewData extends StackedView<ChatsViewModel> {
   final ChatMember chatMember;
   final LastMessage lastMessage;
   const ListViewData(
-      {Key? key, required this.lastMessage, required this.chatMember})
-      : super(key: key);
+      {super.key, required this.lastMessage, required this.chatMember});
   @override
   void onViewModelReady(ChatsViewModel viewModel) {
     viewModel.initState();

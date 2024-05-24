@@ -19,7 +19,7 @@ class InboxView extends StackedView<InboxViewModel> {
   List<Member> memberList;
 
   InboxView({
-    Key? key,
+    super.key,
     required this.chatId,
     required this.uID,
     required this.name,
@@ -27,7 +27,7 @@ class InboxView extends StackedView<InboxViewModel> {
     required this.isGroup,
     required this.otherUID,
     required this.memberList,
-  }) : super(key: key);
+  });
 
   @override
   void onViewModelReady(InboxViewModel viewModel) {
