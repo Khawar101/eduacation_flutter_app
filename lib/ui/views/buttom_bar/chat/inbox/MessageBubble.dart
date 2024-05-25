@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
-import 'dart:developer';
+import '../../../../../services/Model/chat_member.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:education/services/Model/chat.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:education/app/app.locator.dart';
 import 'package:education/app/app.router.dart';
-import 'package:education/services/Model/chat.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked_services/stacked_services.dart';
-import '../../../../../services/Model/chat_member.dart';
+import 'dart:developer';
 
 final _navigationService = locator<NavigationService>();
 
