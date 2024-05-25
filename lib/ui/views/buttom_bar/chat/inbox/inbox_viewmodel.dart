@@ -1,21 +1,20 @@
-// ignore_for_file: body_might_complete_normally_catch_error
-import 'dart:async';
-import 'dart:developer';
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education/app/app.router.dart';
-import 'package:education/services/Model/chat.dart';
+// ignore_for_file: body_might_complete_normally_catch_error, depend_on_referenced_packages
+import 'package:stacked_services/stacked_services.dart';
+import '../../../../../services/Model/chat_member.dart';
 import 'package:education/services/chats_service.dart';
 import 'package:education/services/login_service.dart';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-// import 'package:video_player/video_player.dart';
-import '../../../../../app/app.locator.dart';
-import '../../../../../services/Model/chat_member.dart';
-import 'package:http/http.dart' as http;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education/services/Model/chat.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:education/app/app.router.dart';
+import '../../../../../app/app.locator.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
+import 'dart:developer';
+import 'dart:async';
+import 'dart:io';
 
 class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   final TextEditingController smsController = TextEditingController();
