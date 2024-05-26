@@ -18,7 +18,7 @@ class PdfViewShow extends StackedView<InboxViewModel> {
   final List<Member> memberList;
 
   const PdfViewShow(
-      {Key? key,
+      {super.key,
       required this.sampleUrl,
       required this.chatId,
       required this.uID,
@@ -26,8 +26,7 @@ class PdfViewShow extends StackedView<InboxViewModel> {
       required this.profile,
       required this.isGroup,
       required this.otherUID,
-      required this.memberList})
-      : super(key: key);
+      required this.memberList});
 
   @override
   void onViewModelReady(InboxViewModel viewModel) {
