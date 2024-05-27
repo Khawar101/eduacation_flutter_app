@@ -39,7 +39,7 @@ class DashboardViewModel extends BaseViewModel {
         minY: 0,
       );
 
-  LineTouchData get lineTouchData1 =>  LineTouchData(
+  LineTouchData get lineTouchData1 => const LineTouchData(
         handleBuiltInTouches: true,
         // touchTooltipData: LineTouchTooltipData(color: Colors.black),
       );
@@ -96,7 +96,8 @@ class DashboardViewModel extends BaseViewModel {
         getTitlesWidget: bottomTitleWidgets,
       );
 
-  FlGridData get gridData => const FlGridData(show: true, drawVerticalLine: false);
+  FlGridData get gridData =>
+      const FlGridData(show: true, drawVerticalLine: false);
 
   FlBorderData get borderData => FlBorderData(
         show: true,

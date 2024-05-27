@@ -6,7 +6,7 @@ import 'dashboard_model.dart';
 import 'LineChart.dart';
 
 class DashboardView extends StackedView<DashboardViewModel> {
-  const DashboardView({Key? key}) : super(key: key);
+  const DashboardView({super.key});
 
   @override
   void onViewModelReady(DashboardViewModel viewModel) {
