@@ -5,7 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'learners_viewmodel.dart';
 
 class LearnersView extends StackedView<LearnersViewModel> {
-  const LearnersView({Key? key}) : super(key: key);
+  const LearnersView({super.key});
 
   @override
   Widget builder(
