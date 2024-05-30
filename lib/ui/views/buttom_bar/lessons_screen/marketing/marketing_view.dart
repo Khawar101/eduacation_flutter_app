@@ -1,18 +1,18 @@
 // ignore_for_file: prefer_adjacent_string_concatenation
 import 'package:education/ui/views/buttom_bar/lessons_screen/marketing/marketing_widgets/rating_Builder.dart';
-import 'package:flutter/material.dart';
-import 'package:readmore/readmore.dart';
-import 'package:stacked/stacked.dart';
-import '../../../../../services/Model/CoursesModel.dart';
-import '../../../../widgets/app_utils.dart';
 import '../../../../widgets/common/video_player/video_player.dart';
+import '../../../../../services/Model/CoursesModel.dart';
 import '../../../../widgets/introBuilder.dart';
+import '../../../../widgets/app_utils.dart';
+import 'package:readmore/readmore.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'marketing_viewmodel.dart';
 
 class MarketingView extends StatefulWidget {
   final CoursesModel data;
 
-  const MarketingView({Key? key, required this.data}) : super(key: key);
+  const MarketingView({super.key, required this.data});
 
   @override
   State<MarketingView> createState() => _MarketingViewState();
@@ -152,7 +152,7 @@ class _MarketingViewState extends State<MarketingView> {
                                                   .width *
                                               0.1),
                                       CustomText(
-                                          text: "Full " + widget.data.duration!,
+                                          text: "Full ${widget.data.duration!}",
                                           fontSize: 14,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
