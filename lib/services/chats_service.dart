@@ -133,11 +133,7 @@ class ChatService {
       FirebaseCrashlytics.instance.recordError(e, s,
           reason: "function:sendSMS()", printDetails: true, fatal: true);
       log(e.toString());
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     content: Text(e.toString()),
-      //   ),
-      // );
+   
     }
   }
 
