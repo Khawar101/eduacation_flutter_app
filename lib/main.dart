@@ -2,6 +2,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:education/services/notification_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:education/app/app.bottomsheets.dart';
 import 'package:education/ui/common/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,9 +11,8 @@ import 'package:education/app/app.locator.dart';
 import 'package:education/app/app.router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
-import 'package:stacked_services/stacked_services.dart';
 import 'firebase_options.dart';
+import 'dart:developer';
 
 FlutterLocalNotificationsPlugin notificationsPlugin =
     FlutterLocalNotificationsPlugin();
