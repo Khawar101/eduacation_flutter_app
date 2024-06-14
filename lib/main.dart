@@ -80,8 +80,8 @@ class MyApp extends StatelessWidget {
 
 
 
-// final User? user = FirebaseAuth.instance.currentUser;
-// get_Data() async {
+
+
 //   final DocumentSnapshot snapshot =
 //       await firestore.collection("users").doc(user?.uid).get();
 //   // storage.write(key: "UID", value: user.user?.uid);
