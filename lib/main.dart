@@ -82,8 +82,6 @@ class MyApp extends StatelessWidget {
 
 
 
-//   final DocumentSnapshot snapshot =
-//       await firestore.collection("users").doc(user?.uid).get();
 //   // storage.write(key: "UID", value: user.user?.uid);
 //   if (snapshot.exists) {
 //     return snapshot.data();
