@@ -82,12 +82,7 @@ class MyApp extends StatelessWidget {
 
 
 
-//   // storage.write(key: "UID", value: user.user?.uid);
-//   if (snapshot.exists) {
-//     return snapshot.data();
-//   }
-//   return null;
-// }
+
 
 // FutureBuilder(
 //         future: get_Data(),
