@@ -84,9 +84,7 @@ class MyApp extends StatelessWidget {
 
 
 
-// FutureBuilder(
-//         future: get_Data(),
-//         builder: (context, snapshot) {
+
 //           if (snapshot.hasError) {
 //             return const Text("Some thing Went Wrong");
 //           }
