@@ -85,10 +85,6 @@ class MyApp extends StatelessWidget {
 
 
 
-//           if (snapshot.hasError) {
-//             return const Text("Some thing Went Wrong");
-//           }
-
 //           // Once complete, show your application
 //           if (snapshot.hasData) {
 //             return BottomNavigBar(UserData: snapshot.data as Map);
