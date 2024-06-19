@@ -85,10 +85,7 @@ class MyApp extends StatelessWidget {
 
 
 
-//           // Once complete, show your application
-//           if (snapshot.hasData) {
-//             return BottomNavigBar(UserData: snapshot.data as Map);
-//           }
+
 
 //           // Otherwise, show something whilst waiting for initialization to complete
 //           return signInScreen();
