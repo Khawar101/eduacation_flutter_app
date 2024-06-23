@@ -165,9 +165,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     notifyListeners();
   }
 
-  // XFile? image;
-  // Future sendImage(chatId, ImageSource source) async {
-  //   image = await ImagePicker().pickImage(source: source, imageQuality: 35);
+  
   //   Reference ref = FirebaseStorage.instance
   //       .ref()
   //       .child("profile/${DateTime.now().microsecondsSinceEpoch}");
