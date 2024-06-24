@@ -165,11 +165,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
     notifyListeners();
   }
 
-  
-  //   Reference ref = FirebaseStorage.instance
-  //       .ref()
-  //       .child("profile/${DateTime.now().microsecondsSinceEpoch}");
-  //   UploadTask uploadTask = ref.putFile(File(image!.path));
+
   //   // uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
   //   //   double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
   //   //     progressshow = progress;
