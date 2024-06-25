@@ -166,10 +166,6 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   }
 
 
-  //   // uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
-  //   //   double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-  //   //     progressshow = progress;
-  //   // });
   //   uploadTask.whenComplete(() async {
   //   String  uRL = await ref.getDownloadURL();
   //     Map<String, dynamic> messageData = {
