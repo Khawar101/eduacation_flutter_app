@@ -166,14 +166,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
   }
 
 
-  //   uploadTask.whenComplete(() async {
-  //   String  uRL = await ref.getDownloadURL();
-  //     Map<String, dynamic> messageData = {
-  //       "SMS": uRL,
-  //       "Date": "${DateTime.now().microsecondsSinceEpoch}",
-  //       "type": "image",
-  //       "UID": loginService.UserData.uID,
-  //     };
+
   //     var docRef = firestore.collection("chatRoom").doc(chatId);
   //     docRef.get().then((doc) => {
   //           if (doc.exists)
