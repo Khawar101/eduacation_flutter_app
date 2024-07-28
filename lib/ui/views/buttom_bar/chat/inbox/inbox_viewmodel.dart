@@ -167,14 +167,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
 
 
 
-  //     var docRef = firestore.collection("chatRoom").doc(chatId);
-  //     docRef.get().then((doc) => {
-  //           if (doc.exists)
-  //             {
-  //               docRef.update({"lastMessage": messageData})
-  //             }
-  //           else
-  //             {
+
   //               docRef.set({
   //                 "Date": "${DateTime.now().microsecondsSinceEpoch}",
   //                 "member": [
