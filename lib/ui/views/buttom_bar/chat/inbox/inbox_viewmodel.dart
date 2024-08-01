@@ -168,16 +168,6 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
 
 
 
-  //               docRef.set({
-  //                 "Date": "${DateTime.now().microsecondsSinceEpoch}",
-  //                 "member": [
-  //                   {
-  //                     "name": loginService.UserData.username,
-  //                     "profile": loginService.UserData.profile,
-  //                     "UID": loginService.UserData.uID
-  //                   },
-  //                   {"name": name, "profile": profile, "UID": otherUID},
-  //                 ],
   //                 "membersUid": [loginService.UserData.uID, otherUID],
   //                 "lastMessage": messageData
   //               })
