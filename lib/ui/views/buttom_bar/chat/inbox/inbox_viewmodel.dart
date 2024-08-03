@@ -168,10 +168,7 @@ class InboxViewModel extends BaseViewModel with WidgetsBindingObserver {
 
 
 
-  //                 "membersUid": [loginService.UserData.uID, otherUID],
-  //                 "lastMessage": messageData
-  //               })
-  //             }
+  
   //         });
   //     await firestore
   //         .collection("chatRoom")
